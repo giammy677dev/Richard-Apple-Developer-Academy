@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		B10552E920AD6FE30077983A /* CreateRoadmap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B10552E820AD6FE30077983A /* CreateRoadmap.storyboard */; };
 		B10552EB20AD70300077983A /* AddLink.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B10552EA20AD70300077983A /* AddLink.storyboard */; };
+		B10552F320AD7C230077983A /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10552F220AD7C230077983A /* ShareViewController.swift */; };
+		B10552F620AD7C230077983A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B10552F420AD7C230077983A /* MainInterface.storyboard */; };
+		B10552FA20AD7C230077983A /* Safari Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B10552F020AD7C230077983A /* Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B105530020AD7C430077983A /* GetURL.js in Resources */ = {isa = PBXBuildFile; fileRef = B10552FF20AD7C430077983A /* GetURL.js */; };
+		B105530220AD7DEB0077983A /* Roadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B105530120AD7DEB0077983A /* Roadmap.swift */; };
+		B105530420AD7E160077983A /* ShareSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B105530320AD7E160077983A /* ShareSelectViewController.swift */; };
 		B131A43820A9A5DC005894AD /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B131A43720A9A5DC005894AD /* Explore.storyboard */; };
 		B177C48320A9768B00CD9CBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B177C48220A9768B00CD9CBE /* AppDelegate.swift */; };
 		B177C48520A9768B00CD9CBE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B177C48420A9768B00CD9CBE /* ViewController.swift */; };
@@ -22,6 +28,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B10552F820AD7C230077983A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B177C47720A9768B00CD9CBE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B10552EF20AD7C230077983A;
+			remoteInfo = "Safari Extension";
+		};
 		B177C49420A9768B00CD9CBE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B177C47720A9768B00CD9CBE /* Project object */;
@@ -38,9 +51,30 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B10552FE20AD7C230077983A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B10552FA20AD7C230077983A /* Safari Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		B10552E820AD6FE30077983A /* CreateRoadmap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateRoadmap.storyboard; sourceTree = "<group>"; };
 		B10552EA20AD70300077983A /* AddLink.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddLink.storyboard; sourceTree = "<group>"; };
+		B10552F020AD7C230077983A /* Safari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Safari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B10552F220AD7C230077983A /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		B10552F520AD7C230077983A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		B10552F720AD7C230077983A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B10552FF20AD7C430077983A /* GetURL.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = GetURL.js; sourceTree = "<group>"; };
+		B105530120AD7DEB0077983A /* Roadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roadmap.swift; sourceTree = "<group>"; };
+		B105530320AD7E160077983A /* ShareSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSelectViewController.swift; sourceTree = "<group>"; };
 		B131A43720A9A5DC005894AD /* Explore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
 		B177C47F20A9768B00CD9CBE /* Final Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Final Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B177C48220A9768B00CD9CBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +94,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B10552ED20AD7C230077983A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B177C47C20A9768B00CD9CBE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -106,6 +147,19 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		B10552F120AD7C230077983A /* Safari Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B10552F220AD7C230077983A /* ShareViewController.swift */,
+				B105530320AD7E160077983A /* ShareSelectViewController.swift */,
+				B105530120AD7DEB0077983A /* Roadmap.swift */,
+				B10552FF20AD7C430077983A /* GetURL.js */,
+				B10552F420AD7C230077983A /* MainInterface.storyboard */,
+				B10552F720AD7C230077983A /* Info.plist */,
+			);
+			path = "Safari Extension";
+			sourceTree = "<group>";
+		};
 		B131A43620A9A5B8005894AD /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +178,7 @@
 				B177C48120A9768B00CD9CBE /* Final Challenge */,
 				B177C49620A9768B00CD9CBE /* Final ChallengeTests */,
 				B177C4A120A9768B00CD9CBE /* Final ChallengeUITests */,
+				B10552F120AD7C230077983A /* Safari Extension */,
 				B177C48020A9768B00CD9CBE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -134,6 +189,7 @@
 				B177C47F20A9768B00CD9CBE /* Final Challenge.app */,
 				B177C49320A9768B00CD9CBE /* Final ChallengeTests.xctest */,
 				B177C49E20A9768B00CD9CBE /* Final ChallengeUITests.xctest */,
+				B10552F020AD7C230077983A /* Safari Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -175,6 +231,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B10552EF20AD7C230077983A /* Safari Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B10552FB20AD7C230077983A /* Build configuration list for PBXNativeTarget "Safari Extension" */;
+			buildPhases = (
+				B10552EC20AD7C230077983A /* Sources */,
+				B10552ED20AD7C230077983A /* Frameworks */,
+				B10552EE20AD7C230077983A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Safari Extension";
+			productName = "Safari Extension";
+			productReference = B10552F020AD7C230077983A /* Safari Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		B177C47E20A9768B00CD9CBE /* Final Challenge */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B177C4A720A9768B00CD9CBE /* Build configuration list for PBXNativeTarget "Final Challenge" */;
@@ -182,10 +255,12 @@
 				B177C47B20A9768B00CD9CBE /* Sources */,
 				B177C47C20A9768B00CD9CBE /* Frameworks */,
 				B177C47D20A9768B00CD9CBE /* Resources */,
+				B10552FE20AD7C230077983A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B10552F920AD7C230077983A /* PBXTargetDependency */,
 			);
 			name = "Final Challenge";
 			productName = "Final Challenge";
@@ -238,6 +313,9 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Gian Marco Orlando";
 				TargetAttributes = {
+					B10552EF20AD7C230077983A = {
+						CreatedOnToolsVersion = 9.3.1;
+					};
 					B177C47E20A9768B00CD9CBE = {
 						CreatedOnToolsVersion = 9.3.1;
 					};
@@ -267,11 +345,21 @@
 				B177C47E20A9768B00CD9CBE /* Final Challenge */,
 				B177C49220A9768B00CD9CBE /* Final ChallengeTests */,
 				B177C49D20A9768B00CD9CBE /* Final ChallengeUITests */,
+				B10552EF20AD7C230077983A /* Safari Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B10552EE20AD7C230077983A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B10552F620AD7C230077983A /* MainInterface.storyboard in Resources */,
+				B105530020AD7C430077983A /* GetURL.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B177C47D20A9768B00CD9CBE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -304,6 +392,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B10552EC20AD7C230077983A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B105530220AD7DEB0077983A /* Roadmap.swift in Sources */,
+				B105530420AD7E160077983A /* ShareSelectViewController.swift in Sources */,
+				B10552F320AD7C230077983A /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B177C47B20A9768B00CD9CBE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -332,6 +430,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B10552F920AD7C230077983A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B10552EF20AD7C230077983A /* Safari Extension */;
+			targetProxy = B10552F820AD7C230077983A /* PBXContainerItemProxy */;
+		};
 		B177C49520A9768B00CD9CBE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B177C47E20A9768B00CD9CBE /* Final Challenge */;
@@ -345,6 +448,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		B10552F420AD7C230077983A /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B10552F520AD7C230077983A /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		B177C48620A9768B00CD9CBE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -364,6 +475,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B10552FC20AD7C230077983A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S8Z9T4225J;
+				INFOPLIST_FILE = "Safari Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bel-e-buono.final-challenge.safari-extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B10552FD20AD7C230077983A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S8Z9T4225J;
+				INFOPLIST_FILE = "Safari Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bel-e-buono.final-challenge.safari-extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B177C4A520A9768B00CD9CBE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -481,6 +630,7 @@
 		B177C4A820A9768B00CD9CBE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S8Z9T4225J;
@@ -489,7 +639,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Gian-Marco-Orlando.Final-Challenge";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bel-e-buono.final-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -499,6 +649,7 @@
 		B177C4A920A9768B00CD9CBE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S8Z9T4225J;
@@ -507,7 +658,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Gian-Marco-Orlando.Final-Challenge";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bel-e-buono.final-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -599,6 +750,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B10552FB20AD7C230077983A /* Build configuration list for PBXNativeTarget "Safari Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B10552FC20AD7C230077983A /* Debug */,
+				B10552FD20AD7C230077983A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B177C47A20A9768B00CD9CBE /* Build configuration list for PBXProject "Final Challenge" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
