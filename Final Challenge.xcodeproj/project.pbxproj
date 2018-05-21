@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		65593DC420B306C7001D6F46 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65593DC320B306C7001D6F46 /* String.swift */; };
-		7BB104AA20AEBF0700A203A1 /* Tappabuchi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB104A920AEBF0700A203A1 /* Tappabuchi.swift */; };
 		7BB104AC20AEBF1000A203A1 /* Buongiorno.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB104AB20AEBF1000A203A1 /* Buongiorno.swift */; };
 		A0BBA9C920B2F932008AE848 /* Roadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9C820B2F932008AE848 /* Roadmap.swift */; };
 		A0BBA9CB20B2FAF2008AE848 /* Sharable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9CA20B2FAF2008AE848 /* Sharable.swift */; };
@@ -81,7 +80,6 @@
 
 /* Begin PBXFileReference section */
 		65593DC320B306C7001D6F46 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		7BB104A920AEBF0700A203A1 /* Tappabuchi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tappabuchi.swift; sourceTree = "<group>"; };
 		7BB104AB20AEBF1000A203A1 /* Buongiorno.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buongiorno.swift; sourceTree = "<group>"; };
 		A0BBA9C820B2F932008AE848 /* Roadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roadmap.swift; sourceTree = "<group>"; };
 		A0BBA9CA20B2FAF2008AE848 /* Sharable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sharable.swift; sourceTree = "<group>"; };
@@ -479,7 +477,6 @@
 				B177C48520A9768B00CD9CBE /* ViewController.swift in Sources */,
 				A0BBA9D320B30845008AE848 /* Updatable.swift in Sources */,
 				A0BBA9CF20B30419008AE848 /* Node.swift in Sources */,
-				7BB104AA20AEBF0700A203A1 /* Tappabuchi.swift in Sources */,
 				7BB104AC20AEBF1000A203A1 /* Buongiorno.swift in Sources */,
 				A0BBA9D120B3068B008AE848 /* Step.swift in Sources */,
 				A0BBA9D620B30967008AE848 /* Writable.swift in Sources */,
