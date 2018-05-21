@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65593DC420B306C7001D6F46 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65593DC320B306C7001D6F46 /* String.swift */; };
 		7BB104A820AEBEFF00A203A1 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB104A720AEBEFF00A203A1 /* File.swift */; };
 		7BB104AA20AEBF0700A203A1 /* Tappabuchi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB104A920AEBF0700A203A1 /* Tappabuchi.swift */; };
 		7BB104AC20AEBF1000A203A1 /* Buongiorno.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB104AB20AEBF1000A203A1 /* Buongiorno.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		65593DC320B306C7001D6F46 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7BB104A720AEBEFF00A203A1 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		7BB104A920AEBF0700A203A1 /* Tappabuchi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tappabuchi.swift; sourceTree = "<group>"; };
 		7BB104AB20AEBF1000A203A1 /* Buongiorno.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buongiorno.swift; sourceTree = "<group>"; };
@@ -131,6 +133,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65593DC220B3069F001D6F46 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				65593DC320B306C7001D6F46 /* String.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		7BB104A620AEBE9000A203A1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +223,7 @@
 		B177C48120A9768B00CD9CBE /* Final Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				65593DC220B3069F001D6F46 /* Helper */,
 				B10552E620AD6EE00077983A /* Model */,
 				B10552E520AD6EC50077983A /* View */,
 				B10552E720AD6F810077983A /* Controller */,
@@ -423,6 +434,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65593DC420B306C7001D6F46 /* String.swift in Sources */,
 				B177C48520A9768B00CD9CBE /* ViewController.swift in Sources */,
 				7BB104AA20AEBF0700A203A1 /* Tappabuchi.swift in Sources */,
 				7BB104AC20AEBF1000A203A1 /* Buongiorno.swift in Sources */,

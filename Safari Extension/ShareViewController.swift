@@ -12,6 +12,7 @@ import MobileCoreServices
 
 class ShareViewController: SLComposeServiceViewController {
     private var url: NSURL?
+    private var text: String?
     private var userDecks = [Roadmap]()
     fileprivate var selectedRoadmap: Roadmap?
 
@@ -24,6 +25,7 @@ class ShareViewController: SLComposeServiceViewController {
         super.viewDidLoad()
         setupUI()
         getURL()
+        
         for i in 1...3 {
             let roadmap = Roadmap()
             roadmap.title = "Roadmaps \(i)"
@@ -51,8 +53,11 @@ class ShareViewController: SLComposeServiceViewController {
                 OperationQueue.main.addOperation {
                     if let results = dictionary[NSExtensionJavaScriptPreprocessingResultsKey] as? NSDictionary,
                         let urlString = results["URL"] as? String,
+                        let pageText = results["Text"] as? String,
                         let url = NSURL(string: urlString) {
                         self.url = url
+                        self.text = pageText
+                        print(pageText.words.count)
                     }
                 }
             })
@@ -89,5 +94,16 @@ extension ShareViewController: ShareSelectViewControllerDelegate {
         selectedRoadmap = roadmap
         reloadConfigurationItems()
         popConfigurationViewController()
+    }
+}
+
+extension String {
+    var words: [String] {
+        var words: [String] = []
+        enumerateSubstrings(in: startIndex..<endIndex, options: .byWords) { word,_,_,_ in
+            guard let word = word else { return }
+            words.append(word)
+        }
+        return words
     }
 }
