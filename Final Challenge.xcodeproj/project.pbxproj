@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65593DC420B306C7001D6F46 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65593DC320B306C7001D6F46 /* String.swift */; };
 		7BB104AA20AEBF0700A203A1 /* Tappabuchi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB104A920AEBF0700A203A1 /* Tappabuchi.swift */; };
 		7BB104AC20AEBF1000A203A1 /* Buongiorno.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB104AB20AEBF1000A203A1 /* Buongiorno.swift */; };
 		A0BBA9C920B2F932008AE848 /* Roadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9C820B2F932008AE848 /* Roadmap.swift */; };
@@ -78,6 +79,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		65593DC320B306C7001D6F46 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7BB104A920AEBF0700A203A1 /* Tappabuchi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tappabuchi.swift; sourceTree = "<group>"; };
 		7BB104AB20AEBF1000A203A1 /* Buongiorno.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buongiorno.swift; sourceTree = "<group>"; };
 		A0BBA9C820B2F932008AE848 /* Roadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roadmap.swift; sourceTree = "<group>"; };
@@ -149,6 +151,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65593DC220B3069F001D6F46 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				65593DC320B306C7001D6F46 /* String.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		7BB104A620AEBE9000A203A1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +258,7 @@
 		B177C48120A9768B00CD9CBE /* Final Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				65593DC220B3069F001D6F46 /* Helper */,
 				B10552E620AD6EE00077983A /* Model */,
 				B10552E520AD6EC50077983A /* View */,
 				B10552E720AD6F810077983A /* Controller */,
@@ -462,6 +473,7 @@
 				A0BBA9C920B2F932008AE848 /* Roadmap.swift in Sources */,
 				A0BBA9D820B309C0008AE848 /* NodeManager.swift in Sources */,
 				A0BBA9CB20B2FAF2008AE848 /* Sharable.swift in Sources */,
+				65593DC420B306C7001D6F46 /* String.swift in Sources */,
 				B177C48520A9768B00CD9CBE /* ViewController.swift in Sources */,
 				A0BBA9D320B30845008AE848 /* Updatable.swift in Sources */,
 				A0BBA9CF20B30419008AE848 /* Node.swift in Sources */,
