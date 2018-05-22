@@ -27,44 +27,6 @@ class Roadmap: Sharable, Equatable {
         self.visibility = visibility
     }
     
-    func addStepInHead(step: Step) {
-        if steps == nil {
-            self.addStepInQueue(step: step)
-        } else {
-            self.steps!.insert(step, at: steps!.startIndex)
-        }
-    }
-    
-    func addStep(step: Step, before: Step) {
-        if self.steps == nil {
-            self.addStepInQueue(step: step)
-        } else {
-            guard let index = self.steps?.index(of: before) else {
-                return
-            }
-            guard let target = self.steps?.index(before: index) else {
-                return
-            }
-            self.steps?.insert(step, at: target)
-        }
-    }
-
-    func addStepInQueue(step: Step) {
-        if steps == nil {
-            steps = [Step]()
-        }
-        steps?.append(step)
-    }
-
-    func removeStep(step: Step) {
-        guard var container = steps
-            else { return }
-        let index: Int? = container.index(of: step)
-        guard let target = index
-            else { return }
-        container.remove(at: target)
-    }
-    
     func setShared() {
         self.visibility = RoadmapVisibility.isShared
     }

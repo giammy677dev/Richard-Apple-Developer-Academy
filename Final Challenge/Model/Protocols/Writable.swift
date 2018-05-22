@@ -9,8 +9,10 @@
 import Foundation
 //MARK: - Writable protocol
 protocol Writable {
-    func appendStep()
+    func insertStepInHead(_ step: Step)
+    func insertStep(_ step: Step, after: Step)
+    func appendStep(_ step: Step)
     func removeStep(_ step: Step)
-    func move(after: Step)
+    func move(_ step: Step, after: Step)
     func swapStep(from: Step, to: Step)
 }
