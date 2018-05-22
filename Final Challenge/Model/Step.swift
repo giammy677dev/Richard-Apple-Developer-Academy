@@ -10,10 +10,11 @@ import Foundation
 
 //MARK: - Step
 
-class Step: NodeManager {
+class Step: NodeManager, Equatable {
+
     //Parameters:
     var title: String
-    var nodes: Array<Node>?
+    var nodes: [Node]?
     var parent: Roadmap
     
     //Methods:
@@ -22,9 +23,23 @@ class Step: NodeManager {
         self.parent = parent
     }
     
-    func addNode() {
+    func addNode(node: Node) {
+        if nodes == nil {
+            nodes = [Node]()
+        }
+        nodes?.append(node)
     }
     
-    func removeNode() {
+    func removeNode(node: Node) {
+        guard var container = nodes
+            else { return }
+        let index: Int? = container.index(of: node)
+        guard let target = index
+            else { return }
+        container.remove(at: target)
+    }
+
+    static func == (lhs: Step, rhs: Step) -> Bool {
+        return lhs.parent == rhs.parent && lhs.title == rhs.title
     }
 }
