@@ -39,8 +39,19 @@ class Tag {
     }
     
     class func parseTags(from str: String?) -> [String] {
-        guard let string = str else { return [] }
-        return []
+        /// This function is used to parse tags for a new node from a string.
+        /// Every tag is marked with a '#' symbol followed with the tag.
+        /// Return value is an array of strings.
+        guard let string = str, str?.count != 0 else { return [] }
+        let hashtagRegex = try! NSRegularExpression(pattern: "#(\\w++)", options: .caseInsensitive)
+        
+        let regexResults = hashtagRegex.matches(in: string, options: .withoutAnchoringBounds, range: NSMakeRange(0, string.count))
+        
+        let tagsArray = regexResults.map {
+            (string as NSString).substring(with: $0.range(at: 1))
+        }
+        
+        return tagsArray
     }
     
 }
