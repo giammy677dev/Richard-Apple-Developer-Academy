@@ -25,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="-682" y="135"/>
         </scene>
-        <!--Ciao-->
+        <!--Resources-->
         <scene sceneID="qf3-sA-qUE">
             <objects>
-                <tableViewController id="3Wy-cw-jce" customClass="ResearchTableViewController" customModule="Final_Challenge" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Resources" id="3Wy-cw-jce" customClass="ResearchTableViewController" customModule="Final_Challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XAB-Ry-8NW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +49,7 @@
                             <outlet property="delegate" destination="3Wy-cw-jce" id="JlB-Ny-lgw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Ciao" id="Awm-XH-dig"/>
+                    <navigationItem key="navigationItem" title="Resources" id="Awm-XH-dig"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFU-gJ-We6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

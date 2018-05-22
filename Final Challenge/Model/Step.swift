@@ -13,7 +13,7 @@ import Foundation
 class Step: NodeManager {
     //Parameters:
     var title: String
-    var nodes: Array<Node>?
+    var nodes: [Node]?
     var parent: Roadmap
     
     //Methods:
@@ -22,9 +22,13 @@ class Step: NodeManager {
         self.parent = parent
     }
     
-    func addNode() {
+    func addNode(node: Node) {
+        if nodes == nil {
+            nodes = [Node]()
+        }
+        nodes?.append(node)
     }
     
-    func removeNode() {
+    func removeNode(node: Node) {
     }
 }
