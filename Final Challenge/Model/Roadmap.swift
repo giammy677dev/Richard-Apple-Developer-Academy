@@ -25,7 +25,22 @@ class Roadmap: Sharable {
         self.privilages = privilages
         self.visibility = visibility
     }
-    
+
+    func addStepInQueue(step: Step) {
+        if steps == nil {
+            steps = [Step]()
+        }
+        steps?.append(step)
+    }
+
+    func removeStep(step: Step) {
+        guard var container = steps
+            else { return }
+        var index: Int? = container.index(of: step)
+        guard let target = index
+            else { return }
+        container.remove(at: target)
+    }
     
     func setShared() {
         self.visibility = RoadmapVisibility.isShared

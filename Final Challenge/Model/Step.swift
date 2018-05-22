@@ -10,7 +10,8 @@ import Foundation
 
 //MARK: - Step
 
-class Step: NodeManager {
+class Step: NodeManager, Equatable {
+
     //Parameters:
     var title: String
     var nodes: [Node]?
@@ -30,5 +31,15 @@ class Step: NodeManager {
     }
     
     func removeNode(node: Node) {
+        guard var container = nodes
+            else { return }
+        let index: Int? = container.index(of: node)
+        guard let target = index
+            else { return }
+        container.remove(at: target)
+    }
+
+    static func == (lhs: Step, rhs: Step) -> Bool {
+        return lhs.parent == rhs.parent && lhs.title == rhs.title
     }
 }
