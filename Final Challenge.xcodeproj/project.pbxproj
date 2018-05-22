@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		65593DC420B306C7001D6F46 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65593DC320B306C7001D6F46 /* String.swift */; };
+		65A0BC7D20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */; };
+		65A0BC7F20B4103600BFC766 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7E20B4103600BFC766 /* NetworkManager.swift */; };
 		7BB104AA20AEBF0700A203A1 /* Tappabuchi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB104A920AEBF0700A203A1 /* Tappabuchi.swift */; };
 		7BB104AC20AEBF1000A203A1 /* Buongiorno.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB104AB20AEBF1000A203A1 /* Buongiorno.swift */; };
 		A0BBA9C920B2F932008AE848 /* Roadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9C820B2F932008AE848 /* Roadmap.swift */; };
@@ -80,6 +82,8 @@
 
 /* Begin PBXFileReference section */
 		65593DC320B306C7001D6F46 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoilerpipeAnswerStructure.swift; sourceTree = "<group>"; };
+		65A0BC7E20B4103600BFC766 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7BB104A920AEBF0700A203A1 /* Tappabuchi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tappabuchi.swift; sourceTree = "<group>"; };
 		7BB104AB20AEBF1000A203A1 /* Buongiorno.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buongiorno.swift; sourceTree = "<group>"; };
 		A0BBA9C820B2F932008AE848 /* Roadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roadmap.swift; sourceTree = "<group>"; };
@@ -159,6 +163,15 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		65A0BC7B20B40D3500BFC766 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */,
+				65A0BC7E20B4103600BFC766 /* NetworkManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		7BB104A620AEBE9000A203A1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +226,7 @@
 			children = (
 				B10552F220AD7C230077983A /* ShareViewController.swift */,
 				B105530320AD7E160077983A /* ShareSelectViewController.swift */,
+				65A0BC7B20B40D3500BFC766 /* Model */,
 				B105530120AD7DEB0077983A /* Roadmap.swift */,
 				B10552FF20AD7C430077983A /* GetURL.js */,
 				B10552F420AD7C230077983A /* MainInterface.storyboard */,
@@ -459,7 +473,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65A0BC7D20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift in Sources */,
 				B105530220AD7DEB0077983A /* Roadmap.swift in Sources */,
+				65A0BC7F20B4103600BFC766 /* NetworkManager.swift in Sources */,
 				B105530420AD7E160077983A /* ShareSelectViewController.swift in Sources */,
 				B10552F320AD7C230077983A /* ShareViewController.swift in Sources */,
 			);
