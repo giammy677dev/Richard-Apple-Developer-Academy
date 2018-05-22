@@ -8,7 +8,8 @@
 
 import Foundation
 //MARK: - Class Roadmap
-class Roadmap: Sharable {
+class Roadmap: Sharable, Equatable {
+    
     //Parameters:
     var visibility: RoadmapVisibility
     var isShared: Bool {return RoadmapVisibility.isShared == self.visibility}
@@ -25,6 +26,28 @@ class Roadmap: Sharable {
         self.privilages = privilages
         self.visibility = visibility
     }
+    
+    func addStepInHead(step: Step) {
+        if steps == nil {
+            self.addStepInQueue(step: step)
+        } else {
+            self.steps!.insert(step, at: steps!.startIndex)
+        }
+    }
+    
+    func addStep(step: Step, before: Step) {
+        if self.steps == nil {
+            self.addStepInQueue(step: step)
+        } else {
+            guard let index = self.steps?.index(of: before) else {
+                return
+            }
+            guard let target = self.steps?.index(before: index) else {
+                return
+            }
+            self.steps?.insert(step, at: target)
+        }
+    }
 
     func addStepInQueue(step: Step) {
         if steps == nil {
@@ -36,7 +59,7 @@ class Roadmap: Sharable {
     func removeStep(step: Step) {
         guard var container = steps
             else { return }
-        var index: Int? = container.index(of: step)
+        let index: Int? = container.index(of: step)
         guard let target = index
             else { return }
         container.remove(at: target)
@@ -58,6 +81,10 @@ class Roadmap: Sharable {
         if visibility == RoadmapVisibility.isShared {
             visibility = RoadmapVisibility.isPrivate
         }
+    }
+    
+    static func == (lhs: Roadmap, rhs: Roadmap) -> Bool {
+        return lhs.title == rhs.title
     }
 
     //TO-DO: - Complete the following functions when we will have the DB
