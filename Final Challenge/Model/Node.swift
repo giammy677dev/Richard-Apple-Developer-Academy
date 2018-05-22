@@ -9,11 +9,11 @@
 import Foundation
 
 //MARK: - Node
-class Node {
+class Node: Taggable {    
+    
     //Parameters:
     var url: URL
     var title: String
-    var tags: Set<String>?
     private var readingTimeInMinutes: Double?
     private var parent: Step
     
@@ -33,14 +33,6 @@ class Node {
         
     }
     
-    private func setTags(from string: String?) {
-        
-    }
-    
-    private func parseTags(from string: String) {
-        
-    }
-    
     private func setReadingTime(url: URL) {
         
     }
@@ -49,11 +41,19 @@ class Node {
         
     }
     
-    func addTag(_ tag: Array<String>) {
-        
+    //MARK: - Taggable protocol conformance
+    var tags: Set<String> = Set<String>()
+    
+    func addTag(_ tag: [String]) {
+        //
     }
     
-    func removeTag(_ tag: Array<String>) {
-        
+    func removeTag(_ tag: [String]) {
+        //
     }
+    
+    static func == (lhs: Node, rhs: Node) -> Bool {
+        return lhs.url == rhs.url
+    }
+    
 }

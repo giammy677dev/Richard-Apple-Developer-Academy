@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		65593DC420B306C7001D6F46 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65593DC320B306C7001D6F46 /* String.swift */; };
 		7BB104AC20AEBF1000A203A1 /* Buongiorno.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB104AB20AEBF1000A203A1 /* Buongiorno.swift */; };
+		7BEA03C720B361310048F108 /* Taggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA03C620B361310048F108 /* Taggable.swift */; };
+		7BEA03C920B3624B0048F108 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA03C820B3624B0048F108 /* Tag.swift */; };
 		A0BBA9C920B2F932008AE848 /* Roadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9C820B2F932008AE848 /* Roadmap.swift */; };
 		A0BBA9CB20B2FAF2008AE848 /* Sharable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9CA20B2FAF2008AE848 /* Sharable.swift */; };
 		A0BBA9CD20B2FD4C008AE848 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9CC20B2FD4C008AE848 /* Enumerations.swift */; };
@@ -81,6 +83,8 @@
 /* Begin PBXFileReference section */
 		65593DC320B306C7001D6F46 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7BB104AB20AEBF1000A203A1 /* Buongiorno.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buongiorno.swift; sourceTree = "<group>"; };
+		7BEA03C620B361310048F108 /* Taggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taggable.swift; sourceTree = "<group>"; };
+		7BEA03C820B3624B0048F108 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		A0BBA9C820B2F932008AE848 /* Roadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roadmap.swift; sourceTree = "<group>"; };
 		A0BBA9CA20B2FAF2008AE848 /* Sharable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sharable.swift; sourceTree = "<group>"; };
 		A0BBA9CC20B2FD4C008AE848 /* Enumerations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
@@ -174,6 +178,7 @@
 				A0BBA9D220B30845008AE848 /* Updatable.swift */,
 				A0BBA9D520B30967008AE848 /* Writable.swift */,
 				A0BBA9D720B309C0008AE848 /* NodeManager.swift */,
+				7BEA03C620B361310048F108 /* Taggable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 				A0BBA9C820B2F932008AE848 /* Roadmap.swift */,
 				A0BBA9CC20B2FD4C008AE848 /* Enumerations.swift */,
 				A0BBA9CE20B30419008AE848 /* Node.swift */,
+				7BEA03C820B3624B0048F108 /* Tag.swift */,
 				A0BBA9D020B3068B008AE848 /* Step.swift */,
 				A0BBA9D920B30A48008AE848 /* SubscribedRoadmap.swift */,
 				A0BBA9DB20B30BD8008AE848 /* WritableRoadmap.swift */,
@@ -469,6 +475,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BEA03C920B3624B0048F108 /* Tag.swift in Sources */,
+				7BEA03C720B361310048F108 /* Taggable.swift in Sources */,
 				A0BBA9DC20B30BD8008AE848 /* WritableRoadmap.swift in Sources */,
 				A0BBA9C920B2F932008AE848 /* Roadmap.swift in Sources */,
 				A0BBA9D820B309C0008AE848 /* NodeManager.swift in Sources */,
