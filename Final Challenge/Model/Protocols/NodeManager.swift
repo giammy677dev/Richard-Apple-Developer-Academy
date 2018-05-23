@@ -10,6 +10,6 @@ import Foundation
 //MARK: - Node Manager Protocol
 protocol NodeManager {
     
-    func addNode(node: Node)
-    func removeNode(node: Node)
+    func addNode(_ node: Node)
+    func removeNode(_ node: Node)
 }
