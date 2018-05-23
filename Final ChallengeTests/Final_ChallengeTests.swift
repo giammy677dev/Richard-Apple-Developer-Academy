@@ -3,7 +3,6 @@
 //  Final ChallengeTests
 //
 //  Created by Gian Marco Orlando on 14/05/18.
-//  Copyright © 2018 Gian Marco Orlando. All rights reserved.
 //
 
 import XCTest
