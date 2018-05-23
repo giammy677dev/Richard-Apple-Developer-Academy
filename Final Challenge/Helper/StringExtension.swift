@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension String {
+public extension String {
     var words: [String] {
         var words: [String] = []
         enumerateSubstrings(in: startIndex..<endIndex, options: .byWords) { word,_,_,_ in

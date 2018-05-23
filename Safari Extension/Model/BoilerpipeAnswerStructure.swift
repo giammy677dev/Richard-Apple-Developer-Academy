@@ -15,6 +15,18 @@ public struct BoilerpipeAnswer: Codable {
         response = BoilerpipeResponse()
         status = "failure"
     }
+    
+    public struct BoilerpipeResponse: Codable{
+        var title: String = ""
+        var content: String = ""
+        var source: String = ""
+        public init(){
+            title = ""
+            content = ""
+            source = ""
+        }
+    }
+    
     public mutating func extractFromData(_ data: Data){
         do{
             let json = try JSONDecoder().decode(BoilerpipeAnswer.self, from: data)
@@ -27,15 +39,6 @@ public struct BoilerpipeAnswer: Codable {
     }
 }
 
-public struct BoilerpipeResponse: Codable{
-    var title: String = ""
-    var content: String = ""
-    var source: String = ""
-    public init(){
-        title = ""
-        content = ""
-        source = ""
-    }
-}
+
 
 

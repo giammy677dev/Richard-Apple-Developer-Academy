@@ -11,16 +11,19 @@ import Social
 import MobileCoreServices
 
 class ShareViewController: SLComposeServiceViewController {
+   
     private var url: NSURL?
     private var text: String?
+    private var wordCount: Int?{
+        return (text?.words.count)
+    }
+    
     private var userDecks = [Roadmap]()
     private let boilerPipeAPIURLString = "https://boilerpipe-web.appspot.com/extract?extractor=ArticleExtractor&output=json&extractImages=&token=&url="
     fileprivate var selectedRoadmap: Roadmap?
     private var boilerPipeAnswer = BoilerpipeAnswer()
     private var fetchedFromBoilerPipe: Bool = false
-    private var wordCount: Int?{
-        return (text?.words.count)
-    }
+    
 
     override func isContentValid() -> Bool {
         // Do validation of contentText and/or NSExtensionContext attachments here
@@ -114,16 +117,5 @@ extension ShareViewController: ShareSelectViewControllerDelegate {
         selectedRoadmap = roadmap
         reloadConfigurationItems()
         popConfigurationViewController()
-    }
-}
-
-extension String {
-    var words: [String] {
-        var words: [String] = []
-        enumerateSubstrings(in: startIndex..<endIndex, options: .byWords) { word,_,_,_ in
-            guard let word = word else { return }
-            words.append(word)
-        }
-        return words
     }
 }

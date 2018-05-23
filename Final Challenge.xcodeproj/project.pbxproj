@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		65593DC420B306C7001D6F46 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65593DC320B306C7001D6F46 /* String.swift */; };
+		65355ECE20B54F3C00031B6C /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65355ECD20B54F3C00031B6C /* StringExtensions.swift */; };
+		65593DC420B306C7001D6F46 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65593DC320B306C7001D6F46 /* StringExtension.swift */; };
 		65A0BC7D20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */; };
 		65A0BC7F20B4103600BFC766 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7E20B4103600BFC766 /* NetworkManager.swift */; };
 		7B4CE71B20B4541800C34A69 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CE71A20B4541800C34A69 /* PersistenceManager.swift */; };
@@ -84,7 +85,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		65593DC320B306C7001D6F46 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		65355ECD20B54F3C00031B6C /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		65593DC320B306C7001D6F46 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoilerpipeAnswerStructure.swift; sourceTree = "<group>"; };
 		65A0BC7E20B4103600BFC766 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7B4CE71A20B4541800C34A69 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
@@ -161,10 +163,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65355ECC20B54F2100031B6C /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				65355ECD20B54F3C00031B6C /* StringExtensions.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		65593DC220B3069F001D6F46 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				65593DC320B306C7001D6F46 /* String.swift */,
+				65593DC320B306C7001D6F46 /* StringExtension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -235,6 +245,7 @@
 			children = (
 				B10552F220AD7C230077983A /* ShareViewController.swift */,
 				B105530320AD7E160077983A /* ShareSelectViewController.swift */,
+				65355ECC20B54F2100031B6C /* Helper */,
 				65A0BC7B20B40D3500BFC766 /* Model */,
 				B105530120AD7DEB0077983A /* Roadmap.swift */,
 				B10552FF20AD7C430077983A /* GetURL.js */,
@@ -482,6 +493,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65355ECE20B54F3C00031B6C /* StringExtensions.swift in Sources */,
 				65A0BC7D20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift in Sources */,
 				B105530220AD7DEB0077983A /* Roadmap.swift in Sources */,
 				65A0BC7F20B4103600BFC766 /* NetworkManager.swift in Sources */,
@@ -500,7 +512,7 @@
 				A0BBA9C920B2F932008AE848 /* Roadmap.swift in Sources */,
 				A0BBA9D820B309C0008AE848 /* NodeManager.swift in Sources */,
 				A0BBA9CB20B2FAF2008AE848 /* Sharable.swift in Sources */,
-				65593DC420B306C7001D6F46 /* String.swift in Sources */,
+				65593DC420B306C7001D6F46 /* StringExtension.swift in Sources */,
 				B177C48520A9768B00CD9CBE /* ViewController.swift in Sources */,
 				A0BBA9D320B30845008AE848 /* Updatable.swift in Sources */,
 				A0BBA9CF20B30419008AE848 /* Node.swift in Sources */,
