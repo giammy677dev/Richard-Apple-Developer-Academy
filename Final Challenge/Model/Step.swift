@@ -23,20 +23,21 @@ class Step: NodeManager, Equatable {
         self.parent = parent
     }
     
-    func addNode(node: Node) {
+    func addNode(_ node: Node) {
         if nodes == nil {
             nodes = [Node]()
         }
         nodes?.append(node)
     }
     
-    func removeNode(node: Node) {
+    func removeNode(_ node: Node) {
         guard var container = nodes
             else { return }
         let index: Int? = container.index(of: node)
         guard let target = index
             else { return }
         container.remove(at: target)
+        Tag.shared.rRemove(node)
     }
 
     static func == (lhs: Step, rhs: Step) -> Bool {

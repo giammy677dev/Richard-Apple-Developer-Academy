@@ -23,6 +23,10 @@ class Node: Taggable {
         self.title = title
         self.parent = parent
         
+        if let _ = tags {
+            let tagArray = Tag.parseTags(from: tags)
+            self.addTags(tagArray)
+        }
     }
     
     private func analyze(url: URL) {
@@ -44,12 +48,18 @@ class Node: Taggable {
     //MARK: - Taggable protocol conformance
     var tags: Set<String> = Set<String>()
     
-    func addTag(_ tag: [String]) {
-        //
+    func addTags(_ tagArray: [String]) {
+        // This method receive an array of string and sets a node's tags
+        for tag in tagArray {
+            tags.insert(tag)
+            Tag.shared.add(self, forTag: tag)
+        }
     }
     
-    func removeTag(_ tag: [String]) {
-        //
+    func removeTag(_ tag: String) {
+        // This method receive a string and removes it as node tag
+        tags.remove(tag)
+        Tag.shared.remove(self, forTag: tag)
     }
     
     static func == (lhs: Node, rhs: Node) -> Bool {
