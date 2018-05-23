@@ -43,12 +43,24 @@ class WritableRoadmap: Roadmap, Writable {
             }
             
             //Move the element:
-            self.steps?.remove(at: index) //Remove element from old position
             self.steps?.insert(step, at: target) //Insert the element at the new position
+            self.steps?.remove(at: index) //Remove element from old position
         }
     }
     
     func swapStep(from: Step, to: Step) {
+        guard var container = self.steps else { //Check if the array exist 
+            return
+        }
+        guard let index = steps?.index(of: from) else { //Index of the first element to swap
+            return
+        }
+        guard let destination = steps?.index(of: to) else { //Index of the second element to swap
+            return
+        }
+        //Swap the elements
+        container[index] = to
+        container[destination] = from
     }
     
     func insertStepInHead(_ step: Step) {
