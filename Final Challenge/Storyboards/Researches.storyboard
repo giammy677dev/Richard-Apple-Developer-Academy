@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-682" y="135"/>
         </scene>
-        <!--Resources Table View Controller-->
+        <!--Resources-->
         <scene sceneID="1uY-bA-jYz">
             <objects>
                 <tableViewController id="oUW-1q-saV" customClass="ResourcesTableViewController" customModule="Final_Challenge" customModuleProvider="target" sceneMemberID="viewController">
@@ -65,7 +65,7 @@
                             <outlet property="delegate" destination="oUW-1q-saV" id="W37-KY-yfV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="yFa-2f-ExB"/>
+                    <navigationItem key="navigationItem" title="Resources" id="yFa-2f-ExB"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXF-nW-gS4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
