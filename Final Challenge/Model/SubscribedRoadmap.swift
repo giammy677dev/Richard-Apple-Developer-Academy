@@ -14,8 +14,8 @@ class SubscribedRoadmap: Roadmap, Updatable {
     private var ckToken: CKServerChangeToken?
     
     //Methods:
-    convenience init(title: String, category: Category, ckToken: CKServerChangeToken, lastRead: Date) {
-        self.init(title: title, category: category,lastRead: lastRead)
+    convenience init(title: String, category: Category, ckToken: CKServerChangeToken, lastRead: Date, id: UUID) {
+        self.init(title: title, category: category,lastRead: lastRead, id: id)
         self.ckToken = ckToken
     }
     

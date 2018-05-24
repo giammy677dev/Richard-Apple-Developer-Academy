@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ShareSelectViewControllerDelegate: class {
-    func selected(roadmap: Roadmap)
+    func selected(roadmap: RoadmapSE)
 }
 
 class ShareSelectViewController: UIViewController {
@@ -22,7 +22,7 @@ class ShareSelectViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: Identifiers.RoadmapCell)
         return tableView
     }()
-    var userDecks = [Roadmap]()
+    var userDecks = [RoadmapSE]()
     weak var delegate: ShareSelectViewControllerDelegate?
 
     override func viewDidLoad() {

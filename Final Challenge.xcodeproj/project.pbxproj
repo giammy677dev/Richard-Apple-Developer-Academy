@@ -11,6 +11,21 @@
 		652742AF20B6F4710027D862 /* CDRoadmap+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652742AC20B6F4710027D862 /* CDRoadmap+CoreDataClass.swift */; };
 		652742B020B6F4710027D862 /* CDRoadmap+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652742AD20B6F4710027D862 /* CDRoadmap+CoreDataProperties.swift */; };
 		652742B120B6F4710027D862 /* CDRoadmap+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652742AD20B6F4710027D862 /* CDRoadmap+CoreDataProperties.swift */; };
+		652742B220B701AD0027D862 /* Roadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9C820B2F932008AE848 /* Roadmap.swift */; };
+		652742B320B701AD0027D862 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9CC20B2FD4C008AE848 /* Enumerations.swift */; };
+		652742B420B701AD0027D862 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9CE20B30419008AE848 /* Node.swift */; };
+		652742B520B701AD0027D862 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA03C820B3624B0048F108 /* Tag.swift */; };
+		652742B620B701AD0027D862 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9D020B3068B008AE848 /* Step.swift */; };
+		652742B720B701BA0027D862 /* SubscribedRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9D920B30A48008AE848 /* SubscribedRoadmap.swift */; };
+		652742B820B701BA0027D862 /* WritableRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9DB20B30BD8008AE848 /* WritableRoadmap.swift */; };
+		652742B920B701BA0027D862 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */; };
+		652742BA20B701BA0027D862 /* DatabaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91051520B6B955001005AA /* DatabaseInterface.swift */; };
+		652742BB20B701BA0027D862 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CE71A20B4541800C34A69 /* PersistenceManager.swift */; };
+		652742BC20B702440027D862 /* Sharable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9CA20B2FAF2008AE848 /* Sharable.swift */; };
+		652742BD20B702440027D862 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9D220B30845008AE848 /* Updatable.swift */; };
+		652742BE20B702440027D862 /* Writable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9D520B30967008AE848 /* Writable.swift */; };
+		652742BF20B702440027D862 /* NodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9D720B309C0008AE848 /* NodeManager.swift */; };
+		652742C020B702440027D862 /* Taggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA03C620B361310048F108 /* Taggable.swift */; };
 		65355ECE20B54F3C00031B6C /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65355ECD20B54F3C00031B6C /* StringExtensions.swift */; };
 		65593DC420B306C7001D6F46 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65593DC320B306C7001D6F46 /* StringExtension.swift */; };
 		65A0BC7D20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */; };
@@ -62,7 +77,7 @@
 		B10552F620AD7C230077983A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B10552F420AD7C230077983A /* MainInterface.storyboard */; };
 		B10552FA20AD7C230077983A /* Safari Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B10552F020AD7C230077983A /* Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B105530020AD7C430077983A /* GetURL.js in Resources */ = {isa = PBXBuildFile; fileRef = B10552FF20AD7C430077983A /* GetURL.js */; };
-		B105530220AD7DEB0077983A /* Roadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B105530120AD7DEB0077983A /* Roadmap.swift */; };
+		B105530220AD7DEB0077983A /* RoadmapSE.swift in Sources */ = {isa = PBXBuildFile; fileRef = B105530120AD7DEB0077983A /* RoadmapSE.swift */; };
 		B105530420AD7E160077983A /* ShareSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B105530320AD7E160077983A /* ShareSelectViewController.swift */; };
 		B111196E20B571DF007FDFB5 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B111196D20B571DF007FDFB5 /* CloudKit.framework */; };
 		B1608B4F20B6B69C00701508 /* Links.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1608B4E20B6B69C00701508 /* Links.storyboard */; };
@@ -165,7 +180,7 @@
 		B10552F520AD7C230077983A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		B10552F720AD7C230077983A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B10552FF20AD7C430077983A /* GetURL.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = GetURL.js; sourceTree = "<group>"; };
-		B105530120AD7DEB0077983A /* Roadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roadmap.swift; sourceTree = "<group>"; };
+		B105530120AD7DEB0077983A /* RoadmapSE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapSE.swift; sourceTree = "<group>"; };
 		B105530320AD7E160077983A /* ShareSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSelectViewController.swift; sourceTree = "<group>"; };
 		B111196B20B57167007FDFB5 /* Final Challenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Final Challenge.entitlements"; sourceTree = "<group>"; };
 		B111196D20B571DF007FDFB5 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -354,7 +369,7 @@
 				B105530320AD7E160077983A /* ShareSelectViewController.swift */,
 				65355ECC20B54F2100031B6C /* Helper */,
 				65A0BC7B20B40D3500BFC766 /* Model */,
-				B105530120AD7DEB0077983A /* Roadmap.swift */,
+				B105530120AD7DEB0077983A /* RoadmapSE.swift */,
 				B10552FF20AD7C430077983A /* GetURL.js */,
 				B10552F420AD7C230077983A /* MainInterface.storyboard */,
 				B10552F720AD7C230077983A /* Info.plist */,
@@ -610,20 +625,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				652742BA20B701BA0027D862 /* DatabaseInterface.swift in Sources */,
+				652742BB20B701BA0027D862 /* PersistenceManager.swift in Sources */,
+				652742C020B702440027D862 /* Taggable.swift in Sources */,
 				65EA50F320B6CCD8008BCBFB /* CDStep+CoreDataClass.swift in Sources */,
+				652742BD20B702440027D862 /* Updatable.swift in Sources */,
 				65EA50FB20B6D26E008BCBFB /* CoreDataController+Stack.swift in Sources */,
 				65355ECE20B54F3C00031B6C /* StringExtensions.swift in Sources */,
+				652742B420B701AD0027D862 /* Node.swift in Sources */,
+				652742BF20B702440027D862 /* NodeManager.swift in Sources */,
+				652742B320B701AD0027D862 /* Enumerations.swift in Sources */,
 				65EA50FA20B6D1F6008BCBFB /* AppDelegate.swift in Sources */,
 				65EA50F520B6CCD8008BCBFB /* CDStep+CoreDataProperties.swift in Sources */,
 				652742AF20B6F4710027D862 /* CDRoadmap+CoreDataClass.swift in Sources */,
+				652742BE20B702440027D862 /* Writable.swift in Sources */,
+				652742B820B701BA0027D862 /* WritableRoadmap.swift in Sources */,
 				65EA50EF20B6CCD8008BCBFB /* CDNode+CoreDataClass.swift in Sources */,
 				65A0BC7D20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift in Sources */,
-				B105530220AD7DEB0077983A /* Roadmap.swift in Sources */,
+				B105530220AD7DEB0077983A /* RoadmapSE.swift in Sources */,
+				652742B920B701BA0027D862 /* CloudKitManager.swift in Sources */,
+				652742B520B701AD0027D862 /* Tag.swift in Sources */,
 				65EA50E320B5795D008BCBFB /* Persistence.xcdatamodeld in Sources */,
+				652742BC20B702440027D862 /* Sharable.swift in Sources */,
 				65A0BC7F20B4103600BFC766 /* NetworkManager.swift in Sources */,
 				B1608B5A20B7115900701508 /* UIColorExtension.swift in Sources */,
 				B105530420AD7E160077983A /* ShareSelectViewController.swift in Sources */,
+				652742B220B701AD0027D862 /* Roadmap.swift in Sources */,
 				652742B120B6F4710027D862 /* CDRoadmap+CoreDataProperties.swift in Sources */,
+				652742B720B701BA0027D862 /* SubscribedRoadmap.swift in Sources */,
+				652742B620B701AD0027D862 /* Step.swift in Sources */,
 				B10552F320AD7C230077983A /* ShareViewController.swift in Sources */,
 				65EA50F120B6CCD8008BCBFB /* CDNode+CoreDataProperties.swift in Sources */,
 			);

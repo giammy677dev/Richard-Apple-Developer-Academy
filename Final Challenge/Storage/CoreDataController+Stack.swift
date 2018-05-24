@@ -81,7 +81,22 @@ class CoreDataController {
     }
     
     //  MARK: Add object with or without relationships
-    
+    func addRoadmap(roadmap: Roadmap) -> Bool {
+        let newRoadmap = NSEntityDescription.insertNewObject(forEntityName: "CDRoadmap", into: context) as! CDRoadmap
+        
+        newRoadmap.setValue(roadmap.title, forKey: "title")
+        newRoadmap.setValue(roadmap.isPublic, forKey: "isPublic")
+        newRoadmap.setValue(roadmap.isShared, forKey: "isShared")
+        newRoadmap.setValue(roadmap.category.rawValue, forKey: "category")
+        newRoadmap.setValue(roadmap.lastReadTimestamp, forKey: "lastReadTimestamp")
+        newRoadmap.setValue(roadmap.privileges.rawValue, forKey: "privileges")
+        newRoadmap.setValue(roadmap.visibility.rawValue, forKey: "visibility")
+        newRoadmap.setValue(roadmap.uuid, forKey: "uuid")
+        
+        self.saveContext()
+        
+        return true
+    }
     
     //  MARK: Fetch
     

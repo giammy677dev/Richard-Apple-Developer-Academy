@@ -14,6 +14,7 @@ class Node: Taggable {
     //Parameters:
     var url: URL
     var title: String
+    var uuid: UUID
     var extractedText: String
     var isTextProperlyExtracted: Bool
     var creationTimestamp: Date
@@ -21,13 +22,14 @@ class Node: Taggable {
     private var parent: Step
     
     //Methods:
-    init(url: URL, title: String, parent: Step, tags: String?, text: String, propExtracted: Bool, creationTime: Date = Date()) {
+    init(url: URL, title: String, id: UUID, parent: Step, tags: String?, text: String, propExtracted: Bool, creationTime: Date = Date()) {
         self.url = url
         self.title = title
         self.parent = parent
         self.extractedText = text
         self.isTextProperlyExtracted = propExtracted
         self.creationTimestamp = creationTime
+        self.uuid = id
         
         if let _ = tags {
             let tagArray = Tag.parseTags(from: tags)
@@ -69,7 +71,7 @@ class Node: Taggable {
     }
     
     static func == (lhs: Node, rhs: Node) -> Bool {
-        return lhs.url == rhs.url
+        return lhs.uuid == rhs.uuid
     }
     
 }
