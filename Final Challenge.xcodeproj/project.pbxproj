@@ -13,6 +13,18 @@
 		65A0BC7F20B4103600BFC766 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7E20B4103600BFC766 /* NetworkManager.swift */; };
 		65EA50E220B5795D008BCBFB /* Persistence.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E020B5795D008BCBFB /* Persistence.xcdatamodeld */; };
 		65EA50E320B5795D008BCBFB /* Persistence.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E020B5795D008BCBFB /* Persistence.xcdatamodeld */; };
+		65EA50EA20B6CCD8008BCBFB /* CDRoadmap+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E420B6CCD8008BCBFB /* CDRoadmap+CoreDataClass.swift */; };
+		65EA50EB20B6CCD8008BCBFB /* CDRoadmap+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E420B6CCD8008BCBFB /* CDRoadmap+CoreDataClass.swift */; };
+		65EA50EC20B6CCD8008BCBFB /* CDRoadmap+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E520B6CCD8008BCBFB /* CDRoadmap+CoreDataProperties.swift */; };
+		65EA50ED20B6CCD8008BCBFB /* CDRoadmap+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E520B6CCD8008BCBFB /* CDRoadmap+CoreDataProperties.swift */; };
+		65EA50EE20B6CCD8008BCBFB /* CDNode+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E620B6CCD8008BCBFB /* CDNode+CoreDataClass.swift */; };
+		65EA50EF20B6CCD8008BCBFB /* CDNode+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E620B6CCD8008BCBFB /* CDNode+CoreDataClass.swift */; };
+		65EA50F020B6CCD8008BCBFB /* CDNode+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E720B6CCD8008BCBFB /* CDNode+CoreDataProperties.swift */; };
+		65EA50F120B6CCD8008BCBFB /* CDNode+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E720B6CCD8008BCBFB /* CDNode+CoreDataProperties.swift */; };
+		65EA50F220B6CCD8008BCBFB /* CDStep+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E820B6CCD8008BCBFB /* CDStep+CoreDataClass.swift */; };
+		65EA50F320B6CCD8008BCBFB /* CDStep+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E820B6CCD8008BCBFB /* CDStep+CoreDataClass.swift */; };
+		65EA50F420B6CCD8008BCBFB /* CDStep+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E920B6CCD8008BCBFB /* CDStep+CoreDataProperties.swift */; };
+		65EA50F520B6CCD8008BCBFB /* CDStep+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E920B6CCD8008BCBFB /* CDStep+CoreDataProperties.swift */; };
 		7B4CE71B20B4541800C34A69 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CE71A20B4541800C34A69 /* PersistenceManager.swift */; };
 		7B5BCB5F20B57E5900B66CEE /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */; };
 		7BB104AC20AEBF1000A203A1 /* Buongiorno.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB104AB20AEBF1000A203A1 /* Buongiorno.swift */; };
@@ -103,6 +115,12 @@
 		65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoilerpipeAnswerStructure.swift; sourceTree = "<group>"; };
 		65A0BC7E20B4103600BFC766 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		65EA50E120B5795D008BCBFB /* Persistence.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Persistence.xcdatamodel; sourceTree = "<group>"; };
+		65EA50E420B6CCD8008BCBFB /* CDRoadmap+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDRoadmap+CoreDataClass.swift"; sourceTree = "<group>"; };
+		65EA50E520B6CCD8008BCBFB /* CDRoadmap+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDRoadmap+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		65EA50E620B6CCD8008BCBFB /* CDNode+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDNode+CoreDataClass.swift"; sourceTree = "<group>"; };
+		65EA50E720B6CCD8008BCBFB /* CDNode+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDNode+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		65EA50E820B6CCD8008BCBFB /* CDStep+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDStep+CoreDataClass.swift"; sourceTree = "<group>"; };
+		65EA50E920B6CCD8008BCBFB /* CDStep+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDStep+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7B4CE71A20B4541800C34A69 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		7BB104AB20AEBF1000A203A1 /* Buongiorno.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buongiorno.swift; sourceTree = "<group>"; };
@@ -215,6 +233,20 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		65EA50F620B6CF0C008BCBFB /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				65EA50E720B6CCD8008BCBFB /* CDNode+CoreDataProperties.swift */,
+				65EA50E820B6CCD8008BCBFB /* CDStep+CoreDataClass.swift */,
+				65EA50E920B6CCD8008BCBFB /* CDStep+CoreDataProperties.swift */,
+				65EA50E020B5795D008BCBFB /* Persistence.xcdatamodeld */,
+				65EA50E420B6CCD8008BCBFB /* CDRoadmap+CoreDataClass.swift */,
+				65EA50E520B6CCD8008BCBFB /* CDRoadmap+CoreDataProperties.swift */,
+				65EA50E620B6CCD8008BCBFB /* CDNode+CoreDataClass.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		7BB104A620AEBE9000A203A1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,7 +355,6 @@
 		B177C47620A9768B00CD9CBE = {
 			isa = PBXGroup;
 			children = (
-				65EA50E020B5795D008BCBFB /* Persistence.xcdatamodeld */,
 				B177C48120A9768B00CD9CBE /* Final Challenge */,
 				B177C49620A9768B00CD9CBE /* Final ChallengeTests */,
 				B177C4A120A9768B00CD9CBE /* Final ChallengeUITests */,
@@ -349,6 +380,7 @@
 			children = (
 				B111196B20B57167007FDFB5 /* Final Challenge.entitlements */,
 				90525F9920B6A7D1006D3093 /* Storyboards */,
+				65EA50F620B6CF0C008BCBFB /* Storage */,
 				65593DC220B3069F001D6F46 /* Helper */,
 				B10552E620AD6EE00077983A /* Model */,
 				B10552E520AD6EC50077983A /* View */,
@@ -559,13 +591,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65EA50F320B6CCD8008BCBFB /* CDStep+CoreDataClass.swift in Sources */,
+				65EA50ED20B6CCD8008BCBFB /* CDRoadmap+CoreDataProperties.swift in Sources */,
 				65355ECE20B54F3C00031B6C /* StringExtensions.swift in Sources */,
+				65EA50F520B6CCD8008BCBFB /* CDStep+CoreDataProperties.swift in Sources */,
+				65EA50EF20B6CCD8008BCBFB /* CDNode+CoreDataClass.swift in Sources */,
 				65A0BC7D20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift in Sources */,
 				B105530220AD7DEB0077983A /* Roadmap.swift in Sources */,
 				65EA50E320B5795D008BCBFB /* Persistence.xcdatamodeld in Sources */,
 				65A0BC7F20B4103600BFC766 /* NetworkManager.swift in Sources */,
 				B105530420AD7E160077983A /* ShareSelectViewController.swift in Sources */,
 				B10552F320AD7C230077983A /* ShareViewController.swift in Sources */,
+				65EA50EB20B6CCD8008BCBFB /* CDRoadmap+CoreDataClass.swift in Sources */,
+				65EA50F120B6CCD8008BCBFB /* CDNode+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,17 +624,23 @@
 				9002AAFD20B40C4400854015 /* CustomCollectionViewCell.swift in Sources */,
 				9002AAF920B401EB00854015 /* CollectionTableViewCell.swift in Sources */,
 				A0BBA9D320B30845008AE848 /* Updatable.swift in Sources */,
+				65EA50EC20B6CCD8008BCBFB /* CDRoadmap+CoreDataProperties.swift in Sources */,
 				A0BBA9CF20B30419008AE848 /* Node.swift in Sources */,
 				7B5BCB5F20B57E5900B66CEE /* CloudKitManager.swift in Sources */,
+				65EA50F420B6CCD8008BCBFB /* CDStep+CoreDataProperties.swift in Sources */,
 				7BB104AC20AEBF1000A203A1 /* Buongiorno.swift in Sources */,
 				A0BBA9D120B3068B008AE848 /* Step.swift in Sources */,
 				A0BBA9D620B30967008AE848 /* Writable.swift in Sources */,
 				904C8FD520B57D2D00D0E27D /* ResourcesTableViewController.swift in Sources */,
+				65EA50EA20B6CCD8008BCBFB /* CDRoadmap+CoreDataClass.swift in Sources */,
 				B177C48320A9768B00CD9CBE /* AppDelegate.swift in Sources */,
+				65EA50EE20B6CCD8008BCBFB /* CDNode+CoreDataClass.swift in Sources */,
 				9002AAF220B2BFC000854015 /* HeaderTableViewCell.swift in Sources */,
 				B1608B4B20B6B2A400701508 /* CustomLinksTableViewCell.swift in Sources */,
 				9002AAE720B2BDAA00854015 /* RoadmapsTableViewController.swift in Sources */,
+				65EA50F020B6CCD8008BCBFB /* CDNode+CoreDataProperties.swift in Sources */,
 				A0BBA9CD20B2FD4C008AE848 /* Enumerations.swift in Sources */,
+				65EA50F220B6CCD8008BCBFB /* CDStep+CoreDataClass.swift in Sources */,
 				7B4CE71B20B4541800C34A69 /* PersistenceManager.swift in Sources */,
 				A0BBA9DA20B30A48008AE848 /* SubscribedRoadmap.swift in Sources */,
 				904C8FDC20B5818A00D0E27D /* ResourcesCustomCollectionViewCell.swift in Sources */,
