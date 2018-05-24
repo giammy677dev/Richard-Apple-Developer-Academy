@@ -18,9 +18,9 @@ class ShareViewController: SLComposeServiceViewController {
         return (text?.words.count)
     }
     
-    private var userDecks = [Roadmap]()
+    private var userDecks = [RoadmapSE]()
     private let boilerPipeAPIURLString = "https://boilerpipe-web.appspot.com/extract?extractor=ArticleExtractor&output=json&extractImages=&token=&url="
-    fileprivate var selectedRoadmap: Roadmap?
+    fileprivate var selectedRoadmap: RoadmapSE?
     private var boilerPipeAnswer = BoilerpipeAnswer()
     private var fetchedFromBoilerPipe: Bool = false
     
@@ -36,7 +36,7 @@ class ShareViewController: SLComposeServiceViewController {
         getURLAndText()
         
         for i in 1...3 {
-            let roadmap = Roadmap()
+            let roadmap = RoadmapSE()
             roadmap.title = "Roadmaps \(i)"
             userDecks.append(roadmap)
         }
@@ -113,7 +113,8 @@ class ShareViewController: SLComposeServiceViewController {
 }
 
 extension ShareViewController: ShareSelectViewControllerDelegate {
-    func selected(roadmap: Roadmap) {
+    
+    func selected(roadmap: RoadmapSE) {
         selectedRoadmap = roadmap
         reloadConfigurationItems()
         popConfigurationViewController()
