@@ -11,6 +11,8 @@
 		65593DC420B306C7001D6F46 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65593DC320B306C7001D6F46 /* StringExtension.swift */; };
 		65A0BC7D20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */; };
 		65A0BC7F20B4103600BFC766 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7E20B4103600BFC766 /* NetworkManager.swift */; };
+		65EA50E220B5795D008BCBFB /* Persistence.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E020B5795D008BCBFB /* Persistence.xcdatamodeld */; };
+		65EA50E320B5795D008BCBFB /* Persistence.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E020B5795D008BCBFB /* Persistence.xcdatamodeld */; };
 		7B4CE71B20B4541800C34A69 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CE71A20B4541800C34A69 /* PersistenceManager.swift */; };
 		7B5BCB5F20B57E5900B66CEE /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */; };
 		7BB104AC20AEBF1000A203A1 /* Buongiorno.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB104AB20AEBF1000A203A1 /* Buongiorno.swift */; };
@@ -103,6 +105,7 @@
 		65593DC320B306C7001D6F46 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoilerpipeAnswerStructure.swift; sourceTree = "<group>"; };
 		65A0BC7E20B4103600BFC766 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		65EA50E120B5795D008BCBFB /* Persistence.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Persistence.xcdatamodel; sourceTree = "<group>"; };
 		7B4CE71A20B4541800C34A69 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		7BB104AB20AEBF1000A203A1 /* Buongiorno.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buongiorno.swift; sourceTree = "<group>"; };
@@ -337,6 +340,7 @@
 		B177C47620A9768B00CD9CBE = {
 			isa = PBXGroup;
 			children = (
+				65EA50E020B5795D008BCBFB /* Persistence.xcdatamodeld */,
 				B177C48120A9768B00CD9CBE /* Final Challenge */,
 				B177C49620A9768B00CD9CBE /* Final ChallengeTests */,
 				B177C4A120A9768B00CD9CBE /* Final ChallengeUITests */,
@@ -581,6 +585,7 @@
 				65355ECE20B54F3C00031B6C /* StringExtensions.swift in Sources */,
 				65A0BC7D20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift in Sources */,
 				B105530220AD7DEB0077983A /* Roadmap.swift in Sources */,
+				65EA50E320B5795D008BCBFB /* Persistence.xcdatamodeld in Sources */,
 				65A0BC7F20B4103600BFC766 /* NetworkManager.swift in Sources */,
 				B105530420AD7E160077983A /* ShareSelectViewController.swift in Sources */,
 				B10552F320AD7C230077983A /* ShareViewController.swift in Sources */,
@@ -591,6 +596,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65EA50E220B5795D008BCBFB /* Persistence.xcdatamodeld in Sources */,
 				7BEA03C920B3624B0048F108 /* Tag.swift in Sources */,
 				7BEA03C720B361310048F108 /* Taggable.swift in Sources */,
 				A0BBA9DC20B30BD8008AE848 /* WritableRoadmap.swift in Sources */,
@@ -848,7 +854,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8Z9T4225J;
+				DEVELOPMENT_TEAM = EHA3KYEH4L;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -868,7 +874,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8Z9T4225J;
+				DEVELOPMENT_TEAM = EHA3KYEH4L;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1012,6 +1018,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		65EA50E020B5795D008BCBFB /* Persistence.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				65EA50E120B5795D008BCBFB /* Persistence.xcdatamodel */,
+			);
+			currentVersion = 65EA50E120B5795D008BCBFB /* Persistence.xcdatamodel */;
+			path = Persistence.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B177C47720A9768B00CD9CBE /* Project object */;
 }
