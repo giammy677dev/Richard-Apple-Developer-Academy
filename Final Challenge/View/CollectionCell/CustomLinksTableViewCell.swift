@@ -17,6 +17,10 @@ class CustomLinksTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
 
+        self.contentView.layer.borderColor = UIColor(hex: 0xCEDFF3).cgColor
+        self.contentView.layer.borderWidth = 2
+        self.contentView.layer.cornerRadius = 15
+        self.contentView.layer.masksToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
