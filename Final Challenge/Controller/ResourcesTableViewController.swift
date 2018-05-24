@@ -12,6 +12,9 @@ class ResourcesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        //General settings
+        self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
        
     }
 
