@@ -18,11 +18,13 @@ class Node: Taggable {
     var extractedText: String
     var isTextProperlyExtracted: Bool
     var creationTimestamp: Date
-    private var readingTimeInMinutes: Double?
+    var isRead: Bool
+    var isFlagged: Bool
+    var readingTimeInMinutes: Double?
     private var parent: Step
     
     //Methods:
-    init(url: URL, title: String, id: UUID, parent: Step, tags: String?, text: String, propExtracted: Bool, creationTime: Date = Date()) {
+    init(url: URL, title: String, id: UUID, parent: Step, tags: String?, text: String, propExtracted: Bool, creationTime: Date = Date(), propRead: Bool = false, propFlagged: Bool = false) {
         self.url = url
         self.title = title
         self.parent = parent
@@ -30,6 +32,8 @@ class Node: Taggable {
         self.isTextProperlyExtracted = propExtracted
         self.creationTimestamp = creationTime
         self.uuid = id
+        self.isRead = propRead
+        self.isFlagged = propFlagged
         
         if let _ = tags {
             let tagArray = Tag.parseTags(from: tags)

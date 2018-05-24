@@ -21,6 +21,8 @@ extension CDStep {
     @NSManaged public var title: String?
     @NSManaged public var uuid: UUID?
     @NSManaged public var nodesList: NSOrderedSet?
+    @NSManaged public var parentRoadmap: CDRoadmap?
+    @NSManaged public var usedID: CDUsedUUID?
 
 }
 
@@ -58,5 +60,4 @@ extension CDStep {
     @NSManaged public func removeFromNodesList(_ values: NSOrderedSet)
 
 }
-
 
