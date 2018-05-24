@@ -24,6 +24,7 @@ extension CDRoadmap {
     @NSManaged public var privileges: Int16
     @NSManaged public var title: String?
     @NSManaged public var visibility: Int16
+    @NSManaged public var uuid: UUID?
     @NSManaged public var stepsList: NSOrderedSet?
 
 }

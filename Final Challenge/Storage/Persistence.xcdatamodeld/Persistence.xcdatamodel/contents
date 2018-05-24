@@ -17,6 +17,7 @@
         <attribute name="lastReadTimestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="privileges" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="visibility" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="stepsList" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="CDStep" syncable="YES"/>
     </entity>
@@ -28,7 +29,7 @@
     </entity>
     <elements>
         <element name="CDNode" positionX="-317" positionY="153" width="128" height="165"/>
-        <element name="CDRoadmap" positionX="-612" positionY="-18" width="128" height="165"/>
+        <element name="CDRoadmap" positionX="-612" positionY="-18" width="128" height="180"/>
         <element name="CDStep" positionX="-432" positionY="-9" width="128" height="105"/>
     </elements>
 </model>
