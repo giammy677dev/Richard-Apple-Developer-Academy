@@ -140,7 +140,7 @@ class CoreDataController {
         return newNode
     }
     
-    func addNode(_ node: Node, to step: Step) -> Bool {
+    func linkNode(_ node: Node, to step: Step) -> Bool {
         
         let entityNode = NSEntityDescription.entity(forEntityName: "CDNode", in: self.context)
         let newNode = CDNode(entity: entityNode!, insertInto: context)
@@ -349,8 +349,56 @@ class CoreDataController {
     
     
     
-    //  MARK: Edit
-    //  TODO: Update data Roadmap/step/node and change step placement in the roadmap
+    //  MARK: Update
+    
+    func updateNode(_ node: Node) -> Bool {
+        let nodeToUpdate = fetchCDNode(uuid: node.uuid)!
+        
+        nodeToUpdate.setValue(node.creationTimestamp, forKey: "creationTimestamp")
+        nodeToUpdate.setValue(node.extractedText, forKey: "extractedText")
+        nodeToUpdate.setValue(node.isTextProperlyExtracted, forKey: "isTextProperlyExtracted")
+        nodeToUpdate.setValue(node.isRead, forKey: "isRead")
+        nodeToUpdate.setValue(node.isFlagged, forKey: "isFlagged")
+        nodeToUpdate.setValue(node.readingTimeInMinutes, forKey: "readingTimeInMinutes")
+        nodeToUpdate.setValue(node.tags.sorted() as [NSString], forKey: "tags")
+        nodeToUpdate.setValue(node.title, forKey: "title")
+        nodeToUpdate.setValue(node.url.absoluteString , forKey: "url")
+        
+        
+        self.saveContext()
+        
+        return true
+    }
+    
+    func updateStep(_ step: Step) -> Bool {
+        let stepToUpdate = fetchCDStep(uuid: step.uuid)!
+        
+        stepToUpdate.setValue(0, forKey: "arrayID")
+        stepToUpdate.setValue(step.title, forKey: "title")
+        
+        self.saveContext()
+        
+        return true
+    }
+    
+    func updateRoadmap(_ roadmap: Roadmap) -> Bool {
+        let roadmapToUpdate = fetchCDRoadmap(uuid: roadmap.uuid)!
+        
+        roadmapToUpdate.setValue(roadmap.category.rawValue, forKey: "category")
+        roadmapToUpdate.setValue(roadmap.isPublic, forKey: "isPublic")
+        roadmapToUpdate.setValue(roadmap.isShared, forKey: "isShared")
+        
+        roadmapToUpdate.setValue(roadmap.lastReadTimestamp as NSDate, forKey: "lastReadTimestamp")
+        roadmapToUpdate.setValue(roadmap.privileges.rawValue, forKey: "privileges")
+        roadmapToUpdate.setValue(roadmap.title, forKey: "title")
+        roadmapToUpdate.setValue(roadmap.visibility.rawValue, forKey: "visibility")
+        
+        self.saveContext()
+        return true
+    }
+    //  TODO: Change step placement in the roadmap
+    
+    
     
     //  MARK: DANGEROUS
     

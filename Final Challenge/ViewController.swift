@@ -35,7 +35,7 @@ extension UIViewController {
         
         let d = Node(url: URL(string: "https://www.a.com")!, title: "Come ammazzare i maiali", id: UUID(), parent: b, tags: "#fff", text: "Omae wa mou shindeiru", propExtracted: false)
         controller.addNode(d)
-        controller.addNode(d, to: c)
+        controller.linkNode(d, to: c)
         
         
         
