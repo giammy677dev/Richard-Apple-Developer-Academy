@@ -90,8 +90,8 @@ class CoreDataController {
         newRoadmap.setValue(roadmap.category, forKey: "category")
         newRoadmap.setValue(roadmap.lastReadTimestamp, forKey: "lastReadTimestamp")
         newRoadmap.setValue(roadmap.privileges, forKey: "privileges")
-        newRoadmap.setValue(roadmap.title, forKey: "visibility")
-        newRoadmap.setValue(roadmap.title, forKey: "uuid")
+        newRoadmap.setValue(roadmap.visibility, forKey: "visibility")
+        newRoadmap.setValue(roadmap.uuid, forKey: "uuid")
         
         self.saveContext()
         
