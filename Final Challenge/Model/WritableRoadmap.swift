@@ -58,7 +58,7 @@ class WritableRoadmap: Roadmap, Writable {
         guard let destination = steps?.index(of: to) else { //Index of the second element to swap
             return
         }
-        //Swap the elements
+        //Swap the elements:
         container[index] = to
         container[destination] = from
     }
