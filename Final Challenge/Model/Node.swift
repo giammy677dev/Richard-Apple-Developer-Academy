@@ -14,14 +14,20 @@ class Node: Taggable {
     //Parameters:
     var url: URL
     var title: String
+    var extractedText: String
+    var isTextProperlyExtracted: Bool
+    var creationTimestamp: Date
     private var readingTimeInMinutes: Double?
     private var parent: Step
     
     //Methods:
-    init(url: URL, title: String, parent: Step, tags: String?) {
+    init(url: URL, title: String, parent: Step, tags: String?, text: String, propExtracted: Bool, creationTime: Date = Date()) {
         self.url = url
         self.title = title
         self.parent = parent
+        self.extractedText = text
+        self.isTextProperlyExtracted = propExtracted
+        self.creationTimestamp = creationTime
         
         if let _ = tags {
             let tagArray = Tag.parseTags(from: tags)
