@@ -33,14 +33,26 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jrO-xk-fV0">
+                        <rect key="frame" x="306" y="22" width="53" height="54"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" image="Checkmarkempty"/>
+                        <connections>
+                            <action selector="checkButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Chd-QM-3L6"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="checkButton" destination="jrO-xk-fV0" id="j9K-zw-51M"/>
                 <outlet property="readingTimeLabel" destination="15E-fo-8BI" id="Ov5-e6-bcx"/>
                 <outlet property="titleLabel" destination="peD-0O-gTf" id="eao-Sf-deI"/>
             </connections>
             <point key="canvasLocation" x="134.5" y="59"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="Checkmarkempty" width="30" height="30"/>
+    </resources>
 </document>
