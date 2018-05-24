@@ -18,13 +18,15 @@ class Roadmap: Sharable, Equatable {
     var title: String
     var category: Category
     var steps: [Step]?
+    var lastReadTimestamp: Date
     
     //Methods:
-    init(title: String, category: Category, visibility: RoadmapVisibility = RoadmapVisibility.isPrivate, privilages: UserPrivilege = UserPrivilege.isOwner) {
+    init(title: String, category: Category, visibility: RoadmapVisibility = RoadmapVisibility.isPrivate, privilages: UserPrivilege = UserPrivilege.isOwner, lastRead: Date) {
         self.title = title
         self.category = category
         self.privilages = privilages
         self.visibility = visibility
+        self.lastReadTimestamp = lastRead
     }
     
     func setShared() {
