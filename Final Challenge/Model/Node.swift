@@ -71,7 +71,7 @@ class Node: Taggable {
     }
     
     static func == (lhs: Node, rhs: Node) -> Bool {
-        return lhs.url == rhs.url
+        return lhs.uuid == rhs.uuid
     }
     
 }
