@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-676" y="198"/>
         </scene>
-        <!--Roadmaps Table View Controller-->
+        <!--Roadmaps-->
         <scene sceneID="UZY-Jr-g8C">
             <objects>
                 <tableViewController id="A5t-vQ-6Ev" customClass="RoadmapsTableViewController" customModule="Final_Challenge" customModuleProvider="target" sceneMemberID="viewController">
@@ -74,7 +74,7 @@
                             <outlet property="delegate" destination="A5t-vQ-6Ev" id="BeO-tx-8Ci"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ymP-69-lpT"/>
+                    <navigationItem key="navigationItem" title="Roadmaps" id="ymP-69-lpT"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MD6-PM-nRN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

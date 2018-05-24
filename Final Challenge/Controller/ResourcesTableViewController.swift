@@ -1,25 +1,25 @@
 //
-//  RoadmapsTableViewController.swift
+//  ResearchesTableViewController.swift
 //  Final Challenge
 //
-//  Created by Geremia De Micco on 21/05/18.
+//  Created by Geremia De Micco on 23/05/18.
+//  Copyright © 2018 Gian Marco Orlando. All rights reserved.
 //
 
 import UIKit
 
-class RoadmapsTableViewController: UITableViewController {
+class ResourcesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let customCell = UINib(nibName: "collectionViewCell", bundle: nil)
-//        self.tableView.register(customCell, forCellReuseIdentifier: "collectionViewCell")
-        
-//        let headerCustomCell = UINib(nibName: "headerCell", bundle: nil)
-//        self.tableView.register(headerCustomCell, forCellReuseIdentifier: "headerCell")
+
+        //General settings
+        self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
+       
     }
 
     // MARK: - Table view data source
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 5
     }
@@ -30,12 +30,13 @@ class RoadmapsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let collectionCell = tableView.dequeueReusableCell(withIdentifier: "collectionViewCell", for: indexPath) as! CollectionTableViewCell
-    
-
+        let collectionCell = tableView.dequeueReusableCell(withIdentifier: "ResourcesCollectionTableViewCell", for: indexPath) as! ResourcesCollectionTableViewCell
+        
+        
         return collectionCell
     }
     
+    //header uguale all'header dell'overview ROADMAOPS
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = Bundle.main.loadNibNamed("HeaderTableViewCell", owner: self, options: nil)?.first as! HeaderTableViewCell
         
@@ -53,5 +54,5 @@ class RoadmapsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
-    
+
 }
