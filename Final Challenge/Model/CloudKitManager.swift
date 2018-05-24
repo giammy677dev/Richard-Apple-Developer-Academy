@@ -18,23 +18,29 @@ final class CloudKitManager {
         publicDB = container.publicCloudDatabase
         privateDB = container.privateCloudDatabase
     }
-    
-    
-    
-    
-    
-    
+
     private var container: CKContainer
     private var publicDB: CKDatabase
     private var privateDB: CKDatabase
     
-    
-    
-    private enum RecordNames: String {
+    func fetchRecord(ckRecordType: String, recordName: String) -> CKRecord? {
+        /// This func always returns a fetched CKRecord and if this doesn't exist it returns a new one
         
-        case recordZoneName = "Prova"
-        
-        
+        return nil
     }
+    
+    func saveRecord(_ record: CKRecord) {
+        publicDB.save(record) { (record, error) in
+            if let error = error {
+                // Error handling
+                debugPrint(error.localizedDescription)
+                return
+            }
+            // Successfully saved
+            
+        }
+    }
+    
+    private func createRecord(){}
     
 }

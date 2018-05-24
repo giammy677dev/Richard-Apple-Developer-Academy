@@ -13,6 +13,7 @@
 		65A0BC7F20B4103600BFC766 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7E20B4103600BFC766 /* NetworkManager.swift */; };
 		7B4CE71B20B4541800C34A69 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CE71A20B4541800C34A69 /* PersistenceManager.swift */; };
 		7B5BCB5F20B57E5900B66CEE /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */; };
+		7B91051620B6B955001005AA /* DatabaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91051520B6B955001005AA /* DatabaseInterface.swift */; };
 		7BB104AC20AEBF1000A203A1 /* Buongiorno.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB104AB20AEBF1000A203A1 /* Buongiorno.swift */; };
 		7BEA03C720B361310048F108 /* Taggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA03C620B361310048F108 /* Taggable.swift */; };
 		7BEA03C920B3624B0048F108 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA03C820B3624B0048F108 /* Tag.swift */; };
@@ -105,6 +106,7 @@
 		65A0BC7E20B4103600BFC766 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7B4CE71A20B4541800C34A69 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		7B91051520B6B955001005AA /* DatabaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseInterface.swift; sourceTree = "<group>"; };
 		7BB104AB20AEBF1000A203A1 /* Buongiorno.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buongiorno.swift; sourceTree = "<group>"; };
 		7BEA03C620B361310048F108 /* Taggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taggable.swift; sourceTree = "<group>"; };
 		7BEA03C820B3624B0048F108 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				A0BBA9D920B30A48008AE848 /* SubscribedRoadmap.swift */,
 				A0BBA9DB20B30BD8008AE848 /* WritableRoadmap.swift */,
 				7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */,
+				7B91051520B6B955001005AA /* DatabaseInterface.swift */,
 				7B4CE71A20B4541800C34A69 /* PersistenceManager.swift */,
 			);
 			path = Model;
@@ -591,6 +594,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B91051620B6B955001005AA /* DatabaseInterface.swift in Sources */,
 				7BEA03C920B3624B0048F108 /* Tag.swift in Sources */,
 				7BEA03C720B361310048F108 /* Taggable.swift in Sources */,
 				A0BBA9DC20B30BD8008AE848 /* WritableRoadmap.swift in Sources */,
