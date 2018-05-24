@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
+
 class CoreDataStack {
     static var persistentContainer: NSPersistentContainer = {
         /*
@@ -80,7 +81,6 @@ class CoreDataController {
     }
     
     //  MARK: Add object with or without relationships
-    
     
     
     //  MARK: Fetch

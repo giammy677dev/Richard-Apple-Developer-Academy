@@ -14,3 +14,4 @@ import CoreData
 public class CDStep: NSManagedObject {
 
 }
+
