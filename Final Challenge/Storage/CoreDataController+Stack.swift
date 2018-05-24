@@ -19,7 +19,7 @@ class CoreDataStack {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
          */
-        let container = NSPersistentContainer(name: "com.bel-e-buono.final-challenge.container")
+        let container = NSPersistentContainer(name: "Persistence")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -120,7 +120,7 @@ class CoreDataController {
         return true
     }
     
-    func addNode(_ node: Node) -> Bool {
+    func addNode(_ node: Node) -> CDNode? {
         let newNode = NSEntityDescription.insertNewObject(forEntityName: "CDNode", into: context) as! CDNode
         newNode.setValue(node.creationTimestamp, forKey: "creationTimestamp")
         newNode.setValue(node.extractedText, forKey: "extractedText")
@@ -137,7 +137,7 @@ class CoreDataController {
         newNode.setValue(addUUID(node.uuid), forKey: "usedID")
         
         self.saveContext()
-        return true
+        return newNode
     }
     
     func addNode(_ node: Node, to step: Step) -> Bool {
@@ -276,15 +276,18 @@ class CoreDataController {
         let predicate = NSPredicate(format: "uuid = %@", uuid as CVarArg)
         fetchRequest.predicate = predicate
         fetchRequest.returnsObjectsAsFaults = false
-        var id: CDUsedUUID?
+        var id: [CDUsedUUID]?
         
         do {
-            id = try context.fetch(fetchRequest)[0]
-            return id!
+            id = try context.fetch(fetchRequest)
+            if (id?.count != 0){
+                return id![0]
+            }
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
             return nil
         }
+        return nil
     }
     
     func isUUIDInUse(_ id: UUID) -> Bool {
@@ -353,6 +356,40 @@ class CoreDataController {
     
     func wipeTheEntireCoreDataContainer(areYouSure y : Bool){
         if (y){
+            var deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "CDNode")
+            var deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+            
+            do {
+                try context.execute(deleteRequest)
+                try context.save()
+            } catch {
+                print ("There was an error")
+            }
+            deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "CDRoadmap")
+            
+            deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+            
+            do {
+                try context.execute(deleteRequest)
+                try context.save()
+            } catch {
+                print ("There was an error")
+            }
+             deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "CDStep")
+            do {
+                try context.execute(deleteRequest)
+                try context.save()
+            } catch {
+                print ("There was an error")
+            }
+             deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "CDUsedUUID")
+            do {
+                try context.execute(deleteRequest)
+                try context.save()
+            } catch {
+                print ("There was an error")
+            }
+            
             print("[CoreData]: The entire container has been wiped.")
         }
         

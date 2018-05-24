@@ -38,6 +38,7 @@
 		6527432A20B758960027D862 /* CDUsedUUID+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6527431B20B758960027D862 /* CDUsedUUID+CoreDataClass.swift */; };
 		6527432B20B758960027D862 /* CDUsedUUID+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6527431C20B758960027D862 /* CDUsedUUID+CoreDataProperties.swift */; };
 		6527432C20B758960027D862 /* CDUsedUUID+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6527431C20B758960027D862 /* CDUsedUUID+CoreDataProperties.swift */; };
+		6527432E20B760F20027D862 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6527432D20B760F20027D862 /* ExploreViewController.swift */; };
 		65355ECE20B54F3C00031B6C /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65355ECD20B54F3C00031B6C /* StringExtensions.swift */; };
 		65593DC420B306C7001D6F46 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65593DC320B306C7001D6F46 /* StringExtension.swift */; };
 		65A0BC7D20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */; };
@@ -145,6 +146,7 @@
 		6527431A20B758950027D862 /* CDRoadmap+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDRoadmap+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6527431B20B758960027D862 /* CDUsedUUID+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDUsedUUID+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6527431C20B758960027D862 /* CDUsedUUID+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDUsedUUID+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		6527432D20B760F20027D862 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		65355ECD20B54F3C00031B6C /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		65593DC320B306C7001D6F46 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoilerpipeAnswerStructure.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 				9002AAE620B2BDAA00854015 /* RoadmapsTableViewController.swift */,
 				904C8FD420B57D2D00D0E27D /* ResourcesTableViewController.swift */,
 				B1608B5220B6B8A300701508 /* LinksTableViewController.swift */,
+				6527432D20B760F20027D862 /* ExploreViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -685,6 +688,7 @@
 				B1608B5920B7114900701508 /* UIColorExtension.swift in Sources */,
 				A0BBA9CB20B2FAF2008AE848 /* Sharable.swift in Sources */,
 				65593DC420B306C7001D6F46 /* StringExtension.swift in Sources */,
+				6527432E20B760F20027D862 /* ExploreViewController.swift in Sources */,
 				B177C48520A9768B00CD9CBE /* ViewController.swift in Sources */,
 				9002AAFD20B40C4400854015 /* CustomCollectionViewCell.swift in Sources */,
 				9002AAF920B401EB00854015 /* CollectionTableViewCell.swift in Sources */,
