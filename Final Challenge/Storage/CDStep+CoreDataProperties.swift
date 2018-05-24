@@ -20,41 +20,43 @@ extension CDStep {
     @NSManaged public var arrayID: Int64
     @NSManaged public var title: String?
     @NSManaged public var uuid: UUID?
-    @NSManaged public var nodes: NSOrderedSet?
+    @NSManaged public var nodesList: NSOrderedSet?
 
 }
 
-// MARK: Generated accessors for nodes
+// MARK: Generated accessors for nodesList
 extension CDStep {
 
-    @objc(insertObject:inNodesAtIndex:)
-    @NSManaged public func insertIntoNodes(_ value: CDNode, at idx: Int)
+    @objc(insertObject:inNodesListAtIndex:)
+    @NSManaged public func insertIntoNodesList(_ value: CDNode, at idx: Int)
 
-    @objc(removeObjectFromNodesAtIndex:)
-    @NSManaged public func removeFromNodes(at idx: Int)
+    @objc(removeObjectFromNodesListAtIndex:)
+    @NSManaged public func removeFromNodesList(at idx: Int)
 
-    @objc(insertNodes:atIndexes:)
-    @NSManaged public func insertIntoNodes(_ values: [CDNode], at indexes: NSIndexSet)
+    @objc(insertNodesList:atIndexes:)
+    @NSManaged public func insertIntoNodesList(_ values: [CDNode], at indexes: NSIndexSet)
 
-    @objc(removeNodesAtIndexes:)
-    @NSManaged public func removeFromNodes(at indexes: NSIndexSet)
+    @objc(removeNodesListAtIndexes:)
+    @NSManaged public func removeFromNodesList(at indexes: NSIndexSet)
 
-    @objc(replaceObjectInNodesAtIndex:withObject:)
-    @NSManaged public func replaceNodes(at idx: Int, with value: CDNode)
+    @objc(replaceObjectInNodesListAtIndex:withObject:)
+    @NSManaged public func replaceNodesList(at idx: Int, with value: CDNode)
 
-    @objc(replaceNodesAtIndexes:withNodes:)
-    @NSManaged public func replaceNodes(at indexes: NSIndexSet, with values: [CDNode])
+    @objc(replaceNodesListAtIndexes:withNodesList:)
+    @NSManaged public func replaceNodesList(at indexes: NSIndexSet, with values: [CDNode])
 
-    @objc(addNodesObject:)
-    @NSManaged public func addToNodes(_ value: CDNode)
+    @objc(addNodesListObject:)
+    @NSManaged public func addToNodesList(_ value: CDNode)
 
-    @objc(removeNodesObject:)
-    @NSManaged public func removeFromNodes(_ value: CDNode)
+    @objc(removeNodesListObject:)
+    @NSManaged public func removeFromNodesList(_ value: CDNode)
 
-    @objc(addNodes:)
-    @NSManaged public func addToNodes(_ values: NSOrderedSet)
+    @objc(addNodesList:)
+    @NSManaged public func addToNodesList(_ values: NSOrderedSet)
 
-    @objc(removeNodes:)
-    @NSManaged public func removeFromNodes(_ values: NSOrderedSet)
+    @objc(removeNodesList:)
+    @NSManaged public func removeFromNodesList(_ values: NSOrderedSet)
 
 }
+
+

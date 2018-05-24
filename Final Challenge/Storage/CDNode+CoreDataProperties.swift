@@ -27,3 +27,4 @@ extension CDNode {
     @NSManaged public var uuid: UUID?
 
 }
+

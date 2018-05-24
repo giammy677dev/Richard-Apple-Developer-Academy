@@ -24,41 +24,43 @@ extension CDRoadmap {
     @NSManaged public var privileges: Int16
     @NSManaged public var title: String?
     @NSManaged public var visibility: Int16
-    @NSManaged public var steps: NSOrderedSet?
+    @NSManaged public var uuid: UUID?
+    @NSManaged public var stepsList: NSOrderedSet?
 
 }
 
-// MARK: Generated accessors for steps
+// MARK: Generated accessors for stepsList
 extension CDRoadmap {
 
-    @objc(insertObject:inStepsAtIndex:)
-    @NSManaged public func insertIntoSteps(_ value: CDStep, at idx: Int)
+    @objc(insertObject:inStepsListAtIndex:)
+    @NSManaged public func insertIntoStepsList(_ value: CDStep, at idx: Int)
 
-    @objc(removeObjectFromStepsAtIndex:)
-    @NSManaged public func removeFromSteps(at idx: Int)
+    @objc(removeObjectFromStepsListAtIndex:)
+    @NSManaged public func removeFromStepsList(at idx: Int)
 
-    @objc(insertSteps:atIndexes:)
-    @NSManaged public func insertIntoSteps(_ values: [CDStep], at indexes: NSIndexSet)
+    @objc(insertStepsList:atIndexes:)
+    @NSManaged public func insertIntoStepsList(_ values: [CDStep], at indexes: NSIndexSet)
 
-    @objc(removeStepsAtIndexes:)
-    @NSManaged public func removeFromSteps(at indexes: NSIndexSet)
+    @objc(removeStepsListAtIndexes:)
+    @NSManaged public func removeFromStepsList(at indexes: NSIndexSet)
 
-    @objc(replaceObjectInStepsAtIndex:withObject:)
-    @NSManaged public func replaceSteps(at idx: Int, with value: CDStep)
+    @objc(replaceObjectInStepsListAtIndex:withObject:)
+    @NSManaged public func replaceStepsList(at idx: Int, with value: CDStep)
 
-    @objc(replaceStepsAtIndexes:withSteps:)
-    @NSManaged public func replaceSteps(at indexes: NSIndexSet, with values: [CDStep])
+    @objc(replaceStepsListAtIndexes:withStepsList:)
+    @NSManaged public func replaceStepsList(at indexes: NSIndexSet, with values: [CDStep])
 
-    @objc(addStepsObject:)
-    @NSManaged public func addToSteps(_ value: CDStep)
+    @objc(addStepsListObject:)
+    @NSManaged public func addToStepsList(_ value: CDStep)
 
-    @objc(removeStepsObject:)
-    @NSManaged public func removeFromSteps(_ value: CDStep)
+    @objc(removeStepsListObject:)
+    @NSManaged public func removeFromStepsList(_ value: CDStep)
 
-    @objc(addSteps:)
-    @NSManaged public func addToSteps(_ values: NSOrderedSet)
+    @objc(addStepsList:)
+    @NSManaged public func addToStepsList(_ values: NSOrderedSet)
 
-    @objc(removeSteps:)
-    @NSManaged public func removeFromSteps(_ values: NSOrderedSet)
+    @objc(removeStepsList:)
+    @NSManaged public func removeFromStepsList(_ values: NSOrderedSet)
 
 }
+
