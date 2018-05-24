@@ -14,7 +14,7 @@ class Roadmap: Sharable, Equatable {
     var visibility: RoadmapVisibility
     var isShared: Bool {return RoadmapVisibility.isShared == self.visibility}
     var isPublic: Bool {return RoadmapVisibility.isPublic == self.visibility}
-    var privilages: UserPrivilege
+    var privileges: UserPrivilege
     var title: String
     var category: Category
     var steps: [Step]?
@@ -24,7 +24,7 @@ class Roadmap: Sharable, Equatable {
     init(title: String, category: Category, visibility: RoadmapVisibility = RoadmapVisibility.isPrivate, privilages: UserPrivilege = UserPrivilege.isOwner, lastRead: Date) {
         self.title = title
         self.category = category
-        self.privilages = privilages
+        self.privileges = privilages
         self.visibility = visibility
         self.lastReadTimestamp = lastRead
     }
