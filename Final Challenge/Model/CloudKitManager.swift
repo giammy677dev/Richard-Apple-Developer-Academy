@@ -23,14 +23,23 @@ final class CloudKitManager {
     private var publicDB: CKDatabase
     private var privateDB: CKDatabase
     
-    func fetchRecord(ckRecordType: String, recordName: String) -> CKRecord? {
-        /// This func always returns a fetched CKRecord and if this doesn't exist it returns a new one
-        
-        return nil
-    }
+//    func fetchRecord(ckRecordType: String, recordName: String, uuid: UUID) -> CKRecord {
+//        /// This func always returns a fetched CKRecord and if this doesn't exist it returns a new one
+//        let recordID = CKRecordID(recordName: uuid.uuidString)
+//        privateDB.fetch(withRecordID: recordID) { (record, error) in
+//            if let error = error {
+//                //TO-DO: - Error handling
+//                return
+//            }
+//            if let record = record {
+//                return record
+//            }
+//            
+//        }
+//    }
     
     func saveRecord(_ record: CKRecord) {
-        publicDB.save(record) { (record, error) in
+        privateDB.save(record) { (record, error) in
             if let error = error {
                 // Error handling
                 debugPrint(error.localizedDescription)
@@ -41,6 +50,10 @@ final class CloudKitManager {
         }
     }
     
-    private func createRecord(){}
+    private func createRecord(recordID: CKRecordID, ckRecordType: String) -> CKRecord {
+        let record = CKRecord(recordType: ckRecordType, recordID: recordID)
+        
+        return record
+    }
     
 }

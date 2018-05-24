@@ -9,17 +9,17 @@
 import UIKit
 
 class LinksTableViewController: UITableViewController {
-    let overlapHeight: Double = 10.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //Invoke xib
         let customCell = UINib(nibName: "CustomLinksTableViewCell", bundle: nil)
         self.tableView.register(customCell, forCellReuseIdentifier: "CustomLinksTableViewCell")
 
-        // General settings
+        //General settings
         self.navigationController?.navigationBar.prefersLargeTitles = true
-
+        
     }
 
     // MARK: - Table view data source
