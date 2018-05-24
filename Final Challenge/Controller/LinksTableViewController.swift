@@ -18,8 +18,8 @@ class LinksTableViewController: UITableViewController {
         self.tableView.register(customCell, forCellReuseIdentifier: "CustomLinksTableViewCell")
 
         //General settings
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        
+        self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none //delete the separator line between each rows of the tableView
     }
 
     // MARK: - Table view data source
@@ -29,7 +29,6 @@ class LinksTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
         return 10
     }
 
