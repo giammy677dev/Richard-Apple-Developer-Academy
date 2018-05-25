@@ -22,7 +22,7 @@ extension CDNode {
     @NSManaged public var isFlagged: Bool
     @NSManaged public var isRead: Bool
     @NSManaged public var isTextProperlyExtracted: Bool
-    @NSManaged public var tags: String?
+    @NSManaged public var tags: Set<String>?
     @NSManaged public var title: String?
     @NSManaged public var url: String?
     @NSManaged public var uuid: UUID?

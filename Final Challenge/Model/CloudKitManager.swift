@@ -28,24 +28,6 @@ final class CloudKitManager {
     private init() {
         container = CKContainer.default()
     }
-
-    
-//    func fetchRecord(ckRecordType: String, recordName: String, uuid: UUID) -> CKRecord {
-//        /// This func always returns a fetched CKRecord and if this doesn't exist it returns a new one
-//        let recordID = CKRecordID(recordName: uuid.uuidString)
-//        privateDB.fetch(withRecordID: recordID) { (record, error) in
-//            //TO-DO: - Error handling
-//            if let _ = error {
-//                debugPrint(error!.localizedDescription)
-//                let newRecord = self.createRecord(recordID: recordID, ckRecordType: ckRecordType)
-//                return newRecord
-//            } else {
-//
-//            }
-//        }
-//        privateDB.fetch(withRecordID: <#T##CKRecordID#>, completionHandler: <#T##(CKRecord?, Error?) -> Void#>)
-//
-//    }
     
     func saveRecord(_ record: CKRecord) {
         privateDB.save(record) { (record, error) in
