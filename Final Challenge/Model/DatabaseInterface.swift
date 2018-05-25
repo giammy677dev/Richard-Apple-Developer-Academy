@@ -12,12 +12,24 @@ import CloudKit
 class DatabaseInterface {
     
     static let shared: DatabaseInterface = DatabaseInterface()
-    static let ckManager: CloudKitManager = CloudKitManager.shared
+    private let ckManager: CloudKitManager
     
-    private init() {}
+    private init() {
+        self.ckManager = CloudKitManager.shared
+    }
     
     public func save(_ node: Node) {
-        // CloudKitManager.shared.fetchRecord(ckRecordType: <#T##String#>, recordName: <#T##String#>, uuid: UUID)
+        /// Saves a node in local and cloud DB. If the node doesn't exist it creates a new one and saves it.
+        let recordID = CKRecordID(recordName: node.uuid.uuidString)
+        self.ckManager.privateDB.fetch(withRecordID: recordID) { (record, error) in
+            if error != nil {
+                //TODO: - Error handling here
+                debugPrint(error!.localizedDescription)
+            }
+            
+            let savedRecord = self.nodeToRecord(record: record, node: node)
+            self.ckManager.saveRecord(savedRecord)
+        }
     }
     
     public func save(_ roadmap: Roadmap) {
@@ -33,6 +45,40 @@ class DatabaseInterface {
     }
     
     private func saveToCoreData(){}
+    
+    private func nodeToRecord(record: CKRecord?, node: Node) -> CKRecord {
+        /// When a new record has to be saved it creates a new one otherwise it re-saves all the key-values
+        if let _ = record {
+            record!.setValue(node.creationTimestamp, forKey: "creationTimestamp")
+            record!.setValue(node.extractedText, forKey: "extractedText")
+            record!.setValue(node.isFlagged, forKey: "isFlagged")
+            record!.setValue(node.isRead, forKey: "isRead")
+            record!.setValue(node.isTextProperlyExtracted, forKey: "isTextProperlyExtracted")
+            record!.setValue(node.readingTimeInMinutes, forKey: "readingTimeInMinutes")
+            record!.setValue(node.tags, forKey: "tags")
+            record!.setValue(node.title, forKey: "title")
+            record!.setValue(node.url, forKey: "url")
+            record!.setValue(node.uuid, forKey: "uuid")
+            
+            return record!
+        }
+        
+        let recordID = CKRecordID(recordName: node.uuid.uuidString)
+        let newRecord = CKRecord(recordType: CKRecordTypes.node.rawValue, recordID: recordID)
+        
+        newRecord.setValue(node.creationTimestamp, forKey: "creationTimestamp")
+        newRecord.setValue(node.extractedText, forKey: "extractedText")
+        newRecord.setValue(node.isFlagged, forKey: "isFlagged")
+        newRecord.setValue(node.isRead, forKey: "isRead")
+        newRecord.setValue(node.isTextProperlyExtracted, forKey: "isTextProperlyExtracted")
+        newRecord.setValue(node.readingTimeInMinutes, forKey: "readingTimeInMinutes")
+        newRecord.setValue(node.tags, forKey: "tags")
+        newRecord.setValue(node.title, forKey: "title")
+        newRecord.setValue(node.url, forKey: "url")
+        newRecord.setValue(node.uuid, forKey: "uuid")
+        
+        return newRecord
+    }
     
     private enum CKRecordTypes: String {
         case node = "Node"

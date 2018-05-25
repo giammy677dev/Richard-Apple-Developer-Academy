@@ -6,8 +6,7 @@
         <attribute name="isFlagged" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isRead" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isTextProperlyExtracted" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="readingTimeInMinutes" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="tags" optional="YES" attributeType="Transformable" customClassName="[NSString]" syncable="YES"/>
+        <attribute name="tags" optional="YES" attributeType="String" customClassName="[NSString]" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
@@ -41,9 +40,9 @@
         <relationship name="toStep" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDStep" inverseName="usedID" inverseEntity="CDStep" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CDNode" positionX="-153" positionY="-81" width="128" height="223"/>
-        <element name="CDRoadmap" positionX="-702" positionY="-72" width="128" height="193"/>
-        <element name="CDStep" positionX="-432" positionY="-9" width="128" height="133"/>
-        <element name="CDUsedUUID" positionX="-441" positionY="189" width="128" height="28"/>
+        <element name="CDNode" positionX="-162" positionY="-153" width="128" height="208"/>
+        <element name="CDRoadmap" positionX="-614" positionY="-135" width="128" height="193"/>
+        <element name="CDStep" positionX="-416" positionY="-153" width="128" height="133"/>
+        <element name="CDUsedUUID" positionX="-423" positionY="144" width="128" height="103"/>
     </elements>
 </model>
