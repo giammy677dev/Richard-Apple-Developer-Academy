@@ -24,7 +24,7 @@ extension UIViewController {
     func CoreDataTest(){
         let a = Roadmap(title: "Come fare il pene", category: .travel, visibility: .isPrivate, privilages: .isOwner, lastRead: Date(), id: UUID())
         
-        let controller = CoreDataController()
+        let controller = CoreDataController.shared
         controller.wipeTheEntireCoreDataContainer(areYouSure: true)
         controller.addRoadmap(a)
         
