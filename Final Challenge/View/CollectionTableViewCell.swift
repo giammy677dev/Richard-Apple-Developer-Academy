@@ -27,6 +27,15 @@ class CollectionTableViewCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        //drog delegate
+//        collectionView.dragDelegate = self
+//        collectionView.dropDelegate = self
+//
+//        collectionView.dragInteractionEnabled = true
+        
+        var longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
+        collectionView.addGestureRecognizer(longPressGesture)
+        
         //register the xib for collection view cell
         let cellNib = UINib(nibName: "CustomCollectionViewCell", bundle: nil)
         self.collectionView.register(cellNib, forCellWithReuseIdentifier: "CustomCollectionViewCell")
@@ -37,6 +46,23 @@ class CollectionTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
+    @objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
+        switch(gesture.state) {
+            
+        case .began:
+            guard let selectedIndexPath = collectionView.indexPathForItem(at: gesture.location(in: collectionView)) else {
+                break
+            }
+            collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+        case .changed:
+            collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+        case .ended:
+            collectionView.endInteractiveMovement()
+        default:
+            collectionView.cancelInteractiveMovement()
+        }
+    }
+    
 }
 
 extension CollectionTableViewCell: UICollectionViewDataSource{
@@ -57,7 +83,7 @@ extension CollectionTableViewCell: UICollectionViewDataSource{
         print("Cell")
         return cell!
     }
-    
+
 }
 
 extension CollectionTableViewCell: UICollectionViewDelegate{
@@ -77,5 +103,37 @@ extension CollectionTableViewCell: UICollectionViewDelegateFlowLayout{
         
         return CGSize(width: 20, height: 10)
     }
+
 }
 
+//
+//extension CollectionTableViewCell: UICollectionViewDragDelegate{
+//
+//    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+//
+//         let cell = collectionView.cellForItem(at: indexPath) as! CustomCollectionViewCell
+//
+//        let itemProvider = NSItemProvider(object: cell.imageView.image!)
+//        let dragItems = UIDragItem(itemProvider: itemProvider)
+//        print("Drag111")
+//        return [dragItems]   //Return an empty array to prevent the drag
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, itemsForAddingTo session: UIDragSession, at indexPath: IndexPath, point: CGPoint) -> [UIDragItem] {
+//        return []   //Return an empty array to handle the tap normally
+//    }
+//
+//}
+//
+//extension CollectionTableViewCell: UICollectionViewDropDelegate{
+//
+//    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+//        /*
+//         Drop coordinator
+//         • Access dropped items
+//         • Update collection/table view
+//         • Specify animations
+//         */
+//
+//    }
+//}

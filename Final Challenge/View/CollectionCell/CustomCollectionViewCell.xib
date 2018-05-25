@@ -19,15 +19,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="144" height="110"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cfu-r7-39i">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ehq-ah-jpQ">
                         <rect key="frame" x="0.0" y="0.0" width="144" height="110"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="1" green="0.5461930392060923" blue="0.27330995084039766" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </view>
+                        <color key="backgroundColor" red="0.93449124624974156" green="1" blue="0.46268406667708428" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="103" height="63"/>
+            <connections>
+                <outlet property="imageView" destination="ehq-ah-jpQ" id="gHP-E4-pJk"/>
+            </connections>
             <point key="canvasLocation" x="104" y="138"/>
         </collectionViewCell>
     </objects>
