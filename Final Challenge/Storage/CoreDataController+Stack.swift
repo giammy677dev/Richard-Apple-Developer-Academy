@@ -336,6 +336,9 @@ class CoreDataController {
     
     ///Deletes the Roadmap in CoreData, along with its Steps but preserving the nodes.
     func deleteRoadmap(_ roadmap: Roadmap) {
+        guard isUUIDInUse(roadmap.uuid) else {
+            return
+        }
         var roadmapToRemove: CDRoadmap?
         roadmapToRemove = fetchCDRoadmap(uuid: roadmap.uuid)
         
@@ -346,6 +349,9 @@ class CoreDataController {
     
     ///Deletes the Step in CoreData, preserving the rest.
     func deleteStep(_ step: Step) {
+        guard isUUIDInUse(step.uuid) else {
+            return
+        }
         var stepToRemove: CDStep?
         stepToRemove = fetchCDStep(uuid: step.uuid)
         
@@ -357,6 +363,9 @@ class CoreDataController {
     
     ///Deletes the Node in CoreData.
     func deleteNode(_ node: Node) {
+        guard isUUIDInUse(node.uuid) else {
+            return
+        }
         var nodeToRemove: CDNode?
         nodeToRemove = fetchCDNode(uuid: node.uuid)
         
@@ -430,8 +439,26 @@ class CoreDataController {
         
         
     }
-    //  TODO: Change step placement in the roadmap
     // MARK: Change step/nodes placement
+    func moveNode(_ node: Node, in step: Step, at index: Int){
+        let cdnode = fetchCDNode(uuid: node.uuid)
+        let cdstep = fetchCDStep(uuid: step.uuid)
+        
+        cdstep?.removeFromNodesList(cdnode!)
+        cdstep?.insertIntoNodesList(cdnode!, at: index)
+        
+        self.saveContext()
+    }
+    
+    func moveStep(_ step: Step, in roadmap: Roadmap, at index: Int){
+        let cdstep = fetchCDStep(uuid: step.uuid)
+        let cdroadmap = fetchCDRoadmap(uuid: roadmap.uuid)
+        
+        cdroadmap?.removeFromStepsList(cdstep!)
+        cdroadmap?.insertIntoStepsList(cdstep!, at: index)
+        
+        self.saveContext()
+    }
     
     
     //  MARK: Recursive update/save
@@ -454,6 +481,7 @@ class CoreDataController {
                 }
             }
         }
+        self.saveContext()
     }
     
     ///Saves a Roadmap array recursively. Nodes must already exist in memory.
@@ -462,7 +490,7 @@ class CoreDataController {
             deleteRoadmap(roadmap)
             saveRecursively(roadmap)
         }
-
+        self.saveContext()
     }
     
     //  MARK: Convert CD Classes to normal classes
