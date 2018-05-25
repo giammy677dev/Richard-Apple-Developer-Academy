@@ -20,6 +20,7 @@ class DatabaseInterface {
     
     public func save(_ node: Node) {
         /// Saves a node in local and cloud DB. If the node doesn't exist it creates a new one and saves it.
+        //MARK: - Save to CloudKit
         let recordID = CKRecordID(recordName: node.uuid.uuidString)
         self.ckManager.privateDB.fetch(withRecordID: recordID) { (record, error) in
             if error != nil {
@@ -30,6 +31,9 @@ class DatabaseInterface {
             let savedRecord = self.nodeToRecord(record: record, node: node)
             self.ckManager.saveRecord(savedRecord)
         }
+        
+        //MARK: - Save to CoreData
+        saveToCoreData()
     }
     
     public func save(_ roadmap: Roadmap) {
