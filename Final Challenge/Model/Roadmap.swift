@@ -21,10 +21,10 @@ class Roadmap: Sharable, Equatable {
     var lastReadTimestamp: Date
     var uuid: UUID
     //Methods:
-    init(title: String, category: Category, visibility: RoadmapVisibility = RoadmapVisibility.isPrivate, privilages: UserPrivilege = UserPrivilege.isOwner, lastRead: Date, id: UUID) {
+    init(title: String, category: Category, visibility: RoadmapVisibility = RoadmapVisibility.isPrivate, privileges: UserPrivilege = UserPrivilege.isOwner, lastRead: Date, id: UUID) {
         self.title = title
         self.category = category
-        self.privileges = privilages
+        self.privileges = privileges
         self.visibility = visibility
         self.lastReadTimestamp = lastRead
         self.uuid = id
@@ -60,3 +60,4 @@ class Roadmap: Sharable, Equatable {
     }
     
 }
+

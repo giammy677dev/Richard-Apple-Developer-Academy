@@ -20,11 +20,11 @@ class Node: Taggable {
     var creationTimestamp: Date
     var isRead: Bool
     var isFlagged: Bool
-    var readingTimeInMinutes: Double?
-    private var parent: Step
+    private var readingTimeInMinutes: Double?
+    private var parent: UUID
     
     //Methods:
-    init(url: URL, title: String, id: UUID, parent: Step, tags: String?, text: String, propExtracted: Bool, creationTime: Date = Date(), propRead: Bool = false, propFlagged: Bool = false) {
+    init(url: URL, title: String, id: UUID, parent: UUID, tags: String?, text: String, propExtracted: Bool, creationTime: Date = Date(), propRead: Bool = false, propFlagged: Bool = false) {
         self.url = url
         self.title = title
         self.parent = parent
@@ -79,3 +79,4 @@ class Node: Taggable {
     }
     
 }
+

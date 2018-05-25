@@ -81,7 +81,7 @@ class CoreDataController {
     }
     
     //  MARK: Add object with or without relationships
-    func addRoadmap(_ roadmap: Roadmap) -> Bool {
+    func addRoadmap(_ roadmap: Roadmap) -> CDRoadmap? {
         let newRoadmap = NSEntityDescription.insertNewObject(forEntityName: "CDRoadmap", into: context) as! CDRoadmap
         
         newRoadmap.setValue(roadmap.category.rawValue, forKey: "category")
@@ -98,10 +98,10 @@ class CoreDataController {
         
         self.saveContext()
         
-        return true
+        return newRoadmap
     }
     
-    func addStep(_ step: Step, to roadmap: Roadmap) -> Bool {
+    func addStep(_ step: Step, to roadmap: Roadmap) -> CDStep? {
         
         let entityStep = NSEntityDescription.entity(forEntityName: "CDStep", in: self.context)
         let newStep = CDStep(entity: entityStep!, insertInto: context)
@@ -116,8 +116,9 @@ class CoreDataController {
         
         parentRoadmap!.addToStepsList(newStep)
         
+        self.saveContext()
         
-        return true
+        return newStep
     }
     
     func addNode(_ node: Node) -> CDNode? {
@@ -127,8 +128,7 @@ class CoreDataController {
         newNode.setValue(node.isTextProperlyExtracted, forKey: "isTextProperlyExtracted")
         newNode.setValue(node.isRead, forKey: "isRead")
         newNode.setValue(node.isFlagged, forKey: "isFlagged")
-        newNode.setValue(node.readingTimeInMinutes, forKey: "readingTimeInMinutes")
-        newNode.setValue(node.tags.sorted() as [NSString], forKey: "tags")
+        newNode.setValue(node.tags, forKey: "tags")
         newNode.setValue(node.title, forKey: "title")
         newNode.setValue(node.url.absoluteString , forKey: "url")
         newNode.setValue(node.uuid, forKey: "uuid")
@@ -215,7 +215,7 @@ class CoreDataController {
         
     }
     
-    func fetchRoadmaps() -> [CDRoadmap]?{
+    func fetchCDRoadmaps() -> [CDRoadmap]?{
         var roadmaps:[CDRoadmap]
         
         do {
@@ -227,7 +227,7 @@ class CoreDataController {
         }
     }
     
-    func fetchNodes() -> [CDNode]?{
+    func fetchCDNodes() -> [CDNode]?{
         var nodes:[CDNode]
         
         do {
@@ -239,7 +239,7 @@ class CoreDataController {
         }
     }
     
-    func fetchNodes(read: Bool) -> [CDNode]?{
+    func fetchCDNodes(read: Bool) -> [CDNode]?{
         let fetchRequest: NSFetchRequest<CDNode> = CDNode.fetchRequest()
         let predicate = NSPredicate(format: "isRead = %@", read)
         fetchRequest.predicate = predicate
@@ -255,7 +255,7 @@ class CoreDataController {
         }
     }
     
-    func fetchNodes(flag: Bool) -> [CDNode]?{
+    func fetchCDNodes(flag: Bool) -> [CDNode]?{
         let fetchRequest: NSFetchRequest<CDNode> = CDNode.fetchRequest()
         let predicate = NSPredicate(format: "isFlagged = %@", flag)
         fetchRequest.predicate = predicate
@@ -271,7 +271,7 @@ class CoreDataController {
         }
     }
     
-    func fetchUUID(_ uuid: UUID) -> CDUsedUUID?{
+    func fetchCDUUID(_ uuid: UUID) -> CDUsedUUID?{
         let fetchRequest: NSFetchRequest<CDUsedUUID> = CDUsedUUID.fetchRequest()
         let predicate = NSPredicate(format: "uuid = %@", uuid as CVarArg)
         fetchRequest.predicate = predicate
@@ -291,7 +291,7 @@ class CoreDataController {
     }
     
     func isUUIDInUse(_ id: UUID) -> Bool {
-        if fetchUUID(id) != nil{
+        if fetchCDUUID(id) != nil{
             return true
         }
         return false
@@ -350,56 +350,138 @@ class CoreDataController {
     
     
     //  MARK: Update
-    
-    func updateNode(_ node: Node) -> Bool {
-        let nodeToUpdate = fetchCDNode(uuid: node.uuid)!
+    ///
+    func updateNode(_ node: Node) -> CDNode? {
+        if let nodeToUpdate = fetchCDNode(uuid: node.uuid){
+            nodeToUpdate.setValue(node.creationTimestamp, forKey: "creationTimestamp")
+            nodeToUpdate.setValue(node.extractedText, forKey: "extractedText")
+            nodeToUpdate.setValue(node.isTextProperlyExtracted, forKey: "isTextProperlyExtracted")
+            nodeToUpdate.setValue(node.isRead, forKey: "isRead")
+            nodeToUpdate.setValue(node.isFlagged, forKey: "isFlagged")
+            nodeToUpdate.setValue(node.tags.sorted() as [NSString], forKey: "tags")
+            nodeToUpdate.setValue(node.title, forKey: "title")
+            nodeToUpdate.setValue(node.url.absoluteString , forKey: "url")
+            
+            
+            self.saveContext()
+            
+            return nodeToUpdate
+        } else {
+            
+            return addNode(node)
+        }
         
-        nodeToUpdate.setValue(node.creationTimestamp, forKey: "creationTimestamp")
-        nodeToUpdate.setValue(node.extractedText, forKey: "extractedText")
-        nodeToUpdate.setValue(node.isTextProperlyExtracted, forKey: "isTextProperlyExtracted")
-        nodeToUpdate.setValue(node.isRead, forKey: "isRead")
-        nodeToUpdate.setValue(node.isFlagged, forKey: "isFlagged")
-        nodeToUpdate.setValue(node.readingTimeInMinutes, forKey: "readingTimeInMinutes")
-        nodeToUpdate.setValue(node.tags.sorted() as [NSString], forKey: "tags")
-        nodeToUpdate.setValue(node.title, forKey: "title")
-        nodeToUpdate.setValue(node.url.absoluteString , forKey: "url")
         
-        
-        self.saveContext()
-        
-        return true
     }
     
-    func updateStep(_ step: Step) -> Bool {
-        let stepToUpdate = fetchCDStep(uuid: step.uuid)!
+    func updateStep(_ step: Step, of roadmap: Roadmap) -> CDStep? {
         
-        stepToUpdate.setValue(0, forKey: "arrayID")
-        stepToUpdate.setValue(step.title, forKey: "title")
+        if let stepToUpdate = fetchCDStep(uuid: step.uuid){
+            stepToUpdate.setValue(0, forKey: "arrayID")
+            stepToUpdate.setValue(step.title, forKey: "title")
+            
+            self.saveContext()
+            
+            return stepToUpdate
+        } else {
+            return addStep(step, to: roadmap)
+        }
         
-        self.saveContext()
         
-        return true
     }
     
-    func updateRoadmap(_ roadmap: Roadmap) -> Bool {
-        let roadmapToUpdate = fetchCDRoadmap(uuid: roadmap.uuid)!
+    func updateRoadmap(_ roadmap: Roadmap) -> CDRoadmap? {
+        if let roadmapToUpdate = fetchCDRoadmap(uuid: roadmap.uuid){
+            roadmapToUpdate.setValue(roadmap.category.rawValue, forKey: "category")
+            roadmapToUpdate.setValue(roadmap.isPublic, forKey: "isPublic")
+            roadmapToUpdate.setValue(roadmap.isShared, forKey: "isShared")
+            
+            roadmapToUpdate.setValue(roadmap.lastReadTimestamp as NSDate, forKey: "lastReadTimestamp")
+            roadmapToUpdate.setValue(roadmap.privileges.rawValue, forKey: "privileges")
+            roadmapToUpdate.setValue(roadmap.title, forKey: "title")
+            roadmapToUpdate.setValue(roadmap.visibility.rawValue, forKey: "visibility")
+            
+            self.saveContext()
+            return roadmapToUpdate
+        } else {
+            return addRoadmap(roadmap)
+        }
         
-        roadmapToUpdate.setValue(roadmap.category.rawValue, forKey: "category")
-        roadmapToUpdate.setValue(roadmap.isPublic, forKey: "isPublic")
-        roadmapToUpdate.setValue(roadmap.isShared, forKey: "isShared")
         
-        roadmapToUpdate.setValue(roadmap.lastReadTimestamp as NSDate, forKey: "lastReadTimestamp")
-        roadmapToUpdate.setValue(roadmap.privileges.rawValue, forKey: "privileges")
-        roadmapToUpdate.setValue(roadmap.title, forKey: "title")
-        roadmapToUpdate.setValue(roadmap.visibility.rawValue, forKey: "visibility")
         
-        self.saveContext()
-        return true
     }
     //  TODO: Change step placement in the roadmap
+    // MARK: Change step/nodes placement
     
     
+    //  MARK: Recursive update/save
     
+    func saveRecursively(_ roadmap: Roadmap) -> Bool {
+        let savedRoadmap = updateRoadmap(roadmap)//Add or update the roadmap that is being saved
+        if let savedSteps = savedRoadmap?.stepsList?.array as! [CDStep]?{
+            for savedStep in savedSteps{
+                context.delete(savedStep)
+            }
+        }
+        if let steps = roadmap.steps {//Steps! Check which ones must be updated/added or deleted
+            for step in steps{
+                updateStep(step, of: roadmap)
+                if let nodes = step.nodes{
+                    for node in nodes{
+                        linkNode(node, to: step)
+                    }
+                }
+            }
+        }
+        return true
+    }
+    
+    func saveRecursively(_ roadmaps: [Roadmap]) -> Bool {
+        for roadmap in roadmaps{
+            deleteRoadmap(roadmap)
+            saveRecursively(roadmap)
+        }
+        
+        
+        
+        return true
+    }
+    
+    //  MARK: Convert CD Classes to normal classes
+    
+    func roadmapFromRecord(_ cdroadmap: CDRoadmap) -> Roadmap {
+        let roadmap = Roadmap(title: cdroadmap.title!,
+                              category: Category(rawValue: cdroadmap.category)!,
+                              visibility: RoadmapVisibility(rawValue: cdroadmap.visibility)!,
+                              privileges: UserPrivilege(rawValue: cdroadmap.privileges)!,
+                              lastRead: cdroadmap.lastReadTimestamp as! Date,
+                              id: cdroadmap.uuid!)
+        
+        return roadmap
+    }
+    
+    func stepFromRecord(_ cdstep: CDStep) -> Step{
+        let step = Step(title: cdstep.title!,
+                        parent: (cdstep.parentRoadmap?.uuid)!,
+                        id: cdstep.uuid!)
+        return step
+    }
+    
+    func nodeFromRecord(_ cdnode: CDNode, parent cdstep: CDStep) -> Node{
+        let node = Node(url: URL(string: cdnode.url!)!,
+                        title: cdnode.title!,
+                        id: cdnode.uuid!,
+                        parent: cdstep.uuid!,
+                        tags: cdnode.tags,
+                        text: cdnode.extractedText!,
+                        propExtracted: cdnode.isTextProperlyExtracted,
+                        creationTime: cdnode.creationTimestamp as! Date,
+                        propRead: cdnode.isRead,
+                        propFlagged: cdnode.isFlagged)
+        
+        
+        return node
+    }
     //  MARK: DANGEROUS
     
     func wipeTheEntireCoreDataContainer(areYouSure y : Bool){

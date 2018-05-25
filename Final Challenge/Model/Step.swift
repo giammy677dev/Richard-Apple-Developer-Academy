@@ -15,11 +15,11 @@ class Step: NodeManager, Equatable {
     //Parameters:
     var title: String
     var nodes: [Node]?
-    var parent: Roadmap
+    var parent: UUID
     var uuid: UUID
     
     //Methods:
-    init(title: String, parent: Roadmap, id: UUID) {
+    init(title: String, parent: UUID, id: UUID) {
         self.title = title
         self.parent = parent
         self.uuid = id
@@ -46,3 +46,4 @@ class Step: NodeManager, Equatable {
         return lhs.parent == rhs.parent && lhs.title == rhs.title
     }
 }
+
