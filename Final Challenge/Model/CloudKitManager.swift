@@ -41,6 +41,45 @@ final class CloudKitManager {
         }
     }
     
+    //MARK: - Functions for deleting operations
+    
+    func deleteRoadmap(_ roadmapID: CKRecordID) {
+        privateDB.delete(withRecordID: roadmapID) { (recordID, error) in
+            if let err = error {
+                //TO-DO: - Error handling
+                debugPrint(err.localizedDescription)
+                return
+            } else {
+                debugPrint("Succesfully deleted roadmap with id: \(String(describing: recordID))")
+            }
+        }
+    }
+    
+    func deleteStep(_ stepID: CKRecordID) {
+        privateDB.delete(withRecordID: stepID) { (recordID, error) in
+            if let err = error {
+                //TO-DO: - Error handling
+                debugPrint(err.localizedDescription)
+                return
+            } else {
+                debugPrint("Succesfully deleted step with id: \(String(describing: recordID))")
+            }
+        }
+    }
+    
+    func deleteNode(_ nodeID: CKRecordID) {
+        privateDB.delete(withRecordID: nodeID) { (recordID, error) in
+            if let err = error {
+                //TO-DO: - Error handling
+                debugPrint(err.localizedDescription)
+                return
+            } else {
+                debugPrint("Succesfully deleted node with id: \(String(describing: recordID))")
+            }
+        }
+    }
+    
+    //MARK: - Create Record
     private func createRecord(recordID: CKRecordID, ckRecordType: String) -> CKRecord {
         let record = CKRecord(recordType: ckRecordType, recordID: recordID)
         
