@@ -153,7 +153,7 @@ class CoreDataController {
     }
     
     ///Links an existing node to a step.
-    func linkNode(_ node: Node, to step: Step) -> Bool {
+    func linkNode(_ node: Node, to step: Step) {
         
         let entityNode = NSEntityDescription.entity(forEntityName: "CDNode", in: self.context)
         let newNode = CDNode(entity: entityNode!, insertInto: context)
@@ -165,7 +165,6 @@ class CoreDataController {
         
         self.saveContext()
         
-        return true
     }
     
     ///Adds UUID to the UUIDs in the record, then used to check if an UUID exists or not.
@@ -322,7 +321,7 @@ class CoreDataController {
     //  MARK: Remove relationships
     
     ///Removes the relationship between a Node and a Step.
-    func unlinkNode( _ node: Node, from step: Step) -> Bool {
+    func unlinkNode( _ node: Node, from step: Step) {
         
         var nodeToRemove: CDNode?
         nodeToRemove = fetchCDNode(uuid: node.uuid)
@@ -331,46 +330,40 @@ class CoreDataController {
         step?.removeFromNodesList(nodeToRemove!)
         
         self.saveContext()
-    
-        return true
     }
     
     //  MARK: Delete
     
     ///Deletes the Roadmap in CoreData, along with its Steps but preserving the nodes.
-    func deleteRoadmap(_ roadmap: Roadmap) -> Bool {
+    func deleteRoadmap(_ roadmap: Roadmap) {
         var roadmapToRemove: CDRoadmap?
         roadmapToRemove = fetchCDRoadmap(uuid: roadmap.uuid)
         
         context.delete(roadmapToRemove!)
         
         self.saveContext()
-        
-        return true
     }
     
     ///Deletes the Step in CoreData, preserving the rest.
-    func deleteStep(_ step: Step) -> Bool {
+    func deleteStep(_ step: Step) {
         var stepToRemove: CDStep?
         stepToRemove = fetchCDStep(uuid: step.uuid)
         
         context.delete(stepToRemove!)
         
         self.saveContext()
-        
-        return true
+
     }
     
     ///Deletes the Node in CoreData.
-    func deleteNode(_ node: Node) -> Bool {
+    func deleteNode(_ node: Node) {
         var nodeToRemove: CDNode?
         nodeToRemove = fetchCDNode(uuid: node.uuid)
         
         context.delete(nodeToRemove!)
         
         self.saveContext()
-        
-        return true
+
     }
     
     
@@ -444,7 +437,7 @@ class CoreDataController {
     //  MARK: Recursive update/save
     
     ///Saves a Roadmap recursively. Nodes must already exist in memory.
-    func saveRecursively(_ roadmap: Roadmap) -> Bool {
+    func saveRecursively(_ roadmap: Roadmap) {
         let savedRoadmap = updateRoadmap(roadmap)//Add or update the roadmap that is being saved
         if let savedSteps = savedRoadmap?.stepsList?.array as! [CDStep]?{
             for savedStep in savedSteps{
@@ -461,19 +454,15 @@ class CoreDataController {
                 }
             }
         }
-        return true
     }
     
     ///Saves a Roadmap array recursively. Nodes must already exist in memory.
-    func saveRecursively(_ roadmaps: [Roadmap]) -> Bool {
+    func saveRecursively(_ roadmaps: [Roadmap]) {
         for roadmap in roadmaps{
             deleteRoadmap(roadmap)
             saveRecursively(roadmap)
         }
-        
-        
-        
-        return true
+
     }
     
     //  MARK: Convert CD Classes to normal classes
