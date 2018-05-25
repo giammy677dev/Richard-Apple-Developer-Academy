@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E202" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDNode" representedClassName="CDNode" syncable="YES">
+        <attribute name="creationTimestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="extractedText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isFlagged" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isRead" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isTextProperlyExtracted" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="readingTimeInMinutes" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tags" optional="YES" attributeType="Transformable" customClassName="[NSString]" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="parentsSteps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDStep" inverseName="nodesList" inverseEntity="CDStep" syncable="YES"/>
+        <relationship name="usedID" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDUsedUUID" inverseName="toNode" inverseEntity="CDUsedUUID" syncable="YES"/>
+    </entity>
+    <entity name="CDRoadmap" representedClassName="CDRoadmap" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isPublic" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isShared" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="lastReadTimestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="privileges" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="visibility" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="stepsList" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="CDStep" inverseName="parentRoadmap" inverseEntity="CDStep" syncable="YES"/>
+        <relationship name="usedID" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDUsedUUID" inverseName="toRoadmap" inverseEntity="CDUsedUUID" syncable="YES"/>
+    </entity>
+    <entity name="CDStep" representedClassName="CDStep" syncable="YES">
+        <attribute name="arrayID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="nodesList" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CDNode" inverseName="parentsSteps" inverseEntity="CDNode" syncable="YES"/>
+        <relationship name="parentRoadmap" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDRoadmap" inverseName="stepsList" inverseEntity="CDRoadmap" syncable="YES"/>
+        <relationship name="usedID" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDUsedUUID" inverseName="toStep" inverseEntity="CDUsedUUID" syncable="YES"/>
+    </entity>
+    <entity name="CDUsedUUID" representedClassName="CDUsedUUID" syncable="YES">
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="toNode" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDNode" inverseName="usedID" inverseEntity="CDNode" syncable="YES"/>
+        <relationship name="toRoadmap" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDRoadmap" inverseName="usedID" inverseEntity="CDRoadmap" syncable="YES"/>
+        <relationship name="toStep" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDStep" inverseName="usedID" inverseEntity="CDStep" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CDNode" positionX="-153" positionY="-81" width="128" height="223"/>
+        <element name="CDRoadmap" positionX="-702" positionY="-72" width="128" height="193"/>
+        <element name="CDStep" positionX="-432" positionY="-9" width="128" height="133"/>
+        <element name="CDUsedUUID" positionX="-441" positionY="189" width="128" height="28"/>
+    </elements>
+</model>

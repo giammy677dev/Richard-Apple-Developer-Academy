@@ -16,11 +16,13 @@ class Step: NodeManager, Equatable {
     var title: String
     var nodes: [Node]?
     var parent: Roadmap
+    var uuid: UUID
     
     //Methods:
-    init(title: String, parent: Roadmap) {
+    init(title: String, parent: Roadmap, id: UUID) {
         self.title = title
         self.parent = parent
+        self.uuid = id
     }
     
     func addNode(_ node: Node) {
