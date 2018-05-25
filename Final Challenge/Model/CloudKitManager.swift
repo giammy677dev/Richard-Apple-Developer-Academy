@@ -13,35 +13,44 @@ final class CloudKitManager {
     
     static let shared = CloudKitManager()
     
+    private var container: CKContainer
+    var publicDB: CKDatabase {
+        get {
+            return container.publicCloudDatabase
+        }
+    }
+    var privateDB: CKDatabase {
+        get {
+            return container.privateCloudDatabase
+        }
+    }
+    
     private init() {
         container = CKContainer.default()
-        publicDB = container.publicCloudDatabase
-        privateDB = container.privateCloudDatabase
     }
 
-    private var container: CKContainer
-    private var publicDB: CKDatabase
-    private var privateDB: CKDatabase
     
 //    func fetchRecord(ckRecordType: String, recordName: String, uuid: UUID) -> CKRecord {
 //        /// This func always returns a fetched CKRecord and if this doesn't exist it returns a new one
 //        let recordID = CKRecordID(recordName: uuid.uuidString)
 //        privateDB.fetch(withRecordID: recordID) { (record, error) in
-//            if let error = error {
-//                //TO-DO: - Error handling
-//                return
+//            //TO-DO: - Error handling
+//            if let _ = error {
+//                debugPrint(error!.localizedDescription)
+//                let newRecord = self.createRecord(recordID: recordID, ckRecordType: ckRecordType)
+//                return newRecord
+//            } else {
+//
 //            }
-//            if let record = record {
-//                return record
-//            }
-//            
 //        }
+//        privateDB.fetch(withRecordID: <#T##CKRecordID#>, completionHandler: <#T##(CKRecord?, Error?) -> Void#>)
+//
 //    }
     
     func saveRecord(_ record: CKRecord) {
         privateDB.save(record) { (record, error) in
             if let error = error {
-                // Error handling
+                //TO-DO: - Error handling
                 debugPrint(error.localizedDescription)
                 return
             }
