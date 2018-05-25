@@ -215,7 +215,7 @@ class CoreDataController {
         
     }
     
-    func fetchRoadmaps() -> [CDRoadmap]?{
+    func fetchCDRoadmaps() -> [CDRoadmap]?{
         var roadmaps:[CDRoadmap]
         
         do {
@@ -227,7 +227,7 @@ class CoreDataController {
         }
     }
     
-    func fetchNodes() -> [CDNode]?{
+    func fetchCDNodes() -> [CDNode]?{
         var nodes:[CDNode]
         
         do {
@@ -239,7 +239,7 @@ class CoreDataController {
         }
     }
     
-    func fetchNodes(read: Bool) -> [CDNode]?{
+    func fetchCDNodes(read: Bool) -> [CDNode]?{
         let fetchRequest: NSFetchRequest<CDNode> = CDNode.fetchRequest()
         let predicate = NSPredicate(format: "isRead = %@", read)
         fetchRequest.predicate = predicate
@@ -255,7 +255,7 @@ class CoreDataController {
         }
     }
     
-    func fetchNodes(flag: Bool) -> [CDNode]?{
+    func fetchCDNodes(flag: Bool) -> [CDNode]?{
         let fetchRequest: NSFetchRequest<CDNode> = CDNode.fetchRequest()
         let predicate = NSPredicate(format: "isFlagged = %@", flag)
         fetchRequest.predicate = predicate
@@ -271,7 +271,7 @@ class CoreDataController {
         }
     }
     
-    func fetchUUID(_ uuid: UUID) -> CDUsedUUID?{
+    func fetchCDUUID(_ uuid: UUID) -> CDUsedUUID?{
         let fetchRequest: NSFetchRequest<CDUsedUUID> = CDUsedUUID.fetchRequest()
         let predicate = NSPredicate(format: "uuid = %@", uuid as CVarArg)
         fetchRequest.predicate = predicate
@@ -291,7 +291,7 @@ class CoreDataController {
     }
     
     func isUUIDInUse(_ id: UUID) -> Bool {
-        if fetchUUID(id) != nil{
+        if fetchCDUUID(id) != nil{
             return true
         }
         return false
