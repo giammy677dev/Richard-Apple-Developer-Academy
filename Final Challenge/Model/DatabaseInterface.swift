@@ -66,6 +66,23 @@ class DatabaseInterface {
     
     private func saveToCoreData(){}
     
+        //MARK: - Interface to deleting operations
+    public func deleteRoadmap(_ roadmap: Roadmap) {
+        CoreDataController.shared.deleteRoadmap(roadmap) //Delete roadmap from CoreData DB
+        CloudKitManager.shared.deleteRoadmap(CKRecordID(recordName: roadmap.uuid.uuidString)) //Delete roadmap from CloudKit DB
+    }
+    
+    public func deleteStep(_ step: Step) {
+        CoreDataController.shared.deleteStep(step) //Delete step from CoreData DB
+        CloudKitManager.shared.deleteStep(CKRecordID(recordName: step.uuid.uuidString)) //Delete step from CloudKit DB
+    }
+    
+    public func deleteNode(_ node: Node) {
+        CoreDataController.shared.deleteNode(node) //Delete node from CoreData DB
+        CloudKitManager.shared.deleteNode(CKRecordID(recordName: node.uuid.uuidString)) //Delete roadmap from CloudKit DB
+    }
+  
+    
     private func roadmapToRecord(record: CKRecord?, roadmap: Roadmap) -> CKRecord {
         
         if let _ = record {
@@ -104,6 +121,7 @@ class DatabaseInterface {
             record!.setValue(step.parent, forKey: "parent")
             record!.setValue(step.title, forKey: "title")
             record!.setValue(step.uuid, forKey: "uuid")
+  
         
             return record!
         }
