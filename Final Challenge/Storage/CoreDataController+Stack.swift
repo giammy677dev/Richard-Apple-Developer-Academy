@@ -454,7 +454,7 @@ class CoreDataController {
                               category: Category(rawValue: cdroadmap.category)!,
                               visibility: RoadmapVisibility(rawValue: cdroadmap.visibility)!,
                               privileges: UserPrivilege(rawValue: cdroadmap.privileges)!,
-                              lastRead: cdroadmap.lastReadTimestamp as! Date,
+                              lastRead: cdroadmap.lastReadTimestamp! as Date,
                               id: cdroadmap.uuid!)
         
         return roadmap
@@ -475,6 +475,22 @@ class CoreDataController {
                         tags: cdnode.tags,
                         text: cdnode.extractedText!,
                         propExtracted: cdnode.isTextProperlyExtracted,
+                        creationTime: cdnode.creationTimestamp! as Date,
+                        propRead: cdnode.isRead,
+                        propFlagged: cdnode.isFlagged)
+        
+        
+        return node
+    }
+    
+    func nodeFromRecord(_ cdnode: CDNode) -> Node{
+        let node = Node(url: URL(string: cdnode.url!)!,
+                        title: cdnode.title!,
+                        id: cdnode.uuid!,
+                        parent: nil,
+                        tags: cdnode.tags,
+                        text: cdnode.extractedText!,
+                        propExtracted: cdnode.isTextProperlyExtracted,
                         creationTime: cdnode.creationTimestamp as! Date,
                         propRead: cdnode.isRead,
                         propFlagged: cdnode.isFlagged)
@@ -482,6 +498,66 @@ class CoreDataController {
         
         return node
     }
+    
+    func fullStepFromRecord(_ cdstep: CDStep) -> Step{
+        let step = stepFromRecord(cdstep)
+        if let cdnodes = cdstep.nodesList?.array{
+            if (!cdnodes.isEmpty){
+                for cdnode in cdnodes{
+                    let node = nodeFromRecord(cdnode as! CDNode)
+                    step.addNode(node)
+                }
+            }
+        }
+        return step
+    }
+    
+    
+    
+    func getEntireRoadmapFromRecord(_ cdroadmap: CDRoadmap) -> Roadmap{
+        var roadmap = roadmapFromRecord(cdroadmap)
+        
+        if let cdsteps = cdroadmap.stepsList{
+            if (!cdsteps.array.isEmpty){
+                for cdstep in cdsteps.array{
+                    var step = fullStepFromRecord(cdstep as! CDStep)
+                    roadmap.addStep(step)
+                }
+            }
+        }
+        
+        
+        return roadmap
+    }
+    
+    func getFullRoadmapRecords() -> [Roadmap]?{
+        
+        if let cdroadmaps = fetchCDRoadmaps(){
+            if (!cdroadmaps.isEmpty){
+                var roadmaps = [Roadmap]()
+                for cdroadmap in cdroadmaps{
+                    roadmaps.append(getEntireRoadmapFromRecord(cdroadmap))
+                }
+            }
+        }
+        return nil
+        
+    }
+    
+    func getEveryNodeRecord() -> [Node]?{
+        if let cdnodes = fetchCDNodes(){
+            if (!cdnodes.isEmpty){
+                var nodes = [Node]()
+                for cdnode in cdnodes{
+                    nodes.append(nodeFromRecord(cdnode))
+                }
+                return nodes
+            }
+        }
+        return nil
+    }
+    
+    
     //  MARK: DANGEROUS
     
     func wipeTheEntireCoreDataContainer(areYouSure y : Bool){

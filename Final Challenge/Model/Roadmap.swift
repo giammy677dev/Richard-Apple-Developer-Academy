@@ -48,6 +48,13 @@ class Roadmap: Sharable, Equatable {
         }
     }
     
+    func addStep(_ step: Step) {
+        if steps == nil {
+            steps = [Step]()
+        }
+        steps?.append(step)
+    }
+    
     static func == (lhs: Roadmap, rhs: Roadmap) -> Bool {
         return lhs.title == rhs.title
     }

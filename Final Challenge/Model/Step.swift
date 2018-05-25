@@ -29,6 +29,7 @@ class Step: NodeManager, Equatable {
         if nodes == nil {
             nodes = [Node]()
         }
+        node.parent = self.uuid
         nodes?.append(node)
     }
     

@@ -80,10 +80,10 @@
 		A0BBA9DC20B30BD8008AE848 /* WritableRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9DB20B30BD8008AE848 /* WritableRoadmap.swift */; };
 		B10552F320AD7C230077983A /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10552F220AD7C230077983A /* ShareViewController.swift */; };
 		B10552F620AD7C230077983A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B10552F420AD7C230077983A /* MainInterface.storyboard */; };
-		B10552FA20AD7C230077983A /* Safari Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B10552F020AD7C230077983A /* Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B105530020AD7C430077983A /* GetURL.js in Resources */ = {isa = PBXBuildFile; fileRef = B10552FF20AD7C430077983A /* GetURL.js */; };
 		B105530220AD7DEB0077983A /* RoadmapSE.swift in Sources */ = {isa = PBXBuildFile; fileRef = B105530120AD7DEB0077983A /* RoadmapSE.swift */; };
 		B105530420AD7E160077983A /* ShareSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B105530320AD7E160077983A /* ShareSelectViewController.swift */; };
+		B10927AF20B83F6900113D47 /* Safari Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B10552F020AD7C230077983A /* Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B111196E20B571DF007FDFB5 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B111196D20B571DF007FDFB5 /* CloudKit.framework */; };
 		B1608B4F20B6B69C00701508 /* Links.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1608B4E20B6B69C00701508 /* Links.storyboard */; };
 		B1608B5320B6B8A300701508 /* LinksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1608B5220B6B8A300701508 /* LinksTableViewController.swift */; };
@@ -100,7 +100,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B10552F820AD7C230077983A /* PBXContainerItemProxy */ = {
+		B10927B020B83F6900113D47 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B177C47720A9768B00CD9CBE /* Project object */;
 			proxyType = 1;
@@ -124,13 +124,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B10552FE20AD7C230077983A /* Embed App Extensions */ = {
+		B10927B220B83F6A00113D47 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				B10552FA20AD7C230077983A /* Safari Extension.appex in Embed App Extensions */,
+				B10927AF20B83F6900113D47 /* Safari Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -484,12 +484,12 @@
 				B177C47B20A9768B00CD9CBE /* Sources */,
 				B177C47C20A9768B00CD9CBE /* Frameworks */,
 				B177C47D20A9768B00CD9CBE /* Resources */,
-				B10552FE20AD7C230077983A /* Embed App Extensions */,
+				B10927B220B83F6A00113D47 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B10552F920AD7C230077983A /* PBXTargetDependency */,
+				B10927B120B83F6900113D47 /* PBXTargetDependency */,
 			);
 			name = "Final Challenge";
 			productName = "Final Challenge";
@@ -738,10 +738,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B10552F920AD7C230077983A /* PBXTargetDependency */ = {
+		B10927B120B83F6900113D47 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B10552EF20AD7C230077983A /* Safari Extension */;
-			targetProxy = B10552F820AD7C230077983A /* PBXContainerItemProxy */;
+			targetProxy = B10927B020B83F6900113D47 /* PBXContainerItemProxy */;
 		};
 		B177C49520A9768B00CD9CBE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -787,7 +787,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EHA3KYEH4L;
+				DEVELOPMENT_TEAM = S8Z9T4225J;
 				INFOPLIST_FILE = "Safari Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -806,7 +806,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EHA3KYEH4L;
+				DEVELOPMENT_TEAM = S8Z9T4225J;
 				INFOPLIST_FILE = "Safari Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -942,7 +942,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EHA3KYEH4L;
+				DEVELOPMENT_TEAM = S8Z9T4225J;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -962,7 +962,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EHA3KYEH4L;
+				DEVELOPMENT_TEAM = S8Z9T4225J;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
