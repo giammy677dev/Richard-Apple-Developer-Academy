@@ -41,6 +41,22 @@ class Node: Taggable {
         }
     }
     
+    init(url: URL, title: String, id: UUID, parent: UUID? = nil, tags: Set<String>?, text: String, propExtracted: Bool, creationTime: Date = Date(), propRead: Bool = false, propFlagged: Bool = false) {
+        self.url = url
+        self.title = title
+        self.parent = parent
+        self.extractedText = text
+        self.isTextProperlyExtracted = propExtracted
+        self.creationTimestamp = creationTime
+        self.uuid = id
+        self.isRead = propRead
+        self.isFlagged = propFlagged
+        if let _ = tags {
+            self.tags = tags!
+        }
+        
+    }
+    
     private func analyze(url: URL) {
         
     }

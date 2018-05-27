@@ -37,18 +37,105 @@ class DatabaseInterface {
     }
     
     public func save(_ roadmap: Roadmap) {
-        
+        /// Saves a roadmap in local and cloud DB. If the roadmap doesn't exist it creates a new one and saves it.
+        let recordID = CKRecordID(recordName: roadmap.uuid.uuidString)
+        self.ckManager.privateDB.fetch(withRecordID: recordID) { (record, error) in
+            if error != nil {
+                //TODO: - Error handling here
+                debugPrint(error!.localizedDescription)
+            }
+            
+            let savedRecord = self.roadmapToRecord(record: record, roadmap: roadmap)
+            self.ckManager.saveRecord(savedRecord)
+        }
     }
     
     public func save(_ step: Step) {
-        
-    }
-    
-    private func saveToCloud(record: CKRecord) {
-        
+        /// Saves a step in local and cloud DB. If the step doesn't exist it creates a new one and saves it.
+        let recordID = CKRecordID(recordName: step.uuid.uuidString)
+        self.ckManager.privateDB.fetch(withRecordID: recordID) { (record, error) in
+            if error != nil {
+                //TODO: - Error handling here
+                debugPrint(error!.localizedDescription)
+            }
+            
+            let savedRecord = self.stepToRecord(record: record, step: step)
+            self.ckManager.saveRecord(savedRecord)
+        }
     }
     
     private func saveToCoreData(){}
+    
+        //MARK: - Interface to deleting operations
+    public func deleteRoadmap(_ roadmap: Roadmap) {
+        CoreDataController.shared.deleteRoadmap(roadmap) //Delete roadmap from CoreData DB
+        CloudKitManager.shared.deleteRoadmap(CKRecordID(recordName: roadmap.uuid.uuidString)) //Delete roadmap from CloudKit DB
+    }
+    
+    public func deleteStep(_ step: Step) {
+        CoreDataController.shared.deleteStep(step) //Delete step from CoreData DB
+        CloudKitManager.shared.deleteStep(CKRecordID(recordName: step.uuid.uuidString)) //Delete step from CloudKit DB
+    }
+    
+    public func deleteNode(_ node: Node) {
+        CoreDataController.shared.deleteNode(node) //Delete node from CoreData DB
+        CloudKitManager.shared.deleteNode(CKRecordID(recordName: node.uuid.uuidString)) //Delete roadmap from CloudKit DB
+    }
+  
+    
+    private func roadmapToRecord(record: CKRecord?, roadmap: Roadmap) -> CKRecord {
+        
+        if let _ = record {
+            record!.setValue(roadmap.category, forKey: "category")
+            record!.setValue(roadmap.isPublic, forKey: "isPublic")
+            record!.setValue(roadmap.isShared, forKey: "isShared")
+            record!.setValue(roadmap.lastReadTimestamp, forKey: "lastReadTimestamp")
+            record!.setValue(roadmap.privileges, forKey: "privileges")
+            record!.setValue(roadmap.steps, forKey: "steps")
+            record!.setValue(roadmap.title, forKey: "title")
+            record!.setValue(roadmap.uuid, forKey: "uuid")
+            record!.setValue(roadmap.visibility, forKey: "visibility")
+
+        }
+        
+        let recordID = CKRecordID(recordName: roadmap.uuid.uuidString)
+        let newRecord = CKRecord(recordType: CKRecordTypes.roadmap.rawValue, recordID: recordID)
+        
+        newRecord.setValue(roadmap.category, forKey: "category")
+        newRecord.setValue(roadmap.isPublic, forKey: "isPublic")
+        newRecord.setValue(roadmap.isShared, forKey: "isShared")
+        newRecord.setValue(roadmap.lastReadTimestamp, forKey: "lastReadTimestamp")
+        newRecord.setValue(roadmap.privileges, forKey: "privileges")
+        newRecord.setValue(roadmap.steps, forKey: "steps")
+        newRecord.setValue(roadmap.title, forKey: "title")
+        newRecord.setValue(roadmap.uuid, forKey: "uuid")
+        newRecord.setValue(roadmap.visibility, forKey: "visibility")
+        
+        return newRecord
+    }
+    
+    private func stepToRecord(record: CKRecord?, step: Step) -> CKRecord {
+        /// When a new record has to be saved it creates a new one otherwise it re-saves all the key-values
+        if let _ = record {
+            record!.setValue(step.nodes, forKey: "nodes")
+            record!.setValue(step.parent, forKey: "parent")
+            record!.setValue(step.title, forKey: "title")
+            record!.setValue(step.uuid, forKey: "uuid")
+  
+        
+            return record!
+        }
+        
+        let recordID = CKRecordID(recordName: step.uuid.uuidString)
+        let newRecord = CKRecord(recordType: CKRecordTypes.step.rawValue, recordID: recordID)
+        
+        newRecord.setValue(step.nodes, forKey: "nodes")
+        newRecord.setValue(step.parent, forKey: "parent")
+        newRecord.setValue(step.title, forKey: "title")
+        newRecord.setValue(step.uuid, forKey: "uuid")
+        
+        return newRecord
+    }
     
     private func nodeToRecord(record: CKRecord?, node: Node) -> CKRecord {
         /// When a new record has to be saved it creates a new one otherwise it re-saves all the key-values
