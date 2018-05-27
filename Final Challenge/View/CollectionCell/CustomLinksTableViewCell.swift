@@ -16,7 +16,7 @@ class CustomLinksTableViewCell: UITableViewCell {
     @IBOutlet weak var firstTagLabel: UILabel!
     @IBOutlet weak var secondTagLabel: UILabel!
     @IBOutlet weak var thirdTagLabel: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -46,6 +46,4 @@ class CustomLinksTableViewCell: UITableViewCell {
             }, completion: nil)
         }
     }
-
-
 }
