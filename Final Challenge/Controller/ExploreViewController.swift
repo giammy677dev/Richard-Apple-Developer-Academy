@@ -12,7 +12,7 @@ class ExploreViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        CoreDataTest()
+        CoreDataTest()
         // Do any additional setup after loading the view.
     }
 
