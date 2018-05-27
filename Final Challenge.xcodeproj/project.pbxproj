@@ -85,6 +85,12 @@
 		B105530420AD7E160077983A /* ShareSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B105530320AD7E160077983A /* ShareSelectViewController.swift */; };
 		B10927AF20B83F6900113D47 /* Safari Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B10552F020AD7C230077983A /* Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B111196E20B571DF007FDFB5 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B111196D20B571DF007FDFB5 /* CloudKit.framework */; };
+		B127492820BB332100C4420C /* AddResource.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B127492720BB332100C4420C /* AddResource.storyboard */; };
+		B127492A20BB337A00C4420C /* AddResourceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127492920BB337A00C4420C /* AddResourceTableViewController.swift */; };
+		B127492D20BB33BA00C4420C /* AddResourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127492B20BB33BA00C4420C /* AddResourceTableViewCell.swift */; };
+		B127492E20BB33BA00C4420C /* AddResourceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B127492C20BB33BA00C4420C /* AddResourceTableViewCell.xib */; };
+		B127493120BB417F00C4420C /* AddTagsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127492F20BB417F00C4420C /* AddTagsTableViewCell.swift */; };
+		B127493220BB417F00C4420C /* AddTagsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B127493020BB417F00C4420C /* AddTagsTableViewCell.xib */; };
 		B1608B4F20B6B69C00701508 /* Links.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1608B4E20B6B69C00701508 /* Links.storyboard */; };
 		B1608B5320B6B8A300701508 /* LinksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1608B5220B6B8A300701508 /* LinksTableViewController.swift */; };
 		B1608B5620B6C58A00701508 /* CustomLinksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1608B5420B6C58A00701508 /* CustomLinksTableViewCell.swift */; };
@@ -192,6 +198,12 @@
 		B105530320AD7E160077983A /* ShareSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSelectViewController.swift; sourceTree = "<group>"; };
 		B111196B20B57167007FDFB5 /* Final Challenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Final Challenge.entitlements"; sourceTree = "<group>"; };
 		B111196D20B571DF007FDFB5 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		B127492720BB332100C4420C /* AddResource.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddResource.storyboard; sourceTree = "<group>"; };
+		B127492920BB337A00C4420C /* AddResourceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddResourceTableViewController.swift; sourceTree = "<group>"; };
+		B127492B20BB33BA00C4420C /* AddResourceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddResourceTableViewCell.swift; sourceTree = "<group>"; };
+		B127492C20BB33BA00C4420C /* AddResourceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddResourceTableViewCell.xib; sourceTree = "<group>"; };
+		B127492F20BB417F00C4420C /* AddTagsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagsTableViewCell.swift; sourceTree = "<group>"; };
+		B127493020BB417F00C4420C /* AddTagsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTagsTableViewCell.xib; sourceTree = "<group>"; };
 		B1608B4E20B6B69C00701508 /* Links.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Links.storyboard; sourceTree = "<group>"; };
 		B1608B5220B6B8A300701508 /* LinksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksTableViewController.swift; sourceTree = "<group>"; };
 		B1608B5420B6C58A00701508 /* CustomLinksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLinksTableViewCell.swift; sourceTree = "<group>"; };
@@ -304,6 +316,10 @@
 				904C8FDB20B5818A00D0E27D /* ResourcesCustomCollectionViewCell.xib */,
 				B1608B5420B6C58A00701508 /* CustomLinksTableViewCell.swift */,
 				B1608B5520B6C58A00701508 /* CustomLinksTableViewCell.xib */,
+				B127492B20BB33BA00C4420C /* AddResourceTableViewCell.swift */,
+				B127492C20BB33BA00C4420C /* AddResourceTableViewCell.xib */,
+				B127492F20BB417F00C4420C /* AddTagsTableViewCell.swift */,
+				B127493020BB417F00C4420C /* AddTagsTableViewCell.xib */,
 			);
 			path = CollectionCell;
 			sourceTree = "<group>";
@@ -316,6 +332,7 @@
 				90525F9C20B6A7D1006D3093 /* Main.storyboard */,
 				90525F9E20B6A7D1006D3093 /* Explore.storyboard */,
 				B1608B4E20B6B69C00701508 /* Links.storyboard */,
+				B127492720BB332100C4420C /* AddResource.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -369,6 +386,7 @@
 				904C8FD420B57D2D00D0E27D /* ResourcesTableViewController.swift */,
 				B1608B5220B6B8A300701508 /* LinksTableViewController.swift */,
 				6527432D20B760F20027D862 /* ExploreViewController.swift */,
+				B127492920BB337A00C4420C /* AddResourceTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -604,11 +622,14 @@
 				9002AAFE20B40C4400854015 /* CustomCollectionViewCell.xib in Resources */,
 				B1608B5720B6C58A00701508 /* CustomLinksTableViewCell.xib in Resources */,
 				904C8FDD20B5818A00D0E27D /* ResourcesCustomCollectionViewCell.xib in Resources */,
+				B127492E20BB33BA00C4420C /* AddResourceTableViewCell.xib in Resources */,
 				B177C48D20A9768B00CD9CBE /* LaunchScreen.storyboard in Resources */,
 				90525FA220B6A7D1006D3093 /* Explore.storyboard in Resources */,
 				90525FA120B6A7D1006D3093 /* Main.storyboard in Resources */,
+				B127492820BB332100C4420C /* AddResource.storyboard in Resources */,
 				B177C48A20A9768B00CD9CBE /* Assets.xcassets in Resources */,
 				90525FA020B6A7D1006D3093 /* Researches.storyboard in Resources */,
+				B127493220BB417F00C4420C /* AddTagsTableViewCell.xib in Resources */,
 				90525F9F20B6A7D1006D3093 /* Roadmaps.storyboard in Resources */,
 				9002AAF320B2BFC000854015 /* HeaderTableViewCell.xib in Resources */,
 				B1608B4F20B6B69C00701508 /* Links.storyboard in Resources */,
@@ -689,6 +710,7 @@
 				B1608B5920B7114900701508 /* UIColorExtension.swift in Sources */,
 				A0BBA9CB20B2FAF2008AE848 /* Sharable.swift in Sources */,
 				65E038DD20B8446200E6F92F /* CDNode+CoreDataProperties.swift in Sources */,
+				B127493120BB417F00C4420C /* AddTagsTableViewCell.swift in Sources */,
 				65593DC420B306C7001D6F46 /* StringExtension.swift in Sources */,
 				6527432E20B760F20027D862 /* ExploreViewController.swift in Sources */,
 				B177C48520A9768B00CD9CBE /* ViewController.swift in Sources */,
@@ -701,6 +723,7 @@
 				65E038D720B8446200E6F92F /* CDRoadmap+CoreDataClass.swift in Sources */,
 				7B5BCB5F20B57E5900B66CEE /* CloudKitManager.swift in Sources */,
 				7BB104AC20AEBF1000A203A1 /* Buongiorno.swift in Sources */,
+				B127492D20BB33BA00C4420C /* AddResourceTableViewCell.swift in Sources */,
 				A0BBA9D120B3068B008AE848 /* Step.swift in Sources */,
 				A0BBA9D620B30967008AE848 /* Writable.swift in Sources */,
 				904C8FD520B57D2D00D0E27D /* ResourcesTableViewController.swift in Sources */,
@@ -714,6 +737,7 @@
 				7B4CE71B20B4541800C34A69 /* PersistenceManager.swift in Sources */,
 				A0BBA9DA20B30A48008AE848 /* SubscribedRoadmap.swift in Sources */,
 				904C8FDC20B5818A00D0E27D /* ResourcesCustomCollectionViewCell.swift in Sources */,
+				B127492A20BB337A00C4420C /* AddResourceTableViewController.swift in Sources */,
 				B1608B5320B6B8A300701508 /* LinksTableViewController.swift in Sources */,
 				B1608B5620B6C58A00701508 /* CustomLinksTableViewCell.swift in Sources */,
 			);
