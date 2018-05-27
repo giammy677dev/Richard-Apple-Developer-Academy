@@ -33,7 +33,7 @@ class DatabaseInterface {
         }
         
         //MARK: - Save to CoreData
-        saveToCoreData()
+        saveToCoreData(node: node)
     }
     
     public func save(_ roadmap: Roadmap) {
@@ -64,22 +64,37 @@ class DatabaseInterface {
         }
     }
     
-    private func saveToCoreData(){}
+    //TO-DO: - Define the correct way to save the elements in Core Data
+    private func saveToCoreData(roadmap: Roadmap) { //Save single roadmap with steps and nodes
+        CoreDataController.shared.saveRecursively(roadmap)
+    }
     
-        //MARK: - Interface to deleting operations
+    private func saveToCoreData(roadmaps: [Roadmap]) { //Save an array of roadmaps with steps. Nodes must already exist in memory.
+        CoreDataController.shared.saveRecursively(roadmaps)
+    }
+    
+    private func saveToCoreData(step: Step, roadmap: Roadmap) { //Save a step in memory and link it to a roadmap
+        let _ = CoreDataController.shared.updateStep(step, of: roadmap)
+    }
+    
+    private func saveToCoreData(node: Node) { //Save a node in memory
+        let _ = CoreDataController.shared.updateNode(node)
+    }
+    
+    //MARK: - Interface to deleting operations
     public func deleteRoadmap(_ roadmap: Roadmap) {
         CoreDataController.shared.deleteRoadmap(roadmap) //Delete roadmap from CoreData DB
-        CloudKitManager.shared.deleteRoadmap(CKRecordID(recordName: roadmap.uuid.uuidString)) //Delete roadmap from CloudKit DB
+        ckManager.deleteRoadmap(CKRecordID(recordName: roadmap.uuid.uuidString)) //Delete roadmap from CloudKit DB
     }
     
     public func deleteStep(_ step: Step) {
         CoreDataController.shared.deleteStep(step) //Delete step from CoreData DB
-        CloudKitManager.shared.deleteStep(CKRecordID(recordName: step.uuid.uuidString)) //Delete step from CloudKit DB
+        ckManager.deleteStep(CKRecordID(recordName: step.uuid.uuidString)) //Delete step from CloudKit DB
     }
     
     public func deleteNode(_ node: Node) {
         CoreDataController.shared.deleteNode(node) //Delete node from CoreData DB
-        CloudKitManager.shared.deleteNode(CKRecordID(recordName: node.uuid.uuidString)) //Delete roadmap from CloudKit DB
+        ckManager.deleteNode(CKRecordID(recordName: node.uuid.uuidString)) //Delete roadmap from CloudKit DB
     }
   
     
