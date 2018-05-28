@@ -76,14 +76,16 @@ class DatabaseInterface {
     }
     
     private func saveToCoreData(step: Step, roadmap: Roadmap) { //Save a step in memory and link it to a roadmap
-        if let _ = cdController.updateStep(step, of: roadmap) {
+        guard let _ = cdController.updateStep(step, of: roadmap) else {
             debugPrint("Error on save step in local memory")
+            return
         }
     }
     
     private func saveToCoreData(node: Node) { //Save a node in memory
-        if let _ = cdController.updateNode(node) {
+        guard let _ = cdController.updateNode(node) else {
             debugPrint("Error on save node in local memory")
+            return
         }
     }
     
