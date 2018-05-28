@@ -9,10 +9,17 @@
 import UIKit
 
 class AddResourceTableViewCell: UITableViewCell {
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var URLTextField: UITextField!
+
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        // Initialiation code
+        titleTextField.placeholder = "Add title"
+        titleTextField.borderStyle = .roundedRect
+        URLTextField.placeholder = "Add URL"
+        URLTextField.borderStyle = .roundedRect
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
