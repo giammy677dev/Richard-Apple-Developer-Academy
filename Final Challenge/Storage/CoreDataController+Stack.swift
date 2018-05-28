@@ -273,6 +273,23 @@ class CoreDataController {
         }
     }
     
+    
+    func fetchCDNodesWithoutParent() -> [CDNode]?{
+        let fetchRequest: NSFetchRequest<CDNode> = CDNode.fetchRequest()
+        let predicate = NSPredicate(format: "isRead = %@")
+        fetchRequest.predicate = predicate
+        fetchRequest.returnsObjectsAsFaults = false
+        var nodes: [CDNode]?
+        
+        do {
+            nodes = try context.fetch(fetchRequest)
+            return nodes
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+            return nil
+        }
+    }
+    
     ///Fetches every CoreData Node with a specified isFlagged flag.
     func fetchCDNodes(flag: Bool) -> [CDNode]?{
         let fetchRequest: NSFetchRequest<CDNode> = CDNode.fetchRequest()
@@ -541,7 +558,7 @@ class CoreDataController {
                         tags: cdnode.tags,
                         text: cdnode.extractedText!,
                         propExtracted: cdnode.isTextProperlyExtracted,
-                        creationTime: cdnode.creationTimestamp as! Date,
+                        creationTime: cdnode.creationTimestamp! as Date,
                         propRead: cdnode.isRead,
                         propFlagged: cdnode.isFlagged)
         
@@ -566,12 +583,12 @@ class CoreDataController {
     
     ///Converts a CoreData Roadmap record in its Roadmap counterpart. Recursive.
     func getEntireRoadmapFromRecord(_ cdroadmap: CDRoadmap) -> Roadmap{
-        var roadmap = roadmapFromRecord(cdroadmap)
+        let roadmap = roadmapFromRecord(cdroadmap)
         
         if let cdsteps = cdroadmap.stepsList{
             if (!cdsteps.array.isEmpty){
                 for cdstep in cdsteps.array{
-                    var step = fullStepFromRecord(cdstep as! CDStep)
+                    let step = fullStepFromRecord(cdstep as! CDStep)
                     roadmap.addStep(step)
                 }
             }

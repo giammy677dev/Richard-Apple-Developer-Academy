@@ -39,11 +39,11 @@ extension UIViewController {
         
         
         
-        debugPrint(controller.fetchCDRoadmaps(),controller.isUUIDInUse(d.uuid))
-        debugPrint(controller.fetchCDNodes())
+        debugPrint(controller.fetchCDRoadmaps() as Any,controller.isUUIDInUse(d.uuid))
+        debugPrint(controller.fetchCDNodes() as Any)
         controller.deleteStep(c)
         debugPrint(controller.isUUIDInUse(d.uuid))
-        controller.deleteNode(d)
-        debugPrint(controller.isUUIDInUse(d.uuid))
+        //controller.deleteNode(d)
+        //debugPrint(controller.isUUIDInUse(d.uuid))
     }
 }
