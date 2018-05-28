@@ -101,6 +101,7 @@
 		B177C48D20A9768B00CD9CBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B177C48B20A9768B00CD9CBE /* LaunchScreen.storyboard */; };
 		B177C49820A9768B00CD9CBE /* Final_ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B177C49720A9768B00CD9CBE /* Final_ChallengeTests.swift */; };
 		B177C4A320A9768B00CD9CBE /* Final_ChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B177C4A220A9768B00CD9CBE /* Final_ChallengeUITests.swift */; };
+		B18B9A8520BC12B8004FA469 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B9A8420BC12B8004FA469 /* UITextFieldExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +219,7 @@
 		B177C49E20A9768B00CD9CBE /* Final ChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Final ChallengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B177C4A220A9768B00CD9CBE /* Final_ChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Final_ChallengeUITests.swift; sourceTree = "<group>"; };
 		B177C4A420A9768B00CD9CBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B18B9A8420BC12B8004FA469 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +268,7 @@
 			children = (
 				65593DC320B306C7001D6F46 /* StringExtension.swift */,
 				B1608B5820B7114900701508 /* UIColorExtension.swift */,
+				B18B9A8420BC12B8004FA469 /* UITextFieldExtension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 				7B5BCB5F20B57E5900B66CEE /* CloudKitManager.swift in Sources */,
 				7BB104AC20AEBF1000A203A1 /* Buongiorno.swift in Sources */,
 				B127492D20BB33BA00C4420C /* AddResourceTableViewCell.swift in Sources */,
+				B18B9A8520BC12B8004FA469 /* UITextFieldExtension.swift in Sources */,
 				A0BBA9D120B3068B008AE848 /* Step.swift in Sources */,
 				A0BBA9D620B30967008AE848 /* Writable.swift in Sources */,
 				904C8FD520B57D2D00D0E27D /* ResourcesTableViewController.swift in Sources */,

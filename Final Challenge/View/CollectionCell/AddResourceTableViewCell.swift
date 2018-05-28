@@ -18,8 +18,10 @@ class AddResourceTableViewCell: UITableViewCell {
         // Initialiation code
         titleTextField.placeholder = "Add title"
         titleTextField.borderStyle = .roundedRect
+        titleTextField.setLeftPaddingPoints(10)
         URLTextField.placeholder = "Add URL"
         URLTextField.borderStyle = .roundedRect
+        URLTextField.setLeftPaddingPoints(10)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
