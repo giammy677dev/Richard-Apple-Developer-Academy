@@ -274,7 +274,7 @@ class CoreDataController {
     
     func fetchCDNodesWithoutParent() -> [CDNode]?{
         let fetchRequest: NSFetchRequest<CDNode> = CDNode.fetchRequest()
-        let predicate = NSPredicate(format: "isRead = %@")
+        let predicate = NSPredicate(format: "parentsStep = nil")
         fetchRequest.predicate = predicate
         fetchRequest.returnsObjectsAsFaults = false
         var nodes: [CDNode]?

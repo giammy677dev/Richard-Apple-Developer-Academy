@@ -43,6 +43,7 @@ extension UIViewController {
         debugPrint(controller.fetchCDNodes() as Any)
         controller.deleteStep(c)
         debugPrint(controller.isUUIDInUse(d.uuid))
+        print(controller.fetchCDNodesWithoutParent())
         //controller.deleteNode(d)
         //debugPrint(controller.isUUIDInUse(d.uuid))
     }
