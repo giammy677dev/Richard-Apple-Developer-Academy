@@ -108,16 +108,16 @@ class DatabaseInterface {
     
     private func roadmapToRecord(record: CKRecord?, roadmap: Roadmap) -> CKRecord {
         
-        if let _ = record {
-            record!.setValue(roadmap.category, forKey: "category")
-            record!.setValue(roadmap.isPublic, forKey: "isPublic")
-            record!.setValue(roadmap.isShared, forKey: "isShared")
-            record!.setValue(roadmap.lastReadTimestamp, forKey: "lastReadTimestamp")
-            record!.setValue(roadmap.privileges, forKey: "privileges")
-            record!.setValue(roadmap.steps, forKey: "steps")
-            record!.setValue(roadmap.title, forKey: "title")
-            record!.setValue(roadmap.uuid, forKey: "uuid")
-            record!.setValue(roadmap.visibility, forKey: "visibility")
+        if let record = record {
+            record.setValue(roadmap.category, forKey: "category")
+            record.setValue(roadmap.isPublic, forKey: "isPublic")
+            record.setValue(roadmap.isShared, forKey: "isShared")
+            record.setValue(roadmap.lastReadTimestamp, forKey: "lastReadTimestamp")
+            record.setValue(roadmap.privileges, forKey: "privileges")
+            record.setValue(roadmap.steps, forKey: "steps")
+            record.setValue(roadmap.title, forKey: "title")
+            record.setValue(roadmap.uuid, forKey: "uuid")
+            record.setValue(roadmap.visibility, forKey: "visibility")
 
         }
         
