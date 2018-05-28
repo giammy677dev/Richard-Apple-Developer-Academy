@@ -10,7 +10,7 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="parentsSteps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDStep" inverseName="nodesList" inverseEntity="CDStep" syncable="YES"/>
+        <relationship name="parentsStep" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDStep" inverseName="nodesList" inverseEntity="CDStep" syncable="YES"/>
         <relationship name="usedID" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDUsedUUID" inverseName="toNode" inverseEntity="CDUsedUUID" syncable="YES"/>
     </entity>
     <entity name="CDRoadmap" representedClassName="CDRoadmap" syncable="YES">
@@ -29,7 +29,7 @@
         <attribute name="arrayID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="nodesList" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="CDNode" inverseName="parentsSteps" inverseEntity="CDNode" syncable="YES"/>
+        <relationship name="nodesList" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="CDNode" inverseName="parentsStep" inverseEntity="CDNode" syncable="YES"/>
         <relationship name="parentRoadmap" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDRoadmap" inverseName="stepsList" inverseEntity="CDRoadmap" syncable="YES"/>
         <relationship name="usedID" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDUsedUUID" inverseName="toStep" inverseEntity="CDUsedUUID" syncable="YES"/>
     </entity>
@@ -40,7 +40,7 @@
         <relationship name="toStep" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDStep" inverseName="usedID" inverseEntity="CDStep" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CDNode" positionX="-162" positionY="-153" width="128" height="28"/>
+        <element name="CDNode" positionX="-38" positionY="-64" width="128" height="208"/>
         <element name="CDRoadmap" positionX="-614" positionY="-135" width="128" height="193"/>
         <element name="CDStep" positionX="-416" positionY="-153" width="128" height="133"/>
         <element name="CDUsedUUID" positionX="-423" positionY="144" width="128" height="103"/>

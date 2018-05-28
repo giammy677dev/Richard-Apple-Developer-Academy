@@ -144,8 +144,6 @@ class CoreDataController {
         newNode.setValue(node.title, forKey: "title")
         newNode.setValue(node.url.absoluteString , forKey: "url")
         newNode.setValue(node.uuid, forKey: "uuid")
-        
-        
         newNode.setValue(addUUID(node.uuid), forKey: "usedID")
         
         self.saveContext()
@@ -260,6 +258,23 @@ class CoreDataController {
     func fetchCDNodes(read: Bool) -> [CDNode]?{
         let fetchRequest: NSFetchRequest<CDNode> = CDNode.fetchRequest()
         let predicate = NSPredicate(format: "isRead = %@", read)
+        fetchRequest.predicate = predicate
+        fetchRequest.returnsObjectsAsFaults = false
+        var nodes: [CDNode]?
+        
+        do {
+            nodes = try context.fetch(fetchRequest)
+            return nodes
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+            return nil
+        }
+    }
+    
+    
+    func fetchCDNodesWithoutParent() -> [CDNode]?{
+        let fetchRequest: NSFetchRequest<CDNode> = CDNode.fetchRequest()
+        let predicate = NSPredicate(format: "isRead = %@")
         fetchRequest.predicate = predicate
         fetchRequest.returnsObjectsAsFaults = false
         var nodes: [CDNode]?
@@ -537,11 +552,11 @@ class CoreDataController {
         let node = Node(url: URL(string: cdnode.url!)!,
                         title: cdnode.title!,
                         id: cdnode.uuid!,
-                        parent: nil,
+                        parent: cdnode.parentsStep?.uuid ?? ReadingListID,
                         tags: cdnode.tags,
                         text: cdnode.extractedText!,
                         propExtracted: cdnode.isTextProperlyExtracted,
-                        creationTime: cdnode.creationTimestamp as! Date,
+                        creationTime: cdnode.creationTimestamp! as Date,
                         propRead: cdnode.isRead,
                         propFlagged: cdnode.isFlagged)
         
@@ -566,12 +581,12 @@ class CoreDataController {
     
     ///Converts a CoreData Roadmap record in its Roadmap counterpart. Recursive.
     func getEntireRoadmapFromRecord(_ cdroadmap: CDRoadmap) -> Roadmap{
-        var roadmap = roadmapFromRecord(cdroadmap)
+        let roadmap = roadmapFromRecord(cdroadmap)
         
         if let cdsteps = cdroadmap.stepsList{
             if (!cdsteps.array.isEmpty){
                 for cdstep in cdsteps.array{
-                    var step = fullStepFromRecord(cdstep as! CDStep)
+                    let step = fullStepFromRecord(cdstep as! CDStep)
                     roadmap.addStep(step)
                 }
             }
