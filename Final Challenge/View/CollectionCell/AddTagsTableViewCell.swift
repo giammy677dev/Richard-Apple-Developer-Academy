@@ -20,6 +20,7 @@ class AddTagsTableViewCell: UITableViewCell {
         // Initialization code
         tagTextField.placeholder = "#"
         tagTextField.borderStyle = .roundedRect
+        tagTextField.setLeftPaddingPoints(10)
         firstTagButton.layer.cornerRadius = 8
         secondTagButton.layer.cornerRadius = 8
         thirdTagButton.layer.cornerRadius = 8
