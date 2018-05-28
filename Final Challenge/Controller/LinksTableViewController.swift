@@ -18,7 +18,8 @@ class LinksTableViewController: UITableViewController {
         self.tableView.register(customCell, forCellReuseIdentifier: "CustomLinksTableViewCell")
 
         //General settings
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none //delete the separator line between each rows of the tableView
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none //Delete the separator line between each rows of the tableView
+        self.tableView.backgroundColor = UIColor.white //Set the color of the background, included the header's color and footer's color
     }
 
     // MARK: - Table view data source
@@ -32,7 +33,7 @@ class LinksTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 129
+        return 108
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,19 +65,19 @@ class LinksTableViewController: UITableViewController {
         //Get the last cells in the tableView
         let totalRow = tableView.numberOfRows(inSection: indexPath.section)
         //first get total rows in that section by current indexPath.
-        if indexPath.row == totalRow - 1 {
-            cell.footerImageView.alpha = 0
-        }
+//        if indexPath.row == totalRow - 1 {
+//            cell.footerImageView.alpha = 0
+//        }
 
         return cell
     }
 
-//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 30
-//    }
-//
-//    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 16
-//    }
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 16
+    }
 
 }

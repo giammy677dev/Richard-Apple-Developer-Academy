@@ -23,13 +23,6 @@
                         <rect key="frame" x="10" y="21" width="355" height="312"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="#" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="C3F-QH-BRU">
-                        <rect key="frame" x="19" y="40" width="337" height="49"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.95294117649999999" green="0.92549019610000005" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    </textView>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="51B-AH-ESA">
                         <rect key="frame" x="224" y="236" width="132" height="27"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -60,9 +53,24 @@
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <state key="normal" title="Tag 1"/>
                     </button>
+                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eQ7-kb-aTW">
+                        <rect key="frame" x="19" y="40" width="337" height="49"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.95294117649999999" green="0.92549019610000005" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="firstTagButton" destination="0Jm-gc-Ayy" id="hMv-Qb-k2w"/>
+                <outlet property="fourthTagButton" destination="51B-AH-ESA" id="0Gk-Lc-tJg"/>
+                <outlet property="secondTagButton" destination="LCp-g0-BOH" id="aSM-Xd-fuG"/>
+                <outlet property="tagTextField" destination="eQ7-kb-aTW" id="exQ-iZ-9rO"/>
+                <outlet property="thirdTagButton" destination="xEj-xh-fSE" id="hVy-zW-1aB"/>
+            </connections>
             <point key="canvasLocation" x="113.5" y="54"/>
         </tableViewCell>
     </objects>

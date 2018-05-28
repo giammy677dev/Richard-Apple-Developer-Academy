@@ -9,10 +9,21 @@
 import UIKit
 
 class AddTagsTableViewCell: UITableViewCell {
+    @IBOutlet weak var tagTextField: UITextField!
+    @IBOutlet weak var firstTagButton: UIButton!
+    @IBOutlet weak var secondTagButton: UIButton!
+    @IBOutlet weak var thirdTagButton: UIButton!
+    @IBOutlet weak var fourthTagButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        tagTextField.placeholder = "#"
+        tagTextField.borderStyle = .roundedRect
+        firstTagButton.layer.cornerRadius = 8
+        secondTagButton.layer.cornerRadius = 8
+        thirdTagButton.layer.cornerRadius = 8
+        fourthTagButton.layer.cornerRadius = 8
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -20,5 +31,4 @@ class AddTagsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }
