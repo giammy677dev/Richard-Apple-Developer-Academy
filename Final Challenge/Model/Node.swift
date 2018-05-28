@@ -21,10 +21,10 @@ class Node: Taggable {
     var isRead: Bool
     var isFlagged: Bool
     private var readingTimeInMinutes: Double?
-    var parent: UUID?
+    var parent: UUID
     
     //Methods:
-    init(url: URL, title: String, id: UUID, parent: UUID? = nil, tags: String?, text: String, propExtracted: Bool, creationTime: Date = Date(), propRead: Bool = false, propFlagged: Bool = false) {
+    init(url: URL, title: String, id: UUID, parent: UUID, tags: String?, text: String, propExtracted: Bool, creationTime: Date = Date(), propRead: Bool = false, propFlagged: Bool = false) {
         self.url = url
         self.title = title
         self.parent = parent
@@ -41,7 +41,7 @@ class Node: Taggable {
         }
     }
     
-    init(url: URL, title: String, id: UUID, parent: UUID? = nil, tags: Set<String>?, text: String, propExtracted: Bool, creationTime: Date = Date(), propRead: Bool = false, propFlagged: Bool = false) {
+    init(url: URL, title: String, id: UUID, parent: UUID, tags: Set<String>?, text: String, propExtracted: Bool, creationTime: Date = Date(), propRead: Bool = false, propFlagged: Bool = false) {
         self.url = url
         self.title = title
         self.parent = parent
