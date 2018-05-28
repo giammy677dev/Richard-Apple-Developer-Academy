@@ -16,7 +16,6 @@
 		652742B820B701BA0027D862 /* WritableRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9DB20B30BD8008AE848 /* WritableRoadmap.swift */; };
 		652742B920B701BA0027D862 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */; };
 		652742BA20B701BA0027D862 /* DatabaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91051520B6B955001005AA /* DatabaseInterface.swift */; };
-		652742BB20B701BA0027D862 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CE71A20B4541800C34A69 /* PersistenceManager.swift */; };
 		652742BC20B702440027D862 /* Sharable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9CA20B2FAF2008AE848 /* Sharable.swift */; };
 		652742BD20B702440027D862 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9D220B30845008AE848 /* Updatable.swift */; };
 		652742BE20B702440027D862 /* Writable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9D520B30967008AE848 /* Writable.swift */; };
@@ -48,7 +47,6 @@
 		65EA50F820B6CFEC008BCBFB /* CoreDataController+Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50F720B6CFEC008BCBFB /* CoreDataController+Stack.swift */; };
 		65EA50FA20B6D1F6008BCBFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B177C48220A9768B00CD9CBE /* AppDelegate.swift */; };
 		65EA50FB20B6D26E008BCBFB /* CoreDataController+Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50F720B6CFEC008BCBFB /* CoreDataController+Stack.swift */; };
-		7B4CE71B20B4541800C34A69 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4CE71A20B4541800C34A69 /* PersistenceManager.swift */; };
 		7B5BCB5F20B57E5900B66CEE /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */; };
 		7B91051620B6B955001005AA /* DatabaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91051520B6B955001005AA /* DatabaseInterface.swift */; };
 		7BB104AC20AEBF1000A203A1 /* Buongiorno.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BB104AB20AEBF1000A203A1 /* Buongiorno.swift */; };
@@ -159,7 +157,6 @@
 		65E038D220B8446200E6F92F /* CDStep+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDStep+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		65EA50E120B5795D008BCBFB /* Persistence.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Persistence.xcdatamodel; sourceTree = "<group>"; };
 		65EA50F720B6CFEC008BCBFB /* CoreDataController+Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataController+Stack.swift"; sourceTree = "<group>"; };
-		7B4CE71A20B4541800C34A69 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		7B91051520B6B955001005AA /* DatabaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseInterface.swift; sourceTree = "<group>"; };
 		7BB104AB20AEBF1000A203A1 /* Buongiorno.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buongiorno.swift; sourceTree = "<group>"; };
@@ -374,7 +371,6 @@
 				A0BBA9DB20B30BD8008AE848 /* WritableRoadmap.swift */,
 				7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */,
 				7B91051520B6B955001005AA /* DatabaseInterface.swift */,
-				7B4CE71A20B4541800C34A69 /* PersistenceManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -658,7 +654,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				652742BA20B701BA0027D862 /* DatabaseInterface.swift in Sources */,
-				652742BB20B701BA0027D862 /* PersistenceManager.swift in Sources */,
 				652742C020B702440027D862 /* Taggable.swift in Sources */,
 				652742BD20B702440027D862 /* Updatable.swift in Sources */,
 				65EA50FB20B6D26E008BCBFB /* CoreDataController+Stack.swift in Sources */,
@@ -734,7 +729,6 @@
 				65E038E120B8446200E6F92F /* CDStep+CoreDataProperties.swift in Sources */,
 				9002AAE720B2BDAA00854015 /* RoadmapsTableViewController.swift in Sources */,
 				A0BBA9CD20B2FD4C008AE848 /* Enumerations.swift in Sources */,
-				7B4CE71B20B4541800C34A69 /* PersistenceManager.swift in Sources */,
 				A0BBA9DA20B30A48008AE848 /* SubscribedRoadmap.swift in Sources */,
 				904C8FDC20B5818A00D0E27D /* ResourcesCustomCollectionViewCell.swift in Sources */,
 				B127492A20BB337A00C4420C /* AddResourceTableViewController.swift in Sources */,
