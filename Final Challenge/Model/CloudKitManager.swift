@@ -79,6 +79,34 @@ final class CloudKitManager {
         }
     }
     
+    func subscriptionSetup() {
+        let defaults = UserDefaults()
+        let hasLaunchedBefore = defaults.bool(forKey: "subscriptionSetupDone")
+        
+        guard !hasLaunchedBefore else { defaults.set(true, forKey: "subscriptionSetupDone"); return }
+        
+        debugPrint("first launch setup of cloudkit manager")
+        // Init the subscription
+        let privateDBSubscription = CKDatabaseSubscription(subscriptionID: "PrivateDBSubscription")
+        // Silent push notifications won't alert the user
+        let notificationInfo = CKNotificationInfo()
+        notificationInfo.shouldSendContentAvailable = true
+        privateDBSubscription.notificationInfo = notificationInfo
+        // Saving the subscription
+        privateDB.save(privateDBSubscription) { (subscription, error) in
+            if let error = error {
+                //WARNING: - Error handling here
+                debugPrint(error)
+            }
+        }
+    }
+    
+    func didReceiveRemotePush(notification: [AnyHashable : Any]) {
+        let ckNotification = CKNotification(fromRemoteNotificationDictionary: notification)
+        
+        
+    }
+    
     //MARK: - Create Record
     private func createRecord(recordID: CKRecordID, ckRecordType: String) -> CKRecord {
         let record = CKRecord(recordType: ckRecordType, recordID: recordID)
