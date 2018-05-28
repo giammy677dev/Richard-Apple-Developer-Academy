@@ -40,6 +40,8 @@
 		652A616420BBFD1C00A101B3 /* CDNode+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A615420BBFD1C00A101B3 /* CDNode+CoreDataProperties.swift */; };
 		65355ECE20B54F3C00031B6C /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65355ECD20B54F3C00031B6C /* StringExtensions.swift */; };
 		65593DC420B306C7001D6F46 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65593DC320B306C7001D6F46 /* StringExtension.swift */; };
+		655B0B0E20BC0F2E00CD73B0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B0B0D20BC0F2E00CD73B0 /* Constants.swift */; };
+		655B0B0F20BC0F2E00CD73B0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B0B0D20BC0F2E00CD73B0 /* Constants.swift */; };
 		65A0BC7D20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */; };
 		65A0BC7F20B4103600BFC766 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7E20B4103600BFC766 /* NetworkManager.swift */; };
 		65EA50E220B5795D008BCBFB /* Persistence.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E020B5795D008BCBFB /* Persistence.xcdatamodeld */; };
@@ -153,6 +155,7 @@
 		652A615420BBFD1C00A101B3 /* CDNode+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDNode+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		65355ECD20B54F3C00031B6C /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		65593DC320B306C7001D6F46 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		655B0B0D20BC0F2E00CD73B0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoilerpipeAnswerStructure.swift; sourceTree = "<group>"; };
 		65A0BC7E20B4103600BFC766 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		65EA50E120B5795D008BCBFB /* Persistence.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Persistence.xcdatamodel; sourceTree = "<group>"; };
@@ -371,6 +374,7 @@
 				A0BBA9DB20B30BD8008AE848 /* WritableRoadmap.swift */,
 				7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */,
 				7B91051520B6B955001005AA /* DatabaseInterface.swift */,
+				655B0B0D20BC0F2E00CD73B0 /* Constants.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -676,6 +680,7 @@
 				652742B520B701AD0027D862 /* Tag.swift in Sources */,
 				65EA50E320B5795D008BCBFB /* Persistence.xcdatamodeld in Sources */,
 				652742BC20B702440027D862 /* Sharable.swift in Sources */,
+				655B0B0F20BC0F2E00CD73B0 /* Constants.swift in Sources */,
 				65A0BC7F20B4103600BFC766 /* NetworkManager.swift in Sources */,
 				B1608B5A20B7115900701508 /* UIColorExtension.swift in Sources */,
 				B105530420AD7E160077983A /* ShareSelectViewController.swift in Sources */,
@@ -700,6 +705,7 @@
 				904C8FD720B57ED200D0E27D /* ResourcesCollectionTableViewCell.swift in Sources */,
 				A0BBA9C920B2F932008AE848 /* Roadmap.swift in Sources */,
 				A0BBA9D820B309C0008AE848 /* NodeManager.swift in Sources */,
+				655B0B0E20BC0F2E00CD73B0 /* Constants.swift in Sources */,
 				652A615520BBFD1C00A101B3 /* CDUsedUUID+CoreDataClass.swift in Sources */,
 				B1608B5920B7114900701508 /* UIColorExtension.swift in Sources */,
 				652A616120BBFD1C00A101B3 /* CDNode+CoreDataClass.swift in Sources */,

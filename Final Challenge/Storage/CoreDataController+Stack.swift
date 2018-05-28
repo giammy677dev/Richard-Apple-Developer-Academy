@@ -144,8 +144,6 @@ class CoreDataController {
         newNode.setValue(node.title, forKey: "title")
         newNode.setValue(node.url.absoluteString , forKey: "url")
         newNode.setValue(node.uuid, forKey: "uuid")
-        
-        
         newNode.setValue(addUUID(node.uuid), forKey: "usedID")
         
         self.saveContext()
@@ -554,7 +552,7 @@ class CoreDataController {
         let node = Node(url: URL(string: cdnode.url!)!,
                         title: cdnode.title!,
                         id: cdnode.uuid!,
-                        parent: nil,
+                        parent: cdnode.parentsStep?.uuid ?? ReadingListID,
                         tags: cdnode.tags,
                         text: cdnode.extractedText!,
                         propExtracted: cdnode.isTextProperlyExtracted,
