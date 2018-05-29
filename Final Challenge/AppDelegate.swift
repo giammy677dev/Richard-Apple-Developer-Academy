@@ -11,11 +11,41 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    //MARK: - First launch boolean
+    var hasLaunchedBefore: Bool {
+        // It returns false if it's the app's first launch otherwise it returns true.
+        let defaults = UserDefaults()
+        let hasLaunchedBeforeKey = "hasLaunchedBefore"
+        guard defaults.bool(forKey: hasLaunchedBeforeKey) else { defaults.set(true, forKey: hasLaunchedBeforeKey); return false }
+        
+        return true
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        //MARK:- Customization after application launch.
+        
+        if (!self.hasLaunchedBefore) {
+        //MARK:- Onboarding operations
+            
+        }
+        
+        CloudKitManager.shared.subscriptionSetup()
+        application.registerForRemoteNotifications()
+        
         return true
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        debugPrint("Remote notifications device token: \(deviceToken)")
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        debugPrint("Remote notifications failed to register: \(error.localizedDescription)")
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        //MARK: - A remote push notification arrives
+        CloudKitManager.shared.didReceiveRemotePush(notification: userInfo)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

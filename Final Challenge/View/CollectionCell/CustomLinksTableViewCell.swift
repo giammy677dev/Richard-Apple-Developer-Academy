@@ -12,15 +12,14 @@ class CustomLinksTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var readingTimeLabel: UILabel!
     @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet weak var footerImageView: UIImageView!
+    @IBOutlet weak var firstTagLabel: UILabel!
+    @IBOutlet weak var secondTagLabel: UILabel!
+    @IBOutlet weak var thirdTagLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-
-        self.contentView.layer.borderColor = UIColor(hex: 0xCEDFF3).cgColor
-        self.contentView.layer.borderWidth = 2
-        self.contentView.layer.cornerRadius = 15
-        self.contentView.layer.masksToBounds = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -47,6 +46,4 @@ class CustomLinksTableViewCell: UITableViewCell {
             }, completion: nil)
         }
     }
-
-
 }
