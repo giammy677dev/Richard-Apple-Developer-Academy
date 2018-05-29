@@ -13,8 +13,10 @@
 import UIKit
 
 class CollectionTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    var delegate: MyCustomCellDelegator!
     var newTargetOffset: Float = 0
     var cellWidth: Float = 240
     var footerWidth: Float = 35
@@ -59,7 +61,6 @@ class CollectionTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-
 //    @objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
 //        switch(gesture.state) {
 //
@@ -92,6 +93,12 @@ extension CollectionTableViewCell: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as? CustomCollectionViewCell
         
+        if indexPath.section == 4{
+            cell?.articlesLeft.isHidden = true
+            cell?.title.isHidden = true
+            cell?.minutesLeft.isHidden = true
+            cell?.seeAllLbl.isHidden = false
+        }
         if firstTime{
             if indexPath.section == 0{
                 cell?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
@@ -99,7 +106,15 @@ extension CollectionTableViewCell: UICollectionViewDataSource{
             firstTime = false
         }
         
+        
+        
         return cell!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 4{  //See All Cell
+            self.delegate.callSegueFromCell(identifier: "SeeAllSegue")
+        }
     }
     
 }

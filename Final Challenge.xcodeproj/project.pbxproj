@@ -68,6 +68,9 @@
 		90525FA020B6A7D1006D3093 /* Researches.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90525F9B20B6A7D1006D3093 /* Researches.storyboard */; };
 		90525FA120B6A7D1006D3093 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90525F9C20B6A7D1006D3093 /* Main.storyboard */; };
 		90525FA220B6A7D1006D3093 /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90525F9E20B6A7D1006D3093 /* Explore.storyboard */; };
+		90DFF03C20BD630400D2991F /* SeeAllTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DFF03B20BD630400D2991F /* SeeAllTableViewController.swift */; };
+		90DFF03E20BD630F00D2991F /* SeeAllTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DFF03D20BD630F00D2991F /* SeeAllTableViewCell.swift */; };
+		90DFF04020BD631800D2991F /* CustomCellDelegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DFF03F20BD631700D2991F /* CustomCellDelegator.swift */; };
 		A0BBA9C920B2F932008AE848 /* Roadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9C820B2F932008AE848 /* Roadmap.swift */; };
 		A0BBA9CB20B2FAF2008AE848 /* Sharable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9CA20B2FAF2008AE848 /* Sharable.swift */; };
 		A0BBA9CD20B2FD4C008AE848 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9CC20B2FD4C008AE848 /* Enumerations.swift */; };
@@ -83,7 +86,6 @@
 		B105530020AD7C430077983A /* GetURL.js in Resources */ = {isa = PBXBuildFile; fileRef = B10552FF20AD7C430077983A /* GetURL.js */; };
 		B105530220AD7DEB0077983A /* RoadmapSE.swift in Sources */ = {isa = PBXBuildFile; fileRef = B105530120AD7DEB0077983A /* RoadmapSE.swift */; };
 		B105530420AD7E160077983A /* ShareSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B105530320AD7E160077983A /* ShareSelectViewController.swift */; };
-		B10927AF20B83F6900113D47 /* Safari Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B10552F020AD7C230077983A /* Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B111196E20B571DF007FDFB5 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B111196D20B571DF007FDFB5 /* CloudKit.framework */; };
 		B127492820BB332100C4420C /* AddResource.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B127492720BB332100C4420C /* AddResource.storyboard */; };
 		B127492A20BB337A00C4420C /* AddResourceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127492920BB337A00C4420C /* AddResourceTableViewController.swift */; };
@@ -107,13 +109,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B10927B020B83F6900113D47 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B177C47720A9768B00CD9CBE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B10552EF20AD7C230077983A;
-			remoteInfo = "Safari Extension";
-		};
 		B177C49420A9768B00CD9CBE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B177C47720A9768B00CD9CBE /* Project object */;
@@ -129,20 +124,6 @@
 			remoteInfo = "Final Challenge";
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		B10927B220B83F6A00113D47 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				B10927AF20B83F6900113D47 /* Safari Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6527432D20B760F20027D862 /* ExploreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +161,9 @@
 		90525F9B20B6A7D1006D3093 /* Researches.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Researches.storyboard; sourceTree = "<group>"; };
 		90525F9D20B6A7D1006D3093 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		90525F9E20B6A7D1006D3093 /* Explore.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
+		90DFF03B20BD630400D2991F /* SeeAllTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeeAllTableViewController.swift; sourceTree = "<group>"; };
+		90DFF03D20BD630F00D2991F /* SeeAllTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeeAllTableViewCell.swift; sourceTree = "<group>"; };
+		90DFF03F20BD631700D2991F /* CustomCellDelegator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCellDelegator.swift; sourceTree = "<group>"; };
 		A0BBA9C820B2F932008AE848 /* Roadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roadmap.swift; sourceTree = "<group>"; };
 		A0BBA9CA20B2FAF2008AE848 /* Sharable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sharable.swift; sourceTree = "<group>"; };
 		A0BBA9CC20B2FD4C008AE848 /* Enumerations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
@@ -313,6 +297,7 @@
 		9002AAFA20B40C2500854015 /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				90DFF03D20BD630F00D2991F /* SeeAllTableViewCell.swift */,
 				9002AAFB20B40C4400854015 /* CustomCollectionViewCell.swift */,
 				9002AAFC20B40C4400854015 /* CustomCollectionViewCell.xib */,
 				904C8FDA20B5818A00D0E27D /* ResourcesCustomCollectionViewCell.swift */,
@@ -343,6 +328,7 @@
 		A0BBA9D420B30852008AE848 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				90DFF03F20BD631700D2991F /* CustomCellDelegator.swift */,
 				A0BBA9CA20B2FAF2008AE848 /* Sharable.swift */,
 				A0BBA9D220B30845008AE848 /* Updatable.swift */,
 				A0BBA9D520B30967008AE848 /* Writable.swift */,
@@ -385,6 +371,7 @@
 		B10552E720AD6F810077983A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				90DFF03B20BD630400D2991F /* SeeAllTableViewController.swift */,
 				9002AAE620B2BDAA00854015 /* RoadmapsTableViewController.swift */,
 				904C8FD420B57D2D00D0E27D /* ResourcesTableViewController.swift */,
 				B1608B5220B6B8A300701508 /* LinksTableViewController.swift */,
@@ -505,12 +492,10 @@
 				B177C47B20A9768B00CD9CBE /* Sources */,
 				B177C47C20A9768B00CD9CBE /* Frameworks */,
 				B177C47D20A9768B00CD9CBE /* Resources */,
-				B10927B220B83F6A00113D47 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B10927B120B83F6900113D47 /* PBXTargetDependency */,
 			);
 			name = "Final Challenge";
 			productName = "Final Challenge";
@@ -710,6 +695,8 @@
 				A0BBA9DC20B30BD8008AE848 /* WritableRoadmap.swift in Sources */,
 				904C8FD720B57ED200D0E27D /* ResourcesCollectionTableViewCell.swift in Sources */,
 				A0BBA9C920B2F932008AE848 /* Roadmap.swift in Sources */,
+				90DFF03E20BD630F00D2991F /* SeeAllTableViewCell.swift in Sources */,
+				90DFF03C20BD630400D2991F /* SeeAllTableViewController.swift in Sources */,
 				A0BBA9D820B309C0008AE848 /* NodeManager.swift in Sources */,
 				655B0B0E20BC0F2E00CD73B0 /* Constants.swift in Sources */,
 				652A615520BBFD1C00A101B3 /* CDUsedUUID+CoreDataClass.swift in Sources */,
@@ -747,6 +734,7 @@
 				B1608B5320B6B8A300701508 /* LinksTableViewController.swift in Sources */,
 				B1608B5620B6C58A00701508 /* CustomLinksTableViewCell.swift in Sources */,
 				652A615D20BBFD1C00A101B3 /* CDRoadmap+CoreDataClass.swift in Sources */,
+				90DFF04020BD631800D2991F /* CustomCellDelegator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -769,11 +757,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B10927B120B83F6900113D47 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B10552EF20AD7C230077983A /* Safari Extension */;
-			targetProxy = B10927B020B83F6900113D47 /* PBXContainerItemProxy */;
-		};
 		B177C49520A9768B00CD9CBE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B177C47E20A9768B00CD9CBE /* Final Challenge */;
@@ -818,14 +801,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8Z9T4225J;
+				DEVELOPMENT_TEAM = EU98U8KRA2;
 				INFOPLIST_FILE = "Safari Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bel-e-buono.final-challenge.safari-extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gere.bel-e-buono.final-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -837,14 +820,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8Z9T4225J;
+				DEVELOPMENT_TEAM = EU98U8KRA2;
 				INFOPLIST_FILE = "Safari Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bel-e-buono.final-challenge.safari-extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gere.bel-e-buono.final-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -969,17 +952,16 @@
 		B177C4A820A9768B00CD9CBE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8Z9T4225J;
+				DEVELOPMENT_TEAM = EU98U8KRA2;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bel-e-buono.final-challenge";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gere.bel-e-buono.final-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -989,17 +971,16 @@
 		B177C4A920A9768B00CD9CBE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8Z9T4225J;
+				DEVELOPMENT_TEAM = EU98U8KRA2;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bel-e-buono.final-challenge";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gere.bel-e-buono.final-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

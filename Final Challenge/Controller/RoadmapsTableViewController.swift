@@ -34,6 +34,8 @@ class RoadmapsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let collectionCell = tableView.dequeueReusableCell(withIdentifier: "collectionViewCell", for: indexPath) as! CollectionTableViewCell
+        
+        collectionCell.delegate = self
     
 
         return collectionCell
@@ -58,3 +60,12 @@ class RoadmapsTableViewController: UITableViewController {
     }
     
 }
+
+extension RoadmapsTableViewController: MyCustomCellDelegator{
+    func callSegueFromCell(identifier: String) {
+        print("Ciao")
+        self.performSegue(withIdentifier: identifier, sender: self)
+    }
+}
+
+

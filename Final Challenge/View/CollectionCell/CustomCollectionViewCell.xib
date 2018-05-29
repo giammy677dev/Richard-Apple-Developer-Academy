@@ -44,6 +44,13 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="See All" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qjy-wh-47m">
+                        <rect key="frame" x="90" y="66" width="60" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="22"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -52,6 +59,7 @@
                 <outlet property="articlesLeft" destination="Rmq-wp-PMt" id="mJc-LF-mag"/>
                 <outlet property="imageView" destination="ehq-ah-jpQ" id="gHP-E4-pJk"/>
                 <outlet property="minutesLeft" destination="Zl3-ud-DlY" id="sai-R7-Bp1"/>
+                <outlet property="seeAllLbl" destination="Qjy-wh-47m" id="DDz-py-rmG"/>
                 <outlet property="title" destination="SW2-oT-NcQ" id="gda-lx-yfu"/>
             </connections>
             <point key="canvasLocation" x="103" y="137.5"/>
