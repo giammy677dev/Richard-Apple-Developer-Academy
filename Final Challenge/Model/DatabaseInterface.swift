@@ -130,6 +130,16 @@ class DatabaseInterface {
         cdController.deleteNode(node) //Delete node from CoreData DB
         ckManager.deleteNode(CKRecordID(recordName: node.uuid.uuidString)) //Delete roadmap from CloudKit DB
     }
+    
+    //MAKE: - Load data from Database
+    
+    func loadRoadmaps() -> [Roadmap]? {
+        return cdController.getFullRoadmapRecords()
+    }
+    
+    func loadNodes() -> [Node]? {
+        return cdController.getEveryNodeRecord()
+    }
   
     
     private func roadmapToRecord(record: CKRecord?, roadmap: Roadmap) -> CKRecord {
