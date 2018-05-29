@@ -8,13 +8,13 @@
 import UIKit
 
 class RoadmapsTableViewController: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //General settings
         self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
-        
+    
 //        let customCell = UINib(nibName: "collectionViewCell", bundle: nil)
 //        self.tableView.register(customCell, forCellReuseIdentifier: "collectionViewCell")
         
@@ -46,11 +46,11 @@ class RoadmapsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140  //global Constant
+        return 225  //global Constant
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40   //global Constant
+        return 71   //global Constant
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

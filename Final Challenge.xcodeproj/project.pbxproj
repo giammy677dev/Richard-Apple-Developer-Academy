@@ -106,6 +106,10 @@
 		B177C49820A9768B00CD9CBE /* Final_ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B177C49720A9768B00CD9CBE /* Final_ChallengeTests.swift */; };
 		B177C4A320A9768B00CD9CBE /* Final_ChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B177C4A220A9768B00CD9CBE /* Final_ChallengeUITests.swift */; };
 		B18B9A8520BC12B8004FA469 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B9A8420BC12B8004FA469 /* UITextFieldExtension.swift */; };
+		B18BF50E20BD450700D9BCF9 /* StepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18BF50C20BD450700D9BCF9 /* StepTableViewCell.swift */; };
+		B18BF50F20BD450700D9BCF9 /* StepTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B18BF50D20BD450700D9BCF9 /* StepTableViewCell.xib */; };
+		B18BF51320BD492300D9BCF9 /* StepTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18BF51220BD492300D9BCF9 /* StepTableViewController.swift */; };
+		B18BF51520BD4DBB00D9BCF9 /* CurrentDataSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18BF51420BD4DBB00D9BCF9 /* CurrentDataSingleton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,6 +230,10 @@
 		B177C4A220A9768B00CD9CBE /* Final_ChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Final_ChallengeUITests.swift; sourceTree = "<group>"; };
 		B177C4A420A9768B00CD9CBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B18B9A8420BC12B8004FA469 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		B18BF50C20BD450700D9BCF9 /* StepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTableViewCell.swift; sourceTree = "<group>"; };
+		B18BF50D20BD450700D9BCF9 /* StepTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepTableViewCell.xib; sourceTree = "<group>"; };
+		B18BF51220BD492300D9BCF9 /* StepTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTableViewController.swift; sourceTree = "<group>"; };
+		B18BF51420BD4DBB00D9BCF9 /* CurrentDataSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDataSingleton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,6 +335,8 @@
 				B127492C20BB33BA00C4420C /* AddResourceTableViewCell.xib */,
 				B127492F20BB417F00C4420C /* AddTagsTableViewCell.swift */,
 				B127493020BB417F00C4420C /* AddTagsTableViewCell.xib */,
+				B18BF50C20BD450700D9BCF9 /* StepTableViewCell.swift */,
+				B18BF50D20BD450700D9BCF9 /* StepTableViewCell.xib */,
 			);
 			path = CollectionCell;
 			sourceTree = "<group>";
@@ -382,6 +392,7 @@
 				7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */,
 				7B91051520B6B955001005AA /* DatabaseInterface.swift */,
 				655B0B0D20BC0F2E00CD73B0 /* Constants.swift */,
+				B18BF51420BD4DBB00D9BCF9 /* CurrentDataSingleton.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -394,6 +405,7 @@
 				B1608B5220B6B8A300701508 /* LinksTableViewController.swift */,
 				6527432D20B760F20027D862 /* ExploreViewController.swift */,
 				B127492920BB337A00C4420C /* AddResourceTableViewController.swift */,
+				B18BF51220BD492300D9BCF9 /* StepTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -573,6 +585,9 @@
 					B177C47E20A9768B00CD9CBE = {
 						CreatedOnToolsVersion = 9.3.1;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -627,6 +642,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9002AAFE20B40C4400854015 /* CustomCollectionViewCell.xib in Resources */,
+				B18BF50F20BD450700D9BCF9 /* StepTableViewCell.xib in Resources */,
 				B1608B5720B6C58A00701508 /* CustomLinksTableViewCell.xib in Resources */,
 				904C8FDD20B5818A00D0E27D /* ResourcesCustomCollectionViewCell.xib in Resources */,
 				B127492E20BB33BA00C4420C /* AddResourceTableViewCell.xib in Resources */,
@@ -712,6 +728,8 @@
 				A0BBA9DC20B30BD8008AE848 /* WritableRoadmap.swift in Sources */,
 				904C8FD720B57ED200D0E27D /* ResourcesCollectionTableViewCell.swift in Sources */,
 				A0BBA9C920B2F932008AE848 /* Roadmap.swift in Sources */,
+				B18BF51520BD4DBB00D9BCF9 /* CurrentDataSingleton.swift in Sources */,
+				B18BF51320BD492300D9BCF9 /* StepTableViewController.swift in Sources */,
 				A0BBA9D820B309C0008AE848 /* NodeManager.swift in Sources */,
 				655B0B0E20BC0F2E00CD73B0 /* Constants.swift in Sources */,
 				652A615520BBFD1C00A101B3 /* CDUsedUUID+CoreDataClass.swift in Sources */,
@@ -739,6 +757,7 @@
 				652A615F20BBFD1C00A101B3 /* CDRoadmap+CoreDataProperties.swift in Sources */,
 				904C8FD520B57D2D00D0E27D /* ResourcesTableViewController.swift in Sources */,
 				65EA50F820B6CFEC008BCBFB /* CoreDataController+Stack.swift in Sources */,
+				B18BF50E20BD450700D9BCF9 /* StepTableViewCell.swift in Sources */,
 				B177C48320A9768B00CD9CBE /* AppDelegate.swift in Sources */,
 				9002AAF220B2BFC000854015 /* HeaderTableViewCell.swift in Sources */,
 				652A615720BBFD1C00A101B3 /* CDUsedUUID+CoreDataProperties.swift in Sources */,
@@ -975,6 +994,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S8Z9T4225J;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
@@ -984,6 +1004,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bel-e-buono.final-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -995,6 +1016,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S8Z9T4225J;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
@@ -1004,6 +1026,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bel-e-buono.final-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
