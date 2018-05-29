@@ -234,6 +234,16 @@ class DatabaseInterface {
         
         return newRecord
     }
+
+    func createUniqueUUID() -> UUID {
+        var id: UUID
+
+        repeat {
+            id = UUID()
+        } while (cdController.isUUIDInUse(id))
+
+        return id
+    }
     
     private enum CKRecordTypes: String {
         case node = "Node"

@@ -35,7 +35,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Resource" id="ql5-Gl-Oho">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="UPJ-t9-xFk"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="UPJ-t9-xFk">
+                            <connections>
+                                <action selector="saveResource:" destination="FO0-zL-DMH" id="3pX-vl-nfU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>

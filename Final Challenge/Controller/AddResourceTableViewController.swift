@@ -54,4 +54,20 @@ class AddResourceTableViewController: UITableViewController {
             return 346
         }
     }
+
+    @IBAction func saveResource(_ sender: UIBarButtonItem) {
+        let resourceCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! AddResourceTableViewCell
+        let tagsCell: AddTagsTableViewCell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! AddTagsTableViewCell
+
+        let node = Node(url: URL(string: resourceCell.URLTextField.text!)!,
+            title: resourceCell.titleTextField.text!,
+            id: DatabaseInterface.shared.createUniqueUUID(),
+            parent: nil,
+            tags: tagsCell.tagTextField.text,
+            text: "",
+            propExtracted: false)
+
+        DatabaseInterface.shared.save(node)
+    }
+
 }
