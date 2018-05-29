@@ -48,6 +48,7 @@
                             <outlet property="delegate" destination="eKY-Sd-23g" id="5NJ-gy-GN5"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="" image="links_reduced" id="dmf-BM-eee"/>
                     <navigationItem key="navigationItem" title="Links" id="Tgw-9x-pPW">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="6nj-fK-t43">
                             <connections>
@@ -55,6 +56,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r40-dg-wue" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -69,4 +71,7 @@
             <point key="canvasLocation" x="439" y="141"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="links_reduced" width="44" height="44"/>
+    </resources>
 </document>

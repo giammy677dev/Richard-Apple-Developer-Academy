@@ -65,7 +65,9 @@
                             <outlet property="delegate" destination="A5t-vQ-6Ev" id="BeO-tx-8Ci"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="" image="roadmaps_reduced" id="wV7-fr-N5m"/>
                     <navigationItem key="navigationItem" title="Roadmaps" id="ymP-69-lpT"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="Z3s-4f-xqI" kind="show" identifier="SeeAllSegue" id="LWv-p6-Br8"/>
                     </connections>
@@ -205,4 +207,7 @@
             <point key="canvasLocation" x="1801" y="197"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="roadmaps_reduced" width="44" height="44"/>
+    </resources>
 </document>

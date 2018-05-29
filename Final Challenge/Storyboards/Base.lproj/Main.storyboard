@@ -9,16 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Explore-->
-        <scene sceneID="lAK-wf-th7">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Explore" id="oit-FT-YcZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Explore" id="B5W-fP-z05"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dTZ-Qo-7vR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-181" y="605"/>
-        </scene>
         <!--Links-->
         <scene sceneID="EIk-gd-VgL">
             <objects>
@@ -52,7 +42,6 @@
                         <color key="selectedImageTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="oit-FT-YcZ" kind="relationship" relationship="viewControllers" id="bF5-We-RYr"/>
                         <segue destination="fG2-Fc-EnQ" kind="relationship" relationship="viewControllers" id="DyX-BW-SKI"/>
                         <segue destination="lNh-kH-B46" kind="relationship" relationship="viewControllers" id="49o-t9-igr"/>
                     </connections>
