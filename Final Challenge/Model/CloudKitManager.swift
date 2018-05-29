@@ -116,12 +116,20 @@ final class CloudKitManager {
         })
         
         let saveSubscriptionOperation = CKModifySubscriptionsOperation(subscriptionsToSave: subscriptionsArray, subscriptionIDsToDelete: nil)
-        //TODO: Add a specific QoS and Queue priority
+        saveSubscriptionOperation.modifySubscriptionsCompletionBlock = { (_, _, error) in
+            guard error == nil else {
+                return
+            }
+            // Subscription done. Set the defaults key to true
+            defaults.set(true, forKey: "subscriptionSetupDone")
+        }
+        // Add a specific QoS and Queue priority
+        saveSubscriptionOperation.qualityOfService = .utility
         
         // Saving the subscription
         privateDB.add(saveSubscriptionOperation)
         
-        defaults.set(true, forKey: "subscriptionSetupDone")
+        
     }
     
     func didReceiveRemotePush(notification: [AnyHashable : Any]) {
