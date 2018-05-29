@@ -44,6 +44,8 @@
 		655B0B0F20BC0F2E00CD73B0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B0B0D20BC0F2E00CD73B0 /* Constants.swift */; };
 		65A0BC7D20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */; };
 		65A0BC7F20B4103600BFC766 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7E20B4103600BFC766 /* NetworkManager.swift */; };
+		65B108C220BD5994007026FC /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B108C120BD5994007026FC /* File.swift */; };
+		65B108C320BD5994007026FC /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B108C120BD5994007026FC /* File.swift */; };
 		65EA50E220B5795D008BCBFB /* Persistence.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E020B5795D008BCBFB /* Persistence.xcdatamodeld */; };
 		65EA50E320B5795D008BCBFB /* Persistence.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E020B5795D008BCBFB /* Persistence.xcdatamodeld */; };
 		65EA50F820B6CFEC008BCBFB /* CoreDataController+Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50F720B6CFEC008BCBFB /* CoreDataController+Stack.swift */; };
@@ -159,6 +161,7 @@
 		655B0B0D20BC0F2E00CD73B0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoilerpipeAnswerStructure.swift; sourceTree = "<group>"; };
 		65A0BC7E20B4103600BFC766 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		65B108C120BD5994007026FC /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		65EA50E120B5795D008BCBFB /* Persistence.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Persistence.xcdatamodel; sourceTree = "<group>"; };
 		65EA50F720B6CFEC008BCBFB /* CoreDataController+Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataController+Stack.swift"; sourceTree = "<group>"; };
 		7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
@@ -272,6 +275,7 @@
 				65593DC320B306C7001D6F46 /* StringExtension.swift */,
 				B1608B5820B7114900701508 /* UIColorExtension.swift */,
 				B18B9A8420BC12B8004FA469 /* UITextFieldExtension.swift */,
+				65B108C120BD5994007026FC /* File.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -671,6 +675,7 @@
 				652742B420B701AD0027D862 /* Node.swift in Sources */,
 				652A616420BBFD1C00A101B3 /* CDNode+CoreDataProperties.swift in Sources */,
 				652A615820BBFD1C00A101B3 /* CDUsedUUID+CoreDataProperties.swift in Sources */,
+				65B108C320BD5994007026FC /* File.swift in Sources */,
 				652742BF20B702440027D862 /* NodeManager.swift in Sources */,
 				652742B320B701AD0027D862 /* Enumerations.swift in Sources */,
 				65EA50FA20B6D1F6008BCBFB /* AppDelegate.swift in Sources */,
@@ -725,6 +730,7 @@
 				A0BBA9D320B30845008AE848 /* Updatable.swift in Sources */,
 				A0BBA9CF20B30419008AE848 /* Node.swift in Sources */,
 				7B5BCB5F20B57E5900B66CEE /* CloudKitManager.swift in Sources */,
+				65B108C220BD5994007026FC /* File.swift in Sources */,
 				7BB104AC20AEBF1000A203A1 /* Buongiorno.swift in Sources */,
 				B127492D20BB33BA00C4420C /* AddResourceTableViewCell.swift in Sources */,
 				B18B9A8520BC12B8004FA469 /* UITextFieldExtension.swift in Sources */,
