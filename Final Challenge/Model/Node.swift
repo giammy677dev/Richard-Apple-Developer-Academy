@@ -27,7 +27,7 @@ class Node: Taggable {
     init(url: URL, title: String, id: UUID, parent: UUID?, tags: String?, text: String, propExtracted: Bool, creationTime: Date = Date(), propRead: Bool = false, propFlagged: Bool = false) {
         self.url = url
         self.title = title
-        self.parent = parent ?? ReadingListID
+        self.parent = parent ?? K.readingListID
         self.extractedText = text
         self.isTextProperlyExtracted = propExtracted
         self.creationTimestamp = creationTime
@@ -44,7 +44,7 @@ class Node: Taggable {
     init(url: URL, title: String, id: UUID, parent: UUID?, tags: Set<String>?, text: String, propExtracted: Bool, creationTime: Date = Date(), propRead: Bool = false, propFlagged: Bool = false) {
         self.url = url
         self.title = title
-        self.parent = parent ?? ReadingListID
+        self.parent = parent ?? K.readingListID
         self.extractedText = text
         self.isTextProperlyExtracted = propExtracted
         self.creationTimestamp = creationTime

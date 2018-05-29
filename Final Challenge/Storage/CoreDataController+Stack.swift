@@ -549,7 +549,7 @@ class CoreDataController {
         let node = Node(url: URL(string: cdnode.url!)!,
                         title: cdnode.title!,
                         id: cdnode.uuid!,
-                        parent: cdnode.parentsStep?.uuid ?? ReadingListID,
+                        parent: cdnode.parentsStep?.uuid ?? K.readingListID,
                         tags: cdnode.tags,
                         text: cdnode.extractedText!,
                         propExtracted: cdnode.isTextProperlyExtracted,
