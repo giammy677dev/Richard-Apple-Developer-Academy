@@ -110,6 +110,7 @@ final class CloudKitManager {
         notificationInfo.shouldSendContentAvailable = true
 
         subscriptionsArray = subscriptionsArray.map({
+            debugPrint($0.debugDescription)
             $0.notificationInfo = notificationInfo
             return $0
         })
