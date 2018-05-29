@@ -137,12 +137,41 @@ final class CloudKitManager {
     func didReceiveRemotePush(notification: [AnyHashable : Any]) {
         let ckNotification = CKNotification(fromRemoteNotificationDictionary: notification)
         
-        
+        handleNotification(ckNotification)
     }
     
-    func handleNotification(_ notification: CKNotification) {
-        // Handle receipt of an incoming push notification that something has changed
+    private func handleNotification(_ notification: CKNotification) {
+        // Use the CKServerChangeToken to fetch only whatever changes have occurred since the last
+        // time we asked, since intermediate push notifications might have been dropped.
+        var changeToken: CKServerChangeToken?
+        let changeTokenData = UserDefaults().data(forKey: K.DefaultsKey.ckServerChangeToken)
+        if let changeTokenData = changeTokenData {
+            changeToken = NSKeyedUnarchiver.unarchiveObject(with: changeTokenData) as! CKServerChangeToken?
+        }
+        // Init the fetching operation
+        let fetchOperation = CKFetchDatabaseChangesOperation(previousServerChangeToken: changeToken)
+        fetchOperation.fetchAllChanges = true
+        // Setting the blocks to process the operation results
+        fetchOperation.changeTokenUpdatedBlock = { (serverToken) in
+            let changeTokenData = NSKeyedArchiver.archivedData(withRootObject: serverToken)
+            UserDefaults().set(changeTokenData, forKey: K.DefaultsKey.ckServerChangeToken)
+        }
         
+        fetchOperation.recordZoneWithIDChangedBlock = { (recordZoneID) in
+            // The block that processes a single record zone change.
+            
+        }
+        
+        fetchOperation.recordZoneWithIDWasDeletedBlock = { (recordZoneID) in
+            // The block that processes a single record zone deletion.
+        }
+        
+        fetchOperation.recordZoneWithIDWasPurgedBlock = { (recordZoneID) in
+            // The block that processes a single record zone purge.
+        }
+        
+        fetchOperation.qualityOfService = .utility
+        privateDB.add(fetchOperation)
     }
     
     
