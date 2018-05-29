@@ -73,7 +73,7 @@ class CoreDataController {
     //  MARK: Init
     
     ///Sets up the context for R/W interaction.
-    init() {
+    private init() {
         self.context = CoreDataStack.persistentContainer.viewContext
     }
     
