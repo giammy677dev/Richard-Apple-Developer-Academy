@@ -186,8 +186,8 @@ class CoreDataController {
         var roadmap: CDRoadmap?
         
         do {
-            roadmap = try context.fetch(fetchRequest)[0]
-            return roadmap!
+            roadmap = try context.fetch(fetchRequest).safeCall(0)
+            return roadmap
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
             return nil
@@ -202,8 +202,8 @@ class CoreDataController {
         var step: CDStep?
         
         do {
-            step = try context.fetch(fetchRequest)[0]
-            return step!
+            step = try context.fetch(fetchRequest).safeCall(0)
+            return step
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
             return nil
@@ -219,8 +219,8 @@ class CoreDataController {
         var node: CDNode?
         
         do {
-            node = try context.fetch(fetchRequest)[0]
-            return node!
+            node = try context.fetch(fetchRequest).safeCall(0)
+            return node
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
             return nil
@@ -311,18 +311,15 @@ class CoreDataController {
         let predicate = NSPredicate(format: "uuid = %@", uuid as CVarArg)
         fetchRequest.predicate = predicate
         fetchRequest.returnsObjectsAsFaults = false
-        var id: [CDUsedUUID]?
+        var id: CDUsedUUID?
         
         do {
-            id = try context.fetch(fetchRequest)
-            if (id?.count != 0){
-                return id![0]
-            }
+            id = try context.fetch(fetchRequest).safeCall(0)
+                return id
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
             return nil
         }
-        return nil
     }
     
     ///Tells if a generated UUID is already in use.

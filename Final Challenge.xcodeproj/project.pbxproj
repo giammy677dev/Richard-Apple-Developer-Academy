@@ -44,6 +44,8 @@
 		655B0B0F20BC0F2E00CD73B0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B0B0D20BC0F2E00CD73B0 /* Constants.swift */; };
 		65A0BC7D20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */; };
 		65A0BC7F20B4103600BFC766 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7E20B4103600BFC766 /* NetworkManager.swift */; };
+		65B108C220BD5994007026FC /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B108C120BD5994007026FC /* File.swift */; };
+		65B108C320BD5994007026FC /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B108C120BD5994007026FC /* File.swift */; };
 		65EA50E220B5795D008BCBFB /* Persistence.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E020B5795D008BCBFB /* Persistence.xcdatamodeld */; };
 		65EA50E320B5795D008BCBFB /* Persistence.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E020B5795D008BCBFB /* Persistence.xcdatamodeld */; };
 		65EA50F820B6CFEC008BCBFB /* CoreDataController+Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50F720B6CFEC008BCBFB /* CoreDataController+Stack.swift */; };
@@ -106,6 +108,14 @@
 		B177C49820A9768B00CD9CBE /* Final_ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B177C49720A9768B00CD9CBE /* Final_ChallengeTests.swift */; };
 		B177C4A320A9768B00CD9CBE /* Final_ChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B177C4A220A9768B00CD9CBE /* Final_ChallengeUITests.swift */; };
 		B18B9A8520BC12B8004FA469 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B9A8420BC12B8004FA469 /* UITextFieldExtension.swift */; };
+		B18BF50E20BD450700D9BCF9 /* StepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18BF50C20BD450700D9BCF9 /* StepTableViewCell.swift */; };
+		B18BF50F20BD450700D9BCF9 /* StepTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B18BF50D20BD450700D9BCF9 /* StepTableViewCell.xib */; };
+		B18BF51320BD492300D9BCF9 /* StepTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18BF51220BD492300D9BCF9 /* StepTableViewController.swift */; };
+		B18BF51520BD4DBB00D9BCF9 /* CurrentDataSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18BF51420BD4DBB00D9BCF9 /* CurrentDataSingleton.swift */; };
+		B18BF51820BD5F9100D9BCF9 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18BF51620BD5F9100D9BCF9 /* TitleTableViewCell.swift */; };
+		B18BF51920BD5F9100D9BCF9 /* TitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B18BF51720BD5F9100D9BCF9 /* TitleTableViewCell.xib */; };
+		B18BF51B20BD61AE00D9BCF9 /* CreateRoadmapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18BF51A20BD61AE00D9BCF9 /* CreateRoadmapTableViewController.swift */; };
+		B18BF51D20BD61C900D9BCF9 /* CreateRoadmap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18BF51C20BD61C900D9BCF9 /* CreateRoadmap.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +150,7 @@
 		655B0B0D20BC0F2E00CD73B0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoilerpipeAnswerStructure.swift; sourceTree = "<group>"; };
 		65A0BC7E20B4103600BFC766 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		65B108C120BD5994007026FC /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		65EA50E120B5795D008BCBFB /* Persistence.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Persistence.xcdatamodel; sourceTree = "<group>"; };
 		65EA50F720B6CFEC008BCBFB /* CoreDataController+Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataController+Stack.swift"; sourceTree = "<group>"; };
 		7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
@@ -207,6 +218,14 @@
 		B177C4A220A9768B00CD9CBE /* Final_ChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Final_ChallengeUITests.swift; sourceTree = "<group>"; };
 		B177C4A420A9768B00CD9CBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B18B9A8420BC12B8004FA469 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		B18BF50C20BD450700D9BCF9 /* StepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTableViewCell.swift; sourceTree = "<group>"; };
+		B18BF50D20BD450700D9BCF9 /* StepTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepTableViewCell.xib; sourceTree = "<group>"; };
+		B18BF51220BD492300D9BCF9 /* StepTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTableViewController.swift; sourceTree = "<group>"; };
+		B18BF51420BD4DBB00D9BCF9 /* CurrentDataSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDataSingleton.swift; sourceTree = "<group>"; };
+		B18BF51620BD5F9100D9BCF9 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
+		B18BF51720BD5F9100D9BCF9 /* TitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleTableViewCell.xib; sourceTree = "<group>"; };
+		B18BF51A20BD61AE00D9BCF9 /* CreateRoadmapTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoadmapTableViewController.swift; sourceTree = "<group>"; };
+		B18BF51C20BD61C900D9BCF9 /* CreateRoadmap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateRoadmap.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +275,7 @@
 				65593DC320B306C7001D6F46 /* StringExtension.swift */,
 				B1608B5820B7114900701508 /* UIColorExtension.swift */,
 				B18B9A8420BC12B8004FA469 /* UITextFieldExtension.swift */,
+				65B108C120BD5994007026FC /* File.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -308,6 +328,10 @@
 				B127492C20BB33BA00C4420C /* AddResourceTableViewCell.xib */,
 				B127492F20BB417F00C4420C /* AddTagsTableViewCell.swift */,
 				B127493020BB417F00C4420C /* AddTagsTableViewCell.xib */,
+				B18BF50C20BD450700D9BCF9 /* StepTableViewCell.swift */,
+				B18BF50D20BD450700D9BCF9 /* StepTableViewCell.xib */,
+				B18BF51620BD5F9100D9BCF9 /* TitleTableViewCell.swift */,
+				B18BF51720BD5F9100D9BCF9 /* TitleTableViewCell.xib */,
 			);
 			path = CollectionCell;
 			sourceTree = "<group>";
@@ -321,6 +345,7 @@
 				90525F9E20B6A7D1006D3093 /* Explore.storyboard */,
 				B1608B4E20B6B69C00701508 /* Links.storyboard */,
 				B127492720BB332100C4420C /* AddResource.storyboard */,
+				B18BF51C20BD61C900D9BCF9 /* CreateRoadmap.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -364,6 +389,7 @@
 				7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */,
 				7B91051520B6B955001005AA /* DatabaseInterface.swift */,
 				655B0B0D20BC0F2E00CD73B0 /* Constants.swift */,
+				B18BF51420BD4DBB00D9BCF9 /* CurrentDataSingleton.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -377,6 +403,8 @@
 				B1608B5220B6B8A300701508 /* LinksTableViewController.swift */,
 				6527432D20B760F20027D862 /* ExploreViewController.swift */,
 				B127492920BB337A00C4420C /* AddResourceTableViewController.swift */,
+				B18BF51220BD492300D9BCF9 /* StepTableViewController.swift */,
+				B18BF51A20BD61AE00D9BCF9 /* CreateRoadmapTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -611,6 +639,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9002AAFE20B40C4400854015 /* CustomCollectionViewCell.xib in Resources */,
+				B18BF50F20BD450700D9BCF9 /* StepTableViewCell.xib in Resources */,
 				B1608B5720B6C58A00701508 /* CustomLinksTableViewCell.xib in Resources */,
 				904C8FDD20B5818A00D0E27D /* ResourcesCustomCollectionViewCell.xib in Resources */,
 				B127492E20BB33BA00C4420C /* AddResourceTableViewCell.xib in Resources */,
@@ -618,9 +647,11 @@
 				90525FA220B6A7D1006D3093 /* Explore.storyboard in Resources */,
 				90525FA120B6A7D1006D3093 /* Main.storyboard in Resources */,
 				B127492820BB332100C4420C /* AddResource.storyboard in Resources */,
+				B18BF51D20BD61C900D9BCF9 /* CreateRoadmap.storyboard in Resources */,
 				B177C48A20A9768B00CD9CBE /* Assets.xcassets in Resources */,
 				90525FA020B6A7D1006D3093 /* Researches.storyboard in Resources */,
 				B127493220BB417F00C4420C /* AddTagsTableViewCell.xib in Resources */,
+				B18BF51920BD5F9100D9BCF9 /* TitleTableViewCell.xib in Resources */,
 				90525F9F20B6A7D1006D3093 /* Roadmaps.storyboard in Resources */,
 				9002AAF320B2BFC000854015 /* HeaderTableViewCell.xib in Resources */,
 				B1608B4F20B6B69C00701508 /* Links.storyboard in Resources */,
@@ -659,6 +690,7 @@
 				652742B420B701AD0027D862 /* Node.swift in Sources */,
 				652A616420BBFD1C00A101B3 /* CDNode+CoreDataProperties.swift in Sources */,
 				652A615820BBFD1C00A101B3 /* CDUsedUUID+CoreDataProperties.swift in Sources */,
+				65B108C320BD5994007026FC /* File.swift in Sources */,
 				652742BF20B702440027D862 /* NodeManager.swift in Sources */,
 				652742B320B701AD0027D862 /* Enumerations.swift in Sources */,
 				65EA50FA20B6D1F6008BCBFB /* AppDelegate.swift in Sources */,
@@ -697,6 +729,9 @@
 				A0BBA9C920B2F932008AE848 /* Roadmap.swift in Sources */,
 				90DFF03E20BD630F00D2991F /* SeeAllTableViewCell.swift in Sources */,
 				90DFF03C20BD630400D2991F /* SeeAllTableViewController.swift in Sources */,
+				B18BF51820BD5F9100D9BCF9 /* TitleTableViewCell.swift in Sources */,
+				B18BF51520BD4DBB00D9BCF9 /* CurrentDataSingleton.swift in Sources */,
+				B18BF51320BD492300D9BCF9 /* StepTableViewController.swift in Sources */,
 				A0BBA9D820B309C0008AE848 /* NodeManager.swift in Sources */,
 				655B0B0E20BC0F2E00CD73B0 /* Constants.swift in Sources */,
 				652A615520BBFD1C00A101B3 /* CDUsedUUID+CoreDataClass.swift in Sources */,
@@ -715,6 +750,7 @@
 				A0BBA9D320B30845008AE848 /* Updatable.swift in Sources */,
 				A0BBA9CF20B30419008AE848 /* Node.swift in Sources */,
 				7B5BCB5F20B57E5900B66CEE /* CloudKitManager.swift in Sources */,
+				65B108C220BD5994007026FC /* File.swift in Sources */,
 				7BB104AC20AEBF1000A203A1 /* Buongiorno.swift in Sources */,
 				B127492D20BB33BA00C4420C /* AddResourceTableViewCell.swift in Sources */,
 				B18B9A8520BC12B8004FA469 /* UITextFieldExtension.swift in Sources */,
@@ -723,8 +759,10 @@
 				652A615F20BBFD1C00A101B3 /* CDRoadmap+CoreDataProperties.swift in Sources */,
 				904C8FD520B57D2D00D0E27D /* ResourcesTableViewController.swift in Sources */,
 				65EA50F820B6CFEC008BCBFB /* CoreDataController+Stack.swift in Sources */,
+				B18BF50E20BD450700D9BCF9 /* StepTableViewCell.swift in Sources */,
 				B177C48320A9768B00CD9CBE /* AppDelegate.swift in Sources */,
 				9002AAF220B2BFC000854015 /* HeaderTableViewCell.swift in Sources */,
+				B18BF51B20BD61AE00D9BCF9 /* CreateRoadmapTableViewController.swift in Sources */,
 				652A615720BBFD1C00A101B3 /* CDUsedUUID+CoreDataProperties.swift in Sources */,
 				9002AAE720B2BDAA00854015 /* RoadmapsTableViewController.swift in Sources */,
 				A0BBA9CD20B2FD4C008AE848 /* Enumerations.swift in Sources */,
@@ -954,6 +992,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EU98U8KRA2;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
@@ -963,6 +1002,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gere.bel-e-buono.final-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -973,6 +1013,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EU98U8KRA2;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
@@ -982,6 +1023,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gere.bel-e-buono.final-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

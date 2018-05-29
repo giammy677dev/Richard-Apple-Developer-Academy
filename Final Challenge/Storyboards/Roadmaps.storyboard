@@ -66,9 +66,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Roadmaps" id="ymP-69-lpT"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="YLJ-Lw-fmA">
                     <connections>
+                                <segue destination="tu6-WV-w8j" kind="show" id="FKT-sc-FXB"/>
                         <segue destination="Z3s-4f-xqI" kind="show" identifier="SeeAllSegue" id="Slg-6E-Gur"/>
-                    </connections>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MD6-PM-nRN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -175,6 +179,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s7L-6G-S1J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1026.4000000000001" y="196.55172413793105"/>
+        </scene>
+        <!--Step Table View Controller-->
+        <scene sceneID="DJJ-Nj-1DE">
+            <objects>
+                <tableViewController id="tu6-WV-w8j" customClass="StepTableViewController" customModule="Final_Challenge" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ueC-U8-MLa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="zxq-zw-bpo">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zxq-zw-bpo" id="yUp-uP-6kz">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="tu6-WV-w8j" id="pWF-pg-axU"/>
+                            <outlet property="delegate" destination="tu6-WV-w8j" id="WVY-vF-5Sf"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ah5-jh-RUm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1061" y="197"/>
         </scene>
     </scenes>
 </document>

@@ -20,6 +20,8 @@ class DatabaseInterface {
         self.cdController = CoreDataController.shared
     }
     
+    //MARK: Interfaces to save elements simultaneously on CloudKit and on CoreData
+    
     public func save(_ node: Node) {
         /// Saves a node in local and cloud DB. If the node doesn't exist it creates a new one and saves it.
         //MARK: - Save to CloudKit
@@ -50,6 +52,9 @@ class DatabaseInterface {
             let savedRecord = self.roadmapToRecord(record: record, roadmap: roadmap)
             self.ckManager.saveRecord(savedRecord)
         }
+        
+        //MARK: - Save to CoreData
+        saveToCoreData(roadmap: roadmap)
     }
     
     public func save(_ step: Step) {
@@ -64,17 +69,37 @@ class DatabaseInterface {
             let savedRecord = self.stepToRecord(record: record, step: step)
             self.ckManager.saveRecord(savedRecord)
         }
+        
+        //MARK: - Save to CoreData
+        interfaceCDSaveStep(step)
     }
     
-    //TODO: - Define the correct way to save the elements in Core Data
+    //MARK: - Save elements in Core Data
+    
+    //Save Roadmap on CoreData
     private func saveToCoreData(roadmap: Roadmap) { //Save single roadmap with steps and nodes
         cdController.saveRecursively(roadmap)
     }
     
+    //Save an array of Roadmaps on CoreData
     private func saveToCoreData(roadmaps: [Roadmap]) { //Save an array of roadmaps with steps. Nodes must already exist in memory.
         cdController.saveRecursively(roadmaps)
     }
     
+    //Function to prepare Step saving on CoreData DataBase:
+    private func interfaceCDSaveStep(_ step: Step) {
+        //Get elements nedded for saving Step
+        guard let cdRoadmap = cdController.fetchCDRoadmap(uuid: step.parent) else {
+            debugPrint("Error on Roadmap fetching from CoreData!")
+            return
+        }
+        let roadmap = cdController.roadmapFromRecord(cdRoadmap)
+        
+        //Call the function to save Step on CoreData
+        saveToCoreData(step: step, roadmap: roadmap)
+    }
+    
+    //Save Step on CoreData, need an interface:
     private func saveToCoreData(step: Step, roadmap: Roadmap) { //Save a step in memory and link it to a roadmap
         guard let _ = cdController.updateStep(step, of: roadmap) else {
             debugPrint("Error on save step in local memory")
@@ -82,6 +107,7 @@ class DatabaseInterface {
         }
     }
     
+    //Save Node on CoreData
     private func saveToCoreData(node: Node) { //Save a node in memory
         guard let _ = cdController.updateNode(node) else {
             debugPrint("Error on save node in local memory")
@@ -103,6 +129,16 @@ class DatabaseInterface {
     public func deleteNode(_ node: Node) {
         cdController.deleteNode(node) //Delete node from CoreData DB
         ckManager.deleteNode(CKRecordID(recordName: node.uuid.uuidString)) //Delete roadmap from CloudKit DB
+    }
+    
+    //MAKE: - Load data from Database
+    
+    func loadRoadmaps() -> [Roadmap]? {
+        return cdController.getFullRoadmapRecords()
+    }
+    
+    func loadNodes() -> [Node]? {
+        return cdController.getEveryNodeRecord()
     }
   
     
@@ -207,6 +243,16 @@ class DatabaseInterface {
         newRecord.parent = parentReference
         
         return newRecord
+    }
+
+    func createUniqueUUID() -> UUID {
+        var id: UUID
+
+        repeat {
+            id = UUID()
+        } while (cdController.isUUIDInUse(id))
+
+        return id
     }
     
     private enum CKRecordTypes: String {
