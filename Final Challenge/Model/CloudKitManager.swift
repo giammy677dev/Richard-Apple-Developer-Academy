@@ -171,7 +171,7 @@ final class CloudKitManager {
         }
         
         fetchOperation.qualityOfService = .utility
-        privateDB.add(fetchOperation)
+        privateDB.add(fetchOperation) 
     }
     
     
