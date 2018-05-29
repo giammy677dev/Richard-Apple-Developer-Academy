@@ -30,4 +30,9 @@ enum K {
         static let roadmapUpdate = "roadmapUpdate"
         static let roadmapDeletion = "roadmapDeletion"
     }
+    
+    enum DefaultsKey {
+        static let hasLaunchedBefore = "hasLaunchedBefore"
+        static let ckSubscriptionSetupDone = "ckSubscriptionSetupDone"
+    }
 }

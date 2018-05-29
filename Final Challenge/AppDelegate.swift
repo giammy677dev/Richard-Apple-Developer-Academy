@@ -15,8 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var hasLaunchedBefore: Bool {
         // It returns false if it's the app's first launch otherwise it returns true.
         let defaults = UserDefaults()
-        let hasLaunchedBeforeKey = "hasLaunchedBefore"
-        guard defaults.bool(forKey: hasLaunchedBeforeKey) else { defaults.set(true, forKey: hasLaunchedBeforeKey); return false }
+        guard defaults.bool(forKey: K.DefaultsKey.hasLaunchedBefore) else { defaults.set(true, forKey: K.DefaultsKey.hasLaunchedBefore); return false }
         
         return true
     }

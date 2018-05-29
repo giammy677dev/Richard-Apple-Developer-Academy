@@ -79,9 +79,11 @@ final class CloudKitManager {
         }
     }
     
+    
+    //MARK: - Notifications and DB subscriptions
     func subscriptionSetup() {
         let defaults = UserDefaults()
-        let hasLaunchedBefore = defaults.bool(forKey: "subscriptionSetupDone")
+        let hasLaunchedBefore = defaults.bool(forKey: K.DefaultsKey.ckSubscriptionSetupDone)
         
         guard !hasLaunchedBefore else { return }
         
@@ -121,7 +123,7 @@ final class CloudKitManager {
                 return
             }
             // Subscription done. Set the defaults key to true
-            defaults.set(true, forKey: "subscriptionSetupDone")
+            defaults.set(true, forKey: K.DefaultsKey.ckSubscriptionSetupDone)
         }
         // Add a specific QoS and Queue priority
         saveSubscriptionOperation.qualityOfService = .utility
@@ -137,6 +139,13 @@ final class CloudKitManager {
         
         
     }
+    
+    func handleNotification(_ notification: CKNotification) {
+        // Handle receipt of an incoming push notification that something has changed
+        
+    }
+    
+    
     
     //MARK: - Create Record
     private func createRecord(recordID: CKRecordID, ckRecordType: String) -> CKRecord {
