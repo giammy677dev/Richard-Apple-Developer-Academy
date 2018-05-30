@@ -158,7 +158,7 @@ class DatabaseInterface {
         }
         
         let recordID = CKRecordID(recordName: roadmap.uuid.uuidString)
-        let newRecord = CKRecord(recordType: CKRecordTypes.roadmap.rawValue, recordID: recordID)
+        let newRecord = CKRecord(recordType: K.CKRecordTypes.roadmap, recordID: recordID)
         
         newRecord.setValue(roadmap.category, forKey: "category")
         newRecord.setValue(roadmap.isPublic, forKey: "isPublic")
@@ -189,7 +189,7 @@ class DatabaseInterface {
         }
         
         let recordID = CKRecordID(recordName: step.uuid.uuidString)
-        let newRecord = CKRecord(recordType: CKRecordTypes.step.rawValue, recordID: recordID)
+        let newRecord = CKRecord(recordType: K.CKRecordTypes.step, recordID: recordID)
         
         newRecord.setValue(step.nodes, forKey: "nodes")
         newRecord.setValue(step.title, forKey: "title")
@@ -225,7 +225,7 @@ class DatabaseInterface {
         }
         
         let recordID = CKRecordID(recordName: node.uuid.uuidString)
-        let newRecord = CKRecord(recordType: CKRecordTypes.node.rawValue, recordID: recordID)
+        let newRecord = CKRecord(recordType: K.CKRecordTypes.node, recordID: recordID)
         
         newRecord.setValue(node.creationTimestamp, forKey: "creationTimestamp")
         newRecord.setValue(node.extractedText, forKey: "extractedText")
@@ -253,16 +253,6 @@ class DatabaseInterface {
         } while (cdController.isUUIDInUse(id))
 
         return id
-    }
-    
-    private enum CKRecordTypes: String {
-        case node = "Node"
-        case step = "Step"
-        case roadmap = "Roadmap"
-    }
-    private enum CKRecordFields: String {
-        case title = "title"
-        
     }
     
 }

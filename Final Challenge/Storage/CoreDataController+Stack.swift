@@ -73,7 +73,7 @@ class CoreDataController {
     //  MARK: Init
     
     ///Sets up the context for R/W interaction.
-    init() {
+    private init() {
         self.context = CoreDataStack.persistentContainer.viewContext
     }
     
@@ -549,7 +549,7 @@ class CoreDataController {
         let node = Node(url: URL(string: cdnode.url!)!,
                         title: cdnode.title!,
                         id: cdnode.uuid!,
-                        parent: cdnode.parentsStep?.uuid ?? ReadingListID,
+                        parent: cdnode.parentsStep?.uuid ?? K.readingListID,
                         tags: cdnode.tags,
                         text: cdnode.extractedText!,
                         propExtracted: cdnode.isTextProperlyExtracted,

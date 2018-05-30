@@ -83,22 +83,45 @@ final class CloudKitManager {
         let defaults = UserDefaults()
         let hasLaunchedBefore = defaults.bool(forKey: "subscriptionSetupDone")
         
-        guard !hasLaunchedBefore else { defaults.set(true, forKey: "subscriptionSetupDone"); return }
+        guard !hasLaunchedBefore else { return }
         
         debugPrint("first launch setup of cloudkit manager")
-        // Init the subscription
-        let privateDBSubscription = CKDatabaseSubscription(subscriptionID: "PrivateDBSubscription")
+        
+        // Init the subscriptions
+        let truePredicate = NSPredicate(value: true)
+        
+        var subscriptionsArray = [
+            // Roadmaps
+            CKQuerySubscription(recordType: K.CKRecordTypes.roadmap, predicate: truePredicate, subscriptionID: K.CKQuerySubscriptionID.roadmapCreation, options: .firesOnRecordCreation),
+            CKQuerySubscription(recordType: K.CKRecordTypes.roadmap, predicate: truePredicate, subscriptionID: K.CKQuerySubscriptionID.roadmapDeletion, options: .firesOnRecordDeletion),
+            CKQuerySubscription(recordType: K.CKRecordTypes.roadmap, predicate: truePredicate, subscriptionID: K.CKQuerySubscriptionID.roadmapUpdate, options: .firesOnRecordUpdate),
+            // Steps
+            CKQuerySubscription(recordType: K.CKRecordTypes.step, predicate: truePredicate, subscriptionID: K.CKQuerySubscriptionID.stepCreation, options: .firesOnRecordCreation),
+            CKQuerySubscription(recordType: K.CKRecordTypes.step, predicate: truePredicate, subscriptionID: K.CKQuerySubscriptionID.stepDeletion, options: .firesOnRecordDeletion),
+            CKQuerySubscription(recordType: K.CKRecordTypes.step, predicate: truePredicate, subscriptionID: K.CKQuerySubscriptionID.stepUpdate, options: .firesOnRecordUpdate),
+            // Nodes
+            CKQuerySubscription(recordType: K.CKRecordTypes.node, predicate: truePredicate, subscriptionID: K.CKQuerySubscriptionID.nodeCreation, options: .firesOnRecordCreation),
+            CKQuerySubscription(recordType: K.CKRecordTypes.node, predicate: truePredicate, subscriptionID: K.CKQuerySubscriptionID.nodeDeletion, options: .firesOnRecordDeletion),
+            CKQuerySubscription(recordType: K.CKRecordTypes.node, predicate: truePredicate, subscriptionID: K.CKQuerySubscriptionID.nodeUpdate, options: .firesOnRecordUpdate)
+        ]
+        
         // Silent push notifications won't alert the user
         let notificationInfo = CKNotificationInfo()
         notificationInfo.shouldSendContentAvailable = true
-        privateDBSubscription.notificationInfo = notificationInfo
+
+        subscriptionsArray = subscriptionsArray.map({
+            debugPrint($0.debugDescription)
+            $0.notificationInfo = notificationInfo
+            return $0
+        })
+        
+        let saveSubscriptionOperation = CKModifySubscriptionsOperation(subscriptionsToSave: subscriptionsArray, subscriptionIDsToDelete: nil)
+        //TODO: Add a specific QoS and Queue priority
+        
         // Saving the subscription
-        privateDB.save(privateDBSubscription) { (subscription, error) in
-            if let error = error {
-                //WARNING: - Error handling here
-                debugPrint(error)
-            }
-        }
+        privateDB.add(saveSubscriptionOperation)
+        
+        defaults.set(true, forKey: "subscriptionSetupDone")
     }
     
     func didReceiveRemotePush(notification: [AnyHashable : Any]) {
