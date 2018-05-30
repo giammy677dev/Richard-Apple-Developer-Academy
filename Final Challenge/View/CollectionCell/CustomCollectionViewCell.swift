@@ -21,10 +21,10 @@ class CustomCollectionViewCell: UICollectionViewCell{
         super.awakeFromNib()
         // Initialization code
         let gradient = CAGradientLayer()
-        
+
         gradient.frame = self.bounds
         gradient.colors = [UIColor.white.cgColor, UIColor.white.cgColor]
-        
+
         self.layer.insertSublayer(gradient, at: 0)
         self.alpha = 0.8
 

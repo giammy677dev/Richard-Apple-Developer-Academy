@@ -19,6 +19,7 @@ class StepTableViewController: UITableViewController {
         
         //General settings
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none //delete the separator line between each rows of the tableView
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
     }
     
     // MARK: - Table view data source

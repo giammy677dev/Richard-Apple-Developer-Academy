@@ -14,6 +14,8 @@ class ExploreViewController: UIViewController {
         super.viewDidLoad()
         CoreDataTest()
         // Do any additional setup after loading the view.
+
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
     }
 
     override func didReceiveMemoryWarning() {

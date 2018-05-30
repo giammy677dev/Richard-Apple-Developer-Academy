@@ -34,17 +34,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResourcesCollectionTableViewCell" rowHeight="118" id="1au-aH-cwV" customClass="ResourcesCollectionTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="118"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="collectionViewCell" rowHeight="225" id="1au-aH-cwV" customClass="CollectionTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="225"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1au-aH-cwV" id="mnF-QS-ykO">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="117.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="224.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HhL-dR-RMc">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="118"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="14M-eh-Kkv">
                                                 <size key="itemSize" width="50" height="50"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -65,11 +65,30 @@
                             <outlet property="delegate" destination="oUW-1q-saV" id="W37-KY-yfV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Resources" id="yFa-2f-ExB"/>
+                    <tabBarItem key="tabBarItem" title="" image="links_reduced" id="cae-hs-uRE"/>
+                    <navigationItem key="navigationItem" title="Resources" id="yFa-2f-ExB">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="vfD-80-YsU">
+                            <connections>
+                                <segue destination="Wd2-y3-P4P" kind="show" id="fSr-AV-ywo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXF-nW-gS4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="200.80000000000001" y="133.5832083958021"/>
         </scene>
+        <!--Links-->
+        <scene sceneID="jTP-8d-bFJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Links" id="Wd2-y3-P4P" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cWV-lj-VKL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="838" y="195"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="links_reduced" width="44" height="44"/>
+    </resources>
 </document>
