@@ -14,6 +14,8 @@ class RoadmapsTableViewController: UITableViewController {
 
         //General settings
         self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
+
+         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
     
 //        let customCell = UINib(nibName: "collectionViewCell", bundle: nil)
 //        self.tableView.register(customCell, forCellReuseIdentifier: "collectionViewCell")
@@ -36,7 +38,8 @@ class RoadmapsTableViewController: UITableViewController {
         let collectionCell = tableView.dequeueReusableCell(withIdentifier: "collectionViewCell", for: indexPath) as! CollectionTableViewCell
         
         collectionCell.delegate = self
-    
+
+        collectionCell.backgroundView = UIImageView(image: UIImage(named: "Background celle.png")!) //It sets the background of the table view rows
 
         return collectionCell
     }
@@ -61,7 +64,7 @@ class RoadmapsTableViewController: UITableViewController {
     
 }
 
-extension RoadmapsTableViewController: MyCustomCellDelegator{
+extension RoadmapsTableViewController: MyCustomCellDelegator {
     func callSegueFromCell(identifier: String) {
         print("Ciao")
         self.performSegue(withIdentifier: identifier, sender: self)

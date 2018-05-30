@@ -19,7 +19,7 @@ class LinksTableViewController: UITableViewController {
 
         //General settings
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none //Delete the separator line between each rows of the tableView
-        self.tableView.backgroundColor = UIColor.white //Set the color of the background, included the header's color and footer's color
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
     }
 
     // MARK: - Table view data source

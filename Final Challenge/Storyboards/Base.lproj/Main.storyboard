@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Links-->
+        <!--Researches-->
         <scene sceneID="EIk-gd-VgL">
             <objects>
-                <viewControllerPlaceholder storyboardName="Links" id="lNh-kH-B46" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Researches" id="lNh-kH-B46" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Researches" id="gVm-Yq-fqL"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mft-Yg-DdC" userLabel="First Responder" sceneMemberID="firstResponder"/>
