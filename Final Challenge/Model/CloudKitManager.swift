@@ -79,9 +79,11 @@ final class CloudKitManager {
         }
     }
     
+    
+    //MARK: - Notifications and DB subscriptions
     func subscriptionSetup() {
         let defaults = UserDefaults()
-        let hasLaunchedBefore = defaults.bool(forKey: "subscriptionSetupDone")
+        let hasLaunchedBefore = defaults.bool(forKey: K.DefaultsKey.ckSubscriptionSetupDone)
         
         guard !hasLaunchedBefore else { return }
         
@@ -116,19 +118,63 @@ final class CloudKitManager {
         })
         
         let saveSubscriptionOperation = CKModifySubscriptionsOperation(subscriptionsToSave: subscriptionsArray, subscriptionIDsToDelete: nil)
-        //TODO: Add a specific QoS and Queue priority
+        saveSubscriptionOperation.modifySubscriptionsCompletionBlock = { (_, _, error) in
+            guard error == nil else {
+                return
+            }
+            // Subscription done. Set the defaults key to true
+            defaults.set(true, forKey: K.DefaultsKey.ckSubscriptionSetupDone)
+        }
+        // Add a specific QoS and Queue priority
+        saveSubscriptionOperation.qualityOfService = .utility
         
         // Saving the subscription
         privateDB.add(saveSubscriptionOperation)
         
-        defaults.set(true, forKey: "subscriptionSetupDone")
+        
     }
     
     func didReceiveRemotePush(notification: [AnyHashable : Any]) {
         let ckNotification = CKNotification(fromRemoteNotificationDictionary: notification)
         
-        
+        handleNotification(ckNotification)
     }
+    
+    private func handleNotification(_ notification: CKNotification) {
+        // Use the CKServerChangeToken to fetch only whatever changes have occurred since the last
+        // time we asked, since intermediate push notifications might have been dropped.
+        var changeToken: CKServerChangeToken?
+        let changeTokenData = UserDefaults().data(forKey: K.DefaultsKey.ckServerChangeToken)
+        if let changeTokenData = changeTokenData {
+            changeToken = NSKeyedUnarchiver.unarchiveObject(with: changeTokenData) as! CKServerChangeToken?
+        }
+        // Init the fetching operation
+        let fetchOperation = CKFetchDatabaseChangesOperation(previousServerChangeToken: changeToken)
+        fetchOperation.fetchAllChanges = true
+        // Setting the blocks to process the operation results
+        fetchOperation.changeTokenUpdatedBlock = { (serverToken) in
+            let changeTokenData = NSKeyedArchiver.archivedData(withRootObject: serverToken)
+            UserDefaults().set(changeTokenData, forKey: K.DefaultsKey.ckServerChangeToken)
+        }
+        
+        fetchOperation.recordZoneWithIDChangedBlock = { (recordZoneID) in
+            // The block that processes a single record zone change.
+            
+        }
+        
+        fetchOperation.recordZoneWithIDWasDeletedBlock = { (recordZoneID) in
+            // The block that processes a single record zone deletion.
+        }
+        
+        fetchOperation.recordZoneWithIDWasPurgedBlock = { (recordZoneID) in
+            // The block that processes a single record zone purge.
+        }
+        
+        fetchOperation.qualityOfService = .utility
+        privateDB.add(fetchOperation) 
+    }
+    
+    
     
     //MARK: - Create Record
     private func createRecord(recordID: CKRecordID, ckRecordType: String) -> CKRecord {
