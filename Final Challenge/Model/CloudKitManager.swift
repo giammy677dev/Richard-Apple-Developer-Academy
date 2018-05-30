@@ -135,46 +135,125 @@ final class CloudKitManager {
     }
     
     func didReceiveRemotePush(notification: [AnyHashable : Any]) {
-        let ckNotification = CKNotification(fromRemoteNotificationDictionary: notification)
-        
-        handleNotification(ckNotification)
+        // This ckNotification could be useful in future.
+        let _ = CKNotification(fromRemoteNotificationDictionary: notification)
+
+        handleNotification()
+
     }
     
-    private func handleNotification(_ notification: CKNotification) {
+    private func handleNotification() {
         // Use the CKServerChangeToken to fetch only whatever changes have occurred since the last
         // time we asked, since intermediate push notifications might have been dropped.
         var changeToken: CKServerChangeToken?
-        let changeTokenData = UserDefaults().data(forKey: K.DefaultsKey.ckServerChangeToken)
+        let changeTokenData = UserDefaults().data(forKey: K.DefaultsKey.ckServerPrivateDatabaseChangeToken)
         if let changeTokenData = changeTokenData {
             changeToken = NSKeyedUnarchiver.unarchiveObject(with: changeTokenData) as! CKServerChangeToken?
         }
         // Init the fetching operation
         let fetchOperation = CKFetchDatabaseChangesOperation(previousServerChangeToken: changeToken)
         fetchOperation.fetchAllChanges = true
+        
         // Setting the blocks to process the operation results
         fetchOperation.changeTokenUpdatedBlock = { (serverToken) in
+            // The block to execute when the change token has changed.
             let changeTokenData = NSKeyedArchiver.archivedData(withRootObject: serverToken)
-            UserDefaults().set(changeTokenData, forKey: K.DefaultsKey.ckServerChangeToken)
+            UserDefaults().set(changeTokenData, forKey: K.DefaultsKey.ckServerPrivateDatabaseChangeToken)
         }
         
         fetchOperation.recordZoneWithIDChangedBlock = { (recordZoneID) in
             // The block that processes a single record zone change.
-            
+            self.fetchChangedRecordZoneWithID(recordZoneID)
         }
         
         fetchOperation.recordZoneWithIDWasDeletedBlock = { (recordZoneID) in
             // The block that processes a single record zone deletion.
+            self.fetchDeletedRecordZoneWithID(recordZoneID)
         }
         
         fetchOperation.recordZoneWithIDWasPurgedBlock = { (recordZoneID) in
             // The block that processes a single record zone purge.
+            self.fetchPurgedRecordZoneWithID(recordZoneID)
         }
         
+        fetchOperation.fetchDatabaseChangesCompletionBlock = { (serverChangeToken, _, operationError) in
+            // The block to execute when the operation completes.
+            if let error = operationError as? CKError {
+                if error.code == CKError.Code.changeTokenExpired {
+                    // The CKServerChangeToken is no longer valid and must be resynced.
+                    UserDefaults().set(nil, forKey: K.DefaultsKey.ckServerPrivateDatabaseChangeToken)
+                }
+            }
+            guard let changeToken = serverChangeToken else { return }
+            let changeTokenData = NSKeyedArchiver.archivedData(withRootObject: changeToken)
+            UserDefaults().set(changeTokenData, forKey: K.DefaultsKey.ckServerPrivateDatabaseChangeToken)
+        }
+        
+        // End of method, adding the fetching operation to the DB.
         fetchOperation.qualityOfService = .utility
         privateDB.add(fetchOperation) 
     }
     
+    private func fetchChangedRecordZoneWithID(_ recordZoneID: CKRecordZoneID) {
+        // Use the CKServerChangeToken to fetch only whatever changes have occurred since the last
+        // time we asked, since intermediate push notifications might have been dropped.
+        var changeTokenKey = K.DefaultsKey.ckServerRecordZoneChangeTokenWithID
+        changeTokenKey.append(recordZoneID.zoneName)
+        
+        let changeTokenData = UserDefaults().data(forKey: changeTokenKey)
+        var changeToken: CKServerChangeToken?
+        if changeTokenData != nil {
+            changeToken = NSKeyedUnarchiver.unarchiveObject(with: changeTokenData!) as! CKServerChangeToken?
+        }
+        let options = CKFetchRecordZoneChangesOptions()
+        options.previousServerChangeToken = changeToken
+        let optionsMap = [recordZoneID : options]
+        
+        let fetchChangesOperation = CKFetchRecordZoneChangesOperation(recordZoneIDs: [recordZoneID], optionsByRecordZoneID: optionsMap)
+        fetchChangesOperation.fetchAllChanges = true
+        
+        fetchChangesOperation.recordChangedBlock = self.recordChanged(_:)
+        fetchChangesOperation.recordWithIDWasDeletedBlock = self.recordIDDeleted(_:recordType:)
+        
+        fetchChangesOperation.recordZoneChangeTokensUpdatedBlock = { (_, serverChangeToken, clientChangeTokenData) in
+            //FIXME: - Check if the server token is equal to the client token
+            guard let serverChangeToken = serverChangeToken else { return }
+            let changeTokenData = NSKeyedArchiver.archivedData(withRootObject: serverChangeToken)
+            UserDefaults().set(changeTokenData, forKey: changeTokenKey)
+        }
+        
+        fetchChangesOperation.recordZoneFetchCompletionBlock = { (_, serverChangeToken, clientChangeTokenData, _, error) in
+            // The block to execute when the fetch for a zone has completed.
+            guard error == nil else { return }
+            guard let changeToken = serverChangeToken else { return }
+            //FIXME: - Check if the server token is equal to the client token
+            let changeTokenData = NSKeyedArchiver.archivedData(withRootObject: changeToken)
+            UserDefaults().set(changeTokenData, forKey: changeTokenKey)
+        }
+        
+        fetchChangesOperation.fetchRecordZoneChangesCompletionBlock = { error in
+            guard let error = error as? CKError else { return }
+            if error.code == CKError.Code.changeTokenExpired {
+                // The CKServerChangeToken is no longer valid and must be resynced.
+                UserDefaults().set(nil, forKey: changeTokenKey)
+            }
+        }
+        
+        // End of method, adding the fetching operation to the DB.
+        fetchChangesOperation.qualityOfService = .utility
+        privateDB.add(fetchChangesOperation)
+    }
     
+    private func fetchDeletedRecordZoneWithID(_ recordZoneID: CKRecordZoneID) {}
+    private func fetchPurgedRecordZoneWithID(_ recordZoneID: CKRecordZoneID) {}
+    
+    private func recordChanged(_ ckRecord: CKRecord) {
+        // The block to execute with the contents of a changed record.
+    }
+    
+    private func recordIDDeleted(_ recordID: CKRecordID, recordType: String) {
+        // The block to execute with the ID of a record that was deleted.
+    }
     
     //MARK: - Create Record
     private func createRecord(recordID: CKRecordID, ckRecordType: String) -> CKRecord {
