@@ -61,7 +61,7 @@ class AddResourceTableViewController: UITableViewController {
         let resourceCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! AddResourceTableViewCell
         let tagsCell: AddTagsTableViewCell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! AddTagsTableViewCell
 
-        let node = Node(url: URL(string: resourceCell.URLTextField.text!)!,
+        let node = Node(url: URL(string: resourceCell.URLTextField.text ?? "http://www.wikipedia.com")!,
             title: resourceCell.titleTextField.text!,
             id: DatabaseInterface.shared.createUniqueUUID(),
             parent: nil,
