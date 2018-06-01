@@ -88,11 +88,7 @@
 		B105530020AD7C430077983A /* GetURL.js in Resources */ = {isa = PBXBuildFile; fileRef = B10552FF20AD7C430077983A /* GetURL.js */; };
 		B105530220AD7DEB0077983A /* RoadmapSE.swift in Sources */ = {isa = PBXBuildFile; fileRef = B105530120AD7DEB0077983A /* RoadmapSE.swift */; };
 		B105530420AD7E160077983A /* ShareSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B105530320AD7E160077983A /* ShareSelectViewController.swift */; };
-<<<<<<< Updated upstream
 		B111196E20B571DF007FDFB5 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B111196D20B571DF007FDFB5 /* CloudKit.framework */; };
-=======
-		B10927AF20B83F6900113D47 /* Safari Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B10552F020AD7C230077983A /* Safari Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
->>>>>>> Stashed changes
 		B127492820BB332100C4420C /* AddResource.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B127492720BB332100C4420C /* AddResource.storyboard */; };
 		B127492A20BB337A00C4420C /* AddResourceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127492920BB337A00C4420C /* AddResourceTableViewController.swift */; };
 		B127492D20BB33BA00C4420C /* AddResourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127492B20BB33BA00C4420C /* AddResourceTableViewCell.swift */; };
@@ -155,7 +151,6 @@
 		65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoilerpipeAnswerStructure.swift; sourceTree = "<group>"; };
 		65A0BC7E20B4103600BFC766 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		65B108C120BD5994007026FC /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		65B108C420BD612D007026FC /* Safari Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Safari Extension.entitlements"; sourceTree = "<group>"; };
 		65EA50E120B5795D008BCBFB /* Persistence.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Persistence.xcdatamodel; sourceTree = "<group>"; };
 		65EA50F720B6CFEC008BCBFB /* CoreDataController+Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataController+Stack.swift"; sourceTree = "<group>"; };
 		7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
@@ -198,6 +193,7 @@
 		B105530120AD7DEB0077983A /* RoadmapSE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadmapSE.swift; sourceTree = "<group>"; };
 		B105530320AD7E160077983A /* ShareSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSelectViewController.swift; sourceTree = "<group>"; };
 		B111196B20B57167007FDFB5 /* Final Challenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Final Challenge.entitlements"; sourceTree = "<group>"; };
+		B111196D20B571DF007FDFB5 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B127492720BB332100C4420C /* AddResource.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddResource.storyboard; sourceTree = "<group>"; };
 		B127492920BB337A00C4420C /* AddResourceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddResourceTableViewController.swift; sourceTree = "<group>"; };
 		B127492B20BB33BA00C4420C /* AddResourceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddResourceTableViewCell.swift; sourceTree = "<group>"; };
@@ -244,6 +240,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B111196E20B571DF007FDFB5 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,7 +412,6 @@
 		B10552F120AD7C230077983A /* Safari Extension */ = {
 			isa = PBXGroup;
 			children = (
-				65B108C420BD612D007026FC /* Safari Extension.entitlements */,
 				B10552F220AD7C230077983A /* ShareViewController.swift */,
 				B105530320AD7E160077983A /* ShareSelectViewController.swift */,
 				65355ECC20B54F2100031B6C /* Helper */,
@@ -431,6 +427,7 @@
 		B111196C20B571DF007FDFB5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B111196D20B571DF007FDFB5 /* CloudKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -582,14 +579,6 @@
 				TargetAttributes = {
 					B10552EF20AD7C230077983A = {
 						CreatedOnToolsVersion = 9.3.1;
-						SystemCapabilities = {
-							com.apple.Push = {
-								enabled = 0;
-							};
-							com.apple.iCloud = {
-								enabled = 0;
-							};
-						};
 					};
 					B177C47E20A9768B00CD9CBE = {
 						CreatedOnToolsVersion = 9.3.1;
