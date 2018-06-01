@@ -34,6 +34,7 @@ enum K {
     enum DefaultsKey {
         static let hasLaunchedBefore = "hasLaunchedBefore"
         static let ckSubscriptionSetupDone = "ckSubscriptionSetupDone"
-        static let ckServerChangeToken = "ckServerChangeToken"
+        static let ckServerPrivateDatabaseChangeToken = "ckServerPrivateDatabaseChangeToken"
+        static let ckServerRecordZoneChangeTokenWithID = "ckServerRecordZoneChangeTokenWithID"  // Use this only with an appended recordZoneID.zoneName
     }
 }
