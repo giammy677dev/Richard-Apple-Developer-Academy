@@ -70,5 +70,3 @@ extension RoadmapsTableViewController: MyCustomCellDelegator {
         self.performSegue(withIdentifier: identifier, sender: self)
     }
 }
-
-

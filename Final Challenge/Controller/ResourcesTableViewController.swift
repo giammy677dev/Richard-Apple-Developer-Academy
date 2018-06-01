@@ -10,10 +10,6 @@ import UIKit
 
 class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator {
 
-    func callSegueFromCell(identifier: String) {
-        
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,23 +22,23 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
         self.navigationController?.navigationBar.clipsToBounds = false
         self.navigationController?.navigationBar.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
 
-
-        navigationController?.navigationBar.backgroundColor = UIColor(hex: 0xFAFAFA) //set the color of the navigation Bar
+        self.navigationController?.navigationBar.backgroundColor = UIColor(hex: 0xFAFAFA) //set the color of the navigation Bar
         self.navigationController?.navigationBar.layer.masksToBounds = false
         self.navigationController?.navigationBar.layer.shadowColor = UIColor(hex: 0x0F0F0F).cgColor
         self.navigationController?.navigationBar.layer.shadowOpacity = 30
         self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         self.navigationController?.navigationBar.layer.shadowRadius = 2
 
+//
 //        self.navigationController?.navigationBar.layer.cornerRadius = 16
 //        self.navigationController?.navigationBar.clipsToBounds = true
 //        self.navigationController?.navigationBar.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
 
-//                let customCell = UINib(nibName: "collectionViewCell", bundle: nil)
-//                self.tableView.register(customCell, forCellReuseIdentifier: "collectionViewCell")
-//
-//                let headerCustomCell = UINib(nibName: "headerCell", bundle: nil)
-//                self.tableView.register(headerCustomCell, forCellReuseIdentifier: "headerCell")
+        //                let customCell = UINib(nibName: "collectionViewCell", bundle: nil)
+        //                self.tableView.register(customCell, forCellReuseIdentifier: "collectionViewCell")
+        //
+        //                let headerCustomCell = UINib(nibName: "headerCell", bundle: nil)
+        //                self.tableView.register(headerCustomCell, forCellReuseIdentifier: "headerCell")
     }
 
     // MARK: - Table view data source
@@ -83,11 +79,7 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
         return 0
     }
 
+    func callSegueFromCell(identifier: String) {
+        self.performSegue(withIdentifier: identifier, sender: self)
+    }
 }
-
-//extension RoadmapsTableViewController: MyCustomCellDelegator{
-////    func callSegueFromCell(identifier: String) {
-////        print("Ciao")
-////        self.performSegue(withIdentifier: identifier, sender: self)
-////    }
-//}

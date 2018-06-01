@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Ms-XP-XQI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Ms-XP-XQI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -66,14 +66,11 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="" image="links_reduced" id="cae-hs-uRE"/>
-                    <navigationItem key="navigationItem" title="Resources" id="yFa-2f-ExB">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="vfD-80-YsU">
-                            <connections>
-                                <segue destination="Wd2-y3-P4P" kind="show" id="fSr-AV-ywo"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Resources" id="yFa-2f-ExB"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="Wd2-y3-P4P" kind="show" identifier="SeeAllSegue" id="Iuy-kE-ZHY"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXF-nW-gS4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
