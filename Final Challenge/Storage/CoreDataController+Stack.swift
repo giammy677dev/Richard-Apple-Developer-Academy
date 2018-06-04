@@ -129,24 +129,24 @@ class CoreDataController {
 
         return newStep
     }
-    
+
     func addStep(_ step: Step, to roadmap: UUID) -> CDStep? {
-        
+
         let entityStep = NSEntityDescription.entity(forEntityName: "CDStep", in: self.context)
         let newStep = CDStep(entity: entityStep!, insertInto: context)
-        
+
         let parentRoadmap = fetchCDRoadmap(uuid: roadmap)
-        
+
         newStep.setValue(0, forKey: "arrayID")
         newStep.setValue(step.title, forKey: "title")
         newStep.setValue(step.uuid, forKey: "uuid")
-        
+
         newStep.setValue(addUUID(step.uuid), forKey: "usedID")
-        
+
         parentRoadmap!.addToStepsList(newStep)
-        
+
         self.saveContext()
-        
+
         return newStep
     }
 
@@ -478,20 +478,20 @@ class CoreDataController {
         }
 
     }
-    
+
     func updateStep(_ step: Step, of roadmap: UUID) -> CDStep? {
-        
+
         if let stepToUpdate = fetchCDStep(uuid: step.uuid) {
             stepToUpdate.setValue(0, forKey: "arrayID")
             stepToUpdate.setValue(step.title, forKey: "title")
-            
+
             self.saveContext()
-            
+
             return stepToUpdate
         } else {
             return addStep(step, to: roadmap)
         }
-        
+
     }
     ///Updates/adds Roadmap information in CoreData. Not recursive.
     func updateRoadmap(_ roadmap: Roadmap) -> CDRoadmap? {
