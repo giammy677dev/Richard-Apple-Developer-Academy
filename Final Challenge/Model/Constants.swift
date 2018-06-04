@@ -8,13 +8,44 @@
 
 import Foundation
 
-enum K {
+enum K { // swiftlint:disable:this type_name
     static let readingListID = UUID(uuidString: "00000000-0000-0000-0000-000000000000")!
 
     enum CKRecordTypes {
         static let node = "Node"
         static let step = "Step"
         static let roadmap = "Roadmap"
+
+        enum CKNodeRecordField {
+            static let url = "url"
+            static let title = "title"
+            static let uuid = "uuid"
+            static let parentUUID = "parentUUID"
+            static let tagsData = "tagsData"
+            static let text = "text"
+            static let propExtracted = "propExtracted"
+            static let creationTime = "creationTime"
+            static let propRead = "propRead"
+            static let propFlagged = "propFlagged"
+        }
+
+        enum CKStepRecordField {
+            static let title = "title"
+            static let parentUUID = "parentUUID"
+            static let uuid = "uuid"
+        }
+
+        enum CKRoadmapRecordField {
+            static let title = "title"
+            static let uuid = "uuid"
+            static let isPublic = "isPublic"
+            static let isShared = "isShared"
+            static let visibility = "visibility"
+            static let category = "category"
+            static let lastReadTimestamp = "lastReadTimestamp"
+            static let privileges = "privileges"
+            static let steps = "steps"
+        }
     }
 
     enum CKQuerySubscriptionID {
