@@ -354,6 +354,18 @@ class CoreDataController {
 
         self.saveContext()
     }
+    
+    func deleteRoadmap(_ roadmapID: UUID) {
+        guard isUUIDInUse(roadmapID) else {
+            return
+        }
+        var roadmapToRemove: CDRoadmap?
+        roadmapToRemove = fetchCDRoadmap(uuid: roadmapID)
+        
+        context.delete(roadmapToRemove!)
+        
+        self.saveContext()
+    }
 
     ///Deletes the Step in CoreData, preserving the rest.
     func deleteStep(_ step: Step) {
