@@ -380,6 +380,19 @@ class CoreDataController {
         self.saveContext()
 
     }
+    
+    func deleteStep(_ stepID: UUID) {
+        guard isUUIDInUse(stepID) else {
+            return
+        }
+        var stepToRemove: CDStep?
+        stepToRemove = fetchCDStep(uuid: stepID)
+        
+        context.delete(stepToRemove!)
+        
+        self.saveContext()
+        
+    }
 
     ///Deletes the Node in CoreData.
     func deleteNode(_ node: Node) {
@@ -393,6 +406,18 @@ class CoreDataController {
 
         self.saveContext()
 
+    }
+    
+    func deleteNode(_ nodeID: UUID) {
+        guard isUUIDInUse(nodeID) else {
+            return
+        }
+        var nodeToRemove: CDNode?
+        nodeToRemove = fetchCDNode(uuid: nodeID)
+        
+        context.delete(nodeToRemove!)
+        self.saveContext()
+        
     }
 
     // MARK: Update
