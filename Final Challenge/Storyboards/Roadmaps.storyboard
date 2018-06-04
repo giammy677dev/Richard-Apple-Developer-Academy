@@ -25,6 +25,14 @@
             </objects>
             <point key="canvasLocation" x="-676" y="198"/>
         </scene>
+        <!--CreateRoadmap-->
+        <scene sceneID="IW3-sM-OcW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CreateRoadmap" id="caJ-Jh-dkH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mni-Gs-jFY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="553" y="-398"/>
+        </scene>
         <!--Roadmaps-->
         <scene sceneID="UZY-Jr-g8C">
             <objects>
@@ -66,7 +74,13 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="" image="roadmaps_reduced" id="wV7-fr-N5m"/>
-                    <navigationItem key="navigationItem" title="Roadmaps" id="ymP-69-lpT"/>
+                    <navigationItem key="navigationItem" title="Roadmaps" id="ymP-69-lpT">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="KAV-On-4Xa">
+                            <connections>
+                                <segue destination="caJ-Jh-dkH" kind="show" id="BxV-f2-Kb3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="Z3s-4f-xqI" kind="show" identifier="SeeAllSegue" id="LWv-p6-Br8"/>
