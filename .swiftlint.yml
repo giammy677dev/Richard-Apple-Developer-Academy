@@ -1,0 +1,5 @@
+line_length:
+  warning: 200 #warning
+  error: 300 #error
+  ignores_comments: true
+  #ignores_function_declarations: true
