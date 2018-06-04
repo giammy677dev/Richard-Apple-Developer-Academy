@@ -66,7 +66,13 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="" image="roadmaps_reduced" id="wV7-fr-N5m"/>
-                    <navigationItem key="navigationItem" title="Roadmaps" id="ymP-69-lpT"/>
+                    <navigationItem key="navigationItem" title="Roadmaps" id="ymP-69-lpT">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="vh5-IK-Ude">
+                            <connections>
+                                <segue destination="1K3-Ju-qWT" kind="show" id="rgZ-s8-p2g"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="Z3s-4f-xqI" kind="show" identifier="SeeAllSegue" id="LWv-p6-Br8"/>
@@ -75,6 +81,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MD6-PM-nRN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="182" y="197"/>
+        </scene>
+        <!--AddSteps-->
+        <scene sceneID="80Z-lK-sjn">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddSteps" id="1K3-Ju-qWT" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a3s-lI-MIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="644" y="-258"/>
         </scene>
         <!--See All Table View Controller-->
         <scene sceneID="waR-co-pb9">
