@@ -354,6 +354,18 @@ class CoreDataController {
 
         self.saveContext()
     }
+    
+    func deleteRoadmap(_ roadmapID: UUID) {
+        guard isUUIDInUse(roadmapID) else {
+            return
+        }
+        var roadmapToRemove: CDRoadmap?
+        roadmapToRemove = fetchCDRoadmap(uuid: roadmapID)
+        
+        context.delete(roadmapToRemove!)
+        
+        self.saveContext()
+    }
 
     ///Deletes the Step in CoreData, preserving the rest.
     func deleteStep(_ step: Step) {
@@ -368,6 +380,19 @@ class CoreDataController {
         self.saveContext()
 
     }
+    
+    func deleteStep(_ stepID: UUID) {
+        guard isUUIDInUse(stepID) else {
+            return
+        }
+        var stepToRemove: CDStep?
+        stepToRemove = fetchCDStep(uuid: stepID)
+        
+        context.delete(stepToRemove!)
+        
+        self.saveContext()
+        
+    }
 
     ///Deletes the Node in CoreData.
     func deleteNode(_ node: Node) {
@@ -381,6 +406,18 @@ class CoreDataController {
 
         self.saveContext()
 
+    }
+    
+    func deleteNode(_ nodeID: UUID) {
+        guard isUUIDInUse(nodeID) else {
+            return
+        }
+        var nodeToRemove: CDNode?
+        nodeToRemove = fetchCDNode(uuid: nodeID)
+        
+        context.delete(nodeToRemove!)
+        self.saveContext()
+        
     }
 
     // MARK: Update
