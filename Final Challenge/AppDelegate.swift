@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // MARK: - Customization after application launch.
 
-        if (!self.hasLaunchedBefore) {
+        if !self.hasLaunchedBefore {
         // MARK: - Onboarding operations
 
         }
