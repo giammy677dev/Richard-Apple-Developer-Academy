@@ -105,7 +105,6 @@ final class CloudKitManager {
         notificationInfo.shouldSendContentAvailable = true
 
         subscriptionsArray = subscriptionsArray.map({
-            debugPrint($0.debugDescription)
             $0.notificationInfo = notificationInfo
             return $0
         })
@@ -204,8 +203,9 @@ final class CloudKitManager {
         let fetchChangesOperation = CKFetchRecordZoneChangesOperation(recordZoneIDs: [recordZoneID], optionsByRecordZoneID: optionsMap)
         fetchChangesOperation.fetchAllChanges = true
 
-        fetchChangesOperation.recordChangedBlock = self.recordChanged(_:)
-        fetchChangesOperation.recordWithIDWasDeletedBlock = self.recordIDDeleted(_:recordType:)
+        // Manage a record update or record deletion
+        fetchChangesOperation.recordChangedBlock = DatabaseInterface.shared.recordChanged(_:)
+        fetchChangesOperation.recordWithIDWasDeletedBlock = DatabaseInterface.shared.recordDeleted(withID:recordType:)
 
         fetchChangesOperation.recordZoneChangeTokensUpdatedBlock = { (_, serverChangeToken, clientChangeTokenData) in
             //FIXME: - Check if the server token is equal to the client token
@@ -238,14 +238,6 @@ final class CloudKitManager {
 
     private func fetchDeletedRecordZoneWithID(_ recordZoneID: CKRecordZoneID) {}
     private func fetchPurgedRecordZoneWithID(_ recordZoneID: CKRecordZoneID) {}
-
-    private func recordChanged(_ ckRecord: CKRecord) {
-        // The block to execute with the contents of a changed record.
-    }
-
-    private func recordIDDeleted(_ recordID: CKRecordID, recordType: String) {
-        // The block to execute with the ID of a record that was deleted.
-    }
 
     // MARK: - Create Record
     private func createRecord(recordID: CKRecordID, ckRecordType: String) -> CKRecord {
