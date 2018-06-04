@@ -41,27 +41,6 @@ class LinksTableViewController: UITableViewController {
 
         cell.selectionStyle = .none //It is needed to prevent that the cells are highlighted and not only selected
 
-//        cell.shadowView.clipsToBounds = false
-//        cell.shadowView.layer.shadowColor = UIColor.black.cgColor
-//        cell.shadowView.layer.shadowOpacity = 1
-//        cell.shadowView.layer.shadowOffset = CGSize.zero
-//        cell.shadowView.layer.shadowRadius = 3
-//
-//        cell.footerShadowView.clipsToBounds = false
-//        cell.footerShadowView.layer.shadowColor = UIColor.black.cgColor
-//        cell.footerShadowView.layer.shadowOpacity = 1
-//        cell.footerShadowView.layer.shadowOffset = CGSize.zero
-//        cell.footerShadowView.layer.shadowRadius = 3
-
-//        cell.containerView.clipsToBounds = false
-//        cell.containerView.layer.shadowColor = UIColor.black.cgColor
-//        cell.containerView.layer.shadowOpacity = 1
-//        cell.containerView.layer.shadowOffset = CGSize.zero
-//        cell.containerView.layer.shadowRadius = 10
-//        cell.containerView.layer.shadowPath = UIBezierPath(roundedRect: cell.containerView.bounds, cornerRadius: 10).cgPath
-//        cell.footerImageView.clipsToBounds = true
-//        cell.footerImageView.layer.cornerRadius = 10
-
         //Get the last cells in the tableView
         let totalRow = tableView.numberOfRows(inSection: indexPath.section)
         //first get total rows in that section by current indexPath.
