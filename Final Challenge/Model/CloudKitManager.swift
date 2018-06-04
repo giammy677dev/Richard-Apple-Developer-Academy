@@ -10,9 +10,9 @@ import Foundation
 import CloudKit
 
 final class CloudKitManager {
-    
+
     static let shared = CloudKitManager()
-    
+
     private var container: CKContainer
     var publicDB: CKDatabase {
         get {
@@ -24,11 +24,11 @@ final class CloudKitManager {
             return container.privateCloudDatabase
         }
     }
-    
+
     private init() {
         container = CKContainer.default()
     }
-    
+
     func saveRecord(_ record: CKRecord) {
         privateDB.save(record) { (record, error) in
             if let error = error {
@@ -37,12 +37,12 @@ final class CloudKitManager {
                 return
             }
             // Successfully saved
-            
+
         }
     }
-    
-    //MARK: - Functions for deleting operations
-    
+
+    // MARK: - Functions for deleting operations
+
     func deleteRoadmap(_ roadmapID: CKRecordID) {
         privateDB.delete(withRecordID: roadmapID) { (recordID, error) in
             if let err = error {
@@ -54,7 +54,7 @@ final class CloudKitManager {
             }
         }
     }
-    
+
     func deleteStep(_ stepID: CKRecordID) {
         privateDB.delete(withRecordID: stepID) { (recordID, error) in
             if let err = error {
@@ -66,7 +66,7 @@ final class CloudKitManager {
             }
         }
     }
-    
+
     func deleteNode(_ nodeID: CKRecordID) {
         privateDB.delete(withRecordID: nodeID) { (recordID, error) in
             if let err = error {
@@ -78,20 +78,19 @@ final class CloudKitManager {
             }
         }
     }
-    
-    
-    //MARK: - Notifications and DB subscriptions
+
+    // MARK: - Notifications and DB subscriptions
     func subscriptionSetup() {
         let defaults = UserDefaults()
         let hasLaunchedBefore = defaults.bool(forKey: K.DefaultsKey.ckSubscriptionSetupDone)
-        
+
         guard !hasLaunchedBefore else { return }
-        
+
         debugPrint("first launch setup of cloudkit manager")
-        
+
         // Init the subscriptions
         let truePredicate = NSPredicate(value: true)
-        
+
         var subscriptionsArray = [
             // Roadmaps
             CKQuerySubscription(recordType: K.CKRecordTypes.roadmap, predicate: truePredicate, subscriptionID: K.CKQuerySubscriptionID.roadmapCreation, options: .firesOnRecordCreation),
@@ -106,7 +105,7 @@ final class CloudKitManager {
             CKQuerySubscription(recordType: K.CKRecordTypes.node, predicate: truePredicate, subscriptionID: K.CKQuerySubscriptionID.nodeDeletion, options: .firesOnRecordDeletion),
             CKQuerySubscription(recordType: K.CKRecordTypes.node, predicate: truePredicate, subscriptionID: K.CKQuerySubscriptionID.nodeUpdate, options: .firesOnRecordUpdate)
         ]
-        
+
         // Silent push notifications won't alert the user
         let notificationInfo = CKNotificationInfo()
         notificationInfo.shouldSendContentAvailable = true
@@ -116,7 +115,7 @@ final class CloudKitManager {
             $0.notificationInfo = notificationInfo
             return $0
         })
-        
+
         let saveSubscriptionOperation = CKModifySubscriptionsOperation(subscriptionsToSave: subscriptionsArray, subscriptionIDsToDelete: nil)
         saveSubscriptionOperation.modifySubscriptionsCompletionBlock = { (_, _, error) in
             guard error == nil else {
@@ -127,21 +126,20 @@ final class CloudKitManager {
         }
         // Add a specific QoS and Queue priority
         saveSubscriptionOperation.qualityOfService = .utility
-        
+
         // Saving the subscription
         privateDB.add(saveSubscriptionOperation)
-        
-        
+
     }
-    
-    func didReceiveRemotePush(notification: [AnyHashable : Any]) {
+
+    func didReceiveRemotePush(notification: [AnyHashable: Any]) {
         // This ckNotification could be useful in future.
-        let _ = CKNotification(fromRemoteNotificationDictionary: notification)
+        _ = CKNotification(fromRemoteNotificationDictionary: notification)
 
         handleNotification()
 
     }
-    
+
     private func handleNotification() {
         // Use the CKServerChangeToken to fetch only whatever changes have occurred since the last
         // time we asked, since intermediate push notifications might have been dropped.
@@ -153,29 +151,29 @@ final class CloudKitManager {
         // Init the fetching operation
         let fetchOperation = CKFetchDatabaseChangesOperation(previousServerChangeToken: changeToken)
         fetchOperation.fetchAllChanges = true
-        
+
         // Setting the blocks to process the operation results
         fetchOperation.changeTokenUpdatedBlock = { (serverToken) in
             // The block to execute when the change token has changed.
             let changeTokenData = NSKeyedArchiver.archivedData(withRootObject: serverToken)
             UserDefaults().set(changeTokenData, forKey: K.DefaultsKey.ckServerPrivateDatabaseChangeToken)
         }
-        
+
         fetchOperation.recordZoneWithIDChangedBlock = { (recordZoneID) in
             // The block that processes a single record zone change.
             self.fetchChangedRecordZoneWithID(recordZoneID)
         }
-        
+
         fetchOperation.recordZoneWithIDWasDeletedBlock = { (recordZoneID) in
             // The block that processes a single record zone deletion.
             self.fetchDeletedRecordZoneWithID(recordZoneID)
         }
-        
+
         fetchOperation.recordZoneWithIDWasPurgedBlock = { (recordZoneID) in
             // The block that processes a single record zone purge.
             self.fetchPurgedRecordZoneWithID(recordZoneID)
         }
-        
+
         fetchOperation.fetchDatabaseChangesCompletionBlock = { (serverChangeToken, _, operationError) in
             // The block to execute when the operation completes.
             if let error = operationError as? CKError {
@@ -188,18 +186,18 @@ final class CloudKitManager {
             let changeTokenData = NSKeyedArchiver.archivedData(withRootObject: changeToken)
             UserDefaults().set(changeTokenData, forKey: K.DefaultsKey.ckServerPrivateDatabaseChangeToken)
         }
-        
+
         // End of method, adding the fetching operation to the DB.
         fetchOperation.qualityOfService = .utility
-        privateDB.add(fetchOperation) 
+        privateDB.add(fetchOperation)
     }
-    
+
     private func fetchChangedRecordZoneWithID(_ recordZoneID: CKRecordZoneID) {
         // Use the CKServerChangeToken to fetch only whatever changes have occurred since the last
         // time we asked, since intermediate push notifications might have been dropped.
         var changeTokenKey = K.DefaultsKey.ckServerRecordZoneChangeTokenWithID
         changeTokenKey.append(recordZoneID.zoneName)
-        
+
         let changeTokenData = UserDefaults().data(forKey: changeTokenKey)
         var changeToken: CKServerChangeToken?
         if changeTokenData != nil {
@@ -208,20 +206,20 @@ final class CloudKitManager {
         let options = CKFetchRecordZoneChangesOptions()
         options.previousServerChangeToken = changeToken
         let optionsMap = [recordZoneID : options]
-        
+
         let fetchChangesOperation = CKFetchRecordZoneChangesOperation(recordZoneIDs: [recordZoneID], optionsByRecordZoneID: optionsMap)
         fetchChangesOperation.fetchAllChanges = true
-        
+
         fetchChangesOperation.recordChangedBlock = self.recordChanged(_:)
         fetchChangesOperation.recordWithIDWasDeletedBlock = self.recordIDDeleted(_:recordType:)
-        
+
         fetchChangesOperation.recordZoneChangeTokensUpdatedBlock = { (_, serverChangeToken, clientChangeTokenData) in
             //FIXME: - Check if the server token is equal to the client token
             guard let serverChangeToken = serverChangeToken else { return }
             let changeTokenData = NSKeyedArchiver.archivedData(withRootObject: serverChangeToken)
             UserDefaults().set(changeTokenData, forKey: changeTokenKey)
         }
-        
+
         fetchChangesOperation.recordZoneFetchCompletionBlock = { (_, serverChangeToken, clientChangeTokenData, _, error) in
             // The block to execute when the fetch for a zone has completed.
             guard error == nil else { return }
@@ -230,7 +228,7 @@ final class CloudKitManager {
             let changeTokenData = NSKeyedArchiver.archivedData(withRootObject: changeToken)
             UserDefaults().set(changeTokenData, forKey: changeTokenKey)
         }
-        
+
         fetchChangesOperation.fetchRecordZoneChangesCompletionBlock = { error in
             guard let error = error as? CKError else { return }
             if error.code == CKError.Code.changeTokenExpired {
@@ -238,28 +236,28 @@ final class CloudKitManager {
                 UserDefaults().set(nil, forKey: changeTokenKey)
             }
         }
-        
+
         // End of method, adding the fetching operation to the DB.
         fetchChangesOperation.qualityOfService = .utility
         privateDB.add(fetchChangesOperation)
     }
-    
+
     private func fetchDeletedRecordZoneWithID(_ recordZoneID: CKRecordZoneID) {}
     private func fetchPurgedRecordZoneWithID(_ recordZoneID: CKRecordZoneID) {}
-    
+
     private func recordChanged(_ ckRecord: CKRecord) {
         // The block to execute with the contents of a changed record.
     }
-    
+
     private func recordIDDeleted(_ recordID: CKRecordID, recordType: String) {
         // The block to execute with the ID of a record that was deleted.
     }
-    
-    //MARK: - Create Record
+
+    // MARK: - Create Record
     private func createRecord(recordID: CKRecordID, ckRecordType: String) -> CKRecord {
         let record = CKRecord(recordType: ckRecordType, recordID: recordID)
-        
+
         return record
     }
-    
+
 }

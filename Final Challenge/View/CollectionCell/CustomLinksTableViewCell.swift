@@ -16,7 +16,7 @@ class CustomLinksTableViewCell: UITableViewCell {
     @IBOutlet weak var firstTagLabel: UILabel!
     @IBOutlet weak var secondTagLabel: UILabel!
     @IBOutlet weak var thirdTagLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,7 +31,7 @@ class CustomLinksTableViewCell: UITableViewCell {
     @IBAction func checkButtonTapped(_ sender: UIButton) {
 
         //Modify the image of the checkButton basing on its state
-        if checkButton.isSelected == false  {
+        if checkButton.isSelected == false {
             sender.setImage(UIImage(named: "Checkmark"), for: .selected)
         }
 

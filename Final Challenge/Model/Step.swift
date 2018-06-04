@@ -8,7 +8,7 @@
 
 import Foundation
 
-//MARK: - Step
+// MARK: - Step
 
 class Step: NodeManager, Equatable {
 
@@ -17,14 +17,14 @@ class Step: NodeManager, Equatable {
     var nodes: [Node]?
     var parent: UUID
     var uuid: UUID
-    
+
     //Methods:
     init(title: String, parent: UUID, id: UUID) {
         self.title = title
         self.parent = parent
         self.uuid = id
     }
-    
+
     func addNode(_ node: Node) {
         if nodes == nil {
             nodes = [Node]()
@@ -32,7 +32,7 @@ class Step: NodeManager, Equatable {
         node.parent = self.uuid
         nodes?.append(node)
     }
-    
+
     func removeNode(_ node: Node) {
         guard var container = nodes
             else { return }
@@ -47,4 +47,3 @@ class Step: NodeManager, Equatable {
         return lhs.parent == rhs.parent && lhs.title == rhs.title
     }
 }
-

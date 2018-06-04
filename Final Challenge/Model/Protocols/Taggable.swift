@@ -10,9 +10,9 @@ import Foundation
 
 protocol Taggable: Equatable {
     var tags: Set<String> { get set }
-    
-    func addTags(_ tagArray: [String]) -> Void
-    func removeTag(_ tag: String) -> Void
-    
+
+    func addTags(_ tagArray: [String])
+    func removeTag(_ tag: String)
+
     static func == (lhs: Self, rhs: Self) -> Bool
 }

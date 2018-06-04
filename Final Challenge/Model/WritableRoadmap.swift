@@ -9,18 +9,18 @@
 import Foundation
 
 class WritableRoadmap: Roadmap, Writable {
-    
+
     //Methods:
     func edit(title: String? = nil, category: Category? = nil) {
     }
-    
+
     func appendStep(_ step: Step) {
         if steps == nil {
             steps = [Step]()
         }
         steps?.append(step)
     }
-    
+
     func removeStep(_ step: Step) {
         guard var container = steps
             else { return }
@@ -29,7 +29,7 @@ class WritableRoadmap: Roadmap, Writable {
             else { return }
         container.remove(at: target)
     }
-    
+
     func move(_ step: Step, after: Step) {
         if self.steps != nil {
             guard let index = steps?.index(of: step) else { //Index of the element to move
@@ -41,13 +41,13 @@ class WritableRoadmap: Roadmap, Writable {
             guard let target = steps?.index(after: destination) else { //Index where to insert the moved element
                 return
             }
-            
+
             //Move the element:
             self.steps?.insert(step, at: target) //Insert the element at the new position
             self.steps?.remove(at: index) //Remove element from old position
         }
     }
-    
+
     func swapStep(from: Step, to: Step) {
         guard var container = self.steps else { //Check if the array exist 
             return
@@ -62,7 +62,7 @@ class WritableRoadmap: Roadmap, Writable {
         container[index] = to
         container[destination] = from
     }
-    
+
     func insertStepInHead(_ step: Step) {
         if steps == nil {
             self.appendStep(step)
@@ -70,7 +70,7 @@ class WritableRoadmap: Roadmap, Writable {
             self.steps!.insert(step, at: steps!.startIndex)
         }
     }
-    
+
     func insertStep(_ step: Step, after: Step) {
         if self.steps == nil {
             self.appendStep(step)

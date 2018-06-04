@@ -9,8 +9,7 @@
 import Foundation
 
 extension Array {
-    func safeCall(_ i:Int) -> Array.Element? {
+    func safeCall(_ i: Int) -> Array.Element? {
         return 0 <= i && i < count ? self[i] : nil
     }
 }
-

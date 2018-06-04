@@ -12,7 +12,6 @@ class AddResourceTableViewCell: UITableViewCell {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var URLTextField: UITextField!
 
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialiation code
@@ -29,5 +28,5 @@ class AddResourceTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

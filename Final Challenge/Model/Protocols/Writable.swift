@@ -7,7 +7,7 @@
 //
 
 import Foundation
-//MARK: - Writable protocol
+// MARK: - Writable protocol
 protocol Writable {
     func insertStepInHead(_ step: Step)
     func insertStep(_ step: Step, after: Step)

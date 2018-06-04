@@ -12,7 +12,7 @@ class StepTableViewCell: UITableViewCell {
     @IBOutlet weak var stepTitleLabel: UILabel!
     @IBOutlet weak var readingTimeLabel: UILabel!
     @IBOutlet weak var minutesLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,5 +23,5 @@ class StepTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

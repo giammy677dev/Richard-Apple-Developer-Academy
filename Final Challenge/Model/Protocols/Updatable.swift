@@ -7,7 +7,7 @@
 //
 
 import Foundation
-//MARK: - Updatable protocol
+// MARK: - Updatable protocol
 protocol Updatable {
     func setNotifications()
     func stopNotifications()

@@ -8,21 +8,21 @@
 
 import Foundation
 
-//MARK: - RoadmapVisibility
+// MARK: - RoadmapVisibility
 enum RoadmapVisibility: Int16 {
     case isPublic = 0
     case isShared = 1
     case isPrivate = 2
 }
 
-//MARK: - UserPrivilege
+// MARK: - UserPrivilege
 enum UserPrivilege: Int16 {
     case isOwner = 0
     case isEditor = 1
     case isSubscribed = 2
 }
 
-//MARK: - Category
+// MARK: - Category
 enum Category: Int16 {
     case Business = 0
     case Education = 1

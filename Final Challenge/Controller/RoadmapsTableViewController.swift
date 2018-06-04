@@ -8,7 +8,7 @@
 import UIKit
 
 class RoadmapsTableViewController: UITableViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,10 +16,10 @@ class RoadmapsTableViewController: UITableViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
 
          self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
-    
+
 //        let customCell = UINib(nibName: "collectionViewCell", bundle: nil)
 //        self.tableView.register(customCell, forCellReuseIdentifier: "collectionViewCell")
-        
+
 //        let headerCustomCell = UINib(nibName: "headerCell", bundle: nil)
 //        self.tableView.register(headerCustomCell, forCellReuseIdentifier: "headerCell")
     }
@@ -34,34 +34,34 @@ class RoadmapsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         let collectionCell = tableView.dequeueReusableCell(withIdentifier: "collectionViewCell", for: indexPath) as! CollectionTableViewCell
-        
+
         collectionCell.delegate = self
 
         collectionCell.backgroundView = UIImageView(image: UIImage(named: "Background celle.png")!) //It sets the background of the table view rows
 
         return collectionCell
     }
-    
+
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = Bundle.main.loadNibNamed("HeaderTableViewCell", owner: self, options: nil)?.first as! HeaderTableViewCell
-        
+
         return header
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 225  //global Constant
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 71   //global Constant
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
-    
+
 }
 
 extension RoadmapsTableViewController: MyCustomCellDelegator {

@@ -12,4 +12,3 @@ final class RoadmapSE {
     var id: String?
     var title: String?
 }
-
