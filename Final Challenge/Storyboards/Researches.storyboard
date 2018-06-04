@@ -66,7 +66,13 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="" image="links_reduced" id="cae-hs-uRE"/>
-                    <navigationItem key="navigationItem" title="Resources" id="yFa-2f-ExB"/>
+                    <navigationItem key="navigationItem" title="Resources" id="yFa-2f-ExB">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="cQJ-hx-51V">
+                            <connections>
+                                <segue destination="M14-Nz-ygc" kind="show" id="ACh-D6-9MP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="Wd2-y3-P4P" kind="show" identifier="SeeAllSegue" id="Iuy-kE-ZHY"/>
@@ -75,6 +81,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rXF-nW-gS4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="200.80000000000001" y="133.5832083958021"/>
+        </scene>
+        <!--AddResource-->
+        <scene sceneID="yvC-ID-XJi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddResource" id="M14-Nz-ygc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Fq-Mh-RVn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="758" y="40"/>
         </scene>
         <!--Links-->
         <scene sceneID="jTP-8d-bFJ">
