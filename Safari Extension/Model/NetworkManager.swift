@@ -24,7 +24,7 @@ open class NetworkManager {
         let request = URLRequest(url: url)
 
         //create dataTask using the session object to send data to the server
-        let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
+        let task = session.dataTask(with: request as URLRequest, completionHandler: { data, _, error in
 
             guard error == nil else {
                 print("error: \(String(describing: error?.localizedDescription))")
