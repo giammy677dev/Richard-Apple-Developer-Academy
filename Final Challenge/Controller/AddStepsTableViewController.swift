@@ -10,6 +10,8 @@ import UIKit
 
 class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
 
+    var numberOfRows = 1
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,7 +21,6 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
 
         //General settings
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none //delete the separator line between each rows of the tableView
-
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
     }
 
@@ -29,12 +30,15 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+
+        return numberOfRows
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let stepCell = tableView.dequeueReusableCell(withIdentifier: "TitleTableViewCell", for: indexPath) as! TitleTableViewCell
+
+        stepCell.titleTextField.delegate = self
 
 //        stepCell.backgroundView = UIImageView(image: UIImage(named: "Background celle.png")!) //It sets the background of the table view rows
 
@@ -53,5 +57,17 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
+    }
+
+    func textFieldShouldReturn(_ titleTextField: UITextField) -> Bool {
+        self.view.endEditing(true)
+
+        tableView.beginUpdates() //The following 5 lines of code add a new row when the user close the keyboard
+        tableView.insertRows(at: [IndexPath(row: numberOfRows, section: 0)], with: .automatic)
+        numberOfRows += 1
+        tableView.endUpdates()
+        tableView.reloadData()
+
+        return true
     }
 }
