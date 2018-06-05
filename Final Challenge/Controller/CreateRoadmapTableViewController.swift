@@ -21,7 +21,7 @@ class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelega
         //Invoke xib
         let titleCell = UINib(nibName: "TitleTableViewCell", bundle: nil)
         self.tableView.register(titleCell, forCellReuseIdentifier: "TitleTableViewCell")
-        
+
         let notificationCell = UINib(nibName: "NotificationTableViewCell", bundle: nil)
         self.tableView.register(notificationCell, forCellReuseIdentifier: "NotificationTableViewCell")
 
@@ -74,7 +74,7 @@ class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelega
         self.view.endEditing(true)
         return true
     }
-    
+
     @objc func goToAddStep() {
         let newViewController = AddStepsTableViewController()
         self.navigationController?.pushViewController(newViewController, animated: true)
