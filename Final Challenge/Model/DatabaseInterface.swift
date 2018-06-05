@@ -56,9 +56,9 @@ class DatabaseInterface {
         // MARK: - Save to CoreData
         saveToCoreData(roadmap: roadmap)
     }
-
+    
+    /// Saves a step in local and cloud DB. If the step doesn't exist it creates a new one and saves it.
     public func save(_ step: Step) {
-        /// Saves a step in local and cloud DB. If the step doesn't exist it creates a new one and saves it.
         let recordID = CKRecordID(recordName: step.uuid.uuidString)
         self.ckManager.privateDB.fetch(withRecordID: recordID) { (record, error) in
             if error != nil {
@@ -76,17 +76,17 @@ class DatabaseInterface {
 
     // MARK: - Save elements in Core Data
 
-    //Save Roadmap on CoreData
+    ///Save Roadmap on CoreData
     private func saveToCoreData(roadmap: Roadmap) { //Save single roadmap with steps and nodes
         cdController.saveRecursively(roadmap)
     }
 
-    //Save an array of Roadmaps on CoreData
+    ///Save an array of Roadmaps on CoreData
     private func saveToCoreData(roadmaps: [Roadmap]) { //Save an array of roadmaps with steps. Nodes must already exist in memory.
         cdController.saveRecursively(roadmaps)
     }
 
-    //Function to prepare Step saving on CoreData DataBase:
+    ///Function to prepare Step saving on CoreData DataBase:
     private func interfaceCDSaveStep(_ step: Step) {
         //Get elements nedded for saving Step
         guard let cdRoadmap = cdController.fetchCDRoadmap(uuid: step.parent) else {
@@ -99,7 +99,7 @@ class DatabaseInterface {
         saveToCoreData(step: step, roadmap: roadmap)
     }
 
-    //Save Step on CoreData, need an interface:
+    ///Save Step on CoreData, need an interface:
     private func saveToCoreData(step: Step, roadmap: Roadmap) { //Save a step in memory and link it to a roadmap
         guard let _ = cdController.updateStep(step, of: roadmap) else {
             debugPrint("Error on save step in local memory")
@@ -107,7 +107,7 @@ class DatabaseInterface {
         }
     }
 
-    //Save Node on CoreData
+    ///Save Node on CoreData
     private func saveToCoreData(node: Node) { //Save a node in memory
         guard let _ = cdController.updateNode(node) else {
             debugPrint("Error on save node in local memory")
@@ -132,7 +132,6 @@ class DatabaseInterface {
     }
 
     //MAKE: - Load data from Database
-
     func loadRoadmaps() -> [Roadmap]? {
         return cdController.getFullRoadmapRecords()
     }
@@ -142,9 +141,8 @@ class DatabaseInterface {
     }
 
     // MARK: - To CKRecord methods
-
+    /// When a new record has to be saved it creates a new one otherwise it re-saves all the key-values
     private func roadmapToRecord(record: CKRecord?, roadmap: Roadmap) -> CKRecord {
-
         if let record = record {
             record.setValue(roadmap.category, forKey: K.CKRecordTypes.CKRoadmapRecordField.category)
             record.setValue(roadmap.isPublic, forKey: K.CKRecordTypes.CKRoadmapRecordField.isPublic)
@@ -173,9 +171,9 @@ class DatabaseInterface {
 
         return newRecord
     }
-
+    
+    /// When a new record has to be saved it creates a new one otherwise it re-saves all the key-values
     private func stepToRecord(record: CKRecord?, step: Step) -> CKRecord {
-        /// When a new record has to be saved it creates a new one otherwise it re-saves all the key-values
         if let record = record {
             record.setValue(step.nodes, forKey: "nodes")
             record.setValue(step.title, forKey: K.CKRecordTypes.CKStepRecordField.title)
@@ -203,10 +201,9 @@ class DatabaseInterface {
 
         return newRecord
     }
-
+    
+    /// When a new record has to be saved it creates a new one otherwise it re-saves all the key-values
     private func nodeToRecord(record: CKRecord?, node: Node) -> CKRecord {
-        /// When a new record has to be saved it creates a new one otherwise it re-saves all the key-values
-        
         // Encoding not supported data types
         let encoder = PropertyListEncoder()
         let tagsData = try? encoder.encode(node.tags)
@@ -254,7 +251,6 @@ class DatabaseInterface {
     }
 
     // MARK: - From CKRecord methods
-
     private func recordToStep(_ ckRecord: CKRecord) -> Step? {
         guard let stepTitle = ckRecord[K.CKRecordTypes.CKStepRecordField.title] as? String,
             let stepParentID = ckRecord[K.CKRecordTypes.CKStepRecordField.parentUUID] as? String,
@@ -332,6 +328,8 @@ class DatabaseInterface {
 
     private func updateNode(fromRecord ckRecord: CKRecord) {
         //TODO: - Update Node
+        guard let node = self.recordToNode(ckRecord) else { return }
+        _ = cdController.updateNode(node)
     }
 
     private func updateStep(fromRecord ckRecord: CKRecord) {
