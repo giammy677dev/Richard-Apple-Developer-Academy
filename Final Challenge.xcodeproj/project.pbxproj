@@ -76,6 +76,8 @@
 		90DFF04020BD631800D2991F /* CustomCellDelegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90DFF03F20BD631700D2991F /* CustomCellDelegator.swift */; };
 		A06C023920C5391100C078D5 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06C023720C5391100C078D5 /* CategoryTableViewCell.swift */; };
 		A06C023A20C5391100C078D5 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A06C023820C5391100C078D5 /* CategoryTableViewCell.xib */; };
+		A080ED6E20C69C2F00689618 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A080ED6C20C69C2F00689618 /* NotificationTableViewCell.swift */; };
+		A080ED6F20C69C2F00689618 /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A080ED6D20C69C2F00689618 /* NotificationTableViewCell.xib */; };
 		A0BBA9C920B2F932008AE848 /* Roadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9C820B2F932008AE848 /* Roadmap.swift */; };
 		A0BBA9CB20B2FAF2008AE848 /* Sharable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9CA20B2FAF2008AE848 /* Sharable.swift */; };
 		A0BBA9CD20B2FD4C008AE848 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9CC20B2FD4C008AE848 /* Enumerations.swift */; };
@@ -191,6 +193,8 @@
 		93875BA625B3C5279467CF8E /* Pods_Final_ChallengeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Final_ChallengeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A06C023720C5391100C078D5 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		A06C023820C5391100C078D5 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
+		A080ED6C20C69C2F00689618 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		A080ED6D20C69C2F00689618 /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
 		A0BBA9C820B2F932008AE848 /* Roadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Roadmap.swift; sourceTree = "<group>"; };
 		A0BBA9CA20B2FAF2008AE848 /* Sharable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sharable.swift; sourceTree = "<group>"; };
 		A0BBA9CC20B2FD4C008AE848 /* Enumerations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
@@ -368,6 +372,8 @@
 				B18BF50D20BD450700D9BCF9 /* StepTableViewCell.xib */,
 				B18BF51620BD5F9100D9BCF9 /* TitleTableViewCell.swift */,
 				B18BF51720BD5F9100D9BCF9 /* TitleTableViewCell.xib */,
+				A080ED6C20C69C2F00689618 /* NotificationTableViewCell.swift */,
+				A080ED6D20C69C2F00689618 /* NotificationTableViewCell.xib */,
 				A06C023720C5391100C078D5 /* CategoryTableViewCell.swift */,
 				A06C023820C5391100C078D5 /* CategoryTableViewCell.xib */,
 			);
@@ -688,6 +694,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A080ED6F20C69C2F00689618 /* NotificationTableViewCell.xib in Resources */,
 				9002AAFE20B40C4400854015 /* CustomCollectionViewCell.xib in Resources */,
 				B18BF50F20BD450700D9BCF9 /* StepTableViewCell.xib in Resources */,
 				B186E95F20C53E5E004C66A2 /* AddSteps.storyboard in Resources */,
@@ -899,6 +906,7 @@
 				652A616320BBFD1C00A101B3 /* CDNode+CoreDataProperties.swift in Sources */,
 				9002AAF920B401EB00854015 /* CollectionTableViewCell.swift in Sources */,
 				A0BBA9D320B30845008AE848 /* Updatable.swift in Sources */,
+				A080ED6E20C69C2F00689618 /* NotificationTableViewCell.swift in Sources */,
 				A0BBA9CF20B30419008AE848 /* Node.swift in Sources */,
 				7B5BCB5F20B57E5900B66CEE /* CloudKitManager.swift in Sources */,
 				65B108C220BD5994007026FC /* File.swift in Sources */,
