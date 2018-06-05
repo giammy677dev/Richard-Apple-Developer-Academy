@@ -206,11 +206,11 @@ class DatabaseInterface {
 
     private func nodeToRecord(record: CKRecord?, node: Node) -> CKRecord {
         /// When a new record has to be saved it creates a new one otherwise it re-saves all the key-values
-        
+
         // Encoding not supported data types
         let encoder = PropertyListEncoder()
         let tagsData = try? encoder.encode(node.tags)
-        
+
         // If the record already exists (and it has been fetched)
         if let record = record {
             record.setValue(node.creationTimestamp, forKey: K.CKRecordTypes.CKNodeRecordField.creationTime)
@@ -220,7 +220,7 @@ class DatabaseInterface {
             record.setValue(node.isTextProperlyExtracted, forKey: K.CKRecordTypes.CKNodeRecordField.propExtracted)
             record.setValue(node.title, forKey: K.CKRecordTypes.CKNodeRecordField.title)
             record.setValue(node.url.absoluteString, forKey: K.CKRecordTypes.CKNodeRecordField.urlString)
-            
+
             record.setValue(tagsData, forKey: K.CKRecordTypes.CKNodeRecordField.tagsData)
 
             // Set the reference to the parent and the delete cascade update policy
@@ -230,7 +230,7 @@ class DatabaseInterface {
 
             return record
         }
-        
+
         // Else
         let recordID = CKRecordID(recordName: node.uuid.uuidString)
         let newRecord = CKRecord(recordType: K.CKRecordTypes.node, recordID: recordID)
@@ -242,7 +242,7 @@ class DatabaseInterface {
         newRecord.setValue(node.isTextProperlyExtracted, forKey: K.CKRecordTypes.CKNodeRecordField.propExtracted)
         newRecord.setValue(node.title, forKey: K.CKRecordTypes.CKNodeRecordField.title)
         newRecord.setValue(node.url.absoluteString, forKey: K.CKRecordTypes.CKNodeRecordField.urlString)
-        
+
         newRecord.setValue(tagsData, forKey: K.CKRecordTypes.CKNodeRecordField.tagsData)
 
         // Set the reference to the parent and the delete cascade update policy
@@ -298,13 +298,13 @@ class DatabaseInterface {
             let urlString = ckRecord[K.CKRecordTypes.CKNodeRecordField.urlString] as? String,
             let url = URL(string: urlString)
             else { return nil }
-        
+
         var tagsSet: Set<String>?
         if let tagsData = ckRecord[K.CKRecordTypes.CKNodeRecordField.tagsData] as? Data {
             let decoder = PropertyListDecoder()
             tagsSet = try? decoder.decode(Set<String>.self, from: tagsData)
         }
-        
+
         let node = Node(url: url, title: title, id: uuid, parent: parentUUID, tags: tagsSet, text: text, propExtracted: propExtracted, creationTime: creationTime, propRead: propRead, propFlagged: propFlagged)
 
         return node

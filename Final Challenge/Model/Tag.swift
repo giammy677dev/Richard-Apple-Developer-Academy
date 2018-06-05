@@ -45,7 +45,7 @@ class Tag {
         guard let string = str, str?.count != 0 else { return [] }
         let hashtagRegex = try! NSRegularExpression(pattern: "#(\\w++)", options: .caseInsensitive)
 
-        let regexResults = hashtagRegex.matches(in: string, options: .withoutAnchoringBounds, range: NSMakeRange(0, string.count))
+        let regexResults = hashtagRegex.matches(in: string, options: .withoutAnchoringBounds, range: NSRange(location: 0, length: string.count))
 
         let tagsArray = regexResults.map {
             (string as NSString).substring(with: $0.range(at: 1))

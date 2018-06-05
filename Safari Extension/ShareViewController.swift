@@ -57,7 +57,7 @@ class ShareViewController: SLComposeServiceViewController {
         let itemProvider = extensionItem.attachments?.first as! NSItemProvider
         let propertyList = String(kUTTypePropertyList)
         if itemProvider.hasItemConformingToTypeIdentifier(propertyList) {
-            itemProvider.loadItem(forTypeIdentifier: propertyList, options: nil, completionHandler: { (item, error) -> Void in
+            itemProvider.loadItem(forTypeIdentifier: propertyList, options: nil, completionHandler: { (item, _) -> Void in
                 guard let dictionary = item as? NSDictionary else { return }
                 OperationQueue.main.addOperation {
                     let manager = NetworkManager()
