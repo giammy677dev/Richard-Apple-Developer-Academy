@@ -109,6 +109,8 @@
 		B177C48520A9768B00CD9CBE /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B177C48420A9768B00CD9CBE /* UIViewControllerExtension.swift */; };
 		B177C48A20A9768B00CD9CBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B177C48920A9768B00CD9CBE /* Assets.xcassets */; };
 		B177C48D20A9768B00CD9CBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B177C48B20A9768B00CD9CBE /* LaunchScreen.storyboard */; };
+		B17CFC8F20C71FF10027C670 /* AddStepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17CFC8D20C71FF10027C670 /* AddStepTableViewCell.swift */; };
+		B17CFC9020C71FF10027C670 /* AddStepTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B17CFC8E20C71FF10027C670 /* AddStepTableViewCell.xib */; };
 		B186E95F20C53E5E004C66A2 /* AddSteps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B186E95E20C53E5E004C66A2 /* AddSteps.storyboard */; };
 		B186E96120C53E89004C66A2 /* AddStepsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B186E96020C53E89004C66A2 /* AddStepsTableViewController.swift */; };
 		B18B9A8520BC12B8004FA469 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18B9A8420BC12B8004FA469 /* UITextFieldExtension.swift */; };
@@ -230,6 +232,8 @@
 		B177C48E20A9768B00CD9CBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B177C49320A9768B00CD9CBE /* Final ChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Final ChallengeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B177C49E20A9768B00CD9CBE /* Final ChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Final ChallengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B17CFC8D20C71FF10027C670 /* AddStepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStepTableViewCell.swift; sourceTree = "<group>"; };
+		B17CFC8E20C71FF10027C670 /* AddStepTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddStepTableViewCell.xib; sourceTree = "<group>"; };
 		B186E95E20C53E5E004C66A2 /* AddSteps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddSteps.storyboard; sourceTree = "<group>"; };
 		B186E96020C53E89004C66A2 /* AddStepsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStepsTableViewController.swift; sourceTree = "<group>"; };
 		B18B9A8420BC12B8004FA469 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
@@ -369,6 +373,8 @@
 				A080ED6D20C69C2F00689618 /* NotificationTableViewCell.xib */,
 				A06C023720C5391100C078D5 /* CategoryTableViewCell.swift */,
 				A06C023820C5391100C078D5 /* CategoryTableViewCell.xib */,
+				B17CFC8D20C71FF10027C670 /* AddStepTableViewCell.swift */,
+				B17CFC8E20C71FF10027C670 /* AddStepTableViewCell.xib */,
 			);
 			path = CollectionCell;
 			sourceTree = "<group>";
@@ -681,6 +687,7 @@
 				B177C48A20A9768B00CD9CBE /* Assets.xcassets in Resources */,
 				90525FA020B6A7D1006D3093 /* Researches.storyboard in Resources */,
 				B127493220BB417F00C4420C /* AddTagsTableViewCell.xib in Resources */,
+				B17CFC9020C71FF10027C670 /* AddStepTableViewCell.xib in Resources */,
 				B18BF51920BD5F9100D9BCF9 /* TitleTableViewCell.xib in Resources */,
 				90525F9F20B6A7D1006D3093 /* Roadmaps.storyboard in Resources */,
 				9002AAF320B2BFC000854015 /* HeaderTableViewCell.xib in Resources */,
@@ -878,6 +885,7 @@
 				9002AAF920B401EB00854015 /* CollectionTableViewCell.swift in Sources */,
 				A0BBA9D320B30845008AE848 /* Updatable.swift in Sources */,
 				A080ED6E20C69C2F00689618 /* NotificationTableViewCell.swift in Sources */,
+				B17CFC8F20C71FF10027C670 /* AddStepTableViewCell.swift in Sources */,
 				A0BBA9CF20B30419008AE848 /* Node.swift in Sources */,
 				7B5BCB5F20B57E5900B66CEE /* CloudKitManager.swift in Sources */,
 				65B108C220BD5994007026FC /* ArrayExtension.swift in Sources */,

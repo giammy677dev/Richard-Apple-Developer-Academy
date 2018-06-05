@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="94.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Add Resource Backgorund" translatesAutoresizingMaskIntoConstraints="NO" id="BIF-Vt-xKQ">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Add Resource Background" translatesAutoresizingMaskIntoConstraints="NO" id="BIF-Vt-xKQ">
                         <rect key="frame" x="8" y="-1" width="358" height="95"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
@@ -51,6 +51,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Add Resource Backgorund" width="362" height="179"/>
+        <image name="Add Resource Background" width="358" height="174"/>
     </resources>
 </document>
