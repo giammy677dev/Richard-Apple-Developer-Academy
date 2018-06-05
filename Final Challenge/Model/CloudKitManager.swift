@@ -14,25 +14,19 @@ final class CloudKitManager {
     static let shared = CloudKitManager()
 
     private var container: CKContainer
-    var publicDB: CKDatabase {
-        get {
-            return container.publicCloudDatabase
-        }
-    }
-    var privateDB: CKDatabase {
-        get {
-            return container.privateCloudDatabase
-        }
-    }
+    var publicDB: CKDatabase
+    var privateDB: CKDatabase
 
     private init() {
-        container = CKContainer.default()
+        self.container = CKContainer.default()
+        self.privateDB = container.privateCloudDatabase
+        self.publicDB = container.publicCloudDatabase
     }
 
     func saveRecord(_ record: CKRecord) {
         privateDB.save(record) { (record, error) in
             if let error = error {
-                //TO-DO: - Error handling
+                //TODO: - Error handling
                 debugPrint(error.localizedDescription)
                 return
             }
@@ -46,7 +40,7 @@ final class CloudKitManager {
     func deleteRoadmap(_ roadmapID: CKRecordID) {
         privateDB.delete(withRecordID: roadmapID) { (recordID, error) in
             if let err = error {
-                //TO-DO: - Error handling
+                //TODO: - Error handling
                 debugPrint(err.localizedDescription)
                 return
             } else {
@@ -58,7 +52,7 @@ final class CloudKitManager {
     func deleteStep(_ stepID: CKRecordID) {
         privateDB.delete(withRecordID: stepID) { (recordID, error) in
             if let err = error {
-                //TO-DO: - Error handling
+                //TODO: - Error handling
                 debugPrint(err.localizedDescription)
                 return
             } else {
@@ -70,7 +64,7 @@ final class CloudKitManager {
     func deleteNode(_ nodeID: CKRecordID) {
         privateDB.delete(withRecordID: nodeID) { (recordID, error) in
             if let err = error {
-                //TO-DO: - Error handling
+                //TODO: - Error handling
                 debugPrint(err.localizedDescription)
                 return
             } else {
@@ -111,7 +105,6 @@ final class CloudKitManager {
         notificationInfo.shouldSendContentAvailable = true
 
         subscriptionsArray = subscriptionsArray.map({
-            debugPrint($0.debugDescription)
             $0.notificationInfo = notificationInfo
             return $0
         })
@@ -146,7 +139,7 @@ final class CloudKitManager {
         var changeToken: CKServerChangeToken?
         let changeTokenData = UserDefaults().data(forKey: K.DefaultsKey.ckServerPrivateDatabaseChangeToken)
         if let changeTokenData = changeTokenData {
-            changeToken = NSKeyedUnarchiver.unarchiveObject(with: changeTokenData) as! CKServerChangeToken?
+            changeToken = NSKeyedUnarchiver.unarchiveObject(with: changeTokenData) as? CKServerChangeToken
         }
         // Init the fetching operation
         let fetchOperation = CKFetchDatabaseChangesOperation(previousServerChangeToken: changeToken)
@@ -201,17 +194,18 @@ final class CloudKitManager {
         let changeTokenData = UserDefaults().data(forKey: changeTokenKey)
         var changeToken: CKServerChangeToken?
         if changeTokenData != nil {
-            changeToken = NSKeyedUnarchiver.unarchiveObject(with: changeTokenData!) as! CKServerChangeToken?
+            changeToken = NSKeyedUnarchiver.unarchiveObject(with: changeTokenData!) as? CKServerChangeToken
         }
         let options = CKFetchRecordZoneChangesOptions()
         options.previousServerChangeToken = changeToken
-        let optionsMap = [recordZoneID : options]
+        let optionsMap = [recordZoneID: options]
 
         let fetchChangesOperation = CKFetchRecordZoneChangesOperation(recordZoneIDs: [recordZoneID], optionsByRecordZoneID: optionsMap)
         fetchChangesOperation.fetchAllChanges = true
 
-        fetchChangesOperation.recordChangedBlock = self.recordChanged(_:)
-        fetchChangesOperation.recordWithIDWasDeletedBlock = self.recordIDDeleted(_:recordType:)
+        // Manage a record update or record deletion
+        fetchChangesOperation.recordChangedBlock = DatabaseInterface.shared.recordChanged(_:)
+        fetchChangesOperation.recordWithIDWasDeletedBlock = DatabaseInterface.shared.recordDeleted(withID:recordType:)
 
         fetchChangesOperation.recordZoneChangeTokensUpdatedBlock = { (_, serverChangeToken, clientChangeTokenData) in
             //FIXME: - Check if the server token is equal to the client token
@@ -244,14 +238,6 @@ final class CloudKitManager {
 
     private func fetchDeletedRecordZoneWithID(_ recordZoneID: CKRecordZoneID) {}
     private func fetchPurgedRecordZoneWithID(_ recordZoneID: CKRecordZoneID) {}
-
-    private func recordChanged(_ ckRecord: CKRecord) {
-        // The block to execute with the contents of a changed record.
-    }
-
-    private func recordIDDeleted(_ recordID: CKRecordID, recordType: String) {
-        // The block to execute with the ID of a record that was deleted.
-    }
 
     // MARK: - Create Record
     private func createRecord(recordID: CKRecordID, ckRecordType: String) -> CKRecord {

@@ -24,10 +24,10 @@ class Node: Taggable {
     var parent: UUID
 
     //Methods:
-    init(url: URL, title: String, id: UUID, parent: UUID?, tags: String?, text: String, propExtracted: Bool, creationTime: Date = Date(), propRead: Bool = false, propFlagged: Bool = false) {
+    init(url: URL, title: String, id: UUID, parent: UUID, tags: String?, text: String, propExtracted: Bool, creationTime: Date = Date(), propRead: Bool = false, propFlagged: Bool = false) {
         self.url = url
         self.title = title
-        self.parent = parent ?? K.readingListID
+        self.parent = parent
         self.extractedText = text
         self.isTextProperlyExtracted = propExtracted
         self.creationTimestamp = creationTime
@@ -41,10 +41,10 @@ class Node: Taggable {
         }
     }
 
-    init(url: URL, title: String, id: UUID, parent: UUID?, tags: Set<String>?, text: String, propExtracted: Bool, creationTime: Date = Date(), propRead: Bool = false, propFlagged: Bool = false) {
+    init(url: URL, title: String, id: UUID, parent: UUID, tags: Set<String>?, text: String, propExtracted: Bool, creationTime: Date = Date(), propRead: Bool = false, propFlagged: Bool = false) {
         self.url = url
         self.title = title
-        self.parent = parent ?? K.readingListID
+        self.parent = parent
         self.extractedText = text
         self.isTextProperlyExtracted = propExtracted
         self.creationTimestamp = creationTime
@@ -54,7 +54,6 @@ class Node: Taggable {
         if let _ = tags {
             self.tags = tags!
         }
-
     }
 
     private func analyze(url: URL) {

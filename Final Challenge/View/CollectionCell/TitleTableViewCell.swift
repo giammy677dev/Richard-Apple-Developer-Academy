@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TitleTableViewCell: UITableViewCell {
+class TitleTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var titleTextField: UITextField!
 
     override func awakeFromNib() {
@@ -18,6 +18,7 @@ class TitleTableViewCell: UITableViewCell {
         titleTextField.placeholder = "Add title"
         titleTextField.borderStyle = .roundedRect
         titleTextField.setLeftPaddingPoints(10)
+        titleTextField.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,4 +27,13 @@ class TitleTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func textFieldShouldReturn(titleTextField: UITextField) -> Bool {
+        titleTextField.endEditing(true)
+        return true
+    }
+
+    func textFieldShouldReturn(titleTextField: UITextField!) -> Bool {
+        titleTextField.resignFirstResponder()
+        return true
+    }
 }

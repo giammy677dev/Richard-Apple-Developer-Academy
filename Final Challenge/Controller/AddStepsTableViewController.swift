@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddStepsTableViewController: UITableViewController {
+class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +16,9 @@ class AddStepsTableViewController: UITableViewController {
         //Invoke xib
         let stepCell = UINib(nibName: "TitleTableViewCell", bundle: nil)
         self.tableView.register(stepCell, forCellReuseIdentifier: "TitleTableViewCell")
+
+        //General settings
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none //delete the separator line between each rows of the tableView
 
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
     }
@@ -40,5 +43,15 @@ class AddStepsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 95  //global Constant
+    }
+
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the color of the header
+        return headerView
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
     }
 }
