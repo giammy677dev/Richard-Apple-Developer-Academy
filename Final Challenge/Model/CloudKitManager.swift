@@ -23,56 +23,40 @@ final class CloudKitManager {
         self.publicDB = container.publicCloudDatabase
     }
 
+    // MARK: - Save and delete methods
+    
+    /// Saves a record in the Private Database
     func saveRecord(_ record: CKRecord) {
-        privateDB.save(record) { (_, error) in
-            if let error = error {
-                //TODO: - Error handling
-                debugPrint(error.localizedDescription)
-                return
-            }
-            // Successfully saved
+        let savingOperation = CKModifyRecordsOperation()
+        savingOperation.recordsToSave = [record]
+        savingOperation.savePolicy = .allKeys // TODO: - Ask someone. What if the server record is different?
+        savingOperation.modifyRecordsCompletionBlock = self.modifyRecordsCompletionBlock(_:_:_:)
+        savingOperation.qualityOfService = .utility
 
-        }
+        self.privateDB.add(savingOperation)
     }
-
-    // MARK: - Functions for deleting operations
-
-    func deleteRoadmap(_ roadmapID: CKRecordID) {
-        privateDB.delete(withRecordID: roadmapID) { (recordID, error) in
-            if let err = error {
-                //TODO: - Error handling
-                debugPrint(err.localizedDescription)
-                return
-            } else {
-                debugPrint("Succesfully deleted roadmap with id: \(String(describing: recordID))")
-            }
-        }
+    
+    /// Deletes a record in the Private Database
+    func deleteRecord(withRecordID recordID: CKRecordID) {
+        let deletionOperation = CKModifyRecordsOperation()
+        deletionOperation.recordIDsToDelete = [recordID]
+        deletionOperation.savePolicy = .allKeys // force deletion even if the server has a new version of the record
+        deletionOperation.modifyRecordsCompletionBlock = self.modifyRecordsCompletionBlock(_:_:_:)
+        deletionOperation.qualityOfService = .utility
+        
+        self.privateDB.add(deletionOperation)
     }
-
-    func deleteStep(_ stepID: CKRecordID) {
-        privateDB.delete(withRecordID: stepID) { (recordID, error) in
-            if let err = error {
-                //TODO: - Error handling
-                debugPrint(err.localizedDescription)
-                return
-            } else {
-                debugPrint("Succesfully deleted step with id: \(String(describing: recordID))")
-            }
-        }
+    
+    /// The block to execute after the status of all changes is known.
+    private func modifyRecordsCompletionBlock(_ savedRecords: [CKRecord]?, _ deletedRecordIDs: [CKRecord.ID]?, _ operationError: Error?) {
+        // This block is executed after all individual progress blocks have completed but before the operation’s completion block.
+        // The block is executed serially with respect to the other progress blocks of the operation.
+        
+        // TODO: - Handle errors!
+        
     }
-
-    func deleteNode(_ nodeID: CKRecordID) {
-        privateDB.delete(withRecordID: nodeID) { (recordID, error) in
-            if let err = error {
-                //TODO: - Error handling
-                debugPrint(err.localizedDescription)
-                return
-            } else {
-                debugPrint("Succesfully deleted node with id: \(String(describing: recordID))")
-            }
-        }
-    }
-
+    
+    
     // MARK: - Notifications and DB subscriptions
     func subscriptionSetup() {
         let defaults = UserDefaults()
@@ -238,6 +222,7 @@ final class CloudKitManager {
 
     private func fetchDeletedRecordZoneWithID(_ recordZoneID: CKRecordZoneID) {}
     private func fetchPurgedRecordZoneWithID(_ recordZoneID: CKRecordZoneID) {}
+    
 
     // MARK: - Create Record
     private func createRecord(recordID: CKRecordID, ckRecordType: String) -> CKRecord {

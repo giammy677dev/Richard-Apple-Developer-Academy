@@ -14,17 +14,15 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let backView = UIView(frame: tableView.frame)
-        backView.backgroundColor = .blue
-        self.tableView.sendSubview(toBack: backView)
-        tableView.delegate = self
+
         //Invoke xib
-        let stepCell = UINib(nibName: "TitleTableViewCell", bundle: nil)
-        self.tableView.register(stepCell, forCellReuseIdentifier: "TitleTableViewCell")
+        let stepCell = UINib(nibName: "AddStepTableViewCell", bundle: nil)
+        self.tableView.register(stepCell, forCellReuseIdentifier: "AddStepTableViewCell")
 
         //General settings
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none //delete the separator line between each rows of the tableView
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
+        self.tableView.backgroundColor = UIColor.white //set the background color of the tableView
     }
 
     // MARK: - Table view data source
@@ -38,7 +36,7 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let stepCell = tableView.dequeueReusableCell(withIdentifier: "TitleTableViewCell", for: indexPath) as! TitleTableViewCell
+        let stepCell = tableView.dequeueReusableCell(withIdentifier: "AddStepTableViewCell", for: indexPath) as! AddStepTableViewCell
 
         stepCell.titleTextField.delegate = self
 
@@ -47,7 +45,6 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 112
-//        return 95  //global Constant
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -63,19 +60,14 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ titleTextField: UITextField) -> Bool {
         self.view.endEditing(true)
 
-        tableView.beginUpdates() //The following 5 lines of code add a new row when the user close the keyboard
-        tableView.insertRows(at: [IndexPath(row: numberOfRows, section: 0)], with: .automatic)
-        numberOfRows += 1
-        tableView.endUpdates()
-        tableView.reloadData()
+        //The following lines of code add a new row and modify the tableView when the user close the keyboard
+        tableView.beginUpdates() //It starts the modification of the tableView
+        tableView.insertRows(at: [IndexPath(row: numberOfRows, section: 0)], with: .automatic) //It adds the new row at the end of the tableView
+        numberOfRows += 1 //It increase the number of rows
+        tableView.endUpdates() //It ends the modification of the tableView
+        tableView.reloadData() //It loads new datas for the tableView
 
         return true
-    }
-
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footerView = UIView()
-        footerView.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
-        return footerView
     }
 
 }

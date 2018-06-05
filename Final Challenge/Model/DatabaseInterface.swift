@@ -76,17 +76,17 @@ class DatabaseInterface {
 
     // MARK: - Save elements in Core Data
 
-    ///Save Roadmap on CoreData
+    /// Save Roadmap on CoreData
     private func saveToCoreData(roadmap: Roadmap) { //Save single roadmap with steps and nodes
         cdController.saveRecursively(roadmap)
     }
 
-    ///Save an array of Roadmaps on CoreData
+    /// Save an array of Roadmaps on CoreData
     private func saveToCoreData(roadmaps: [Roadmap]) { //Save an array of roadmaps with steps. Nodes must already exist in memory.
         cdController.saveRecursively(roadmaps)
     }
 
-    ///Function to prepare Step saving on CoreData DataBase:
+    /// Function to prepare Step saving on CoreData DataBase:
     private func interfaceCDSaveStep(_ step: Step) {
         //Get elements nedded for saving Step
         guard let cdRoadmap = cdController.fetchCDRoadmap(uuid: step.parent) else {
@@ -95,11 +95,11 @@ class DatabaseInterface {
         }
         let roadmap = cdController.roadmapFromRecord(cdRoadmap)
 
-        //Call the function to save Step on CoreData
+        // Call the function to save Step on CoreData
         saveToCoreData(step: step, roadmap: roadmap)
     }
 
-    ///Save Step on CoreData, need an interface:
+    /// Save Step on CoreData, need an interface:
     private func saveToCoreData(step: Step, roadmap: Roadmap) { //Save a step in memory and link it to a roadmap
         guard let _ = cdController.updateStep(step, of: roadmap) else {
             debugPrint("Error on save step in local memory")
@@ -107,7 +107,7 @@ class DatabaseInterface {
         }
     }
 
-    ///Save Node on CoreData
+    /// Save Node on CoreData
     private func saveToCoreData(node: Node) { //Save a node in memory
         guard let _ = cdController.updateNode(node) else {
             debugPrint("Error on save node in local memory")
@@ -117,18 +117,21 @@ class DatabaseInterface {
 
     // MARK: - Interface to deleting operations
     public func deleteRoadmap(_ roadmap: Roadmap) {
+        let recordID = CKRecordID(recordName: roadmap.uuid.uuidString)
         cdController.deleteRoadmap(roadmap) //Delete roadmap from CoreData DB
-        ckManager.deleteRoadmap(CKRecordID(recordName: roadmap.uuid.uuidString)) //Delete roadmap from CloudKit DB
+        ckManager.deleteRecord(withRecordID: recordID) //Delete roadmap from CloudKit DB
     }
 
     public func deleteStep(_ step: Step) {
+        let recordID = CKRecordID(recordName: step.uuid.uuidString)
         cdController.deleteStep(step) //Delete step from CoreData DB
-        ckManager.deleteStep(CKRecordID(recordName: step.uuid.uuidString)) //Delete step from CloudKit DB
+        ckManager.deleteRecord(withRecordID: recordID) //Delete step from CloudKit DB
     }
 
     public func deleteNode(_ node: Node) {
+        let recordID = CKRecordID(recordName: node.uuid.uuidString)
         cdController.deleteNode(node) //Delete node from CoreData DB
-        ckManager.deleteNode(CKRecordID(recordName: node.uuid.uuidString)) //Delete roadmap from CloudKit DB
+        ckManager.deleteRecord(withRecordID: recordID) //Delete roadmap from CloudKit DB
     }
 
     //MAKE: - Load data from Database
@@ -327,7 +330,7 @@ class DatabaseInterface {
     }
 
     private func updateNode(fromRecord ckRecord: CKRecord) {
-        //TODO: - Update Node
+        // TODO: - Update Node
         guard let node = self.recordToNode(ckRecord) else { return }
         _ = cdController.updateNode(node)
     }

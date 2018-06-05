@@ -21,7 +21,7 @@ class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelega
         //Invoke xib
         let titleCell = UINib(nibName: "TitleTableViewCell", bundle: nil)
         self.tableView.register(titleCell, forCellReuseIdentifier: "TitleTableViewCell")
-        
+
         let notificationCell = UINib(nibName: "NotificationTableViewCell", bundle: nil)
         self.tableView.register(notificationCell, forCellReuseIdentifier: "NotificationTableViewCell")
 
@@ -30,20 +30,11 @@ class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelega
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return 3
     }
 
@@ -74,7 +65,7 @@ class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelega
         self.view.endEditing(true)
         return true
     }
-    
+
     @objc func goToAddStep() {
         let newViewController = AddStepsTableViewController()
         self.navigationController?.pushViewController(newViewController, animated: true)
