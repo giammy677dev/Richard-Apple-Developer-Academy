@@ -17,7 +17,7 @@ enum K { // swiftlint:disable:this type_name
         static let roadmap = "Roadmap"
 
         enum CKNodeRecordField {
-            static let url = "url"
+            static let urlString = "url"
             static let title = "title"
             static let uuid = "uuid"
             static let parentUUID = "parentUUID"
