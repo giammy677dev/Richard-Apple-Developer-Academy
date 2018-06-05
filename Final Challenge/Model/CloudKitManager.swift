@@ -24,7 +24,7 @@ final class CloudKitManager {
     }
 
     func saveRecord(_ record: CKRecord) {
-        privateDB.save(record) { (record, error) in
+        privateDB.save(record) { (_, error) in
             if let error = error {
                 //TODO: - Error handling
                 debugPrint(error.localizedDescription)

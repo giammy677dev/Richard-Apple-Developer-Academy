@@ -7,19 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-}
-
+//Extension of UIViewController to test CoreData init
 extension UIViewController {
     func CoreDataTest() {
         let a = Roadmap(title: "Come fare il pene", category: .Travel, visibility: .isPrivate, privileges: .isOwner, lastRead: Date(), id: UUID())
