@@ -15,9 +15,9 @@ class TitleTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
 
-        titleTextField?.placeholder = "Add title"
-        titleTextField?.borderStyle = .roundedRect
-        titleTextField?.setLeftPaddingPoints(10)
+        titleTextField.placeholder = "Add title"
+        titleTextField.borderStyle = .roundedRect
+        titleTextField.setLeftPaddingPoints(10)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
