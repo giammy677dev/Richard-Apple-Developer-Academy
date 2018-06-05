@@ -9,16 +9,16 @@
 import UIKit
 
 class CategoryTableViewCell: UITableViewCell {
-    
+
     // TODO: - Manage category not selcted situation
-    
+
     // Properties:
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet var categoriesButtonArray: [UIButton]!
     @IBOutlet weak var categoryTextField: UITextField!
     // TODO: - Manage category not selcted situation
     var chosedCategory: Category? // Move this variable on a singleton (?!)
-    
+
     // Methods:
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,7 +43,7 @@ class CategoryTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
     @objc func choseCategory(_ selector: UIButton) {
         // TODO: Define activities
         switch selector.titleLabel?.text {
@@ -87,5 +87,5 @@ class CategoryTableViewCell: UITableViewCell {
             chosedCategory = nil
         }
     }
-    
+
 }
