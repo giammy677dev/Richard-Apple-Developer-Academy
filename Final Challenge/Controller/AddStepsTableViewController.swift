@@ -10,11 +10,14 @@ import UIKit
 
 class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
 
-    var numberOfRows = 1
+    var numberOfRows = 1 //Initial number of the rows
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let backView = UIView(frame: tableView.frame)
+        backView.backgroundColor = .blue
+        self.tableView.sendSubview(toBack: backView)
+        tableView.delegate = self
         //Invoke xib
         let stepCell = UINib(nibName: "TitleTableViewCell", bundle: nil)
         self.tableView.register(stepCell, forCellReuseIdentifier: "TitleTableViewCell")
@@ -30,7 +33,6 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
         return numberOfRows
     }
 
@@ -40,13 +42,12 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
 
         stepCell.titleTextField.delegate = self
 
-//        stepCell.backgroundView = UIImageView(image: UIImage(named: "Background celle.png")!) //It sets the background of the table view rows
-
         return stepCell
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 95  //global Constant
+        return 112
+//        return 95  //global Constant
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -70,4 +71,11 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
 
         return true
     }
+
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView()
+        footerView.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!)
+        return footerView
+    }
+
 }
