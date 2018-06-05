@@ -10,13 +10,25 @@ import UIKit
 
 class NotificationTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var switchSelector: UIView!
+    var notificationOn: Bool = true
+    
+    @IBOutlet weak var switchController: UISwitch!
     @IBOutlet weak var whiteView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Set style:
         whiteView.layer.cornerRadius = 4
         // TODO: - Manage switch
+        switchController.setOn(true, animated: false)
+        switchController.addTarget(self, action: #selector(changeStatus(_:)), for: .touchUpInside)
+    }
+    
+    @objc func changeStatus(_ sender: UISwitch) {
+        if sender.isOn {
+            self.notificationOn = true
+        } else {
+            self.notificationOn = false
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

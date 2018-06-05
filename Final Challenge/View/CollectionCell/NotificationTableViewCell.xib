@@ -45,7 +45,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="switchSelector" destination="FiT-qU-dNV" id="zeX-tZ-7E5"/>
+                <outlet property="switchController" destination="Ic0-fR-YUB" id="YiC-r8-TlS"/>
                 <outlet property="whiteView" destination="FiT-qU-dNV" id="lzm-aM-ct8"/>
             </connections>
         </tableViewCell>
