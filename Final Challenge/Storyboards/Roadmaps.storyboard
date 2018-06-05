@@ -25,13 +25,13 @@
             </objects>
             <point key="canvasLocation" x="-676" y="198"/>
         </scene>
-        <!--CreateRoadmap-->
+        <!--AddSteps-->
         <scene sceneID="IW3-sM-OcW">
             <objects>
-                <viewControllerPlaceholder storyboardName="CreateRoadmap" id="caJ-Jh-dkH" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="AddSteps" id="caJ-Jh-dkH" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mni-Gs-jFY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="553" y="-398"/>
+            <point key="canvasLocation" x="766" y="-207"/>
         </scene>
         <!--Roadmaps-->
         <scene sceneID="UZY-Jr-g8C">
@@ -89,14 +89,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MD6-PM-nRN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="182" y="197"/>
-        </scene>
-        <!--AddSteps-->
-        <scene sceneID="80Z-lK-sjn">
-            <objects>
-                <viewControllerPlaceholder storyboardName="AddSteps" id="1K3-Ju-qWT" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a3s-lI-MIO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="644" y="-258"/>
         </scene>
         <!--See All Table View Controller-->
         <scene sceneID="waR-co-pb9">
