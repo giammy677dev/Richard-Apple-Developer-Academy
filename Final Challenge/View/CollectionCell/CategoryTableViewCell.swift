@@ -10,10 +10,13 @@ import UIKit
 
 class CategoryTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet var categoriesButtonArray: [UIButton]!
     @IBOutlet weak var categoryTextField: UITextField!
     override func awakeFromNib() {
         super.awakeFromNib()
+        // Set background properties:
+        backgroundImage.layer.zPosition = 0
         // Set category text field properties:
         categoryTextField.placeholder = "Choose a Category"
         categoryTextField.borderStyle = .roundedRect

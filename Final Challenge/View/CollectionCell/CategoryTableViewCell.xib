@@ -19,6 +19,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="377" height="299.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Add Resource Backgorund" translatesAutoresizingMaskIntoConstraints="NO" id="X6B-gL-qY0">
+                        <rect key="frame" x="9" y="-1" width="358" height="300"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IxI-oN-ELq">
                         <rect key="frame" x="29" y="11" width="319" height="49"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -86,14 +90,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="Other"/>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Add Resource Backgorund" translatesAutoresizingMaskIntoConstraints="NO" id="X6B-gL-qY0">
-                        <rect key="frame" x="9" y="-1" width="358" height="300"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="backgroundImage" destination="X6B-gL-qY0" id="I7T-fF-7oh"/>
                 <outlet property="categoryTextField" destination="IxI-oN-ELq" id="F93-2j-Wh4"/>
                 <outletCollection property="categoriesButtonArray" destination="eBg-k0-ETg" collectionClass="NSMutableArray" id="xrF-sf-WmA"/>
                 <outletCollection property="categoriesButtonArray" destination="Hni-kt-AFA" collectionClass="NSMutableArray" id="mVn-di-hjt"/>
