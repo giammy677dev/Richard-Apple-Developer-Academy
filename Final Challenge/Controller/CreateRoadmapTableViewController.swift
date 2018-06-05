@@ -16,6 +16,16 @@ class CreateRoadmapTableViewController: UITableViewController {
         //General settings
 
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
+        
+        //Invoke xib
+        let titleCell = UINib(nibName: "TitleTableViewCell", bundle: nil)
+        self.tableView.register(titleCell, forCellReuseIdentifier: "TitleTableViewCell")
+        
+        let notificationCell = UINib(nibName: "TitleTableViewCell", bundle: nil)
+        self.tableView.register(notificationCell, forCellReuseIdentifier: "NotificationTableViewCell")
+        
+        let categoryCell = UINib(nibName: "CategoryTableViewCell", bundle: nil)
+        self.tableView.register(categoryCell, forCellReuseIdentifier: "CategoryTableViewCell")
 
     }
 
@@ -28,23 +38,36 @@ class CreateRoadmapTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 3
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TitleTableViewCell", for: indexPath) as! TitleTableViewCell
+            return cell
+        } else if indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! TitleTableViewCell
+            cell.titleTextField.placeholder = "Notifications"
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTableViewCell", for: indexPath) as! CategoryTableViewCell
+            return cell
+        }
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row < 2 {
+            return 94
+        } else {
+            return 300
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
