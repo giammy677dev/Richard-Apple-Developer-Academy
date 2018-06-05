@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateRoadmapTableViewController: UITableViewController {
+class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,10 +50,12 @@ class CreateRoadmapTableViewController: UITableViewController {
         
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TitleTableViewCell", for: indexPath) as! TitleTableViewCell
+            cell.titleTextField.delegate = self
             return cell
         } else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! TitleTableViewCell
             cell.titleTextField.placeholder = "Notifications"
+            cell.titleTextField.delegate = self
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTableViewCell", for: indexPath) as! CategoryTableViewCell
@@ -67,6 +69,11 @@ class CreateRoadmapTableViewController: UITableViewController {
         } else {
             return 300
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
 
     /*
