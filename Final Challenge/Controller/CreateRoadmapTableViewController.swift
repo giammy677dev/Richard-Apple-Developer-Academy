@@ -75,9 +75,9 @@ class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelega
         return true
     }
     
-    @objc func goToAddStep() { // FIXME: - Change Storiboard ID
+    @objc func goToAddStep() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "AddSteps", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "Storyboard ID") as! AddStepsTableViewController
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "AddSteps") as! AddStepsTableViewController
         self.present(newViewController, animated: true, completion: nil)
     }
 }
