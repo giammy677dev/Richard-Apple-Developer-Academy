@@ -206,6 +206,12 @@ class DatabaseInterface {
 
     private func nodeToRecord(record: CKRecord?, node: Node) -> CKRecord {
         /// When a new record has to be saved it creates a new one otherwise it re-saves all the key-values
+        
+        // Encoding not supported data types
+        let encoder = PropertyListEncoder()
+        let tagsData = try? encoder.encode(node.tags)
+        
+        // If the record already exists (and it has been fetched)
         if let record = record {
             record.setValue(node.creationTimestamp, forKey: K.CKRecordTypes.CKNodeRecordField.creationTime)
             record.setValue(node.extractedText, forKey: K.CKRecordTypes.CKNodeRecordField.text)
@@ -213,12 +219,8 @@ class DatabaseInterface {
             record.setValue(node.isRead, forKey: K.CKRecordTypes.CKNodeRecordField.propRead)
             record.setValue(node.isTextProperlyExtracted, forKey: K.CKRecordTypes.CKNodeRecordField.propExtracted)
             record.setValue(node.title, forKey: K.CKRecordTypes.CKNodeRecordField.title)
-            record.setValue(node.url, forKey: K.CKRecordTypes.CKNodeRecordField.url)
-            record.setValue(node.uuid, forKey: K.CKRecordTypes.CKNodeRecordField.uuid)
-
-            let encoder = PropertyListEncoder()
-            let tagsData = try? encoder.encode(node.tags)
-
+            record.setValue(node.url.absoluteString, forKey: K.CKRecordTypes.CKNodeRecordField.urlString)
+            
             record.setValue(tagsData, forKey: K.CKRecordTypes.CKNodeRecordField.tagsData)
 
             // Set the reference to the parent and the delete cascade update policy
@@ -228,19 +230,20 @@ class DatabaseInterface {
 
             return record
         }
-
+        
+        // Else
         let recordID = CKRecordID(recordName: node.uuid.uuidString)
         let newRecord = CKRecord(recordType: K.CKRecordTypes.node, recordID: recordID)
 
-        newRecord.setValue(node.creationTimestamp, forKey: "creationTimestamp")
-        newRecord.setValue(node.extractedText, forKey: "extractedText")
-        newRecord.setValue(node.isFlagged, forKey: "isFlagged")
-        newRecord.setValue(node.isRead, forKey: "isRead")
-        newRecord.setValue(node.isTextProperlyExtracted, forKey: "isTextProperlyExtracted")
-        newRecord.setValue(node.tags, forKey: "tags")
-        newRecord.setValue(node.title, forKey: "title")
-        newRecord.setValue(node.url, forKey: "url")
-        newRecord.setValue(node.uuid, forKey: "uuid")
+        newRecord.setValue(node.creationTimestamp, forKey: K.CKRecordTypes.CKNodeRecordField.creationTime)
+        newRecord.setValue(node.extractedText, forKey: K.CKRecordTypes.CKNodeRecordField.text)
+        newRecord.setValue(node.isFlagged, forKey: K.CKRecordTypes.CKNodeRecordField.propFlagged)
+        newRecord.setValue(node.isRead, forKey: K.CKRecordTypes.CKNodeRecordField.propRead)
+        newRecord.setValue(node.isTextProperlyExtracted, forKey: K.CKRecordTypes.CKNodeRecordField.propExtracted)
+        newRecord.setValue(node.title, forKey: K.CKRecordTypes.CKNodeRecordField.title)
+        newRecord.setValue(node.url.absoluteString, forKey: K.CKRecordTypes.CKNodeRecordField.urlString)
+        
+        newRecord.setValue(tagsData, forKey: K.CKRecordTypes.CKNodeRecordField.tagsData)
 
         // Set the reference to the parent and the delete cascade update policy
         let parentID = CKRecordID(recordName: node.parent.uuidString)
@@ -283,7 +286,6 @@ class DatabaseInterface {
 
     private func recordToNode(_ ckRecord: CKRecord) -> Node? {
         guard
-            let url = ckRecord[K.CKRecordTypes.CKNodeRecordField.url] as? URL,
             let title = ckRecord[K.CKRecordTypes.CKNodeRecordField.title] as? String,
             let uuid = UUID(uuidString: ckRecord.recordID.recordName),
             let text = ckRecord[K.CKRecordTypes.CKNodeRecordField.text] as? String,
@@ -292,9 +294,11 @@ class DatabaseInterface {
             let propRead = ckRecord[K.CKRecordTypes.CKNodeRecordField.propRead] as? Bool,
             let propFlagged = ckRecord[K.CKRecordTypes.CKNodeRecordField.propFlagged] as? Bool,
             let parentUUIDString = ckRecord[K.CKRecordTypes.CKNodeRecordField.parentUUID] as? String,
-            let parentUUID = UUID(uuidString: parentUUIDString)
+            let parentUUID = UUID(uuidString: parentUUIDString),
+            let urlString = ckRecord[K.CKRecordTypes.CKNodeRecordField.urlString] as? String,
+            let url = URL(string: urlString)
             else { return nil }
-
+        
         var tagsSet: Set<String>?
         if let tagsData = ckRecord[K.CKRecordTypes.CKNodeRecordField.tagsData] as? Data {
             let decoder = PropertyListDecoder()
