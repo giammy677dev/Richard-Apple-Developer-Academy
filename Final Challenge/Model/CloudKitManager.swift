@@ -22,6 +22,12 @@ final class CloudKitManager {
         self.privateDB = container.privateCloudDatabase
         self.publicDB = container.publicCloudDatabase
     }
+    
+    // MARK: - Database operation
+    
+    private func addOperationToDB(_ operation: CKDatabaseOperation, database: CKDatabase) {
+        database.add(operation)
+    }
 
     // MARK: - Save and delete methods
     
@@ -33,7 +39,7 @@ final class CloudKitManager {
         savingOperation.modifyRecordsCompletionBlock = self.modifyRecordsCompletionBlock(_:_:_:)
         savingOperation.qualityOfService = .utility
 
-        self.privateDB.add(savingOperation)
+        self.addOperationToDB(savingOperation, database: self.privateDB)
     }
     
     /// Deletes a record in the Private Database
@@ -44,7 +50,7 @@ final class CloudKitManager {
         deletionOperation.modifyRecordsCompletionBlock = self.modifyRecordsCompletionBlock(_:_:_:)
         deletionOperation.qualityOfService = .utility
         
-        self.privateDB.add(deletionOperation)
+        self.addOperationToDB(deletionOperation, database: self.privateDB)
     }
     
     /// The block to execute after the status of all changes is known.
@@ -105,7 +111,7 @@ final class CloudKitManager {
         saveSubscriptionOperation.qualityOfService = .utility
 
         // Saving the subscription
-        privateDB.add(saveSubscriptionOperation)
+        self.addOperationToDB(saveSubscriptionOperation, database: privateDB)
 
     }
 
@@ -166,7 +172,7 @@ final class CloudKitManager {
 
         // End of method, adding the fetching operation to the DB.
         fetchOperation.qualityOfService = .utility
-        privateDB.add(fetchOperation)
+        self.addOperationToDB(fetchOperation, database: privateDB)
     }
 
     private func fetchChangedRecordZoneWithID(_ recordZoneID: CKRecordZoneID) {
@@ -217,7 +223,7 @@ final class CloudKitManager {
 
         // End of method, adding the fetching operation to the DB.
         fetchChangesOperation.qualityOfService = .utility
-        privateDB.add(fetchChangesOperation)
+        self.addOperationToDB(fetchChangesOperation, database: privateDB)
     }
 
     private func fetchDeletedRecordZoneWithID(_ recordZoneID: CKRecordZoneID) {}
@@ -238,6 +244,7 @@ class CloudKitHelper {
     static let shared: CloudKitHelper = CloudKitHelper()
     private init() {}
     
+    /// Determines if the operation could be retried and the number of seconds to wait.
     private func determineRetry(error: Error) -> Double? {
         if let ckError = error as? CKError {
             switch ckError {
@@ -248,6 +255,7 @@ class CloudKitHelper {
                 return nil
             }
         } else {
+            // Found on internet, it's an error that occurs when there's no connection or couldn't connect to the CloudKit database. It is suggested to wait 6 seconds.
             let nsError = error as NSError
             if nsError.domain == NSCocoaErrorDomain {
                 if nsError.code == 4097 {
@@ -256,7 +264,6 @@ class CloudKitHelper {
                     return 6.0
                 }
             }
-            
             debugPrint("Unexpected error: \(error.localizedDescription)")
         }
         

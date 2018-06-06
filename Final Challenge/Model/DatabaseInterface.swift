@@ -152,7 +152,6 @@ class DatabaseInterface {
             record.setValue(roadmap.isShared, forKey: K.CKRecordTypes.CKRoadmapRecordField.isShared)
             record.setValue(roadmap.lastReadTimestamp, forKey: K.CKRecordTypes.CKRoadmapRecordField.lastReadTimestamp)
             record.setValue(roadmap.privileges, forKey: K.CKRecordTypes.CKRoadmapRecordField.privileges)
-            record.setValue(roadmap.steps, forKey: K.CKRecordTypes.CKRoadmapRecordField.steps)
             record.setValue(roadmap.title, forKey: K.CKRecordTypes.CKRoadmapRecordField.title)
             record.setValue(roadmap.uuid, forKey: K.CKRecordTypes.CKRoadmapRecordField.uuid)
             record.setValue(roadmap.visibility, forKey: K.CKRecordTypes.CKRoadmapRecordField.visibility)
@@ -167,7 +166,6 @@ class DatabaseInterface {
         newRecord.setValue(roadmap.isShared, forKey: K.CKRecordTypes.CKRoadmapRecordField.isShared)
         newRecord.setValue(roadmap.lastReadTimestamp, forKey: K.CKRecordTypes.CKRoadmapRecordField.lastReadTimestamp)
         newRecord.setValue(roadmap.privileges, forKey: K.CKRecordTypes.CKRoadmapRecordField.privileges)
-        newRecord.setValue(roadmap.steps, forKey: K.CKRecordTypes.CKRoadmapRecordField.steps)
         newRecord.setValue(roadmap.title, forKey: K.CKRecordTypes.CKRoadmapRecordField.title)
         newRecord.setValue(roadmap.uuid, forKey: K.CKRecordTypes.CKRoadmapRecordField.uuid)
         newRecord.setValue(roadmap.visibility, forKey: K.CKRecordTypes.CKRoadmapRecordField.visibility)
@@ -178,9 +176,8 @@ class DatabaseInterface {
     /// When a new record has to be saved it creates a new one otherwise it re-saves all the key-values
     private func stepToRecord(record: CKRecord?, step: Step) -> CKRecord {
         if let record = record {
-            record.setValue(step.nodes, forKey: "nodes")
+
             record.setValue(step.title, forKey: K.CKRecordTypes.CKStepRecordField.title)
-            record.setValue(step.uuid, forKey: "uuid")
 
             // Set the reference to the parent and the delete cascade update policy
             let parentID = CKRecordID(recordName: step.parent.uuidString)
@@ -193,9 +190,7 @@ class DatabaseInterface {
         let recordID = CKRecordID(recordName: step.uuid.uuidString)
         let newRecord = CKRecord(recordType: K.CKRecordTypes.step, recordID: recordID)
 
-        newRecord.setValue(step.nodes, forKey: "nodes")
         newRecord.setValue(step.title, forKey: "title")
-        newRecord.setValue(step.uuid, forKey: "uuid")
 
         // Set the reference to the parent and the delete cascade update policy
         let parentID = CKRecordID(recordName: step.parent.uuidString)
@@ -210,7 +205,11 @@ class DatabaseInterface {
         // Encoding not supported data types
         let encoder = PropertyListEncoder()
         let tagsData = try? encoder.encode(node.tags)
-
+        
+        // Set the reference to the parent and the delete cascade update policy
+        let parentID = CKRecordID(recordName: node.parent.uuidString)
+        let parentReference = CKReference(recordID: parentID, action: CKReferenceAction.deleteSelf)
+        
         // If the record already exists (and it has been fetched)
         if let record = record {
             record.setValue(node.creationTimestamp, forKey: K.CKRecordTypes.CKNodeRecordField.creationTime)
@@ -222,10 +221,6 @@ class DatabaseInterface {
             record.setValue(node.url.absoluteString, forKey: K.CKRecordTypes.CKNodeRecordField.urlString)
 
             record.setValue(tagsData, forKey: K.CKRecordTypes.CKNodeRecordField.tagsData)
-
-            // Set the reference to the parent and the delete cascade update policy
-            let parentID = CKRecordID(recordName: node.parent.uuidString)
-            let parentReference = CKReference(recordID: parentID, action: CKReferenceAction.deleteSelf)
             record.parent = parentReference
 
             return record
@@ -244,10 +239,6 @@ class DatabaseInterface {
         newRecord.setValue(node.url.absoluteString, forKey: K.CKRecordTypes.CKNodeRecordField.urlString)
 
         newRecord.setValue(tagsData, forKey: K.CKRecordTypes.CKNodeRecordField.tagsData)
-
-        // Set the reference to the parent and the delete cascade update policy
-        let parentID = CKRecordID(recordName: node.parent.uuidString)
-        let parentReference = CKReference(recordID: parentID, action: CKReferenceAction.deleteSelf)
         newRecord.parent = parentReference
 
         return newRecord
