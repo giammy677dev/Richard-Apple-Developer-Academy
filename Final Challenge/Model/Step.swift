@@ -14,33 +14,33 @@ class Step: NodeManager, Equatable {
 
     //Parameters:
     var title: String
-    var nodes: [Node]?
+    var nodes: [Node]!
     var parent: UUID
     var uuid: UUID
+    var indexInParent: Int!
 
     //Methods:
     init(title: String, parent: UUID, id: UUID) {
         self.title = title
         self.parent = parent
         self.uuid = id
+        self.nodes = [Node]()
     }
 
     func addNode(_ node: Node) {
-        if nodes == nil {
-            nodes = [Node]()
-        }
         node.parent = self.uuid
-        nodes?.append(node)
+        node.indexInParent = self.nodes.count
+        self.nodes.append(node)
     }
 
     func removeNode(_ node: Node) {
-        guard var container = nodes
-            else { return }
-        let index: Int? = container.index(of: node)
-        guard let target = index
-            else { return }
-        container.remove(at: target)
-        Tag.shared.rRemove(node)
+        if let index = self.nodes.index(of: node) {
+            self.nodes.remove(at: index)
+            self.nodes.forEach { (node) in
+                node.indexInParent = self.nodes.index(of: node)
+            }
+            Tag.shared.rRemove(node)
+        }
     }
 
     static func == (lhs: Step, rhs: Step) -> Bool {
