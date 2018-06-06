@@ -24,16 +24,16 @@ enum UserPrivilege: Int16 {
 
 // MARK: - Category
 enum Category: Int16 {
-    case Business = 0
-    case Education = 1
-    case Entertainment = 2
-    case Food = 3
-    case Travel = 4
-    case Lifestyle = 5
-    case Hobby = 6
-    case Sport = 7
-    case News = 8
-    case Health = 9
-    case Other = 10
-    case Technology = 11
+    case business = 0
+    case education = 1
+    case entertainment = 2
+    case food = 3
+    case travel = 4
+    case lifestyle = 5
+    case hobby = 6
+    case sport = 7
+    case news = 8
+    case health = 9
+    case other = 10
+    case technology = 11
 }

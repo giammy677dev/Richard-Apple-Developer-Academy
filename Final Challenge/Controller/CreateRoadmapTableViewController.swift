@@ -9,6 +9,8 @@
 import UIKit
 
 class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelegate {
+    
+    var titleOk: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,10 +65,23 @@ class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelega
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
+        if let title = textField.text {
+            DataSupportRoadmap.shared.setTitle(title)
+            titleOk = true
+        } else {
+            titleOk = false
+        }
         return true
     }
 
     @objc func goToAddStep() {
+        if !titleOk {
+            let alert = UIAlertController(title: "No Title", message: "Please type a title.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
         let newViewController = AddStepsTableViewController()
         self.navigationController?.pushViewController(newViewController, animated: true)
     }

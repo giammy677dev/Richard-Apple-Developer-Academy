@@ -10,7 +10,7 @@ import UIKit
 //Extension of UIViewController to test CoreData init
 extension UIViewController {
     func CoreDataTest() {
-        let a = Roadmap(title: "Come fare il pene", category: .Travel, visibility: .isPrivate, privileges: .isOwner, lastRead: Date(), id: UUID())
+        let a = Roadmap(title: "Come fare il pene", category: .travel, visibility: .isPrivate, privileges: .isOwner, lastRead: Date(), id: UUID())
 
         let controller = CoreDataController.shared
         controller.wipeTheEntireCoreDataContainer(areYouSure: true)
