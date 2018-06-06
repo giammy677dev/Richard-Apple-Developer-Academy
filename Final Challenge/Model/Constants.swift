@@ -27,12 +27,14 @@ enum K { // swiftlint:disable:this type_name
             static let creationTime = "creationTime"
             static let propRead = "propRead"
             static let propFlagged = "propFlagged"
+            static let indexInParent = "indexInParent"
         }
 
         enum CKStepRecordField {
             static let title = "title"
             static let parentUUID = "parentUUID"
             static let uuid = "uuid"
+            static let indexInParent = "indexInParent"
         }
 
         enum CKRoadmapRecordField {

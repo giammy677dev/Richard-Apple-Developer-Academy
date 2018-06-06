@@ -20,11 +20,14 @@ class Step: NodeManager, Equatable {
     var indexInParent: Int!
 
     //Methods:
-    init(title: String, parent: UUID, id: UUID) {
+    init(title: String, parent: UUID, id: UUID, index: Int? = nil) {
         self.title = title
         self.parent = parent
         self.uuid = id
         self.nodes = [Node]()
+        if let _ = index {
+            self.indexInParent = index
+        }
     }
 
     func addNode(_ node: Node) {

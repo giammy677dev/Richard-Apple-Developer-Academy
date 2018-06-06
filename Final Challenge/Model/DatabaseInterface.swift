@@ -155,7 +155,6 @@ class DatabaseInterface {
             record.setValue(roadmap.title, forKey: K.CKRecordTypes.CKRoadmapRecordField.title)
             record.setValue(roadmap.uuid, forKey: K.CKRecordTypes.CKRoadmapRecordField.uuid)
             record.setValue(roadmap.visibility, forKey: K.CKRecordTypes.CKRoadmapRecordField.visibility)
-
         }
 
         let recordID = CKRecordID(recordName: roadmap.uuid.uuidString)
@@ -178,7 +177,8 @@ class DatabaseInterface {
         if let record = record {
 
             record.setValue(step.title, forKey: K.CKRecordTypes.CKStepRecordField.title)
-
+            record.setValue(step.indexInParent, forKeyPath: K.CKRecordTypes.CKStepRecordField.indexInParent)
+            
             // Set the reference to the parent and the delete cascade update policy
             let parentID = CKRecordID(recordName: step.parent.uuidString)
             let parentReference = CKReference(recordID: parentID, action: .none)
@@ -190,9 +190,10 @@ class DatabaseInterface {
         let recordID = CKRecordID(recordName: step.uuid.uuidString)
         let newRecord = CKRecord(recordType: K.CKRecordTypes.step, recordID: recordID)
 
-        newRecord.setValue(step.title, forKey: "title")
+        newRecord.setValue(step.title, forKey: K.CKRecordTypes.CKStepRecordField.title)
+        newRecord.setValue(step.indexInParent, forKeyPath: K.CKRecordTypes.CKStepRecordField.indexInParent)
 
-        // Set the reference to the parent and the delete cascade update policy
+        // Set the reference to the parent
         let parentID = CKRecordID(recordName: step.parent.uuidString)
         let parentReference = CKReference(recordID: parentID, action: CKReferenceAction.none)
         newRecord.parent = parentReference
@@ -206,7 +207,7 @@ class DatabaseInterface {
         let encoder = PropertyListEncoder()
         let tagsData = try? encoder.encode(node.tags)
         
-        // Set the reference to the parent and the delete cascade update policy
+        // Set the reference to the parent
         let parentID = CKRecordID(recordName: node.parent.uuidString)
         let parentReference = CKReference(recordID: parentID, action: CKReferenceAction.none)
         
@@ -219,6 +220,7 @@ class DatabaseInterface {
             record.setValue(node.isTextProperlyExtracted, forKey: K.CKRecordTypes.CKNodeRecordField.propExtracted)
             record.setValue(node.title, forKey: K.CKRecordTypes.CKNodeRecordField.title)
             record.setValue(node.url.absoluteString, forKey: K.CKRecordTypes.CKNodeRecordField.urlString)
+            record.setValue(node.indexInParent, forKeyPath: K.CKRecordTypes.CKNodeRecordField.indexInParent)
 
             record.setValue(tagsData, forKey: K.CKRecordTypes.CKNodeRecordField.tagsData)
             record.parent = parentReference
@@ -237,6 +239,7 @@ class DatabaseInterface {
         newRecord.setValue(node.isTextProperlyExtracted, forKey: K.CKRecordTypes.CKNodeRecordField.propExtracted)
         newRecord.setValue(node.title, forKey: K.CKRecordTypes.CKNodeRecordField.title)
         newRecord.setValue(node.url.absoluteString, forKey: K.CKRecordTypes.CKNodeRecordField.urlString)
+        newRecord.setValue(node.indexInParent, forKeyPath: K.CKRecordTypes.CKNodeRecordField.indexInParent)
 
         newRecord.setValue(tagsData, forKey: K.CKRecordTypes.CKNodeRecordField.tagsData)
         newRecord.parent = parentReference
@@ -249,10 +252,11 @@ class DatabaseInterface {
         guard let stepTitle = ckRecord[K.CKRecordTypes.CKStepRecordField.title] as? String,
             let stepParentID = ckRecord[K.CKRecordTypes.CKStepRecordField.parentUUID] as? String,
             let stepParentUUID = UUID(uuidString: stepParentID),
-            let stepUUID = UUID(uuidString: ckRecord.recordID.recordName)
+            let stepUUID = UUID(uuidString: ckRecord.recordID.recordName),
+            let indexInParent = ckRecord[K.CKRecordTypes.CKStepRecordField.indexInParent] as? Int
             else { return nil }
 
-        let step = Step(title: stepTitle, parent: stepParentUUID, id: stepUUID)
+        let step = Step(title: stepTitle, parent: stepParentUUID, id: stepUUID, index: indexInParent)
         return step
     }
 
@@ -286,7 +290,8 @@ class DatabaseInterface {
             let parentUUIDString = ckRecord[K.CKRecordTypes.CKNodeRecordField.parentUUID] as? String,
             let parentUUID = UUID(uuidString: parentUUIDString),
             let urlString = ckRecord[K.CKRecordTypes.CKNodeRecordField.urlString] as? String,
-            let url = URL(string: urlString)
+            let url = URL(string: urlString),
+            let indexInParent = ckRecord[K.CKRecordTypes.CKNodeRecordField.indexInParent] as? Int
             else { return nil }
 
         var tagsSet: Set<String>?
@@ -295,7 +300,7 @@ class DatabaseInterface {
             tagsSet = try? decoder.decode(Set<String>.self, from: tagsData)
         }
 
-        let node = Node(url: url, title: title, id: uuid, parent: parentUUID, tags: tagsSet, text: text, propExtracted: propExtracted, creationTime: creationTime, propRead: propRead, propFlagged: propFlagged)
+        let node = Node(url: url, title: title, id: uuid, parent: parentUUID, tags: tagsSet, text: text, propExtracted: propExtracted, creationTime: creationTime, propRead: propRead, propFlagged: propFlagged, index: indexInParent)
 
         return node
     }

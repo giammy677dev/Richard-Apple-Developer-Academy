@@ -42,7 +42,7 @@ class Node: Taggable {
         }
     }
 
-    init(url: URL, title: String, id: UUID, parent: UUID, tags: Set<String>?, text: String, propExtracted: Bool, creationTime: Date = Date(), propRead: Bool = false, propFlagged: Bool = false) {
+    init(url: URL, title: String, id: UUID, parent: UUID, tags: Set<String>?, text: String, propExtracted: Bool, creationTime: Date = Date(), propRead: Bool = false, propFlagged: Bool = false, index: Int?) {
         self.url = url
         self.title = title
         self.parent = parent
@@ -55,6 +55,9 @@ class Node: Taggable {
         
         if let _ = tags {
             self.tags = tags!
+        }
+        if let _ = index {
+            self.indexInParent = index
         }
     }
 
