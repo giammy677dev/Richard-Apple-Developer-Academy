@@ -24,14 +24,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X9C-aD-b9F">
-                        <rect key="frame" x="28" y="22" width="246" height="49"/>
+                        <rect key="frame" x="28" y="22" width="319" height="49"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.67450980390000004" green="0.93333333330000001" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" returnKeyType="done"/>
                     </textField>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aai-Dr-Fvy">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aai-Dr-Fvy">
                         <rect key="frame" x="303" y="22" width="56" height="49"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="Button" image="AddResource"/>
@@ -43,6 +43,7 @@
                 <outlet property="addResourceButton" destination="Aai-Dr-Fvy" id="EiJ-Ij-DNP"/>
                 <outlet property="titleTextField" destination="X9C-aD-b9F" id="sp7-Xw-ryW"/>
             </connections>
+            <point key="canvasLocation" x="114.5" y="53.5"/>
         </tableViewCell>
     </objects>
     <resources>
