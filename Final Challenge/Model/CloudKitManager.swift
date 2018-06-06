@@ -24,7 +24,7 @@ final class CloudKitManager {
     }
 
     // MARK: - Save and delete methods
-    
+
     /// Saves a record in the Private Database
     func saveRecord(_ record: CKRecord) {
         let savingOperation = CKModifyRecordsOperation()
@@ -35,7 +35,7 @@ final class CloudKitManager {
 
         self.privateDB.add(savingOperation)
     }
-    
+
     /// Deletes a record in the Private Database
     func deleteRecord(withRecordID recordID: CKRecordID) {
         let deletionOperation = CKModifyRecordsOperation()
@@ -43,20 +43,19 @@ final class CloudKitManager {
         deletionOperation.savePolicy = .allKeys // force deletion even if the server has a new version of the record
         deletionOperation.modifyRecordsCompletionBlock = self.modifyRecordsCompletionBlock(_:_:_:)
         deletionOperation.qualityOfService = .utility
-        
+
         self.privateDB.add(deletionOperation)
     }
-    
+
     /// The block to execute after the status of all changes is known.
     private func modifyRecordsCompletionBlock(_ savedRecords: [CKRecord]?, _ deletedRecordIDs: [CKRecordID]?, _ operationError: Error?) {
         // This block is executed after all individual progress blocks have completed but before the operation’s completion block.
         // The block is executed serially with respect to the other progress blocks of the operation.
-        
+
         // TODO: - Handle errors!
-        
+
     }
-    
-    
+
     // MARK: - Notifications and DB subscriptions
     func subscriptionSetup() {
         let defaults = UserDefaults()
@@ -222,7 +221,6 @@ final class CloudKitManager {
 
     private func fetchDeletedRecordZoneWithID(_ recordZoneID: CKRecordZoneID) {}
     private func fetchPurgedRecordZoneWithID(_ recordZoneID: CKRecordZoneID) {}
-    
 
     // MARK: - Create Record
     private func createRecord(recordID: CKRecordID, ckRecordType: String) -> CKRecord {
@@ -234,10 +232,10 @@ final class CloudKitManager {
 }
 
 class CloudKitHelper {
-    
+
     static let shared: CloudKitHelper = CloudKitHelper()
     private init() {}
-    
+
     private func determineRetry(error: Error) -> Double? {
         if let ckError = error as? CKError {
             switch ckError {
@@ -252,16 +250,15 @@ class CloudKitHelper {
             if nsError.domain == NSCocoaErrorDomain {
                 if nsError.code == 4097 {
                     debugPrint("CloudKit is dead. I'm going to retry after 6 seconds.")
-                    
+
                     return 6.0
                 }
             }
-            
+
             debugPrint("Unexpected error: \(error.localizedDescription)")
         }
-        
+
         return nil
     }
 
-    
 }

@@ -33,7 +33,7 @@ class CategoryTableViewCell: UITableViewCell {
             button.layer.cornerRadius = 8
             button.backgroundColor = UIColor.white
             button.setTitleColor(UIColor.black, for: .normal)
-            button.contentEdgeInsets = UIEdgeInsetsMake(8, 15, 8, 15)
+            button.contentEdgeInsets = UIEdgeInsets(top: 8, left: 15, bottom: 8, right: 15)
             button.sizeToFit()
             button.addTarget(self, action: #selector(choseCategory(_:)), for: .touchUpInside)
         }

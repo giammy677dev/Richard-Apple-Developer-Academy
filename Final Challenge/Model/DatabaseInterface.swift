@@ -56,7 +56,7 @@ class DatabaseInterface {
         // MARK: - Save to CoreData
         saveToCoreData(roadmap: roadmap)
     }
-    
+
     /// Saves a step in local and cloud DB. If the step doesn't exist it creates a new one and saves it.
     public func save(_ step: Step) {
         let recordID = CKRecordID(recordName: step.uuid.uuidString)
@@ -174,7 +174,7 @@ class DatabaseInterface {
 
         return newRecord
     }
-    
+
     /// When a new record has to be saved it creates a new one otherwise it re-saves all the key-values
     private func stepToRecord(record: CKRecord?, step: Step) -> CKRecord {
         if let record = record {
@@ -204,7 +204,7 @@ class DatabaseInterface {
 
         return newRecord
     }
-    
+
     /// When a new record has to be saved it creates a new one otherwise it re-saves all the key-values
     private func nodeToRecord(record: CKRecord?, node: Node) -> CKRecord {
         // Encoding not supported data types
