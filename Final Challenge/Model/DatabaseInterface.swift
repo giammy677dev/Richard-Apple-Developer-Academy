@@ -181,7 +181,7 @@ class DatabaseInterface {
 
             // Set the reference to the parent and the delete cascade update policy
             let parentID = CKRecordID(recordName: step.parent.uuidString)
-            let parentReference = CKReference(recordID: parentID, action: .deleteSelf)
+            let parentReference = CKReference(recordID: parentID, action: .none)
             record.parent = parentReference
 
             return record
@@ -194,7 +194,7 @@ class DatabaseInterface {
 
         // Set the reference to the parent and the delete cascade update policy
         let parentID = CKRecordID(recordName: step.parent.uuidString)
-        let parentReference = CKReference(recordID: parentID, action: CKReferenceAction.deleteSelf)
+        let parentReference = CKReference(recordID: parentID, action: CKReferenceAction.none)
         newRecord.parent = parentReference
 
         return newRecord
@@ -208,7 +208,7 @@ class DatabaseInterface {
         
         // Set the reference to the parent and the delete cascade update policy
         let parentID = CKRecordID(recordName: node.parent.uuidString)
-        let parentReference = CKReference(recordID: parentID, action: CKReferenceAction.deleteSelf)
+        let parentReference = CKReference(recordID: parentID, action: CKReferenceAction.none)
         
         // If the record already exists (and it has been fetched)
         if let record = record {
