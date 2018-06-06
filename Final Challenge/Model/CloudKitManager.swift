@@ -48,7 +48,7 @@ final class CloudKitManager {
     }
     
     /// The block to execute after the status of all changes is known.
-    private func modifyRecordsCompletionBlock(_ savedRecords: [CKRecord]?, _ deletedRecordIDs: [CKRecord.ID]?, _ operationError: Error?) {
+    private func modifyRecordsCompletionBlock(_ savedRecords: [CKRecord]?, _ deletedRecordIDs: [CKRecordID]?, _ operationError: Error?) {
         // This block is executed after all individual progress blocks have completed but before the operation’s completion block.
         // The block is executed serially with respect to the other progress blocks of the operation.
         
