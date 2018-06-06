@@ -22,9 +22,10 @@ class Node: Taggable {
     var isFlagged: Bool
     private var readingTimeInMinutes: Double?
     var parent: UUID
+    var indexInParent: Int
 
     //Methods:
-    init(url: URL, title: String, id: UUID, parent: UUID, tags: String?, text: String, propExtracted: Bool, creationTime: Date = Date(), propRead: Bool = false, propFlagged: Bool = false) {
+    init(url: URL, title: String, id: UUID, parent: UUID, tags: String?, text: String, propExtracted: Bool, creationTime: Date = Date(), propRead: Bool = false, propFlagged: Bool = false, indexInParent: Int) {
         self.url = url
         self.title = title
         self.parent = parent
@@ -34,6 +35,7 @@ class Node: Taggable {
         self.uuid = id
         self.isRead = propRead
         self.isFlagged = propFlagged
+        self.indexInParent = indexInParent
 
         if let _ = tags {
             let tagArray = Tag.parseTags(from: tags)
@@ -41,7 +43,7 @@ class Node: Taggable {
         }
     }
 
-    init(url: URL, title: String, id: UUID, parent: UUID, tags: Set<String>?, text: String, propExtracted: Bool, creationTime: Date = Date(), propRead: Bool = false, propFlagged: Bool = false) {
+    init(url: URL, title: String, id: UUID, parent: UUID, tags: Set<String>?, text: String, propExtracted: Bool, creationTime: Date = Date(), propRead: Bool = false, propFlagged: Bool = false, indexInParent: Int) {
         self.url = url
         self.title = title
         self.parent = parent
@@ -51,6 +53,8 @@ class Node: Taggable {
         self.uuid = id
         self.isRead = propRead
         self.isFlagged = propFlagged
+        self.indexInParent = indexInParent
+        
         if let _ = tags {
             self.tags = tags!
         }
