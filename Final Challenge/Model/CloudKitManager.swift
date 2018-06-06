@@ -29,7 +29,7 @@ final class CloudKitManager {
     func saveRecord(_ record: CKRecord) {
         let savingOperation = CKModifyRecordsOperation()
         savingOperation.recordsToSave = [record]
-        savingOperation.savePolicy = .allKeys // TODO: - Ask someone. What if the server record is different?
+        savingOperation.savePolicy = .changedKeys // Saves only the changed fields
         savingOperation.modifyRecordsCompletionBlock = self.modifyRecordsCompletionBlock(_:_:_:)
         savingOperation.qualityOfService = .utility
 
@@ -48,7 +48,7 @@ final class CloudKitManager {
     }
     
     /// The block to execute after the status of all changes is known.
-    private func modifyRecordsCompletionBlock(_ savedRecords: [CKRecord]?, _ deletedRecordIDs: [CKRecord.ID]?, _ operationError: Error?) {
+    private func modifyRecordsCompletionBlock(_ savedRecords: [CKRecord]?, _ deletedRecordIDs: [CKRecordID]?, _ operationError: Error?) {
         // This block is executed after all individual progress blocks have completed but before the operation’s completion block.
         // The block is executed serially with respect to the other progress blocks of the operation.
         
@@ -231,4 +231,37 @@ final class CloudKitManager {
         return record
     }
 
+}
+
+class CloudKitHelper {
+    
+    static let shared: CloudKitHelper = CloudKitHelper()
+    private init() {}
+    
+    private func determineRetry(error: Error) -> Double? {
+        if let ckError = error as? CKError {
+            switch ckError {
+            case CKError.requestRateLimited, CKError.serviceUnavailable, CKError.zoneBusy, CKError.networkFailure:
+                let retry = ckError.retryAfterSeconds ?? 3.0
+                return retry
+            default:
+                return nil
+            }
+        } else {
+            let nsError = error as NSError
+            if nsError.domain == NSCocoaErrorDomain {
+                if nsError.code == 4097 {
+                    debugPrint("CloudKit is dead. I'm going to retry after 6 seconds.")
+                    
+                    return 6.0
+                }
+            }
+            
+            debugPrint("Unexpected error: \(error.localizedDescription)")
+        }
+        
+        return nil
+    }
+
+    
 }
