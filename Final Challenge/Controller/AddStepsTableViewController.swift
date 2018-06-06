@@ -60,14 +60,19 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ titleTextField: UITextField) -> Bool {
         self.view.endEditing(true)
 
-        //The following lines of code add a new row and modify the tableView when the user close the keyboard
-        tableView.beginUpdates() //It starts the modification of the tableView
-        tableView.insertRows(at: [IndexPath(row: numberOfRows, section: 0)], with: .automatic) //It adds the new row at the end of the tableView
-        numberOfRows += 1 //It increase the number of rows
-        tableView.endUpdates() //It ends the modification of the tableView
-        tableView.reloadData() //It loads new datas for the tableView
+        if titleTextField.text?.isEmpty ?? true {
+            titleTextField.placeholder = "Insert a title for the roadmap!"
+            print("textField is empty")
+        } else {
+            //The following lines of code add a new row and modify the tableView when the user close the keyboard and there is some text in the textField
+            tableView.beginUpdates() //It starts the modification of the tableView
+            tableView.insertRows(at: [IndexPath(row: numberOfRows, section: 0)], with: .automatic) //It adds the new row at the end of the tableView
+            numberOfRows += 1 //It increases the number of rows
+            tableView.endUpdates() //It ends the modification of the tableView
+            tableView.reloadData() //It loads new datas for the tableView
 
+            print("textField has some text")
+        }
         return true
     }
-
 }
