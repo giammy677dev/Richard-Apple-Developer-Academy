@@ -29,7 +29,7 @@ final class CloudKitManager {
     func saveRecord(_ record: CKRecord) {
         let savingOperation = CKModifyRecordsOperation()
         savingOperation.recordsToSave = [record]
-        savingOperation.savePolicy = .allKeys // TODO: - Ask someone. What if the server record is different?
+        savingOperation.savePolicy = .changedKeys // Saves only the changed fields
         savingOperation.modifyRecordsCompletionBlock = self.modifyRecordsCompletionBlock(_:_:_:)
         savingOperation.qualityOfService = .utility
 
