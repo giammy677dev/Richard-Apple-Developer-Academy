@@ -30,7 +30,7 @@ final class CloudKitManager {
     }
 
     // MARK: - Save and delete methods
-    
+
     /// Saves a record in the Private Database
     func saveRecord(_ record: CKRecord) {
         let savingOperation = CKModifyRecordsOperation()
@@ -41,7 +41,7 @@ final class CloudKitManager {
 
         self.addOperationToDB(savingOperation, database: self.privateDB)
     }
-    
+
     /// Deletes a record in the Private Database
     func deleteRecord(withRecordID recordID: CKRecordID) {
         let deletionOperation = CKModifyRecordsOperation()
@@ -52,17 +52,16 @@ final class CloudKitManager {
         
         self.addOperationToDB(deletionOperation, database: self.privateDB)
     }
-    
+
     /// The block to execute after the status of all changes is known.
     private func modifyRecordsCompletionBlock(_ savedRecords: [CKRecord]?, _ deletedRecordIDs: [CKRecordID]?, _ operationError: Error?) {
         // This block is executed after all individual progress blocks have completed but before the operation’s completion block.
         // The block is executed serially with respect to the other progress blocks of the operation.
-        
+
         // TODO: - Handle errors!
-        
+
     }
-    
-    
+
     // MARK: - Notifications and DB subscriptions
     func subscriptionSetup() {
         let defaults = UserDefaults()
@@ -228,7 +227,6 @@ final class CloudKitManager {
 
     private func fetchDeletedRecordZoneWithID(_ recordZoneID: CKRecordZoneID) {}
     private func fetchPurgedRecordZoneWithID(_ recordZoneID: CKRecordZoneID) {}
-    
 
     // MARK: - Create Record
     private func createRecord(recordID: CKRecordID, ckRecordType: String) -> CKRecord {
@@ -240,7 +238,7 @@ final class CloudKitManager {
 }
 
 class CloudKitHelper {
-    
+
     static let shared: CloudKitHelper = CloudKitHelper()
     private init() {}
     
@@ -260,15 +258,14 @@ class CloudKitHelper {
             if nsError.domain == NSCocoaErrorDomain {
                 if nsError.code == 4097 {
                     debugPrint("CloudKit is dead. I'm going to retry after 6 seconds.")
-                    
+
                     return 6.0
                 }
             }
             debugPrint("Unexpected error: \(error.localizedDescription)")
         }
-        
+
         return nil
     }
 
-    
 }

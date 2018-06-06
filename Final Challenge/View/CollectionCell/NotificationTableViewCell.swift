@@ -10,8 +10,6 @@ import UIKit
 
 class NotificationTableViewCell: UITableViewCell {
 
-    var notificationOn: Bool = true
-    
     @IBOutlet weak var switchController: UISwitch!
     @IBOutlet weak var whiteView: UIView!
     override func awakeFromNib() {
@@ -22,12 +20,12 @@ class NotificationTableViewCell: UITableViewCell {
         switchController.setOn(true, animated: false)
         switchController.addTarget(self, action: #selector(changeStatus(_:)), for: .touchUpInside)
     }
-    
+
     @objc func changeStatus(_ sender: UISwitch) {
         if sender.isOn {
-            self.notificationOn = true
+            DataSupportRoadmap.shared.setNotification(true)
         } else {
-            self.notificationOn = false
+            DataSupportRoadmap.shared.setNotification(false)
         }
     }
 
@@ -36,5 +34,5 @@ class NotificationTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

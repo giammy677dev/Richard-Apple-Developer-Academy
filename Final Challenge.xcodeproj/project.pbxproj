@@ -87,6 +87,7 @@
 		A0BBA9D820B309C0008AE848 /* NodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9D720B309C0008AE848 /* NodeManager.swift */; };
 		A0BBA9DA20B30A48008AE848 /* SubscribedRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9D920B30A48008AE848 /* SubscribedRoadmap.swift */; };
 		A0BBA9DC20B30BD8008AE848 /* WritableRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9DB20B30BD8008AE848 /* WritableRoadmap.swift */; };
+		A0FA81A320C7D0190053BD01 /* DataSupportRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FA81A220C7D0190053BD01 /* DataSupportRoadmap.swift */; };
 		B10552F320AD7C230077983A /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10552F220AD7C230077983A /* ShareViewController.swift */; };
 		B10552F620AD7C230077983A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B10552F420AD7C230077983A /* MainInterface.storyboard */; };
 		B105530020AD7C430077983A /* GetURL.js in Resources */ = {isa = PBXBuildFile; fileRef = B10552FF20AD7C430077983A /* GetURL.js */; };
@@ -203,6 +204,7 @@
 		A0BBA9D720B309C0008AE848 /* NodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeManager.swift; sourceTree = "<group>"; };
 		A0BBA9D920B30A48008AE848 /* SubscribedRoadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribedRoadmap.swift; sourceTree = "<group>"; };
 		A0BBA9DB20B30BD8008AE848 /* WritableRoadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WritableRoadmap.swift; sourceTree = "<group>"; };
+		A0FA81A220C7D0190053BD01 /* DataSupportRoadmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSupportRoadmap.swift; sourceTree = "<group>"; };
 		B0713FBE2F8800C78D2B803E /* Pods-Final ChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final ChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Final ChallengeTests/Pods-Final ChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		B10552F020AD7C230077983A /* Safari Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Safari Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B10552F220AD7C230077983A /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
@@ -435,6 +437,7 @@
 				7B91051520B6B955001005AA /* DatabaseInterface.swift */,
 				655B0B0D20BC0F2E00CD73B0 /* Constants.swift */,
 				B18BF51420BD4DBB00D9BCF9 /* CurrentDataSingleton.swift */,
+				A0FA81A220C7D0190053BD01 /* DataSupportRoadmap.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -868,6 +871,7 @@
 				B18BF51820BD5F9100D9BCF9 /* TitleTableViewCell.swift in Sources */,
 				B18BF51520BD4DBB00D9BCF9 /* CurrentDataSingleton.swift in Sources */,
 				B18BF51320BD492300D9BCF9 /* StepTableViewController.swift in Sources */,
+				A0FA81A320C7D0190053BD01 /* DataSupportRoadmap.swift in Sources */,
 				A0BBA9D820B309C0008AE848 /* NodeManager.swift in Sources */,
 				655B0B0E20BC0F2E00CD73B0 /* Constants.swift in Sources */,
 				652A615520BBFD1C00A101B3 /* CDUsedUUID+CoreDataClass.swift in Sources */,

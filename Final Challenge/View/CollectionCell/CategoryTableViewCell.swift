@@ -17,7 +17,6 @@ class CategoryTableViewCell: UITableViewCell {
     @IBOutlet var categoriesButtonArray: [UIButton]!
     @IBOutlet weak var categoryTextField: UITextField!
     // TODO: - Manage category not selcted situation
-    var chosedCategory: Category? // Move this variable on a singleton (?!)
 
     // Methods:
     override func awakeFromNib() {
@@ -34,6 +33,8 @@ class CategoryTableViewCell: UITableViewCell {
             button.layer.cornerRadius = 8
             button.backgroundColor = UIColor.white
             button.setTitleColor(UIColor.black, for: .normal)
+            button.contentEdgeInsets = UIEdgeInsets(top: 8, left: 15, bottom: 8, right: 15)
+            button.sizeToFit()
             button.addTarget(self, action: #selector(choseCategory(_:)), for: .touchUpInside)
         }
     }
@@ -45,46 +46,45 @@ class CategoryTableViewCell: UITableViewCell {
     }
 
     @objc func choseCategory(_ selector: UIButton) {
-        // TODO: Define activities
         switch selector.titleLabel?.text {
         case "Business":
             categoryTextField.text = "Business"
-            chosedCategory = Category.Business
+            DataSupportRoadmap.shared.setCategory(Category.business)
         case "Education":
             categoryTextField.text = "Education"
-            chosedCategory = Category.Education
+            DataSupportRoadmap.shared.setCategory(Category.education)
         case "Entertainment":
             categoryTextField.text = "Entertainment"
-            chosedCategory = Category.Entertainment
+            DataSupportRoadmap.shared.setCategory(Category.entertainment)
         case "Food":
             categoryTextField.text = "Food"
-            chosedCategory = Category.Food
+            DataSupportRoadmap.shared.setCategory(Category.food)
         case "Travel":
             categoryTextField.text = "Travel"
-            chosedCategory = Category.Travel
+            DataSupportRoadmap.shared.setCategory(Category.travel)
         case "Lifestyle":
             categoryTextField.text = "Lifestyle"
-            chosedCategory = Category.Lifestyle
+            DataSupportRoadmap.shared.setCategory(Category.lifestyle)
         case "Hobby":
             categoryTextField.text = "Hobby"
-            chosedCategory = Category.Hobby
+            DataSupportRoadmap.shared.setCategory(Category.hobby)
         case "Sport":
             categoryTextField.text = "Sport"
-            chosedCategory = Category.Sport
+            DataSupportRoadmap.shared.setCategory(Category.sport)
         case "News":
             categoryTextField.text = "News"
-            chosedCategory = Category.News
+            DataSupportRoadmap.shared.setCategory(Category.news)
         case "Health":
             categoryTextField.text = "Health"
-            chosedCategory = Category.Health
+            DataSupportRoadmap.shared.setCategory(Category.health)
         case "Other":
             categoryTextField.text = "Other"
-            chosedCategory = Category.Other
+            DataSupportRoadmap.shared.setCategory(Category.other)
         case "Technology":
             categoryTextField.text = "Technology"
-            chosedCategory = Category.Technology
+            DataSupportRoadmap.shared.setCategory(Category.technology)
         default:
-            chosedCategory = nil
+            DataSupportRoadmap.shared.setCategory()
         }
     }
 
