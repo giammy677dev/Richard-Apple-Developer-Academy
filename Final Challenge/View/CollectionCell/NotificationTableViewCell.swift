@@ -9,8 +9,6 @@
 import UIKit
 
 class NotificationTableViewCell: UITableViewCell {
-
-    var notificationOn: Bool = true
     
     @IBOutlet weak var switchController: UISwitch!
     @IBOutlet weak var whiteView: UIView!
@@ -25,9 +23,9 @@ class NotificationTableViewCell: UITableViewCell {
     
     @objc func changeStatus(_ sender: UISwitch) {
         if sender.isOn {
-            self.notificationOn = true
+            DataSupportRoadmap.shared.setNotification(true)
         } else {
-            self.notificationOn = false
+            DataSupportRoadmap.shared.setNotification(false)
         }
     }
 
