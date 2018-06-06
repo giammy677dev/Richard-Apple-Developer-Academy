@@ -14,7 +14,7 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Set title of navigationBar
         self.title = DataSupportRoadmap.shared.getTitle()
 
@@ -60,12 +60,15 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
         return 30
     }
 
-    func textFieldShouldReturn(_ titleTextField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ titleTextField: UITextField) -> Bool { //This function is called when the user taps on the "Done" button of the keyboard
         self.view.endEditing(true)
 
+        //The following if-else checks if the titleTextField of the step is empty
         if titleTextField.text?.isEmpty ?? true {
-            titleTextField.placeholder = "Insert a title for the roadmap!"
-            print("textField is empty")
+            //If the titleTextField is empty, it appears an alert because the user has to insert a title
+            let alert = UIAlertController(title: "No Title", message: "Insert a title for the step!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         } else {
             //The following lines of code add a new row and modify the tableView when the user close the keyboard and there is some text in the textField
             tableView.beginUpdates() //It starts the modification of the tableView
@@ -73,8 +76,6 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
             numberOfRows += 1 //It increases the number of rows
             tableView.endUpdates() //It ends the modification of the tableView
             tableView.reloadData() //It loads new datas for the tableView
-
-            print("textField has some text")
         }
         return true
     }
