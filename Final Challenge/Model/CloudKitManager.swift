@@ -232,3 +232,36 @@ final class CloudKitManager {
     }
 
 }
+
+class CloudKitHelper {
+    
+    static let shared: CloudKitHelper = CloudKitHelper()
+    private init() {}
+    
+    private func determineRetry(error: Error) -> Double? {
+        if let ckError = error as? CKError {
+            switch ckError {
+            case CKError.requestRateLimited, CKError.serviceUnavailable, CKError.zoneBusy, CKError.networkFailure:
+                let retry = ckError.retryAfterSeconds ?? 3.0
+                return retry
+            default:
+                return nil
+            }
+        } else {
+            let nsError = error as NSError
+            if nsError.domain == NSCocoaErrorDomain {
+                if nsError.code == 4097 {
+                    debugPrint("CloudKit is dead. I'm going to retry after 6 seconds.")
+                    
+                    return 6.0
+                }
+            }
+            
+            debugPrint("Unexpected error: \(error.localizedDescription)")
+        }
+        
+        return nil
+    }
+
+    
+}
