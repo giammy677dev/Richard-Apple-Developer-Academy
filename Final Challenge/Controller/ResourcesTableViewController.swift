@@ -29,16 +29,9 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
         self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         self.navigationController?.navigationBar.layer.shadowRadius = 2
 
-//
         self.navigationController?.navigationBar.layer.cornerRadius = 16
         self.navigationController?.navigationBar.clipsToBounds = true
         self.navigationController?.navigationBar.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-
-        //                let customCell = UINib(nibName: "collectionViewCell", bundle: nil)
-        //                self.tableView.register(customCell, forCellReuseIdentifier: "collectionViewCell")
-        //
-        //                let headerCustomCell = UINib(nibName: "headerCell", bundle: nil)
-        //                self.tableView.register(headerCustomCell, forCellReuseIdentifier: "headerCell")
     }
 
     // MARK: - Table view data source
