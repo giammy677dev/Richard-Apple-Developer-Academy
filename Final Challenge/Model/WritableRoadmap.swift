@@ -13,7 +13,7 @@ class WritableRoadmap: Roadmap, Writable {
     //Methods:
     func edit(title: String? = nil, category: Category? = nil) {
     }
-    
+
     func addStep(_ step: Step) {
         step.parent = self.uuid
         step.indexInParent = self.steps.count

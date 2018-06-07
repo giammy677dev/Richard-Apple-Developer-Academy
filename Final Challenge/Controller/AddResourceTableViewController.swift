@@ -64,7 +64,7 @@ class AddResourceTableViewController: UITableViewController {
         let node = Node(url: URL(string: resourceCell.URLTextField.text ?? "http://www.wikipedia.com")!,
             title: resourceCell.titleTextField.text!,
             id: DatabaseInterface.shared.createUniqueUUID(),
-            parent: K.readingListID,
+            parent: K.readingListStepID,
             tags: tagsCell.tagTextField.text,
             text: "",
             propExtracted: false)
