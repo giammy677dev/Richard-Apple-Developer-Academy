@@ -40,7 +40,7 @@ class DatabaseInterface {
         saveToCoreData(node: node)
     }
 
-    public func save(_ roadmap: Roadmap) {
+    public func save(_ roadmap: WritableRoadmap) {
         /// Saves a roadmap in local and cloud DB. If the roadmap doesn't exist it creates a new one and saves it.
         let recordID = CKRecordID(recordName: roadmap.uuid.uuidString)
         self.ckManager.privateDB.fetch(withRecordID: recordID) { (record, error) in
@@ -77,12 +77,12 @@ class DatabaseInterface {
     // MARK: - Save elements in Core Data
 
     /// Save Roadmap on CoreData
-    private func saveToCoreData(roadmap: Roadmap) { //Save single roadmap with steps and nodes
+    private func saveToCoreData(roadmap: WritableRoadmap) { //Save single roadmap with steps and nodes
         cdController.saveRecursively(roadmap)
     }
 
     /// Save an array of Roadmaps on CoreData
-    private func saveToCoreData(roadmaps: [Roadmap]) { //Save an array of roadmaps with steps. Nodes must already exist in memory.
+    private func saveToCoreData(roadmaps: [WritableRoadmap]) { //Save an array of roadmaps with steps. Nodes must already exist in memory.
         cdController.saveRecursively(roadmaps)
     }
 
@@ -100,7 +100,7 @@ class DatabaseInterface {
     }
 
     /// Save Step on CoreData, need an interface:
-    private func saveToCoreData(step: Step, roadmap: Roadmap) { //Save a step in memory and link it to a roadmap
+    private func saveToCoreData(step: Step, roadmap: WritableRoadmap) { //Save a step in memory and link it to a roadmap
         guard let _ = cdController.updateStep(step, of: roadmap) else {
             debugPrint("Error on save step in local memory")
             return
@@ -116,7 +116,7 @@ class DatabaseInterface {
     }
 
     // MARK: - Interface to deleting operations
-    public func deleteRoadmap(_ roadmap: Roadmap) {
+    public func deleteRoadmap(_ roadmap: WritableRoadmap) {
         let recordID = CKRecordID(recordName: roadmap.uuid.uuidString)
         cdController.deleteRoadmap(roadmap) //Delete roadmap from CoreData DB
         ckManager.deleteRecord(withRecordID: recordID) //Delete roadmap from CloudKit DB
@@ -260,7 +260,7 @@ class DatabaseInterface {
         return step
     }
 
-    private func recordToRoadmap(_ ckRecord: CKRecord) -> Roadmap? {
+    private func recordToRoadmap(_ ckRecord: CKRecord) -> WritableRoadmap? {
         guard
             let title = ckRecord[K.CKRecordTypes.CKRoadmapRecordField.title] as? String,
             let categoryID = ckRecord[K.CKRecordTypes.CKRoadmapRecordField.category] as? Int16,
@@ -274,7 +274,7 @@ class DatabaseInterface {
 
             else { return nil }
 
-        let roadmap = Roadmap(title: title, category: category, visibility: visibility, privileges: privileges, lastRead: lastRead, id: uuid)
+        let roadmap = WritableRoadmap(title: title, category: category, visibility: visibility, privileges: privileges, lastRead: lastRead, id: uuid)
         return roadmap
     }
 

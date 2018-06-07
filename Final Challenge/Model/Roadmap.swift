@@ -50,12 +50,6 @@ class Roadmap: Sharable, Equatable {
         }
     }
 
-    func addStep(_ step: Step) {
-        step.parent = self.uuid
-        step.indexInParent = self.steps.count
-        self.steps.append(step)
-    }
-
     static func == (lhs: Roadmap, rhs: Roadmap) -> Bool {
         return lhs.title == rhs.title
     }

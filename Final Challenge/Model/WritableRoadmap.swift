@@ -13,12 +13,11 @@ class WritableRoadmap: Roadmap, Writable {
     //Methods:
     func edit(title: String? = nil, category: Category? = nil) {
     }
-
-    func appendStep(_ step: Step) {
-        if steps == nil {
-            steps = [Step]()
-        }
-        steps?.append(step)
+    
+    func addStep(_ step: Step) {
+        step.parent = self.uuid
+        step.indexInParent = self.steps.count
+        self.steps.append(step)
     }
 
     func removeStep(_ step: Step) {
@@ -65,7 +64,7 @@ class WritableRoadmap: Roadmap, Writable {
 
     func insertStepInHead(_ step: Step) {
         if steps == nil {
-            self.appendStep(step)
+            self.addStep(step)
         } else {
             self.steps!.insert(step, at: steps!.startIndex)
         }
@@ -73,7 +72,7 @@ class WritableRoadmap: Roadmap, Writable {
 
     func insertStep(_ step: Step, after: Step) {
         if self.steps == nil {
-            self.appendStep(step)
+            self.addStep(step)
         } else {
             guard let index = self.steps?.index(of: after) else {
                 return

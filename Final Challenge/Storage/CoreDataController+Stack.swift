@@ -89,7 +89,7 @@ class CoreDataController {
     // MARK: Add object with or without relationships
 
     ///Adds Roadmap class to the record, WITHOUT adding Steps and Nodes to it. Returns the CoreData object for Roadmaps.
-    func addRoadmap(_ roadmap: Roadmap) -> CDRoadmap? {
+    func addRoadmap(_ roadmap: WritableRoadmap) -> CDRoadmap? {
         let newRoadmap = NSEntityDescription.insertNewObject(forEntityName: "CDRoadmap", into: context) as! CDRoadmap
 
         newRoadmap.setValue(roadmap.category.rawValue, forKey: "category")
@@ -110,7 +110,7 @@ class CoreDataController {
     }
 
     ///Adds Step class to the record and links it to the roadmap record, WITHOUT adding Nodes to it. Returns the CoreData object for Steps.
-    func addStep(_ step: Step, to roadmap: Roadmap) -> CDStep? {
+    func addStep(_ step: Step, to roadmap: WritableRoadmap) -> CDStep? {
 
         let entityStep = NSEntityDescription.entity(forEntityName: "CDStep", in: self.context)
         let newStep = CDStep(entity: entityStep!, insertInto: context)
@@ -363,7 +363,7 @@ class CoreDataController {
     // MARK: Delete
 
     ///Deletes the Roadmap in CoreData, along with its Steps but preserving the nodes.
-    func deleteRoadmap(_ roadmap: Roadmap) {
+    func deleteRoadmap(_ roadmap: WritableRoadmap) {
         guard isUUIDInUse(roadmap.uuid) else {
             return
         }
@@ -464,7 +464,7 @@ class CoreDataController {
 
     }
     ///Updates/adds Step information in CoreData. Not recursive.
-    func updateStep(_ step: Step, of roadmap: Roadmap) -> CDStep? {
+    func updateStep(_ step: Step, of roadmap: WritableRoadmap) -> CDStep? {
 
         if let stepToUpdate = fetchCDStep(uuid: step.uuid) {
             stepToUpdate.setValue(0, forKey: "arrayID")
@@ -494,7 +494,7 @@ class CoreDataController {
 
     }
     ///Updates/adds Roadmap information in CoreData. Not recursive.
-    func updateRoadmap(_ roadmap: Roadmap) -> CDRoadmap? {
+    func updateRoadmap(_ roadmap: WritableRoadmap) -> CDRoadmap? {
         if let roadmapToUpdate = fetchCDRoadmap(uuid: roadmap.uuid) {
             roadmapToUpdate.setValue(roadmap.category.rawValue, forKey: "category")
             roadmapToUpdate.setValue(roadmap.isPublic, forKey: "isPublic")
@@ -523,7 +523,7 @@ class CoreDataController {
         self.saveContext()
     }
 
-    func moveStep(_ step: Step, in roadmap: Roadmap, at index: Int) {
+    func moveStep(_ step: Step, in roadmap: WritableRoadmap, at index: Int) {
         let cdstep = fetchCDStep(uuid: step.uuid)
         let cdroadmap = fetchCDRoadmap(uuid: roadmap.uuid)
 
@@ -536,7 +536,7 @@ class CoreDataController {
     // MARK: Recursive update/save
 
     ///Saves a Roadmap recursively. Nodes must already exist in memory.
-    func saveRecursively(_ roadmap: Roadmap) {
+    func saveRecursively(_ roadmap: WritableRoadmap) {
         let savedRoadmap = updateRoadmap(roadmap)//Add or update the roadmap that is being saved
         if let savedSteps = savedRoadmap?.stepsList?.array as! [CDStep]? {
             for savedStep in savedSteps {
@@ -557,7 +557,7 @@ class CoreDataController {
     }
 
     ///Saves a Roadmap array recursively. Nodes must already exist in memory.
-    func saveRecursively(_ roadmaps: [Roadmap]) {
+    func saveRecursively(_ roadmaps: [WritableRoadmap]) {
         for roadmap in roadmaps {
             deleteRoadmap(roadmap)
             saveRecursively(roadmap)
@@ -568,8 +568,8 @@ class CoreDataController {
     // MARK: Convert CD Classes to normal classes
 
     ///Converts a CoreData Roadmap record in its Roadmap counterpart. NOT Recursive.
-    func roadmapFromRecord(_ cdroadmap: CDRoadmap) -> Roadmap {
-        let roadmap = Roadmap(title: cdroadmap.title!,
+    func roadmapFromRecord(_ cdroadmap: CDRoadmap) -> WritableRoadmap {
+        let roadmap = WritableRoadmap(title: cdroadmap.title!,
                               category: Category(rawValue: cdroadmap.category)!,
                               visibility: RoadmapVisibility(rawValue: cdroadmap.visibility)!,
                               privileges: UserPrivilege(rawValue: cdroadmap.privileges)!,
@@ -636,7 +636,7 @@ class CoreDataController {
     }
 
     ///Converts a CoreData Roadmap record in its Roadmap counterpart. Recursive.
-    func getEntireRoadmapFromRecord(_ cdroadmap: CDRoadmap) -> Roadmap {
+    func getEntireRoadmapFromRecord(_ cdroadmap: CDRoadmap) -> WritableRoadmap {
         let roadmap = roadmapFromRecord(cdroadmap)
 
         if let cdsteps = cdroadmap.stepsList {
@@ -652,11 +652,11 @@ class CoreDataController {
     }
 
     ///Converts all CoreData Roadmap records in their Roadmap counterpart, giving out an array. Recursive.
-    func getFullRoadmapRecords() -> [Roadmap]? {
+    func getFullRoadmapRecords() -> [WritableRoadmap]? {
 
         if let cdroadmaps = fetchCDRoadmaps() {
             if (!cdroadmaps.isEmpty) {
-                var roadmaps = [Roadmap]()
+                var roadmaps = [WritableRoadmap]()
                 for cdroadmap in cdroadmaps {
                     roadmaps.append(getEntireRoadmapFromRecord(cdroadmap))
                 }
