@@ -155,27 +155,27 @@ class DatabaseInterface {
     /// When a new record has to be saved it creates a new one otherwise it re-saves all the key-values
     private func roadmapToRecord(record: CKRecord?, roadmap: Roadmap) -> CKRecord {
         if let record = record {
-            record.setValue(roadmap.category, forKey: K.CKRecordTypes.CKRoadmapRecordField.category)
+            record.setValue(roadmap.category.rawValue, forKey: K.CKRecordTypes.CKRoadmapRecordField.category)
             record.setValue(roadmap.isPublic, forKey: K.CKRecordTypes.CKRoadmapRecordField.isPublic)
             record.setValue(roadmap.isShared, forKey: K.CKRecordTypes.CKRoadmapRecordField.isShared)
             record.setValue(roadmap.lastReadTimestamp, forKey: K.CKRecordTypes.CKRoadmapRecordField.lastReadTimestamp)
-            record.setValue(roadmap.privileges, forKey: K.CKRecordTypes.CKRoadmapRecordField.privileges)
+            record.setValue(roadmap.privileges.rawValue, forKey: K.CKRecordTypes.CKRoadmapRecordField.privileges)
             record.setValue(roadmap.title, forKey: K.CKRecordTypes.CKRoadmapRecordField.title)
-            record.setValue(roadmap.uuid, forKey: K.CKRecordTypes.CKRoadmapRecordField.uuid)
-            record.setValue(roadmap.visibility, forKey: K.CKRecordTypes.CKRoadmapRecordField.visibility)
+//            record.setValue(roadmap.uuid.uuidString, forKey: K.CKRecordTypes.CKRoadmapRecordField.uuid)
+            record.setValue(roadmap.visibility.rawValue, forKey: K.CKRecordTypes.CKRoadmapRecordField.visibility)
         }
 
         let recordID = CKRecordID(recordName: roadmap.uuid.uuidString)
         let newRecord = CKRecord(recordType: K.CKRecordTypes.roadmap, recordID: recordID)
 
-        newRecord.setValue(roadmap.category, forKey: K.CKRecordTypes.CKRoadmapRecordField.category)
+        newRecord.setValue(roadmap.category.rawValue, forKey: K.CKRecordTypes.CKRoadmapRecordField.category)
         newRecord.setValue(roadmap.isPublic, forKey: K.CKRecordTypes.CKRoadmapRecordField.isPublic)
         newRecord.setValue(roadmap.isShared, forKey: K.CKRecordTypes.CKRoadmapRecordField.isShared)
         newRecord.setValue(roadmap.lastReadTimestamp, forKey: K.CKRecordTypes.CKRoadmapRecordField.lastReadTimestamp)
-        newRecord.setValue(roadmap.privileges, forKey: K.CKRecordTypes.CKRoadmapRecordField.privileges)
+        newRecord.setValue(roadmap.privileges.rawValue, forKey: K.CKRecordTypes.CKRoadmapRecordField.privileges)
         newRecord.setValue(roadmap.title, forKey: K.CKRecordTypes.CKRoadmapRecordField.title)
-        newRecord.setValue(roadmap.uuid, forKey: K.CKRecordTypes.CKRoadmapRecordField.uuid)
-        newRecord.setValue(roadmap.visibility, forKey: K.CKRecordTypes.CKRoadmapRecordField.visibility)
+//        newRecord.setValue(roadmap.uuid.uuidString, forKey: K.CKRecordTypes.CKRoadmapRecordField.uuid)
+        newRecord.setValue(roadmap.visibility.rawValue, forKey: K.CKRecordTypes.CKRoadmapRecordField.visibility)
 
         return newRecord
     }
