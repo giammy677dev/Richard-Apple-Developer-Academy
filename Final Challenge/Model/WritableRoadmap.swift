@@ -22,12 +22,12 @@ class WritableRoadmap: Roadmap, Writable {
     }
 
     func removeStep(_ step: Step) {
-        guard var container = steps
-            else { return }
-        let index: Int? = container.index(of: step)
-        guard let target = index
-            else { return }
-        container.remove(at: target)
+        if let index = self.steps.index(of: step) {
+            self.steps.remove(at: index)
+            self.steps.forEach { (step) in
+                step.indexInParent = self.steps.index(of: step)
+            }
+        }
     }
 
     func move(_ step: Step, after: Step) {

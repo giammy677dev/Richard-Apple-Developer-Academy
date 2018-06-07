@@ -52,7 +52,7 @@ class Node: Taggable {
         self.uuid = id
         self.isRead = propRead
         self.isFlagged = propFlagged
-        
+
         if let _ = tags {
             self.tags = tags!
         }
