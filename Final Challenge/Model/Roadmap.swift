@@ -56,15 +56,6 @@ class Roadmap: Sharable, Equatable {
         self.steps.append(step)
     }
 
-    func removeStep(_ step: Step) {
-        if let index = self.steps.index(of: step) {
-            self.steps.remove(at: index)
-            self.steps.forEach { (step) in
-                step.indexInParent = self.steps.index(of: step)
-            }
-        }
-    }
-
     static func == (lhs: Roadmap, rhs: Roadmap) -> Bool {
         return lhs.title == rhs.title
     }
