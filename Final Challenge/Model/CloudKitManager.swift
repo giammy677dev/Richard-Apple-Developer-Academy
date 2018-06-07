@@ -22,9 +22,9 @@ final class CloudKitManager {
         self.privateDB = container.privateCloudDatabase
         self.publicDB = container.publicCloudDatabase
     }
-    
+
     // MARK: - Database operation
-    
+
     private func addOperationToDB(_ operation: CKDatabaseOperation, database: CKDatabase) {
         database.add(operation)
     }
@@ -49,7 +49,7 @@ final class CloudKitManager {
         deletionOperation.savePolicy = .allKeys // force deletion even if the server has a new version of the record
         deletionOperation.modifyRecordsCompletionBlock = self.modifyRecordsCompletionBlock(_:_:_:)
         deletionOperation.qualityOfService = .utility
-        
+
         self.addOperationToDB(deletionOperation, database: self.privateDB)
     }
 
@@ -241,7 +241,7 @@ class CloudKitHelper {
 
     static let shared: CloudKitHelper = CloudKitHelper()
     private init() {}
-    
+
     /// Determines if the operation could be retried and the number of seconds to wait.
     private func determineRetry(error: Error) -> Double? {
         if let ckError = error as? CKError {

@@ -20,7 +20,7 @@ class Roadmap: Sharable, Equatable {
     var steps: [Step]!
     var lastReadTimestamp: Date
     var uuid: UUID
-    
+
     //Methods:
     init(title: String, category: Category, visibility: RoadmapVisibility = RoadmapVisibility.isPrivate, privileges: UserPrivilege = UserPrivilege.isOwner, lastRead: Date, id: UUID) {
         self.title = title
@@ -55,7 +55,7 @@ class Roadmap: Sharable, Equatable {
         step.indexInParent = self.steps.count
         self.steps.append(step)
     }
-    
+
     func removeStep(_ step: Step) {
         if let index = self.steps.index(of: step) {
             self.steps.remove(at: index)

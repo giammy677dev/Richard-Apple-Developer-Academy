@@ -15,7 +15,7 @@ class RoadmapsTableViewController: UITableViewController {
         //General settings
         self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
 
-         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
 
 //        let customCell = UINib(nibName: "collectionViewCell", bundle: nil)
 //        self.tableView.register(customCell, forCellReuseIdentifier: "collectionViewCell")

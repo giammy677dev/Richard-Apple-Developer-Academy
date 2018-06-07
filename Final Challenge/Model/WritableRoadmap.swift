@@ -21,7 +21,7 @@ class WritableRoadmap: Roadmap, Writable {
         steps?.append(step)
     }
 
-    func removeStep(_ step: Step) {
+    override func removeStep(_ step: Step) {
         guard var container = steps
             else { return }
         let index: Int? = container.index(of: step)

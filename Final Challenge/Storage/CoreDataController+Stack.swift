@@ -598,7 +598,8 @@ class CoreDataController {
                         propExtracted: cdnode.isTextProperlyExtracted,
                         creationTime: cdnode.creationTimestamp! as Date,
                         propRead: cdnode.isRead,
-                        propFlagged: cdnode.isFlagged)
+                        propFlagged: cdnode.isFlagged,
+                        index: cdnode.parentsStep?.nodesList?.index(of: cdnode))
 
         return node
     }
@@ -614,7 +615,8 @@ class CoreDataController {
                         propExtracted: cdnode.isTextProperlyExtracted,
                         creationTime: cdnode.creationTimestamp! as Date,
                         propRead: cdnode.isRead,
-                        propFlagged: cdnode.isFlagged)
+                        propFlagged: cdnode.isFlagged,
+                        index: cdnode.parentsStep?.nodesList?.index(of: cdnode))
 
         return node
     }

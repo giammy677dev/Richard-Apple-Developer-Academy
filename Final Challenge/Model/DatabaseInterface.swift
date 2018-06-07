@@ -178,7 +178,7 @@ class DatabaseInterface {
 
             record.setValue(step.title, forKey: K.CKRecordTypes.CKStepRecordField.title)
             record.setValue(step.indexInParent, forKeyPath: K.CKRecordTypes.CKStepRecordField.indexInParent)
-            
+
             // Set the reference to the parent and the delete cascade update policy
             let parentID = CKRecordID(recordName: step.parent.uuidString)
             let parentReference = CKReference(recordID: parentID, action: .none)
@@ -206,11 +206,11 @@ class DatabaseInterface {
         // Encoding not supported data types
         let encoder = PropertyListEncoder()
         let tagsData = try? encoder.encode(node.tags)
-        
+
         // Set the reference to the parent
         let parentID = CKRecordID(recordName: node.parent.uuidString)
         let parentReference = CKReference(recordID: parentID, action: CKReferenceAction.none)
-        
+
         // If the record already exists (and it has been fetched)
         if let record = record {
             record.setValue(node.creationTimestamp, forKey: K.CKRecordTypes.CKNodeRecordField.creationTime)
