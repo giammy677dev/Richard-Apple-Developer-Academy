@@ -19,6 +19,14 @@ class DatabaseInterface {
         self.ckManager = CloudKitManager.shared
         self.cdController = CoreDataController.shared
     }
+    
+    func firstSetup() {
+        let readingRoadmap = WritableRoadmap.init(title: "Reading List", category: .other, visibility: .isPrivate, privileges: .isOwner, lastRead: Date(), id: K.readingListRoadmapID)
+        let readingStep = Step(title: "Reading List Step", parent: readingRoadmap.uuid, id: K.readingListStepID, index: 0)
+        
+        self.save(readingRoadmap)
+        self.save(readingStep)
+    }
 
     // MARK: Interfaces to save elements simultaneously on CloudKit and on CoreData
 

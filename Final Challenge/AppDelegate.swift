@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if !self.hasLaunchedBefore {
         // MARK: - Onboarding operations
-
+            DatabaseInterface.shared.firstSetup()
         }
 
         CloudKitManager.shared.subscriptionSetup()
