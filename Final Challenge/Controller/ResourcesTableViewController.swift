@@ -10,6 +10,8 @@ import UIKit
 
 class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator {
 
+    var resources: [String: [Node]] = [String: [Node]]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -74,5 +76,46 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
 
     func callSegueFromCell(identifier: String) {
         self.performSegue(withIdentifier: identifier, sender: self)
+    }
+
+    func loadResourcesFromDatabase() {
+        let controller = CoreDataController.shared
+        guard let coreDataReadingListRoadmap = controller.fetchCDRoadmap(uuid: K.readingListRoadmapID) else {
+            debugPrint("[CDERROR] No reading list found")
+            return
+        }
+        let readingListRoadmap = controller.getEntireRoadmapFromRecord(coreDataReadingListRoadmap)
+        let readingListStep = readingListRoadmap.steps[0]
+        let readingListNodes = readingListStep.nodes
+
+        let recentNodes = readingListNodes?.sorted(by: {(node1, node2) in
+            return node1.creationTimestamp < node2.creationTimestamp
+        })
+
+        var tags = Set<String>()
+        for node in recentNodes! {
+            tags = tags.union(node.tags)
+        }
+
+        let tagArray = tags.sorted()
+
+        for tag in tagArray {
+            var group = [String: [Node]]()
+            group[tag] = [Node]()
+            for node in recentNodes! {
+                if node.tags.contains(tag) {
+                    group[tag]?.append(node)
+                }
+            }
+            resources.merge(group) { (current, new) in new }
+        }
+
+        let predicate = {(element: Node) in
+            return element.tags.sorted(by: { (firstString, secondString) -> Bool in
+                return firstString < secondString
+            }).joined(separator: " ")
+
+        }
+
     }
 }

@@ -8,9 +8,9 @@
 import UIKit
 
 class CustomCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var articlesLeft: UILabel!
-    @IBOutlet weak var minutesLeft: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var linkLabel: UILabel!
+    @IBOutlet weak var minutesLeftLabel: UILabel!
 
     @IBOutlet weak var seeAllLbl: UILabel!
 

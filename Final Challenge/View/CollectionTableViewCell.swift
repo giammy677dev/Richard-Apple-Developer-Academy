@@ -93,9 +93,9 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as? CustomCollectionViewCell
 
         if indexPath.section == 4 {
-            cell?.articlesLeft.isHidden = true
-            cell?.title.isHidden = true
-            cell?.minutesLeft.isHidden = true
+            cell?.linkLabel.isHidden = true
+            cell?.titleLabel.isHidden = true
+            cell?.minutesLeftLabel.isHidden = true
             cell?.seeAllLbl.isHidden = false
         }
         if firstTime {
