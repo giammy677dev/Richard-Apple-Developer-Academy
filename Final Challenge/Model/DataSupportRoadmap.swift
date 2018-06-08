@@ -12,31 +12,45 @@ class DataSupportRoadmap {
     // Properties:
     static let shared: DataSupportRoadmap = DataSupportRoadmap.init()
 
-    private var roadmap: WritableRoadmap
-    private var step: Step
     private var notivicationOn: Bool
+    //For Roadmap:
+    private var roadmapTitle: String
+    private var roadmapCategory: Category
+    //For Step:
+    private var stepTitle: String
+    //For Node:
+    private var nodeUrl: URL?
+    private var nodeTitle: String
+    private var nodeText: String
+    //Objects:
+    var roadmap: WritableRoadmap?
 
     private init() {
-        self.roadmap = WritableRoadmap(title: "", category: Category.other, lastRead: Date(), id: UUID())
-        self.step = Step(title: "", parent: self.roadmap.getRoadmapUUID(), id: UUID())
         self.notivicationOn = true
+        self.roadmapTitle = ""
+        self.roadmapCategory = Category.other
+        self.stepTitle = ""
+        self.nodeUrl = URL(string: "www.apple.com")
+        self.nodeTitle = ""
+        self.nodeText = ""
     }
 
     // Methods:
     public func getTitleRoadmap() -> String {
-        return self.roadmap.title
+        return self.roadmapTitle
     }
 
     public func setTitleRoadmap(_ title: String) {
-        self.roadmap.title = title
+        self.roadmapTitle = title
     }
     
     public func getTitleStep() -> String {
-        return self.step.title
+        return self.stepTitle
     }
     
     public func setTitleStep(_ title: String) {
-        self.step.title = title
+        self.stepTitle = title
+        print(self.getTitleStep())
     }
 
     public func getNotification() -> Bool {
@@ -48,34 +62,21 @@ class DataSupportRoadmap {
     }
 
     public func getRoadmapCategory() -> Category {
-        return self.roadmap.category
+        return self.roadmapCategory
     }
 
     public func setRoadmapCategory(_ category: Category = Category.other) {
-        self.roadmap.category = category
+        self.roadmapCategory = category
     }
     
-    //Call this function after roadmap creation and saving it on DB
-    public func resetObjectRoadmap() {
-        //New UUID
-//        self.roadmap.uuid = UUID()
-        self.step.parent = self.roadmap.getRoadmapUUID()
-        //Reset roadmap's title, category and lastRead
-        self.roadmap.edit()
-        self.roadmap.setLastRead()
+    public func createRoadmap() {
+        self.roadmap = WritableRoadmap(title: roadmapTitle, category: roadmapCategory, lastRead: Date(), id: UUID())
     }
     
-    public func resetObjectStep() {
-        self.setTitleStep("")
-//        self.step.uuid = UUID()
-        
-    }
-    
-    public func resetObjectNode() {
-        
-    }
-    
-    private func addStepToRoadmap(_ step: Step) {
-        self.roadmap.addStep(step)
+    public func createStep(_ indexInParent: Int) {
+        if self.roadmap != nil {
+            let step: Step = Step(title: self.stepTitle, parent: self.roadmap!.getRoadmapUUID(), id: UUID(), index: indexInParent)
+            self.roadmap?.addStep(step)
+        }
     }
 }

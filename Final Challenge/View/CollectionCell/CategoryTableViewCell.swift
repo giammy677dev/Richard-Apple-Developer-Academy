@@ -87,5 +87,4 @@ class CategoryTableViewCell: UITableViewCell {
             DataSupportRoadmap.shared.setRoadmapCategory()
         }
     }
-
 }
