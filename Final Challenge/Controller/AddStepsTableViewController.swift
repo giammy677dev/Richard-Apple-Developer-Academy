@@ -16,7 +16,7 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         // Set title of navigationBar
-        self.title = DataSupportRoadmap.shared.getTitle()
+        self.title = DataSupportRoadmap.shared.getTitleRoadmap()
 
         //Invoke xib
         let stepCell = UINib(nibName: "AddStepTableViewCell", bundle: nil)

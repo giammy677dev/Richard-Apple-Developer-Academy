@@ -12,23 +12,31 @@ class DataSupportRoadmap {
     // Properties:
     static let shared: DataSupportRoadmap = DataSupportRoadmap.init()
 
-    private var title: String
+    private var roadmap: WritableRoadmap
+    private var step: Step
     private var notivicationOn: Bool
-    private var category: Category
 
     private init() {
-        self.title = ""
+        self.roadmap = WritableRoadmap(title: "", category: Category.other, lastRead: Date(), id: UUID())
+        self.step = Step(title: "", parent: self.roadmap.uuid, id: UUID())
         self.notivicationOn = true
-        self.category = Category.other
     }
 
     // Methods:
-    public func getTitle() -> String {
-        return self.title
+    public func getTitleRoadmap() -> String {
+        return self.roadmap.title
     }
 
-    public func setTitle(_ title: String) {
-        self.title = title
+    public func setTitleRoadmap(_ title: String) {
+        self.roadmap.title = title
+    }
+    
+    public func getTitleStep() -> String {
+        return self.step.title
+    }
+    
+    public func setTitleStep(_ title: String) {
+        self.step.title = title
     }
 
     public func getNotification() -> Bool {
@@ -39,15 +47,35 @@ class DataSupportRoadmap {
         self.notivicationOn = isOn
     }
 
-    public func getCategory() -> Category {
-        return self.category
+    public func getRoadmapCategory() -> Category {
+        return self.roadmap.category
     }
 
-    public func setCategory(_ category: Category) {
-        self.category = category
+    public func setRoadmapCategory(_ category: Category = Category.other) {
+        self.roadmap.category = category
     }
-
-    public func setCategory() {
-        self.category = Category.other
+    
+    //Call this function after roadmap creation and saving it on DB
+    public func resetObjectRoadmap() {
+        //New UUID
+        self.roadmap.uuid = UUID()
+        self.step.parent = self.roadmap.uuid
+        //Reset roadmap's title, category and lastRead
+        self.roadmap.edit()
+        self.roadmap.setLastRead()
+    }
+    
+    public func resetObjectStep() {
+        self.setTitleStep("")
+        self.step.uuid = UUID()
+        
+    }
+    
+    public func resetObjectNode() {
+        
+    }
+    
+    private func addStepToRoadmap(_ step: Step) {
+        self.roadmap.addStep(step)
     }
 }

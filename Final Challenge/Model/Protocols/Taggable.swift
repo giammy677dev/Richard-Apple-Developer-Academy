@@ -11,6 +11,7 @@ import Foundation
 protocol Taggable: Equatable {
     var tags: Set<String> { get set }
 
+    func addTag(_ tag: String)
     func addTags(_ tagArray: [String])
     func removeTag(_ tag: String)
 

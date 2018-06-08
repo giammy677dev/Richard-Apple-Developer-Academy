@@ -49,42 +49,42 @@ class CategoryTableViewCell: UITableViewCell {
         switch selector.titleLabel?.text {
         case "Business":
             categoryTextField.text = "Business"
-            DataSupportRoadmap.shared.setCategory(Category.business)
+            DataSupportRoadmap.shared.setRoadmapCategory(Category.business)
         case "Education":
             categoryTextField.text = "Education"
-            DataSupportRoadmap.shared.setCategory(Category.education)
+            DataSupportRoadmap.shared.setRoadmapCategory(Category.education)
         case "Entertainment":
             categoryTextField.text = "Entertainment"
-            DataSupportRoadmap.shared.setCategory(Category.entertainment)
+            DataSupportRoadmap.shared.setRoadmapCategory(Category.entertainment)
         case "Food":
             categoryTextField.text = "Food"
-            DataSupportRoadmap.shared.setCategory(Category.food)
+            DataSupportRoadmap.shared.setRoadmapCategory(Category.food)
         case "Travel":
             categoryTextField.text = "Travel"
-            DataSupportRoadmap.shared.setCategory(Category.travel)
+            DataSupportRoadmap.shared.setRoadmapCategory(Category.travel)
         case "Lifestyle":
             categoryTextField.text = "Lifestyle"
-            DataSupportRoadmap.shared.setCategory(Category.lifestyle)
+            DataSupportRoadmap.shared.setRoadmapCategory(Category.lifestyle)
         case "Hobby":
             categoryTextField.text = "Hobby"
-            DataSupportRoadmap.shared.setCategory(Category.hobby)
+            DataSupportRoadmap.shared.setRoadmapCategory(Category.hobby)
         case "Sport":
             categoryTextField.text = "Sport"
-            DataSupportRoadmap.shared.setCategory(Category.sport)
+            DataSupportRoadmap.shared.setRoadmapCategory(Category.sport)
         case "News":
             categoryTextField.text = "News"
-            DataSupportRoadmap.shared.setCategory(Category.news)
+            DataSupportRoadmap.shared.setRoadmapCategory(Category.news)
         case "Health":
             categoryTextField.text = "Health"
-            DataSupportRoadmap.shared.setCategory(Category.health)
+            DataSupportRoadmap.shared.setRoadmapCategory(Category.health)
         case "Other":
             categoryTextField.text = "Other"
-            DataSupportRoadmap.shared.setCategory(Category.other)
+            DataSupportRoadmap.shared.setRoadmapCategory(Category.other)
         case "Technology":
             categoryTextField.text = "Technology"
-            DataSupportRoadmap.shared.setCategory(Category.technology)
+            DataSupportRoadmap.shared.setRoadmapCategory(Category.technology)
         default:
-            DataSupportRoadmap.shared.setCategory()
+            DataSupportRoadmap.shared.setRoadmapCategory()
         }
     }
 

@@ -12,6 +12,16 @@ class WritableRoadmap: Roadmap, Writable {
 
     //Methods:
     func edit(title: String? = nil, category: Category? = nil) {
+        if let newTitle = title {
+            self.title = newTitle
+        } else { //Default if title is nil
+            self.title = ""
+        }
+        if let newCategory = category {
+            self.category = newCategory
+        } else { //Default if categori is nil
+            self.category = Category.other
+        }
     }
 
     func addStep(_ step: Step) {

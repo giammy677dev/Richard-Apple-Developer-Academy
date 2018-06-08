@@ -29,6 +29,17 @@ class Step: NodeManager, Equatable {
             self.indexInParent = index
         }
     }
+    
+    //Initialize new object from one other:
+    init(_ step: Step) {
+        self.title = step.title
+        self.parent = step.parent
+        self.uuid = step.uuid
+        self.indexInParent = step.indexInParent
+        for elem in step.nodes {
+            self.nodes.append(Node(elem))
+        }
+    }
 
     func addNode(_ node: Node) {
         node.parent = self.uuid

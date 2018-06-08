@@ -66,7 +66,7 @@ class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelega
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         if let title = textField.text {
-            DataSupportRoadmap.shared.setTitle(title)
+            DataSupportRoadmap.shared.setTitleRoadmap(title)
             titleOk = true
         } else {
             titleOk = false
