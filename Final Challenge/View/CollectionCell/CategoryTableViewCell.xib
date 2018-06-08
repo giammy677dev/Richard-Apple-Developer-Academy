@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CategoryTableViewCell" rowHeight="282" id="KGk-i7-Jjw" customClass="CategoryTableViewCell" customModule="Final_Challenge" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="377" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="377" height="299.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add Tags Background" translatesAutoresizingMaskIntoConstraints="NO" id="X6B-gL-qY0">
+                        <rect key="frame" x="10" y="0.0" width="357" height="299.5"/>
+                    </imageView>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IxI-oN-ELq">
+                        <rect key="frame" x="29" y="15" width="319" height="49"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="IxI-oN-ELq" secondAttribute="height" multiplier="319:49" id="zIC-3g-P3a"/>
+                        </constraints>
+                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eBg-k0-ETg">
+                        <rect key="frame" x="29" y="79" width="62" height="30"/>
+                        <state key="normal" title="Business"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hpv-9Z-U20">
+                        <rect key="frame" x="29" y="119" width="97" height="30"/>
+                        <state key="normal" title="Entertainment"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l0P-4P-Wb1">
+                        <rect key="frame" x="146" y="119" width="35" height="30"/>
+                        <state key="normal" title="Food"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWz-zm-PPj">
+                        <rect key="frame" x="201" y="119" width="41" height="30"/>
+                        <state key="normal" title="Travel"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffF-Gq-RX4">
+                        <rect key="frame" x="29" y="159" width="58" height="30"/>
+                        <state key="normal" title="Lifestyle"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4oe-lH-dor">
+                        <rect key="frame" x="107" y="159" width="46" height="30"/>
+                        <state key="normal" title="Hobby"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSY-Z4-IFU">
+                        <rect key="frame" x="173" y="159" width="38" height="30"/>
+                        <state key="normal" title="Sport"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6k-PP-aRE">
+                        <rect key="frame" x="200" y="79" width="39" height="30"/>
+                        <state key="normal" title="News"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y84-rT-MT9">
+                        <rect key="frame" x="29" y="199" width="45" height="30"/>
+                        <state key="normal" title="Health"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rV3-2p-Ohd">
+                        <rect key="frame" x="94" y="199" width="80" height="30"/>
+                        <state key="normal" title="Technology"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hni-kt-AFA">
+                        <rect key="frame" x="111" y="79" width="69" height="30"/>
+                        <state key="normal" title="Education"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISH-3h-5Xu">
+                        <rect key="frame" x="29" y="239" width="40" height="30"/>
+                        <state key="normal" title="Other"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="X6B-gL-qY0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="14N-Vz-9gU"/>
+                    <constraint firstItem="IxI-oN-ELq" firstAttribute="top" secondItem="X6B-gL-qY0" secondAttribute="top" constant="15" id="8YY-lJ-yLY"/>
+                    <constraint firstItem="Hni-kt-AFA" firstAttribute="leading" secondItem="eBg-k0-ETg" secondAttribute="trailing" constant="20" id="EcN-jF-gjO"/>
+                    <constraint firstItem="rV3-2p-Ohd" firstAttribute="top" secondItem="y84-rT-MT9" secondAttribute="top" id="FV8-PM-KDK"/>
+                    <constraint firstItem="X6B-gL-qY0" firstAttribute="leading" secondItem="ISH-3h-5Xu" secondAttribute="leading" constant="-19" id="J2o-aR-wjm"/>
+                    <constraint firstItem="eBg-k0-ETg" firstAttribute="top" secondItem="IxI-oN-ELq" secondAttribute="bottom" constant="15" id="JoW-iw-jgh"/>
+                    <constraint firstItem="ISH-3h-5Xu" firstAttribute="top" secondItem="y84-rT-MT9" secondAttribute="bottom" constant="10" id="Mn0-PP-Txc"/>
+                    <constraint firstItem="dSY-Z4-IFU" firstAttribute="leading" secondItem="4oe-lH-dor" secondAttribute="trailing" constant="20" id="Nmq-zU-xkr"/>
+                    <constraint firstItem="Hni-kt-AFA" firstAttribute="top" secondItem="eBg-k0-ETg" secondAttribute="top" id="Tgm-Hm-PrC"/>
+                    <constraint firstItem="fWz-zm-PPj" firstAttribute="leading" secondItem="l0P-4P-Wb1" secondAttribute="trailing" constant="20" id="U45-7q-tLM"/>
+                    <constraint firstItem="X6B-gL-qY0" firstAttribute="leading" secondItem="Hpv-9Z-U20" secondAttribute="leading" constant="-19" id="UVj-kK-gPq"/>
+                    <constraint firstItem="Hpv-9Z-U20" firstAttribute="top" secondItem="eBg-k0-ETg" secondAttribute="bottom" constant="10" id="Ucv-n2-CJD"/>
+                    <constraint firstAttribute="bottom" secondItem="X6B-gL-qY0" secondAttribute="bottom" id="VKV-e9-6hu"/>
+                    <constraint firstItem="X6B-gL-qY0" firstAttribute="leading" secondItem="ffF-Gq-RX4" secondAttribute="leading" constant="-19" id="X5I-Ca-egY"/>
+                    <constraint firstAttribute="trailing" secondItem="X6B-gL-qY0" secondAttribute="trailing" constant="10" id="XsE-bn-hiO"/>
+                    <constraint firstItem="X6B-gL-qY0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="c8Q-b3-dib"/>
+                    <constraint firstItem="4oe-lH-dor" firstAttribute="top" secondItem="ffF-Gq-RX4" secondAttribute="top" id="evM-uP-I2i"/>
+                    <constraint firstItem="fWz-zm-PPj" firstAttribute="top" secondItem="l0P-4P-Wb1" secondAttribute="top" id="fda-26-bzx"/>
+                    <constraint firstItem="l0P-4P-Wb1" firstAttribute="top" secondItem="Hpv-9Z-U20" secondAttribute="top" id="jSq-dL-9MB"/>
+                    <constraint firstItem="f6k-PP-aRE" firstAttribute="top" secondItem="Hni-kt-AFA" secondAttribute="top" id="kgZ-c1-uhS"/>
+                    <constraint firstItem="X6B-gL-qY0" firstAttribute="leading" secondItem="eBg-k0-ETg" secondAttribute="leading" constant="-19" id="mUG-Su-e96"/>
+                    <constraint firstItem="IxI-oN-ELq" firstAttribute="leading" secondItem="X6B-gL-qY0" secondAttribute="leading" constant="19" id="mys-Rt-dmv"/>
+                    <constraint firstItem="IxI-oN-ELq" firstAttribute="trailing" secondItem="X6B-gL-qY0" secondAttribute="trailing" constant="-19" id="ssW-Ia-xWw"/>
+                    <constraint firstItem="y84-rT-MT9" firstAttribute="leading" secondItem="X6B-gL-qY0" secondAttribute="leading" constant="19" id="tG4-al-LsK"/>
+                    <constraint firstItem="ffF-Gq-RX4" firstAttribute="top" secondItem="Hpv-9Z-U20" secondAttribute="bottom" constant="10" id="tRQ-je-MEA"/>
+                    <constraint firstItem="f6k-PP-aRE" firstAttribute="leading" secondItem="Hni-kt-AFA" secondAttribute="trailing" constant="20" id="uFL-aI-enH"/>
+                    <constraint firstItem="l0P-4P-Wb1" firstAttribute="leading" secondItem="Hpv-9Z-U20" secondAttribute="trailing" constant="20" id="uJn-C5-g1U"/>
+                    <constraint firstItem="y84-rT-MT9" firstAttribute="top" secondItem="ffF-Gq-RX4" secondAttribute="bottom" constant="10" id="vEc-Cv-LsF"/>
+                    <constraint firstItem="dSY-Z4-IFU" firstAttribute="top" secondItem="4oe-lH-dor" secondAttribute="top" id="wrq-f5-CMt"/>
+                    <constraint firstItem="4oe-lH-dor" firstAttribute="leading" secondItem="ffF-Gq-RX4" secondAttribute="trailing" constant="20" id="x0I-Pa-lXo"/>
+                    <constraint firstItem="rV3-2p-Ohd" firstAttribute="leading" secondItem="y84-rT-MT9" secondAttribute="trailing" constant="20" id="xnD-Mw-jej"/>
+                    <constraint firstItem="X6B-gL-qY0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="zol-ma-NL2"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="backgroundImage" destination="X6B-gL-qY0" id="I7T-fF-7oh"/>
+                <outlet property="categoryTextField" destination="IxI-oN-ELq" id="F93-2j-Wh4"/>
+                <outletCollection property="categoriesButtonArray" destination="eBg-k0-ETg" collectionClass="NSMutableArray" id="xrF-sf-WmA"/>
+                <outletCollection property="categoriesButtonArray" destination="Hni-kt-AFA" collectionClass="NSMutableArray" id="mVn-di-hjt"/>
+                <outletCollection property="categoriesButtonArray" destination="Hpv-9Z-U20" collectionClass="NSMutableArray" id="iCF-oh-JLy"/>
+                <outletCollection property="categoriesButtonArray" destination="l0P-4P-Wb1" collectionClass="NSMutableArray" id="lNH-32-ARg"/>
+                <outletCollection property="categoriesButtonArray" destination="fWz-zm-PPj" collectionClass="NSMutableArray" id="fRC-WS-2jb"/>
+                <outletCollection property="categoriesButtonArray" destination="ffF-Gq-RX4" collectionClass="NSMutableArray" id="qRr-rv-ojh"/>
+                <outletCollection property="categoriesButtonArray" destination="4oe-lH-dor" collectionClass="NSMutableArray" id="7ch-i3-XqF"/>
+                <outletCollection property="categoriesButtonArray" destination="dSY-Z4-IFU" collectionClass="NSMutableArray" id="DWY-OX-ALi"/>
+                <outletCollection property="categoriesButtonArray" destination="f6k-PP-aRE" collectionClass="NSMutableArray" id="iuG-Ev-Cfy"/>
+                <outletCollection property="categoriesButtonArray" destination="y84-rT-MT9" collectionClass="NSMutableArray" id="yN9-U2-scd"/>
+                <outletCollection property="categoriesButtonArray" destination="rV3-2p-Ohd" collectionClass="NSMutableArray" id="muX-v6-yQ0"/>
+                <outletCollection property="categoriesButtonArray" destination="ISH-3h-5Xu" collectionClass="NSMutableArray" id="0sY-Tf-cuq"/>
+            </connections>
+            <point key="canvasLocation" x="-97.5" y="-59"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Add Tags Background" width="358" height="302"/>
+    </resources>
+</document>

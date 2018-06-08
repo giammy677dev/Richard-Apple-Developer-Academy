@@ -7,9 +7,9 @@
 //
 
 import Foundation
-//MARK: - Class Roadmap
+// MARK: - Class Roadmap
 class Roadmap: Sharable, Equatable {
-    
+
     //Parameters:
     var visibility: RoadmapVisibility
     var isShared: Bool {return RoadmapVisibility.isShared == self.visibility}
@@ -17,9 +17,10 @@ class Roadmap: Sharable, Equatable {
     var privileges: UserPrivilege
     var title: String
     var category: Category
-    var steps: [Step]?
+    var steps: [Step]!
     var lastReadTimestamp: Date
     var uuid: UUID
+
     //Methods:
     init(title: String, category: Category, visibility: RoadmapVisibility = RoadmapVisibility.isPrivate, privileges: UserPrivilege = UserPrivilege.isOwner, lastRead: Date, id: UUID) {
         self.title = title
@@ -28,33 +29,27 @@ class Roadmap: Sharable, Equatable {
         self.visibility = visibility
         self.lastReadTimestamp = lastRead
         self.uuid = id
+        self.steps = [Step]()
     }
-    
+
     func setShared() {
         self.visibility = RoadmapVisibility.isShared
     }
-    
+
     func setPublic() {
         self.visibility = RoadmapVisibility.isPublic
     }
-    
+
     func setPrivate() {
         self.visibility = RoadmapVisibility.isPrivate
     }
-    
+
     func stopSharing() {
         if visibility == RoadmapVisibility.isShared {
             visibility = RoadmapVisibility.isPrivate
         }
     }
-    
-    func addStep(_ step: Step) {
-        if steps == nil {
-            steps = [Step]()
-        }
-        steps?.append(step)
-    }
-    
+
     static func == (lhs: Roadmap, rhs: Roadmap) -> Bool {
         return lhs.title == rhs.title
     }
@@ -62,9 +57,8 @@ class Roadmap: Sharable, Equatable {
     //TO-DO: - Complete the following functions when we will have the DB
     func share() {
     }
-    
+
     func publish() {
     }
-    
-}
 
+}

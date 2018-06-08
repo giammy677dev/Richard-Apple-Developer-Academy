@@ -9,34 +9,34 @@
 import UIKit
 
 class StepTableViewController: UITableViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         //Invoke xib
         let stepCell = UINib(nibName: "StepTableViewCell", bundle: nil)
         self.tableView.register(stepCell, forCellReuseIdentifier: "StepTableViewCell")
-        
+
         //General settings
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none //delete the separator line between each rows of the tableView
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
     }
-    
+
     // MARK: - Table view data source
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StepTableViewCell", for: indexPath) as! StepTableViewCell
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 136
     }

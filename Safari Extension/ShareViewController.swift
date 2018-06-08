@@ -11,19 +11,18 @@ import Social
 import MobileCoreServices
 
 class ShareViewController: SLComposeServiceViewController {
-   
+
     private var url: NSURL?
     private var text: String?
-    private var wordCount: Int?{
+    private var wordCount: Int? {
         return (text?.words.count)
     }
-    
+
     private var userDecks = [RoadmapSE]()
     private let boilerPipeAPIURLString = "https://boilerpipe-web.appspot.com/extract?extractor=ArticleExtractor&output=json&extractImages=&token=&url="
     fileprivate var selectedRoadmap: RoadmapSE?
     private var boilerPipeAnswer = BoilerpipeAnswer()
     private var fetchedFromBoilerPipe: Bool = false
-    
 
     override func isContentValid() -> Bool {
         // Do validation of contentText and/or NSExtensionContext attachments here
@@ -34,14 +33,14 @@ class ShareViewController: SLComposeServiceViewController {
         super.viewDidLoad()
         setupUI()
         getURLAndText()
-        
+
         for i in 1...3 {
             let roadmap = RoadmapSE()
             roadmap.title = "Roadmaps \(i)"
             userDecks.append(roadmap)
         }
         selectedRoadmap = userDecks.first
-        
+
     }
 
     private func setupUI() {
@@ -50,7 +49,7 @@ class ShareViewController: SLComposeServiceViewController {
         navigationItem.titleView = imageView
         navigationController?.navigationBar.topItem?.titleView = imageView
         navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.backgroundColor = UIColor(red:0.97, green:0.44, blue:0.12, alpha:1.00)
+        navigationController?.navigationBar.backgroundColor = UIColor(red: 0.97, green: 0.44, blue: 0.12, alpha: 1.00)
     }
 
     private func getURLAndText() {
@@ -58,7 +57,7 @@ class ShareViewController: SLComposeServiceViewController {
         let itemProvider = extensionItem.attachments?.first as! NSItemProvider
         let propertyList = String(kUTTypePropertyList)
         if itemProvider.hasItemConformingToTypeIdentifier(propertyList) {
-            itemProvider.loadItem(forTypeIdentifier: propertyList, options: nil, completionHandler: { (item, error) -> Void in
+            itemProvider.loadItem(forTypeIdentifier: propertyList, options: nil, completionHandler: { (item, _) -> Void in
                 guard let dictionary = item as? NSDictionary else { return }
                 OperationQueue.main.addOperation {
                     let manager = NetworkManager()
@@ -66,18 +65,18 @@ class ShareViewController: SLComposeServiceViewController {
                         let urlString = results["URL"] as? String,
                         let pageText = results["Text"] as? String,
                         let url = NSURL(string: urlString) {
-                        
+
                             self.url = url
                             self.text = pageText
-                            manager.httpRequest(url:URL(string: (self.boilerPipeAPIURLString)+(self.url?.absoluteString!)!)!, dataHandlerOnCompletion: {
+                            manager.httpRequest(url: URL(string: (self.boilerPipeAPIURLString)+(self.url?.absoluteString!)!)!, dataHandlerOnCompletion: {
                                 (data) in
                                 self.boilerPipeAnswer.extractFromData(data)
-                                if(self.boilerPipeAnswer.status == "success"){
+                                if(self.boilerPipeAnswer.status == "success") {
                                     self.fetchedFromBoilerPipe = true
                                     self.text = self.boilerPipeAnswer.response.content
                                 }
-                            } )
-                        
+                            })
+
                             print("[RawCount]" + "\(pageText.words.count)")
                     }
                 }
@@ -86,8 +85,6 @@ class ShareViewController: SLComposeServiceViewController {
             print("error")
         }
     }
-    
-    
 
     override func didSelectPost() {
         // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
@@ -113,7 +110,7 @@ class ShareViewController: SLComposeServiceViewController {
 }
 
 extension ShareViewController: ShareSelectViewControllerDelegate {
-    
+
     func selected(roadmap: RoadmapSE) {
         selectedRoadmap = roadmap
         reloadConfigurationItems()

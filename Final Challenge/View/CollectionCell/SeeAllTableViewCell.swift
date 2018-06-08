@@ -16,7 +16,7 @@ class SeeAllTableViewCell: UITableViewCell {
     @IBOutlet weak var titleRoadmap: UILabel!
     @IBOutlet weak var articlesLeft: UILabel!
     @IBOutlet weak var minutesLeft: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -11,34 +11,29 @@ import Foundation
 public struct BoilerpipeAnswer: Codable {
     var response: BoilerpipeResponse
     var status: String = ""
-    public init(){
+    public init() {
         response = BoilerpipeResponse()
         status = "failure"
     }
-    
-    public struct BoilerpipeResponse: Codable{
+
+    public struct BoilerpipeResponse: Codable {
         var title: String = ""
         var content: String = ""
         var source: String = ""
-        public init(){
+        public init() {
             title = ""
             content = ""
             source = ""
         }
     }
-    
-    public mutating func extractFromData(_ data: Data){
-        do{
+
+    public mutating func extractFromData(_ data: Data) {
+        do {
             let json = try JSONDecoder().decode(BoilerpipeAnswer.self, from: data)
             self = json
-            print("STATUS: \(status)","WORD COUNT: \(response.content.words.count)")
-        }
-        catch let error {
+            print("STATUS: \(status)", "WORD COUNT: \(response.content.words.count)")
+        } catch let error {
             print(error.localizedDescription)
         }
     }
 }
-
-
-
-

@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension CDUsedUUID {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<CDUsedUUID> {
@@ -23,4 +22,3 @@ extension CDUsedUUID {
     @NSManaged public var toStep: CDStep?
 
 }
-

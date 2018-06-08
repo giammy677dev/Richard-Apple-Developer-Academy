@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension CDStep {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<CDStep> {
@@ -60,4 +59,3 @@ extension CDStep {
     @NSManaged public func removeFromNodesList(_ values: NSOrderedSet)
 
 }
-
