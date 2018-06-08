@@ -22,7 +22,7 @@ class DatabaseInterface {
 
     func firstSetup() {
         let readingRoadmap = WritableRoadmap.init(title: "Reading List", category: .other, visibility: .isPrivate, privileges: .isOwner, lastRead: Date(), id: K.readingListRoadmapID)
-        let readingStep = Step(title: "Reading List Step", parent: readingRoadmap.uuid, id: K.readingListStepID, index: 0)
+        let readingStep = Step(title: "Reading List Step", parent: readingRoadmap.getRoadmapUUID(), id: K.readingListStepID, index: 0)
 
         self.save(readingRoadmap)
         self.save(readingStep)
@@ -33,7 +33,7 @@ class DatabaseInterface {
     public func save(_ node: Node) {
         /// Saves a node in local and cloud DB. If the node doesn't exist it creates a new one and saves it.
         // MARK: - Save to CloudKit
-        let recordID = CKRecordID(recordName: node.uuid.uuidString)
+        let recordID = CKRecordID(recordName: node.getNodeUUID().uuidString)
         self.ckManager.privateDB.fetch(withRecordID: recordID) { (record, error) in
             if error != nil {
                 //TODO: - Error handling here
@@ -50,7 +50,7 @@ class DatabaseInterface {
 
     public func save(_ roadmap: WritableRoadmap) {
         /// Saves a roadmap in local and cloud DB. If the roadmap doesn't exist it creates a new one and saves it.
-        let recordID = CKRecordID(recordName: roadmap.uuid.uuidString)
+        let recordID = CKRecordID(recordName: roadmap.getRoadmapUUID().uuidString)
         self.ckManager.privateDB.fetch(withRecordID: recordID) { (record, error) in
             if error != nil {
                 //TODO: - Error handling here
@@ -67,7 +67,7 @@ class DatabaseInterface {
 
     /// Saves a step in local and cloud DB. If the step doesn't exist it creates a new one and saves it.
     public func save(_ step: Step) {
-        let recordID = CKRecordID(recordName: step.uuid.uuidString)
+        let recordID = CKRecordID(recordName: step.getStepUUID().uuidString)
         self.ckManager.privateDB.fetch(withRecordID: recordID) { (record, error) in
             if error != nil {
                 //TODO: - Error handling here
@@ -125,19 +125,19 @@ class DatabaseInterface {
 
     // MARK: - Interface to deleting operations
     public func deleteRoadmap(_ roadmap: WritableRoadmap) {
-        let recordID = CKRecordID(recordName: roadmap.uuid.uuidString)
+        let recordID = CKRecordID(recordName: roadmap.getRoadmapUUID().uuidString)
         cdController.deleteRoadmap(roadmap) //Delete roadmap from CoreData DB
         ckManager.deleteRecord(withRecordID: recordID) //Delete roadmap from CloudKit DB
     }
 
     public func deleteStep(_ step: Step) {
-        let recordID = CKRecordID(recordName: step.uuid.uuidString)
+        let recordID = CKRecordID(recordName: step.getStepUUID().uuidString)
         cdController.deleteStep(step) //Delete step from CoreData DB
         ckManager.deleteRecord(withRecordID: recordID) //Delete step from CloudKit DB
     }
 
     public func deleteNode(_ node: Node) {
-        let recordID = CKRecordID(recordName: node.uuid.uuidString)
+        let recordID = CKRecordID(recordName: node.getNodeUUID().uuidString)
         cdController.deleteNode(node) //Delete node from CoreData DB
         ckManager.deleteRecord(withRecordID: recordID) //Delete roadmap from CloudKit DB
     }
@@ -165,7 +165,7 @@ class DatabaseInterface {
             record.setValue(roadmap.visibility.rawValue, forKey: K.CKRecordTypes.CKRoadmapRecordField.visibility)
         }
 
-        let recordID = CKRecordID(recordName: roadmap.uuid.uuidString)
+        let recordID = CKRecordID(recordName: roadmap.getRoadmapUUID().uuidString)
         let newRecord = CKRecord(recordType: K.CKRecordTypes.roadmap, recordID: recordID)
 
         newRecord.setValue(roadmap.category.rawValue, forKey: K.CKRecordTypes.CKRoadmapRecordField.category)
@@ -195,7 +195,7 @@ class DatabaseInterface {
             return record
         }
 
-        let recordID = CKRecordID(recordName: step.uuid.uuidString)
+        let recordID = CKRecordID(recordName: step.getStepUUID().uuidString)
         let newRecord = CKRecord(recordType: K.CKRecordTypes.step, recordID: recordID)
 
         newRecord.setValue(step.title, forKey: K.CKRecordTypes.CKStepRecordField.title)
@@ -237,7 +237,7 @@ class DatabaseInterface {
         }
 
         // Else
-        let recordID = CKRecordID(recordName: node.uuid.uuidString)
+        let recordID = CKRecordID(recordName: node.getNodeUUID().uuidString)
         let newRecord = CKRecord(recordType: K.CKRecordTypes.node, recordID: recordID)
 
         newRecord.setValue(node.creationTimestamp, forKey: K.CKRecordTypes.CKNodeRecordField.creationTime)

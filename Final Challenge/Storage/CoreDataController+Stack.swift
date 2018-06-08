@@ -100,9 +100,9 @@ class CoreDataController {
         newRoadmap.setValue(roadmap.privileges.rawValue, forKey: "privileges")
         newRoadmap.setValue(roadmap.title, forKey: "title")
         newRoadmap.setValue(roadmap.visibility.rawValue, forKey: "visibility")
-        newRoadmap.setValue(roadmap.uuid, forKey: "uuid")
+        newRoadmap.setValue(roadmap.getRoadmapUUID(), forKey: "uuid")
 
-        newRoadmap.setValue(addUUID(roadmap.uuid), forKey: "usedID")
+        newRoadmap.setValue(addUUID(roadmap.getRoadmapUUID()), forKey: "usedID")
 
         self.saveContext()
 
@@ -115,13 +115,13 @@ class CoreDataController {
         let entityStep = NSEntityDescription.entity(forEntityName: "CDStep", in: self.context)
         let newStep = CDStep(entity: entityStep!, insertInto: context)
 
-        let parentRoadmap = fetchCDRoadmap(uuid: roadmap.uuid)
+        let parentRoadmap = fetchCDRoadmap(uuid: roadmap.getRoadmapUUID())
 
         newStep.setValue(0, forKey: "arrayID")
         newStep.setValue(step.title, forKey: "title")
-        newStep.setValue(step.uuid, forKey: "uuid")
+        newStep.setValue(step.getStepUUID(), forKey: "uuid")
 
-        newStep.setValue(addUUID(step.uuid), forKey: "usedID")
+        newStep.setValue(addUUID(step.getStepUUID()), forKey: "usedID")
 
         parentRoadmap!.addToStepsList(newStep)
 
@@ -139,9 +139,9 @@ class CoreDataController {
 
         newStep.setValue(0, forKey: "arrayID")
         newStep.setValue(step.title, forKey: "title")
-        newStep.setValue(step.uuid, forKey: "uuid")
+        newStep.setValue(step.getStepUUID(), forKey: "uuid")
 
-        newStep.setValue(addUUID(step.uuid), forKey: "usedID")
+        newStep.setValue(addUUID(step.getStepUUID()), forKey: "usedID")
 
         parentRoadmap!.addToStepsList(newStep)
 
@@ -161,8 +161,8 @@ class CoreDataController {
         newNode.setValue(node.tags, forKey: "tags")
         newNode.setValue(node.title, forKey: "title")
         newNode.setValue(node.url.absoluteString, forKey: "url")
-        newNode.setValue(node.uuid, forKey: "uuid")
-        newNode.setValue(addUUID(node.uuid), forKey: "usedID")
+        newNode.setValue(node.getNodeUUID(), forKey: "uuid")
+        newNode.setValue(addUUID(node.getNodeUUID()), forKey: "usedID")
 
         self.saveContext()
         return newNode
@@ -174,7 +174,7 @@ class CoreDataController {
         let entityNode = NSEntityDescription.entity(forEntityName: "CDNode", in: self.context)
         let newNode = CDNode(entity: entityNode!, insertInto: context)
 
-        let parentStep = fetchCDStep(uuid: step.uuid)
+        let parentStep = fetchCDStep(uuid: step.getStepUUID())
 
         parentStep!.addToNodesList(newNode)
 
@@ -352,9 +352,9 @@ class CoreDataController {
     func unlinkNode( _ node: Node, from step: Step) {
 
         var nodeToRemove: CDNode?
-        nodeToRemove = fetchCDNode(uuid: node.uuid)
+        nodeToRemove = fetchCDNode(uuid: node.getNodeUUID())
 
-        let step = fetchCDStep(uuid: step.uuid)
+        let step = fetchCDStep(uuid: step.getStepUUID())
         step?.removeFromNodesList(nodeToRemove!)
 
         self.saveContext()
@@ -364,11 +364,11 @@ class CoreDataController {
 
     ///Deletes the Roadmap in CoreData, along with its Steps but preserving the nodes.
     func deleteRoadmap(_ roadmap: WritableRoadmap) {
-        guard isUUIDInUse(roadmap.uuid) else {
+        guard isUUIDInUse(roadmap.getRoadmapUUID()) else {
             return
         }
         var roadmapToRemove: CDRoadmap?
-        roadmapToRemove = fetchCDRoadmap(uuid: roadmap.uuid)
+        roadmapToRemove = fetchCDRoadmap(uuid: roadmap.getRoadmapUUID())
 
         context.delete(roadmapToRemove!)
 
@@ -389,11 +389,11 @@ class CoreDataController {
 
     ///Deletes the Step in CoreData, preserving the rest.
     func deleteStep(_ step: Step) {
-        guard isUUIDInUse(step.uuid) else {
+        guard isUUIDInUse(step.getStepUUID()) else {
             return
         }
         var stepToRemove: CDStep?
-        stepToRemove = fetchCDStep(uuid: step.uuid)
+        stepToRemove = fetchCDStep(uuid: step.getStepUUID())
 
         context.delete(stepToRemove!)
 
@@ -416,11 +416,11 @@ class CoreDataController {
 
     ///Deletes the Node in CoreData.
     func deleteNode(_ node: Node) {
-        guard isUUIDInUse(node.uuid) else {
+        guard isUUIDInUse(node.getNodeUUID()) else {
             return
         }
         var nodeToRemove: CDNode?
-        nodeToRemove = fetchCDNode(uuid: node.uuid)
+        nodeToRemove = fetchCDNode(uuid: node.getNodeUUID())
 
         context.delete(nodeToRemove!)
 
@@ -444,7 +444,7 @@ class CoreDataController {
 
     ///Updates/adds Node information in CoreData. Not recursive.
     func updateNode(_ node: Node) -> CDNode? {
-        if let nodeToUpdate = fetchCDNode(uuid: node.uuid) {
+        if let nodeToUpdate = fetchCDNode(uuid: node.getNodeUUID()) {
             nodeToUpdate.setValue(node.creationTimestamp, forKey: "creationTimestamp")
             nodeToUpdate.setValue(node.extractedText, forKey: "extractedText")
             nodeToUpdate.setValue(node.isTextProperlyExtracted, forKey: "isTextProperlyExtracted")
@@ -466,7 +466,7 @@ class CoreDataController {
     ///Updates/adds Step information in CoreData. Not recursive.
     func updateStep(_ step: Step, of roadmap: WritableRoadmap) -> CDStep? {
 
-        if let stepToUpdate = fetchCDStep(uuid: step.uuid) {
+        if let stepToUpdate = fetchCDStep(uuid: step.getStepUUID()) {
             stepToUpdate.setValue(0, forKey: "arrayID")
             stepToUpdate.setValue(step.title, forKey: "title")
 
@@ -481,7 +481,7 @@ class CoreDataController {
 
     func updateStep(_ step: Step, of roadmap: UUID) -> CDStep? {
 
-        if let stepToUpdate = fetchCDStep(uuid: step.uuid) {
+        if let stepToUpdate = fetchCDStep(uuid: step.getStepUUID()) {
             stepToUpdate.setValue(0, forKey: "arrayID")
             stepToUpdate.setValue(step.title, forKey: "title")
 
@@ -495,7 +495,7 @@ class CoreDataController {
     }
     ///Updates/adds Roadmap information in CoreData. Not recursive.
     func updateRoadmap(_ roadmap: WritableRoadmap) -> CDRoadmap? {
-        if let roadmapToUpdate = fetchCDRoadmap(uuid: roadmap.uuid) {
+        if let roadmapToUpdate = fetchCDRoadmap(uuid: roadmap.getRoadmapUUID()) {
             roadmapToUpdate.setValue(roadmap.category.rawValue, forKey: "category")
             roadmapToUpdate.setValue(roadmap.isPublic, forKey: "isPublic")
             roadmapToUpdate.setValue(roadmap.isShared, forKey: "isShared")
@@ -514,8 +514,8 @@ class CoreDataController {
     }
     // MARK: Change step/nodes placement
     func moveNode(_ node: Node, in step: Step, at index: Int) {
-        let cdnode = fetchCDNode(uuid: node.uuid)
-        let cdstep = fetchCDStep(uuid: step.uuid)
+        let cdnode = fetchCDNode(uuid: node.getNodeUUID())
+        let cdstep = fetchCDStep(uuid: step.getStepUUID())
 
         cdstep?.removeFromNodesList(cdnode!)
         cdstep?.insertIntoNodesList(cdnode!, at: index)
@@ -524,8 +524,8 @@ class CoreDataController {
     }
 
     func moveStep(_ step: Step, in roadmap: WritableRoadmap, at index: Int) {
-        let cdstep = fetchCDStep(uuid: step.uuid)
-        let cdroadmap = fetchCDRoadmap(uuid: roadmap.uuid)
+        let cdstep = fetchCDStep(uuid: step.getStepUUID())
+        let cdroadmap = fetchCDRoadmap(uuid: roadmap.getRoadmapUUID())
 
         cdroadmap?.removeFromStepsList(cdstep!)
         cdroadmap?.insertIntoStepsList(cdstep!, at: index)

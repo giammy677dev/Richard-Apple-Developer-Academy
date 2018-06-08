@@ -18,7 +18,7 @@ class DataSupportRoadmap {
 
     private init() {
         self.roadmap = WritableRoadmap(title: "", category: Category.other, lastRead: Date(), id: UUID())
-        self.step = Step(title: "", parent: self.roadmap.uuid, id: UUID())
+        self.step = Step(title: "", parent: self.roadmap.getRoadmapUUID(), id: UUID())
         self.notivicationOn = true
     }
 
@@ -58,8 +58,8 @@ class DataSupportRoadmap {
     //Call this function after roadmap creation and saving it on DB
     public func resetObjectRoadmap() {
         //New UUID
-        self.roadmap.uuid = UUID()
-        self.step.parent = self.roadmap.uuid
+//        self.roadmap.uuid = UUID()
+        self.step.parent = self.roadmap.getRoadmapUUID()
         //Reset roadmap's title, category and lastRead
         self.roadmap.edit()
         self.roadmap.setLastRead()
@@ -67,7 +67,7 @@ class DataSupportRoadmap {
     
     public func resetObjectStep() {
         self.setTitleStep("")
-        self.step.uuid = UUID()
+//        self.step.uuid = UUID()
         
     }
     

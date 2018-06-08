@@ -25,7 +25,7 @@ class WritableRoadmap: Roadmap, Writable {
     }
 
     func addStep(_ step: Step) {
-        step.parent = self.uuid
+        step.parent = self.getRoadmapUUID()
         step.indexInParent = self.steps.count
         self.steps.append(step)
     }
