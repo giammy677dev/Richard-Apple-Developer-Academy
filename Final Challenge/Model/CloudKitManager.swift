@@ -59,9 +59,12 @@ final class CloudKitManager {
         // The block is executed serially with respect to the other progress blocks of the operation.
 
         if let error = operationError {
-            guard let waitingSeconds = CloudKitHelper.shared.determineRetry(error: error),
-                let ckError = error as? CKError else { return }
-
+            guard let waitingSeconds = CloudKitHelper.shared.determineRetry(error: error) else { return }
+            let operationToRetry = CKModifyRecordsOperation(recordsToSave: savedRecords, recordIDsToDelete: deletedRecordIDs)
+            operationToRetry.modifyRecordsCompletionBlock = self.modifyRecordsCompletionBlock(_:_:_:)
+            DispatchQueue.global().asyncAfter(deadline: .now() + waitingSeconds) {
+                self.addOperationToDB(operationToRetry, database: self.privateDB)
+            }
         }
 
     }
@@ -78,7 +81,7 @@ final class CloudKitManager {
         // Init the subscriptions
         let truePredicate = NSPredicate(value: true)
 
-        var subscriptionsArray = [
+        let subscriptionsArray = [
             // Roadmaps
             CKQuerySubscription(recordType: K.CKRecordTypes.roadmap, predicate: truePredicate, subscriptionID: K.CKQuerySubscriptionID.roadmapCreation, options: .firesOnRecordCreation),
             CKQuerySubscription(recordType: K.CKRecordTypes.roadmap, predicate: truePredicate, subscriptionID: K.CKQuerySubscriptionID.roadmapDeletion, options: .firesOnRecordDeletion),
@@ -97,14 +100,14 @@ final class CloudKitManager {
         let notificationInfo = CKNotificationInfo()
         notificationInfo.shouldSendContentAvailable = true
 
-        subscriptionsArray = subscriptionsArray.map({
-            $0.notificationInfo = notificationInfo
-            return $0
-        })
+        subscriptionsArray.forEach { (querySubscription) in
+            querySubscription.notificationInfo = notificationInfo
+        }
 
         let saveSubscriptionOperation = CKModifySubscriptionsOperation(subscriptionsToSave: subscriptionsArray, subscriptionIDsToDelete: nil)
         saveSubscriptionOperation.modifySubscriptionsCompletionBlock = { (_, _, error) in
             guard error == nil else {
+                // TODO: - Error handling
                 return
             }
             // Subscription done. Set the defaults key to true
