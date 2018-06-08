@@ -13,7 +13,7 @@ class CurrentData {
     static let shared = CurrentData()
 
     var roadmaps: [Roadmap]?
-    var readingList: [Node]?
+    var readingListByTags: [(tag: String, nodes: [Node])] = [(String, [Node])]()
 
     func load() { //Load roadmaps and nodes into the arrays
         //DatabaseInterface.shared.

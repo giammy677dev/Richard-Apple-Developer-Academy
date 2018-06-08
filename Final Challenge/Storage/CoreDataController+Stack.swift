@@ -164,6 +164,9 @@ class CoreDataController {
         newNode.setValue(node.getNodeUUID(), forKey: "uuid")
         newNode.setValue(addUUID(node.getNodeUUID()), forKey: "usedID")
 
+        let readingListStep = fetchCDStep(uuid: K.readingListStepID)
+        readingListStep?.addToNodesList(newNode)
+
         self.saveContext()
         return newNode
     }
