@@ -33,4 +33,14 @@ extension UIViewController {
         //controller.deleteNode(d)
         //debugPrint(controller.isUUIDInUse(d.uuid))
     }
+
+    func coreDataInit() {
+        let readingListRoadmap = WritableRoadmap(title: "Reading List", category: .other, visibility: .isPrivate, privileges: .isOwner, lastRead: Date(), id: K.readingListRoadmapID)
+        let readingListStep = Step(title: "Reading List", parent: K.readingListRoadmapID, id: K.readingListStepID, index: 0)
+        CoreDataController.shared.wipeTheEntireCoreDataContainer(areYouSure: true)
+        CoreDataController.shared.addRoadmap(readingListRoadmap)
+        CoreDataController.shared.addStep(readingListStep, to: readingListRoadmap)
+
+        print(CoreDataController.shared.fetchCDRoadmaps())
+    }
 }

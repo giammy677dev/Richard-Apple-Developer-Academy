@@ -24,6 +24,7 @@ class CollectionTableViewCell: UITableViewCell {
     var currentPage = 0
     var lastOffset: Float = 0
     var firstTime = true
+    var content: [Node] = [Node]()
 
     class var customCell: CustomCollectionViewCell {
         let cell = Bundle.main.loadNibNamed("CustomCollectionViewCell", owner: self, options: nil)?.last
@@ -82,7 +83,7 @@ class CollectionTableViewCell: UITableViewCell {
 extension CollectionTableViewCell: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 5    //numbers of Roadmaps in Recent
+        return  content.count  //numbers of Nodes in Recent
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -92,12 +93,17 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as? CustomCollectionViewCell
 
-        if indexPath.section == 4 {
+        cell?.linkLabel.text = content[indexPath.section].url.absoluteString
+        cell?.titleLabel.text = content[indexPath.section].title
+        cell?.minutesLeftLabel.text = "\(content[indexPath.section].extractedText.words.count / 270)"
+
+        if indexPath.section == content.count - 1 {
             cell?.linkLabel.isHidden = true
             cell?.titleLabel.isHidden = true
             cell?.minutesLeftLabel.isHidden = true
             cell?.seeAllLbl.isHidden = false
         }
+
         if firstTime {
             if indexPath.section == 0 {
                 cell?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)

@@ -10,7 +10,7 @@ import UIKit
 
 class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator {
 
-    var resources: [String: [Node]] = [String: [Node]]()
+    var resources: [(tag: String, nodes: [Node])] = [(String, [Node])]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +38,7 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return resources.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,11 +53,16 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
 
         collectionCell.backgroundView = UIImageView(image: UIImage(named: "Background celle.png")!) //It sets the background of the table view rows
 
+        let content = resources[indexPath.section].nodes
+
+        collectionCell.content = content
+
         return collectionCell
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = Bundle.main.loadNibNamed("HeaderTableViewCell", owner: self, options: nil)?.first as! HeaderTableViewCell
+        header.textLabel?.text = resources[section].tag
 
         return header
     }
@@ -99,6 +104,8 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
 
         let tagArray = tags.sorted()
 
+        resources.append(("Recent", recentNodes!))
+
         for tag in tagArray {
             var group = [String: [Node]]()
             group[tag] = [Node]()
@@ -107,15 +114,10 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
                     group[tag]?.append(node)
                 }
             }
-            resources.merge(group) { (current, new) in new }
-        }
-
-        let predicate = {(element: Node) in
-            return element.tags.sorted(by: { (firstString, secondString) -> Bool in
-                return firstString < secondString
-            }).joined(separator: " ")
+            resources.append((tag, group[tag]!))
 
         }
 
     }
+
 }
