@@ -16,7 +16,7 @@ class Step: NodeManager, Equatable {
     var title: String
     var nodes: [Node]!
     var parent: UUID
-    var uuid: UUID
+    private let uuid: UUID
     var indexInParent: Int!
 
     //Methods:
@@ -34,7 +34,7 @@ class Step: NodeManager, Equatable {
     init(_ step: Step) {
         self.title = step.title
         self.parent = step.parent
-        self.uuid = step.uuid
+        self.uuid = step.getStepUUID()
         self.indexInParent = step.indexInParent
         for elem in step.nodes {
             self.nodes.append(Node(elem))
@@ -55,6 +55,10 @@ class Step: NodeManager, Equatable {
             }
             Tag.shared.rRemove(node)
         }
+    }
+    
+    func getStepUUID() -> UUID {
+        return self.uuid
     }
 
     static func == (lhs: Step, rhs: Step) -> Bool {

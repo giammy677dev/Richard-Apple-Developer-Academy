@@ -19,7 +19,7 @@ class Roadmap: Sharable, Equatable {
     var category: Category
     var steps: [Step]!
     var lastReadTimestamp: Date
-    var uuid: UUID
+    private let uuid: UUID
 
     //Methods:
     init(title: String, category: Category, visibility: RoadmapVisibility = RoadmapVisibility.isPrivate, privileges: UserPrivilege = UserPrivilege.isOwner, lastRead: Date, id: UUID) {
@@ -39,7 +39,7 @@ class Roadmap: Sharable, Equatable {
         self.privileges = roadmap.privileges
         self.visibility = roadmap.visibility
         self.lastReadTimestamp = roadmap.lastReadTimestamp
-        self.uuid = roadmap.uuid
+        self.uuid = roadmap.getRoadmapUUID()
         for step in roadmap.steps {
             self.steps.append(Step(step))
         }
@@ -65,6 +65,10 @@ class Roadmap: Sharable, Equatable {
         if visibility == RoadmapVisibility.isShared {
             visibility = RoadmapVisibility.isPrivate
         }
+    }
+    
+    func getRoadmapUUID() -> UUID {
+        return self.uuid
     }
 
     static func == (lhs: Roadmap, rhs: Roadmap) -> Bool {

@@ -15,7 +15,7 @@ class Node: Taggable {
     //Parameters:
     var url: URL
     var title: String
-    var uuid: UUID
+    private let uuid: UUID
     var extractedText: String
     var isTextProperlyExtracted: Bool
     var creationTimestamp: Date
@@ -70,7 +70,7 @@ class Node: Taggable {
         self.extractedText = node.extractedText
         self.isTextProperlyExtracted = node.isTextProperlyExtracted
         self.creationTimestamp = node.creationTimestamp
-        self.uuid = node.uuid
+        self.uuid = node.getNodeUUID()
         self.isRead = node.isRead
         self.isFlagged = node.isFlagged
         
@@ -93,6 +93,10 @@ class Node: Taggable {
 
     func edit(title: String? = nil) {
 
+    }
+    
+    func getNodeUUID() -> UUID {
+        return uuid
     }
 
     // MARK: - Taggable protocol conformance
