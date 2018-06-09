@@ -29,7 +29,7 @@ class Step: NodeManager, Equatable {
             self.indexInParent = index
         }
     }
-    
+
     //Initialize new object from one other:
     init(_ step: Step) {
         self.title = step.title
@@ -56,7 +56,7 @@ class Step: NodeManager, Equatable {
             Tag.shared.rRemove(node)
         }
     }
-    
+
     func getStepUUID() -> UUID {
         return self.uuid
     }

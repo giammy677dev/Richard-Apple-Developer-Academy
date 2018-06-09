@@ -31,7 +31,7 @@ class Roadmap: Sharable, Equatable {
         self.uuid = id
         self.steps = [Step]()
     }
-    
+
     //Initialize new object from one other:
     init(roadmap: Roadmap) {
         self.title = roadmap.title
@@ -44,7 +44,7 @@ class Roadmap: Sharable, Equatable {
             self.steps.append(Step(step))
         }
     }
-    
+
     func setLastRead(_ date: Date = Date()) {
         self.lastReadTimestamp = date
     }
@@ -66,7 +66,7 @@ class Roadmap: Sharable, Equatable {
             visibility = RoadmapVisibility.isPrivate
         }
     }
-    
+
     func getRoadmapUUID() -> UUID {
         return self.uuid
     }

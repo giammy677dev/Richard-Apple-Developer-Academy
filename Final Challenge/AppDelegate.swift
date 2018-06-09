@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Onboarding operations
             DatabaseInterface.shared.firstSetup()
         }
-        
+
         CloudKitManager.shared.subscriptionSetup()
         application.registerForRemoteNotifications()
 
@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         debugPrint("Remote notifications failed to register: \(error.localizedDescription)")
         debugPrint("Retry after 3 seconds.")
-        DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 3.0) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.0) {
             application.registerForRemoteNotifications()
         }
     }

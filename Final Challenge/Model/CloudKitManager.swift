@@ -52,9 +52,9 @@ final class CloudKitManager {
 
         self.addOperationToDB(deletionOperation, database: self.privateDB)
     }
-    
+
     /// Fetches records with a completion handler to process the results.
-    func fetchRecordsWithCompletion(recordIDs: [CKRecordID], database: CKDatabase, completionBlock: (([CKRecordID : CKRecord]?, Error?) -> Void)?) {
+    func fetchRecordsWithCompletion(recordIDs: [CKRecordID], database: CKDatabase, completionBlock: (([CKRecordID: CKRecord]?, Error?) -> Void)?) {
         let fetchOperation = CKFetchRecordsOperation(recordIDs: recordIDs)
         fetchOperation.fetchRecordsCompletionBlock = {
             (recordsDict, error) in
@@ -70,7 +70,7 @@ final class CloudKitManager {
         }
         self.addOperationToDB(fetchOperation, database: database)
     }
-    
+
     /// The block to execute after the status of all changes is known.
     private func modifyRecordsCompletionBlock(_ savedRecords: [CKRecord]?, _ deletedRecordIDs: [CKRecordID]?, _ operationError: Error?) {
         // This block is executed after all individual progress blocks have completed but before the operation’s completion block.
@@ -299,7 +299,7 @@ final class CloudKitHelper {
 
         return nil
     }
-    
+
     /// Dispatches the same operation on the global queue after some time in seconds
     func retryOperation(seconds: Double, closure: @escaping () -> Void) {
         DispatchQueue.global().asyncAfter(deadline: .now() + seconds) {

@@ -10,7 +10,6 @@ import Foundation
 
 // MARK: - Node
 class Node: Taggable {
-    
 
     //Parameters:
     var url: URL
@@ -61,7 +60,7 @@ class Node: Taggable {
             self.indexInParent = index
         }
     }
-    
+
     //Initialize new object from one other:
     init(_ node: Node) {
         self.url = node.url
@@ -73,7 +72,7 @@ class Node: Taggable {
         self.uuid = node.getNodeUUID()
         self.isRead = node.isRead
         self.isFlagged = node.isFlagged
-        
+
         for elem in node.tags {
             self.tags.insert(elem)
         }
@@ -94,14 +93,14 @@ class Node: Taggable {
     func edit(title: String? = nil) {
 
     }
-    
+
     func getNodeUUID() -> UUID {
         return uuid
     }
 
     // MARK: - Taggable protocol conformance
     var tags: Set<String> = Set<String>()
-    
+
     func addTag(_ tag: String) {
         // This method receive a string and sets a node's tags
         tags.insert(tag)

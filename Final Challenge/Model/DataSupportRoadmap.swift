@@ -43,11 +43,11 @@ class DataSupportRoadmap {
     public func setTitleRoadmap(_ title: String) {
         self.roadmapTitle = title
     }
-    
+
     public func getTitleStep() -> String {
         return self.stepTitle
     }
-    
+
     public func setTitleStep(_ title: String) {
         self.stepTitle = title
         print(self.getTitleStep())
@@ -68,11 +68,11 @@ class DataSupportRoadmap {
     public func setRoadmapCategory(_ category: Category = Category.other) {
         self.roadmapCategory = category
     }
-    
+
     public func createRoadmap() {
         self.roadmap = WritableRoadmap(title: roadmapTitle, category: roadmapCategory, lastRead: Date(), id: UUID())
     }
-    
+
     public func createStep(_ indexInParent: Int) {
         if self.roadmap != nil {
             let step: Step = Step(title: self.stepTitle, parent: self.roadmap!.getRoadmapUUID(), id: UUID(), index: indexInParent)

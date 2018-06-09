@@ -32,7 +32,7 @@ class DatabaseInterface {
     public func save(_ node: Node) {
         // CloudKit
         let recordID = CKRecordID(recordName: node.getNodeUUID().uuidString)
-        let completion: (([CKRecordID : CKRecord]?, Error?) -> Void) = { (recordsDict, error) in
+        let completion: (([CKRecordID: CKRecord]?, Error?) -> Void) = { (recordsDict, error) in
             guard let recordsDictionary = recordsDict else { debugPrint("No records dictionary found."); return }
             if error != nil {
                 // TODO: - Handle saving errors and retry
@@ -42,7 +42,7 @@ class DatabaseInterface {
                 self.ckManager.saveRecord(savedRecord)
             }
         }
-        
+
         self.ckManager.fetchRecordsWithCompletion(recordIDs: [recordID], database: self.ckManager.privateDB, completionBlock: completion)
 
         // CoreData
@@ -53,7 +53,7 @@ class DatabaseInterface {
         /// Saves a roadmap in local and cloud DB. If the roadmap doesn't exist it creates a new one and saves it.
         // CloudKit
         let recordID = CKRecordID(recordName: roadmap.getRoadmapUUID().uuidString)
-        let completion: (([CKRecordID : CKRecord]?, Error?) -> Void) = { (recordsDict, error) in
+        let completion: (([CKRecordID: CKRecord]?, Error?) -> Void) = { (recordsDict, error) in
             guard let recordsDictionary = recordsDict else { debugPrint("No records dictionary found."); return }
             if error != nil {
                 // TODO: - Handle saving errors and retry
@@ -63,7 +63,7 @@ class DatabaseInterface {
                 self.ckManager.saveRecord(savedRecord)
             }
         }
-        
+
         self.ckManager.fetchRecordsWithCompletion(recordIDs: [recordID], database: self.ckManager.privateDB, completionBlock: completion)
 
         // CoreData
@@ -74,7 +74,7 @@ class DatabaseInterface {
     public func save(_ step: Step) {
         // CloudKit
         let recordID = CKRecordID(recordName: step.getStepUUID().uuidString)
-        let completion: (([CKRecordID : CKRecord]?, Error?) -> Void) = { (recordsDict, error) in
+        let completion: (([CKRecordID: CKRecord]?, Error?) -> Void) = { (recordsDict, error) in
             guard let recordsDictionary = recordsDict else { debugPrint("No records dictionary found."); return }
             if error != nil {
                 // TODO: - Handle saving errors and retry
@@ -84,7 +84,7 @@ class DatabaseInterface {
                 self.ckManager.saveRecord(savedRecord)
             }
         }
-        
+
         self.ckManager.fetchRecordsWithCompletion(recordIDs: [recordID], database: self.ckManager.privateDB, completionBlock: completion)
 
         // CoreData
