@@ -24,10 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // MARK: - Customization after application launch.
 
         if !self.hasLaunchedBefore {
-        // MARK: - Onboarding operations
+        // Onboarding operations
             DatabaseInterface.shared.firstSetup()
         }
-
+        
         CloudKitManager.shared.subscriptionSetup()
         application.registerForRemoteNotifications()
 
@@ -40,6 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         debugPrint("Remote notifications failed to register: \(error.localizedDescription)")
+        debugPrint("Retry after 3 seconds.")
+        DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 3.0) {
+            application.registerForRemoteNotifications()
+        }
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
