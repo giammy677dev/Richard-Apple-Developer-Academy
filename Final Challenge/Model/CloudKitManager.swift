@@ -29,7 +29,7 @@ final class CloudKitManager {
         database.add(operation)
     }
 
-    // MARK: - Save and delete methods
+    // MARK: - Save, fetch and delete methods
 
     /// Saves a record in the Private Database
     func saveRecord(_ record: CKRecord) {
@@ -52,16 +52,37 @@ final class CloudKitManager {
 
         self.addOperationToDB(deletionOperation, database: self.privateDB)
     }
-
+    
+    /// Fetches records with a completion handler to process the results.
+    func fetchRecordsWithCompletion(recordIDs: [CKRecordID], database: CKDatabase, completionBlock: (([CKRecordID : CKRecord]?, Error?) -> Void)?) {
+        let fetchOperation = CKFetchRecordsOperation(recordIDs: recordIDs)
+        fetchOperation.fetchRecordsCompletionBlock = {
+            (recordsDict, error) in
+            if let fetchingError = error {
+                guard let waitingSeconds = CloudKitHelper.shared.determineRetry(error: fetchingError) else { return }
+                CloudKitHelper.shared.retryOperation(seconds: waitingSeconds, closure: {
+                    self.addOperationToDB(fetchOperation, database: database)
+                })
+            } else {
+                guard recordsDict != nil, let completion = completionBlock else { return }
+                completion(recordsDict, nil)
+            }
+        }
+        self.addOperationToDB(fetchOperation, database: database)
+    }
+    
     /// The block to execute after the status of all changes is known.
     private func modifyRecordsCompletionBlock(_ savedRecords: [CKRecord]?, _ deletedRecordIDs: [CKRecordID]?, _ operationError: Error?) {
         // This block is executed after all individual progress blocks have completed but before the operation’s completion block.
         // The block is executed serially with respect to the other progress blocks of the operation.
 
         if let error = operationError {
-            guard let waitingSeconds = CloudKitHelper.shared.determineRetry(error: error),
-                let ckError = error as? CKError else { return }
-
+            guard let waitingSeconds = CloudKitHelper.shared.determineRetry(error: error) else { return }
+            let operationToRetry = CKModifyRecordsOperation(recordsToSave: savedRecords, recordIDsToDelete: deletedRecordIDs)
+            operationToRetry.modifyRecordsCompletionBlock = self.modifyRecordsCompletionBlock(_:_:_:)
+            DispatchQueue.global().asyncAfter(deadline: .now() + waitingSeconds) {
+                self.addOperationToDB(operationToRetry, database: self.privateDB)
+            }
         }
 
     }
@@ -78,7 +99,7 @@ final class CloudKitManager {
         // Init the subscriptions
         let truePredicate = NSPredicate(value: true)
 
-        var subscriptionsArray = [
+        let subscriptionsArray = [
             // Roadmaps
             CKQuerySubscription(recordType: K.CKRecordTypes.roadmap, predicate: truePredicate, subscriptionID: K.CKQuerySubscriptionID.roadmapCreation, options: .firesOnRecordCreation),
             CKQuerySubscription(recordType: K.CKRecordTypes.roadmap, predicate: truePredicate, subscriptionID: K.CKQuerySubscriptionID.roadmapDeletion, options: .firesOnRecordDeletion),
@@ -97,14 +118,14 @@ final class CloudKitManager {
         let notificationInfo = CKNotificationInfo()
         notificationInfo.shouldSendContentAvailable = true
 
-        subscriptionsArray = subscriptionsArray.map({
-            $0.notificationInfo = notificationInfo
-            return $0
-        })
+        subscriptionsArray.forEach { (querySubscription) in
+            querySubscription.notificationInfo = notificationInfo
+        }
 
         let saveSubscriptionOperation = CKModifySubscriptionsOperation(subscriptionsToSave: subscriptionsArray, subscriptionIDsToDelete: nil)
         saveSubscriptionOperation.modifySubscriptionsCompletionBlock = { (_, _, error) in
             guard error == nil else {
+                // TODO: - Error handling
                 return
             }
             // Subscription done. Set the defaults key to true
@@ -271,6 +292,13 @@ final class CloudKitHelper {
         }
 
         return nil
+    }
+    
+    /// Dispatches the same operation on the global queue after some time in seconds
+    func retryOperation(seconds: Double, closure: @escaping () -> Void) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + seconds) {
+            closure()
+        }
     }
 
 }

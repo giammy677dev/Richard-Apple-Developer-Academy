@@ -23,62 +23,71 @@ class DatabaseInterface {
     func firstSetup() {
         let readingRoadmap = WritableRoadmap.init(title: "Reading List", category: .other, visibility: .isPrivate, privileges: .isOwner, lastRead: Date(), id: K.readingListRoadmapID)
         let readingStep = Step(title: "Reading List Step", parent: readingRoadmap.getRoadmapUUID(), id: K.readingListStepID, index: 0)
-
         self.save(readingRoadmap)
         self.save(readingStep)
     }
 
     // MARK: Interfaces to save elements simultaneously on CloudKit and on CoreData
-
+    /// Saves a node in local and cloud DB. If the node doesn't exist it creates a new one and saves it.
     public func save(_ node: Node) {
-        /// Saves a node in local and cloud DB. If the node doesn't exist it creates a new one and saves it.
-        // MARK: - Save to CloudKit
+        // CloudKit
         let recordID = CKRecordID(recordName: node.getNodeUUID().uuidString)
-        self.ckManager.privateDB.fetch(withRecordID: recordID) { (record, error) in
+        let completion: (([CKRecordID : CKRecord]?, Error?) -> Void) = { (recordsDict, error) in
+            guard let recordsDictionary = recordsDict else { debugPrint("No records dictionary found."); return }
             if error != nil {
-                //TODO: - Error handling here
-                debugPrint(error!.localizedDescription)
+                // TODO: - Handle saving errors and retry
+            } else {
+                let record = recordsDictionary[recordID]
+                let savedRecord = self.nodeToRecord(record: record, node: node)
+                self.ckManager.saveRecord(savedRecord)
             }
-
-            let savedRecord = self.nodeToRecord(record: record, node: node)
-            self.ckManager.saveRecord(savedRecord)
         }
+        
+        self.ckManager.fetchRecordsWithCompletion(recordIDs: [recordID], database: self.ckManager.privateDB, completionBlock: completion)
 
-        // MARK: - Save to CoreData
+        // CoreData
         saveToCoreData(node: node)
     }
 
     public func save(_ roadmap: WritableRoadmap) {
         /// Saves a roadmap in local and cloud DB. If the roadmap doesn't exist it creates a new one and saves it.
+        // CloudKit
         let recordID = CKRecordID(recordName: roadmap.getRoadmapUUID().uuidString)
-        self.ckManager.privateDB.fetch(withRecordID: recordID) { (record, error) in
+        let completion: (([CKRecordID : CKRecord]?, Error?) -> Void) = { (recordsDict, error) in
+            guard let recordsDictionary = recordsDict else { debugPrint("No records dictionary found."); return }
             if error != nil {
-                //TODO: - Error handling here
-                debugPrint(error!.localizedDescription)
+                // TODO: - Handle saving errors and retry
+            } else {
+                let record = recordsDictionary[recordID]
+                let savedRecord = self.roadmapToRecord(record: record, roadmap: roadmap)
+                self.ckManager.saveRecord(savedRecord)
             }
-
-            let savedRecord = self.roadmapToRecord(record: record, roadmap: roadmap)
-            self.ckManager.saveRecord(savedRecord)
         }
+        
+        self.ckManager.fetchRecordsWithCompletion(recordIDs: [recordID], database: self.ckManager.privateDB, completionBlock: completion)
 
-        // MARK: - Save to CoreData
+        // CoreData
         saveToCoreData(roadmap: roadmap)
     }
 
     /// Saves a step in local and cloud DB. If the step doesn't exist it creates a new one and saves it.
     public func save(_ step: Step) {
+        // CloudKit
         let recordID = CKRecordID(recordName: step.getStepUUID().uuidString)
-        self.ckManager.privateDB.fetch(withRecordID: recordID) { (record, error) in
+        let completion: (([CKRecordID : CKRecord]?, Error?) -> Void) = { (recordsDict, error) in
+            guard let recordsDictionary = recordsDict else { debugPrint("No records dictionary found."); return }
             if error != nil {
-                //TODO: - Error handling here
-                debugPrint(error!.localizedDescription)
+                // TODO: - Handle saving errors and retry
+            } else {
+                let record = recordsDictionary[recordID]
+                let savedRecord = self.stepToRecord(record: record, step: step)
+                self.ckManager.saveRecord(savedRecord)
             }
-
-            let savedRecord = self.stepToRecord(record: record, step: step)
-            self.ckManager.saveRecord(savedRecord)
         }
+        
+        self.ckManager.fetchRecordsWithCompletion(recordIDs: [recordID], database: self.ckManager.privateDB, completionBlock: completion)
 
-        // MARK: - Save to CoreData
+        // CoreData
         interfaceCDSaveStep(step)
     }
 
