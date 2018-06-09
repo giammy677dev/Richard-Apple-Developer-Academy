@@ -123,20 +123,26 @@ final class CloudKitManager {
         }
 
         let saveSubscriptionOperation = CKModifySubscriptionsOperation(subscriptionsToSave: subscriptionsArray, subscriptionIDsToDelete: nil)
-        saveSubscriptionOperation.modifySubscriptionsCompletionBlock = { (_, _, error) in
-            guard error == nil else {
-                // TODO: - Error handling
-                return
-            }
-            // Subscription done. Set the defaults key to true
-            defaults.set(true, forKey: K.DefaultsKey.ckSubscriptionSetupDone)
-        }
         // Add a specific QoS and Queue priority
         saveSubscriptionOperation.qualityOfService = .utility
-
-        // Saving the subscription
-        self.addOperationToDB(saveSubscriptionOperation, database: privateDB)
-
+        // Saving operation stored as closure
+        let save: () -> Void = {
+            // Saving the subscription
+            self.addOperationToDB(saveSubscriptionOperation, database: self.privateDB)
+        }
+        // Subscription completion handler
+        saveSubscriptionOperation.modifySubscriptionsCompletionBlock = { (_, _, error) in
+            if let error = error {
+                guard let waitingTime = CloudKitHelper.shared.determineRetry(error: error) else { return }
+                CloudKitHelper.shared.retryOperation(seconds: waitingTime, closure: {
+                    save()
+                })
+            } else {
+                // Subscription done. Sets the defaults key to true and starts fetching
+                defaults.set(true, forKey: K.DefaultsKey.ckSubscriptionSetupDone)
+                self.handleNotification()
+            }
+        }
     }
 
     func didReceiveRemotePush(notification: [AnyHashable: Any]) {
