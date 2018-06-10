@@ -48,9 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         // MARK: - A remote push notification arrives
-        CloudKitManager.shared.didReceiveRemotePush(notification: userInfo)
-        // FIXME: - Use the completion handler to inform if there's a background fetch or not.
-        completionHandler(.newData)
+        // CloudKitManager will handle the notification and fetch all changes. It is also responsible for notifying the application that the fetching is starting and it needs to resume from background.
+        CloudKitManager.shared.didReceiveRemotePush(notification: userInfo, completion: completionHandler)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

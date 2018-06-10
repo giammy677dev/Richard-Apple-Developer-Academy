@@ -8,6 +8,7 @@
 
 import Foundation
 import CloudKit
+import UIKit
 
 final class CloudKitManager {
 
@@ -140,20 +141,22 @@ final class CloudKitManager {
             } else {
                 // Subscription done. Sets the defaults key to true and starts fetching
                 defaults.set(true, forKey: K.DefaultsKey.ckSubscriptionSetupDone)
-                self.handleNotification()
+                
+                // FIXME: - Could crash here
+                self.handleNotification(applicationCompletionBlock: { _ in })
             }
         }
     }
 
-    func didReceiveRemotePush(notification: [AnyHashable: Any]) {
+    func didReceiveRemotePush(notification: [AnyHashable: Any], completion: @escaping (UIBackgroundFetchResult) -> Void) {
         // This ckNotification could be useful in future.
         _ = CKNotification(fromRemoteNotificationDictionary: notification)
 
-        handleNotification()
+        self.handleNotification(applicationCompletionBlock: completion)
 
     }
 
-    private func handleNotification() {
+    private func handleNotification(applicationCompletionBlock: @escaping (UIBackgroundFetchResult) -> Void) {
         // Use the CKServerChangeToken to fetch only whatever changes have occurred since the last
         // time we asked, since intermediate push notifications might have been dropped.
         var changeToken: CKServerChangeToken?
@@ -170,6 +173,8 @@ final class CloudKitManager {
             // The block to execute when the change token has changed.
             let changeTokenData = NSKeyedArchiver.archivedData(withRootObject: serverToken)
             UserDefaults().set(changeTokenData, forKey: K.DefaultsKey.ckServerPrivateDatabaseChangeToken)
+            // It makes sense that if the server token has changed the app needs to fetch new data.
+            applicationCompletionBlock(.newData)
         }
 
         fetchOperation.recordZoneWithIDChangedBlock = { (recordZoneID) in
@@ -193,6 +198,8 @@ final class CloudKitManager {
                 if error.code == CKError.Code.changeTokenExpired {
                     // The CKServerChangeToken is no longer valid and must be resynced.
                     UserDefaults().set(nil, forKey: K.DefaultsKey.ckServerPrivateDatabaseChangeToken)
+                    // The fetching will restart and the application needs to be notified.
+                    self.handleNotification(applicationCompletionBlock: applicationCompletionBlock)
                 }
             }
             guard let changeToken = serverChangeToken else { return }
