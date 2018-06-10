@@ -53,7 +53,7 @@ final class CloudKitManager {
         self.addOperationToDB(deletionOperation, database: self.privateDB)
     }
 
-    /// Fetches records with a completion handler to process the results.
+    /// Fetches records from a CKDatabase with a recordID specified in the array passed as argument, then a completion handler processes the results.
     func fetchRecordsWithCompletion(recordIDs: [CKRecordID], database: CKDatabase, completionBlock: (([CKRecordID: CKRecord]?, Error?) -> Void)?) {
         let fetchOperation = CKFetchRecordsOperation(recordIDs: recordIDs)
         fetchOperation.fetchRecordsCompletionBlock = {
