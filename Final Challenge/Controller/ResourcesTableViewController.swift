@@ -98,7 +98,7 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
         let readingListStep = readingListRoadmap.steps[0]
         print(readingListStep.nodes)
         let readingListNodes = readingListStep.nodes
-        print(readingListNodes![0].title)
+//        print(readingListNodes![0].title)
 
         let recentNodes = readingListNodes?.sorted(by: {(node1, node2) in
             return node1.creationTimestamp < node2.creationTimestamp
@@ -125,7 +125,7 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
 
         }
 
-        print(controller.fetchCDNodes()![0].parentsStep)
+//        print(controller.fetchCDNodes()![0].parentsStep)
 
     }
 

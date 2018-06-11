@@ -79,4 +79,30 @@ class DataSupportRoadmap {
             self.roadmap?.addStep(step)
         }
     }
+    
+    public func saveRoadmap() {
+        if let roadMap = self.roadmap {
+            DatabaseInterface.shared.save(roadMap)
+            if let steps = roadMap.steps {
+                self.saveSteps(steps: steps)
+            }
+        } else {
+            debugPrint("Error on save roadmap!")
+        }
+    }
+    
+    public func saveSteps(steps: [Step]) {
+        for step in steps {
+            DatabaseInterface.shared.save(step)
+            if let nodes = step.nodes {
+                self.saveNodes(nodes: nodes)
+            }
+        }
+    }
+    
+    public func saveNodes(nodes: [Node]) {
+        for node in nodes {
+            DatabaseInterface.shared.save(node)
+        }
+    }
 }

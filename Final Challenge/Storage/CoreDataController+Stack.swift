@@ -663,6 +663,7 @@ class CoreDataController {
                 for cdroadmap in cdroadmaps {
                     roadmaps.append(getEntireRoadmapFromRecord(cdroadmap))
                 }
+                return roadmaps
             }
         }
         return nil

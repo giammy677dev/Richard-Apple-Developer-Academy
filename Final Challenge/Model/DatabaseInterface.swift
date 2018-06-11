@@ -152,7 +152,7 @@ class DatabaseInterface {
     }
 
     //MAKE: - Load data from Database
-    func loadRoadmaps() -> [Roadmap]? {
+    func loadRoadmaps() -> [WritableRoadmap]? {
         return cdController.getFullRoadmapRecords()
     }
 
