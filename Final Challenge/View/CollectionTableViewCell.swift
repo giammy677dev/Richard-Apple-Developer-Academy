@@ -25,6 +25,7 @@ class CollectionTableViewCell: UITableViewCell {
     var lastOffset: Float = 0
     var firstTime = true
     var content: [Node] = [Node]()
+    
 
     class var customCell: CustomCollectionViewCell {
         let cell = Bundle.main.loadNibNamed("CustomCollectionViewCell", owner: self, options: nil)?.last
