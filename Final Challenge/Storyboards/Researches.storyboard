@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Ms-XP-XQI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Ms-XP-XQI">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -65,7 +65,14 @@
                             <outlet property="delegate" destination="oUW-1q-saV" id="W37-KY-yfV"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="" image="links_reduced" id="cae-hs-uRE"/>
+                    <tabBarItem key="tabBarItem" title="Resources" image="unselected" selectedImage="selected" id="cae-hs-uRE">
+                        <inset key="imageInsets" minX="-55" minY="5" maxX="55" maxY="-5"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="size" keyPath="titlePositionAdjustment">
+                                <size key="value" width="0.0" height="-15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" title="Resources" id="yFa-2f-ExB">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="cQJ-hx-51V">
                             <connections>
@@ -88,7 +95,7 @@
                 <viewControllerPlaceholder storyboardName="AddResource" id="M14-Nz-ygc" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Fq-Mh-RVn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="758" y="40"/>
+            <point key="canvasLocation" x="758" y="48"/>
         </scene>
         <!--Links-->
         <scene sceneID="jTP-8d-bFJ">
@@ -96,10 +103,11 @@
                 <viewControllerPlaceholder storyboardName="Links" id="Wd2-y3-P4P" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cWV-lj-VKL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="757" y="134"/>
+            <point key="canvasLocation" x="797" y="194"/>
         </scene>
     </scenes>
     <resources>
-        <image name="links_reduced" width="44" height="44"/>
+        <image name="selected" width="34" height="34"/>
+        <image name="unselected" width="34" height="34"/>
     </resources>
 </document>

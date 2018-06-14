@@ -146,7 +146,7 @@ final class CloudKitManager {
             } else {
                 // Subscription done. Sets the defaults key to true and starts fetching
                 defaults.set(true, forKey: K.DefaultsKey.ckSubscriptionSetupDone)
-                
+
                 // FIXME: - Could crash here
                 self.handleNotification(applicationCompletionBlock: { _ in })
             }
@@ -215,7 +215,7 @@ final class CloudKitManager {
         // Operation properties
         fetchOperation.configuration.qualityOfService = .utility
         fetchOperation.configuration.isLongLived = true
-        
+
         self.addOperationToDB(fetchOperation, database: privateDB)
     }
 

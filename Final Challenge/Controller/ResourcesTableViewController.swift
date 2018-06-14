@@ -16,6 +16,10 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
         //General settings
         self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
 
+        let appearance = UITabBarItem.appearance()
+        let attributes = [kCTFontAttributeName: UIFont(name: "Lato-Bold.ttf", size: 16)]
+        appearance.setTitleTextAttributes(attributes as [NSAttributedStringKey: Any], for: .normal)
+
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
 
         self.navigationController?.navigationBar.layer.cornerRadius = 16
@@ -66,7 +70,11 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = Bundle.main.loadNibNamed("HeaderTableViewCell", owner: self, options: nil)?.first as! HeaderTableViewCell
-        header.headerLabel.text = CurrentData.shared.readingListByTags[section].tag
+        if section == 0 {
+            header.headerLabel.text = CurrentData.shared.readingListByTags[section].tag
+        } else {
+        header.headerLabel.text = "#" + CurrentData.shared.readingListByTags[section].tag
+        }
 
         return header
     }

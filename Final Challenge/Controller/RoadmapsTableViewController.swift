@@ -8,7 +8,7 @@
 import UIKit
 
 class RoadmapsTableViewController: UITableViewController {
-    
+
     var roadmaps: [WritableRoadmap] = DatabaseInterface.shared.loadRoadmaps() ?? [WritableRoadmap]()
     var intCategories: [Int] = [Int]()
 
@@ -19,7 +19,7 @@ class RoadmapsTableViewController: UITableViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
 
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
-        
+
         if !roadmaps.isEmpty {
             roadmaps = roadmaps.sorted { (roadmapOne, roadmapTwo) -> Bool in
                 return roadmapOne.category.rawValue < roadmapTwo.category.rawValue
@@ -55,7 +55,7 @@ class RoadmapsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = Bundle.main.loadNibNamed("HeaderTableViewCell", owner: self, options: nil)?.first as! HeaderTableViewCell
-        
+
         header.headerLabel.text = stringFromCategory(intCategories[section])
         return header
     }
@@ -71,7 +71,7 @@ class RoadmapsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
-    
+
     private func countCategories() -> Int {
         var number: Int = 0
         var precedent: Int = -1
@@ -84,7 +84,7 @@ class RoadmapsTableViewController: UITableViewController {
         }
         return number
     }
-    
+
     private func stringFromCategory(_ rawValue: Int) -> String {
         switch rawValue {
         case 0:
