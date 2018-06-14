@@ -7,15 +7,15 @@
 
 import UIKit
 
-class CustomCollectionViewCell: UICollectionViewCell{
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var articlesLeft: UILabel!
-    @IBOutlet weak var minutesLeft: UILabel!
+class CustomCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var linkLabel: UILabel!
+    @IBOutlet weak var minutesLeftLabel: UILabel!
 
     @IBOutlet weak var seeAllLbl: UILabel!
-    
+
     var delegate: MyCustomCellDelegator!
-    
+
     @IBOutlet weak var imageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -29,21 +29,20 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
         self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         self.navigationController?.navigationBar.layer.shadowRadius = 2
 
-//
-//        self.navigationController?.navigationBar.layer.cornerRadius = 16
-//        self.navigationController?.navigationBar.clipsToBounds = true
-//        self.navigationController?.navigationBar.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        self.navigationController?.navigationBar.layer.cornerRadius = 16
+        self.navigationController?.navigationBar.clipsToBounds = true
+        self.navigationController?.navigationBar.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+    }
 
-        //                let customCell = UINib(nibName: "collectionViewCell", bundle: nil)
-        //                self.tableView.register(customCell, forCellReuseIdentifier: "collectionViewCell")
-        //
-        //                let headerCustomCell = UINib(nibName: "headerCell", bundle: nil)
-        //                self.tableView.register(headerCustomCell, forCellReuseIdentifier: "headerCell")
+    override func viewWillAppear(_ animated: Bool) {
+        CurrentData.shared.readingListByTags = [(String, [Node])]()
+        loadResourcesFromDatabase()
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return CurrentData.shared.readingListByTags.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,14 +54,19 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
         let collectionCell = tableView.dequeueReusableCell(withIdentifier: "collectionViewCell", for: indexPath) as! CollectionTableViewCell
 
         collectionCell.delegate = self
+//        collectionCell.dataSource = (self as! MyCustomCellDataSource)
 
         collectionCell.backgroundView = UIImageView(image: UIImage(named: "Background celle.png")!) //It sets the background of the table view rows
+
+        let content = CurrentData.shared.readingListByTags[indexPath.section].nodes
+        collectionCell.content = content
 
         return collectionCell
     }
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = Bundle.main.loadNibNamed("HeaderTableViewCell", owner: self, options: nil)?.first as! HeaderTableViewCell
+        header.headerLabel.text = CurrentData.shared.readingListByTags[section].tag
 
         return header
     }
@@ -82,4 +86,47 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
     func callSegueFromCell(identifier: String) {
         self.performSegue(withIdentifier: identifier, sender: self)
     }
+
+    func loadResourcesFromDatabase() {
+        let controller = CoreDataController.shared
+        guard let coreDataReadingListRoadmap = controller.fetchCDRoadmap(uuid: K.readingListRoadmapID) else {
+            debugPrint("[CDERROR] No reading list found")
+            return
+        }
+        let readingListRoadmap = controller.getEntireRoadmapFromRecord(coreDataReadingListRoadmap)
+        print(readingListRoadmap.steps)
+        let readingListStep = readingListRoadmap.steps[0]
+        print(readingListStep.nodes)
+        let readingListNodes = readingListStep.nodes
+//        print(readingListNodes![0].title)
+
+        let recentNodes = readingListNodes?.sorted(by: {(node1, node2) in
+            return node1.creationTimestamp < node2.creationTimestamp
+        })
+
+        var tags = Set<String>()
+        for node in recentNodes! {
+            tags = tags.union(node.tags)
+        }
+
+        let tagArray = tags.sorted()
+
+        CurrentData.shared.readingListByTags.append(("Recent", recentNodes!))
+
+        for tag in tagArray {
+            var group = [String: [Node]]()
+            group[tag] = [Node]()
+            for node in recentNodes! {
+                if node.tags.contains(tag) {
+                    group[tag]?.append(node)
+                }
+            }
+            CurrentData.shared.readingListByTags.append((tag, group[tag]!))
+
+        }
+
+//        print(controller.fetchCDNodes()![0].parentsStep)
+
+    }
+
 }

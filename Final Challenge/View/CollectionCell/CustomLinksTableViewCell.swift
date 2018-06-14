@@ -12,11 +12,10 @@ class CustomLinksTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var readingTimeLabel: UILabel!
     @IBOutlet weak var checkButton: UIButton!
-    @IBOutlet weak var footerImageView: UIImageView!
     @IBOutlet weak var firstTagLabel: UILabel!
     @IBOutlet weak var secondTagLabel: UILabel!
     @IBOutlet weak var thirdTagLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,7 +30,7 @@ class CustomLinksTableViewCell: UITableViewCell {
     @IBAction func checkButtonTapped(_ sender: UIButton) {
 
         //Modify the image of the checkButton basing on its state
-        if checkButton.isSelected == false  {
+        if checkButton.isSelected == false {
             sender.setImage(UIImage(named: "Checkmark"), for: .selected)
         }
 
@@ -39,7 +38,7 @@ class CustomLinksTableViewCell: UITableViewCell {
         UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
             sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
 
-        }) { (success) in
+        }) { (_) in
             UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
                 sender.isSelected = !sender.isSelected
                 sender.transform = .identity

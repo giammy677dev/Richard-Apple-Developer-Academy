@@ -30,19 +30,17 @@ class SeeAllTableViewController: UITableViewController {
         return 1
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "singleRoadmap", for: indexPath)
         cell.contentView.backgroundColor = UIColor(hex: 0xFAFAFB)
-        
-        
+
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 175  //global Constant
     }
@@ -67,12 +65,10 @@ class SeeAllTableViewController: UITableViewController {
     }
     */
 
-
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
     }
-
 
     /*
     // Override to support conditional rearranging of the table view.

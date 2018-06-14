@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension CDRoadmap {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<CDRoadmap> {
@@ -64,4 +63,3 @@ extension CDRoadmap {
     @NSManaged public func removeFromStepsList(_ values: NSOrderedSet)
 
 }
-

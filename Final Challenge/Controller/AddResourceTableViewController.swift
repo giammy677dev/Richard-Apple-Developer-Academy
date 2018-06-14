@@ -60,11 +60,18 @@ class AddResourceTableViewController: UITableViewController {
     @IBAction func saveResource(_ sender: UIBarButtonItem) {
         let resourceCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! AddResourceTableViewCell
         let tagsCell: AddTagsTableViewCell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! AddTagsTableViewCell
+        
+        guard let urlText = resourceCell.URLTextField.text, let title = resourceCell.titleTextField.text, let url = URL(string: urlText) else {
+            let alert = UIAlertController(title: "Error", message: "Please fill out all fields", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil ))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
 
-        let node = Node(url: URL(string: resourceCell.URLTextField.text ?? "http://www.wikipedia.com")!,
-            title: resourceCell.titleTextField.text!,
+        let node = Node(url: url,
+            title: title,
             id: DatabaseInterface.shared.createUniqueUUID(),
-            parent: nil,
+            parent: K.readingListStepID,
             tags: tagsCell.tagTextField.text,
             text: "",
             propExtracted: false)

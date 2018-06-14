@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension CDNode {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<CDNode> {
@@ -30,4 +29,3 @@ extension CDNode {
     @NSManaged public var usedID: CDUsedUUID?
 
 }
-

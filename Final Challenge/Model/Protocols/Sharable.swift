@@ -7,14 +7,14 @@
 //
 
 import Foundation
-//MARK: - Sharable protocol
+// MARK: - Sharable protocol
 protocol Sharable {
     //Properties:
     var visibility: RoadmapVisibility {get set}
     var isShared: Bool {get}
     var isPublic: Bool {get}
     var privileges: UserPrivilege {get set}
-    
+
     //Methods:
     func setShared()
     func setPublic()

@@ -8,87 +8,81 @@
 
 import UIKit
 
-class CreateRoadmapTableViewController: UITableViewController {
+class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelegate {
+
+    var titleOk: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //General settings
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(goToAddStep))
 
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
 
-    }
+        //Invoke xib
+        let titleCell = UINib(nibName: "TitleTableViewCell", bundle: nil)
+        self.tableView.register(titleCell, forCellReuseIdentifier: "TitleTableViewCell")
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+        let notificationCell = UINib(nibName: "NotificationTableViewCell", bundle: nil)
+        self.tableView.register(notificationCell, forCellReuseIdentifier: "NotificationTableViewCell")
 
-    // MARK: - Table view data source
+        let categoryCell = UINib(nibName: "CategoryTableViewCell", bundle: nil)
+        self.tableView.register(categoryCell, forCellReuseIdentifier: "CategoryTableViewCell")
+
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 3
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
-
-        return cell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TitleTableViewCell", for: indexPath) as! TitleTableViewCell
+            cell.titleTextField.delegate = self
+            return cell
+        } else if indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTableViewCell", for: indexPath) as! CategoryTableViewCell
+            return cell
+        }
     }
-    */
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row < 2 {
+            return 94
+        } else {
+            return 300
+        }
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        if let title = textField.text {
+            DataSupportRoadmap.shared.setTitleRoadmap(title)
+            titleOk = true
+        } else {
+            titleOk = false
+        }
         return true
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    @objc func goToAddStep() {
+        if !titleOk {
+            let alert = UIAlertController(title: "No Title", message: "Please type a title.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+
+        let newViewController = AddStepsTableViewController()
+        self.navigationController?.pushViewController(newViewController, animated: true)
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

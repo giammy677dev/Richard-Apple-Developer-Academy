@@ -12,7 +12,7 @@ class ExploreViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        CoreDataTest()
+        coreDataInit()
         // Do any additional setup after loading the view.
 
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
@@ -22,7 +22,6 @@ class ExploreViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

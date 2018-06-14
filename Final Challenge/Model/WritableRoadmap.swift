@@ -9,27 +9,36 @@
 import Foundation
 
 class WritableRoadmap: Roadmap, Writable {
-    
+
     //Methods:
     func edit(title: String? = nil, category: Category? = nil) {
-    }
-    
-    func appendStep(_ step: Step) {
-        if steps == nil {
-            steps = [Step]()
+        if let newTitle = title {
+            self.title = newTitle
+        } else { //Default if title is nil
+            self.title = ""
         }
-        steps?.append(step)
+        if let newCategory = category {
+            self.category = newCategory
+        } else { //Default if categori is nil
+            self.category = Category.other
+        }
     }
-    
+
+    func addStep(_ step: Step) {
+        step.parent = self.getRoadmapUUID()
+        step.indexInParent = self.steps.count
+        self.steps.append(step)
+    }
+
     func removeStep(_ step: Step) {
-        guard var container = steps
-            else { return }
-        let index: Int? = container.index(of: step)
-        guard let target = index
-            else { return }
-        container.remove(at: target)
+        if let index = self.steps.index(of: step) {
+            self.steps.remove(at: index)
+            self.steps.forEach { (step) in
+                step.indexInParent = self.steps.index(of: step)
+            }
+        }
     }
-    
+
     func move(_ step: Step, after: Step) {
         if self.steps != nil {
             guard let index = steps?.index(of: step) else { //Index of the element to move
@@ -41,13 +50,13 @@ class WritableRoadmap: Roadmap, Writable {
             guard let target = steps?.index(after: destination) else { //Index where to insert the moved element
                 return
             }
-            
+
             //Move the element:
             self.steps?.insert(step, at: target) //Insert the element at the new position
             self.steps?.remove(at: index) //Remove element from old position
         }
     }
-    
+
     func swapStep(from: Step, to: Step) {
         guard var container = self.steps else { //Check if the array exist 
             return
@@ -62,18 +71,18 @@ class WritableRoadmap: Roadmap, Writable {
         container[index] = to
         container[destination] = from
     }
-    
+
     func insertStepInHead(_ step: Step) {
         if steps == nil {
-            self.appendStep(step)
+            self.addStep(step)
         } else {
             self.steps!.insert(step, at: steps!.startIndex)
         }
     }
-    
+
     func insertStep(_ step: Step, after: Step) {
         if self.steps == nil {
-            self.appendStep(step)
+            self.addStep(step)
         } else {
             guard let index = self.steps?.index(of: after) else {
                 return
