@@ -36,7 +36,7 @@ final class CloudKitManager {
     func saveRecord(_ record: CKRecord) {
         let savingOperation = CKModifyRecordsOperation()
         savingOperation.recordsToSave = [record]
-        savingOperation.savePolicy = .changedKeys // Saves only the changed fields
+        savingOperation.savePolicy = .allKeys // Saves only the changed fields
         savingOperation.modifyRecordsCompletionBlock = self.modifyRecordsCompletionBlock(_:_:_:)
         savingOperation.configuration.qualityOfService = .utility
         savingOperation.configuration.isLongLived = true
