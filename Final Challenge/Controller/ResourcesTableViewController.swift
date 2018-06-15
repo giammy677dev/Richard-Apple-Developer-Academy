@@ -63,7 +63,7 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
         collectionCell.backgroundView = UIImageView(image: UIImage(named: "Background celle.png")!) //It sets the background of the table view rows
 
         let content = CurrentData.shared.readingListByTags[indexPath.section].nodes
-        collectionCell.content = content
+//        collectionCell.content = content
 
         return collectionCell
     }

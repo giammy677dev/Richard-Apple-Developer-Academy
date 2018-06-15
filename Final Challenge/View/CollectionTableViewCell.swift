@@ -24,16 +24,19 @@ class CollectionTableViewCell: UITableViewCell {
     var currentPage = 0
     var lastOffset: Float = 0
     var firstTime = true
-    var content: [Node] = [Node]()
+    var category: Int = 0
+//    var content: [Node] = [Node]()
 
-    class var customCell: CustomCollectionViewCell {
-        let cell = Bundle.main.loadNibNamed("CustomCollectionViewCell", owner: self, options: nil)?.last
-        return cell as! CustomCollectionViewCell
-    }
+//    class var customCell: CustomCollectionViewCell {
+//        let cell = Bundle.main.loadNibNamed("CustomCollectionViewCell", owner: self, options: nil)?.last
+//        return cell as! CustomCollectionViewCell
+//    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        print("CIAOOO MAMMA")
+//        print("content count: \(content.count)")
         self.pageOffset = [0, cellWidth, 2*cellWidth + footerWidth, 3*cellWidth + 2*footerWidth, 4*cellWidth + 3*footerWidth]
 
         collectionView.delegate = self
@@ -83,7 +86,8 @@ class CollectionTableViewCell: UITableViewCell {
 extension CollectionTableViewCell: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return  content.count  //numbers of Nodes in Recent
+        let returnValue = CurrentData.shared.roadmapsInCategories[Category(rawValue: Int16(self.category))!]
+        return returnValue! //numbers of roadmpas in Category????
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -93,16 +97,17 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as? CustomCollectionViewCell
 
-        cell?.linkLabel.text = content[indexPath.section].url.absoluteString
-        cell?.titleLabel.text = content[indexPath.section].title
-        cell?.minutesLeftLabel.text = "\(content[indexPath.section].extractedText.words.count / 270)"
+        print("\n\n[CustomCollectionViewCell]\n\n")
+//        cell?.linkLabel.text =  CurrentData.shared.roadmaps[section].url.absoluteString
+        cell?.titleLabel.text = CurrentData.shared.roadmapsForCategory(category: Category(rawValue: Int16(self.category))!)[indexPath.section].title
+//        cell?.minutesLeftLabel.text = "\(content[indexPath.section].extractedText.words.count / 270)"
 
-        if indexPath.section == content.count - 1 {
-            cell?.linkLabel.isHidden = true
-            cell?.titleLabel.isHidden = true
-            cell?.minutesLeftLabel.isHidden = true
-            cell?.seeAllLbl.isHidden = false
-        }
+//        if indexPath.section == content.count - 1 {
+//            cell?.linkLabel.isHidden = true
+//            cell?.titleLabel.isHidden = true
+//            cell?.minutesLeftLabel.isHidden = true
+//            cell?.seeAllLbl.isHidden = false
+//        }
 
         if firstTime {
             if indexPath.section == 0 {
