@@ -14,7 +14,7 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Set right bar button save:
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveRoadmap(_:)))
 
@@ -94,7 +94,7 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
         }
         return true
     }
-    
+
     @objc func saveRoadmap(_ sender: UIBarButtonItem) {
         //Save roadmap:
         DataSupportRoadmap.shared.saveRoadmap()
@@ -103,5 +103,5 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    
+
 }
