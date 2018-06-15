@@ -14,6 +14,7 @@ class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
 
         //General settings
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(goToAddStep))
@@ -72,6 +73,16 @@ class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelega
             titleOk = false
         }
         return true
+    }
+
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     @objc func goToAddStep() {
