@@ -14,12 +14,13 @@ final class CloudKitManager {
 
     static let shared = CloudKitManager()
 
-    private var container: CKContainer
+    let container: CKContainer = {
+        return CKContainer.default()
+    }()
     var publicDB: CKDatabase
     var privateDB: CKDatabase
 
     private init() {
-        self.container = CKContainer.default()
         self.privateDB = container.privateCloudDatabase
         self.publicDB = container.publicCloudDatabase
     }
@@ -150,7 +151,7 @@ final class CloudKitManager {
             } else {
                 // Subscription done. Sets the defaults key to true and starts fetching
                 defaults.set(true, forKey: K.DefaultsKey.ckSubscriptionSetupDone)
-                
+
                 // FIXME: - Could crash here
                 self.handleNotification(applicationCompletionBlock: { _ in })
             }
@@ -220,7 +221,7 @@ final class CloudKitManager {
         fetchOperation.configuration.qualityOfService = .utility
         fetchOperation.queuePriority = .veryHigh
         fetchOperation.configuration.isLongLived = true
-        
+
         self.addOperationToDB(fetchOperation, database: privateDB)
     }
 
@@ -325,6 +326,30 @@ final class CloudKitHelper {
     func retryOperation(seconds: Double, closure: @escaping () -> Void) {
         DispatchQueue.global().asyncAfter(deadline: .now() + seconds) {
             closure()
+        }
+    }
+
+    func retryLongLivedOperations() {
+        let ckContainer = CloudKitManager.shared.container
+
+        ckContainer.fetchAllLongLivedOperationIDs { (operationsByIDs, error) in
+            if let error = error {
+                debugPrint("Error fetching long lived operations: \(error)")
+                return
+            }
+            guard let identifiers = operationsByIDs else { return }
+            for operationID in identifiers {
+                ckContainer.fetchLongLivedOperation(withID: operationID, completionHandler: { (operation, error) in
+                    if let error = error {
+                        debugPrint("Error fetching operation \(operationID)\n\(error)")
+                        return
+                    }
+                    guard let operation = operation else { return }
+                    // Callback handlers
+                    operation.completionBlock = {}
+                    ckContainer.add(operation)
+                })
+            }
         }
     }
 

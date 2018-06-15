@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         CloudKitManager.shared.subscriptionSetup()
         application.registerForRemoteNotifications()
+        CloudKitHelper.shared.retryLongLivedOperations()
 
         return true
     }
