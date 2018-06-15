@@ -141,7 +141,7 @@ final class CloudKitManager {
             } else {
                 // Subscription done. Sets the defaults key to true and starts fetching
                 defaults.set(true, forKey: K.DefaultsKey.ckSubscriptionSetupDone)
-                
+
                 // FIXME: - Could crash here
                 self.handleNotification(applicationCompletionBlock: { _ in })
             }
