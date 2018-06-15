@@ -14,12 +14,13 @@ final class CloudKitManager {
 
     static let shared = CloudKitManager()
 
-    private var container: CKContainer
+    let container: CKContainer = {
+        return CKContainer.default()
+    }()
     var publicDB: CKDatabase
     var privateDB: CKDatabase
 
     private init() {
-        self.container = CKContainer.default()
         self.privateDB = container.privateCloudDatabase
         self.publicDB = container.publicCloudDatabase
     }
@@ -36,9 +37,10 @@ final class CloudKitManager {
     func saveRecord(_ record: CKRecord) {
         let savingOperation = CKModifyRecordsOperation()
         savingOperation.recordsToSave = [record]
-        savingOperation.savePolicy = .changedKeys // Saves only the changed fields
+        savingOperation.savePolicy = .allKeys // Saves only the changed fields
         savingOperation.modifyRecordsCompletionBlock = self.modifyRecordsCompletionBlock(_:_:_:)
         savingOperation.configuration.qualityOfService = .utility
+        savingOperation.queuePriority = .veryHigh
         savingOperation.configuration.isLongLived = true
 
         self.addOperationToDB(savingOperation, database: self.privateDB)
@@ -51,6 +53,7 @@ final class CloudKitManager {
         deletionOperation.savePolicy = .allKeys // force deletion even if the server has a new version of the record
         deletionOperation.modifyRecordsCompletionBlock = self.modifyRecordsCompletionBlock(_:_:_:)
         deletionOperation.configuration.qualityOfService = .utility
+        deletionOperation.queuePriority = .veryHigh
         deletionOperation.configuration.isLongLived = true
 
         self.addOperationToDB(deletionOperation, database: self.privateDB)
@@ -72,6 +75,7 @@ final class CloudKitManager {
             }
         }
         fetchOperation.configuration.qualityOfService = .utility
+        fetchOperation.queuePriority = .veryHigh
         fetchOperation.configuration.isLongLived = true
         self.addOperationToDB(fetchOperation, database: database)
     }
@@ -130,6 +134,7 @@ final class CloudKitManager {
         let saveSubscriptionOperation = CKModifySubscriptionsOperation(subscriptionsToSave: subscriptionsArray, subscriptionIDsToDelete: nil)
         // Operation properties
         saveSubscriptionOperation.configuration.qualityOfService = .utility
+        saveSubscriptionOperation.queuePriority = .veryHigh
         saveSubscriptionOperation.configuration.isLongLived = true
         // Saving operation stored as closure
         let save: () -> Void = {
@@ -214,6 +219,7 @@ final class CloudKitManager {
 
         // Operation properties
         fetchOperation.configuration.qualityOfService = .utility
+        fetchOperation.queuePriority = .veryHigh
         fetchOperation.configuration.isLongLived = true
 
         self.addOperationToDB(fetchOperation, database: privateDB)
@@ -267,6 +273,7 @@ final class CloudKitManager {
 
         // End of method, adding the fetching operation to the DB.
         fetchChangesOperation.qualityOfService = .utility
+        fetchChangesOperation.queuePriority = .veryHigh
         fetchChangesOperation.configuration.isLongLived = true
         self.addOperationToDB(fetchChangesOperation, database: privateDB)
     }
@@ -319,6 +326,30 @@ final class CloudKitHelper {
     func retryOperation(seconds: Double, closure: @escaping () -> Void) {
         DispatchQueue.global().asyncAfter(deadline: .now() + seconds) {
             closure()
+        }
+    }
+
+    func retryLongLivedOperations() {
+        let ckContainer = CloudKitManager.shared.container
+
+        ckContainer.fetchAllLongLivedOperationIDs { (operationsByIDs, error) in
+            if let error = error {
+                debugPrint("Error fetching long lived operations: \(error)")
+                return
+            }
+            guard let identifiers = operationsByIDs else { return }
+            for operationID in identifiers {
+                ckContainer.fetchLongLivedOperation(withID: operationID, completionHandler: { (operation, error) in
+                    if let error = error {
+                        debugPrint("Error fetching operation \(operationID)\n\(error)")
+                        return
+                    }
+                    guard let operation = operation else { return }
+                    // Callback handlers
+                    operation.completionBlock = {}
+                    ckContainer.add(operation)
+                })
+            }
         }
     }
 
