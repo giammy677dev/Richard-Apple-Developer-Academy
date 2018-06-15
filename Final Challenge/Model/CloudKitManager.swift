@@ -39,6 +39,7 @@ final class CloudKitManager {
         savingOperation.savePolicy = .allKeys // Saves only the changed fields
         savingOperation.modifyRecordsCompletionBlock = self.modifyRecordsCompletionBlock(_:_:_:)
         savingOperation.configuration.qualityOfService = .utility
+        savingOperation.queuePriority = .veryHigh
         savingOperation.configuration.isLongLived = true
 
         self.addOperationToDB(savingOperation, database: self.privateDB)
@@ -51,6 +52,7 @@ final class CloudKitManager {
         deletionOperation.savePolicy = .allKeys // force deletion even if the server has a new version of the record
         deletionOperation.modifyRecordsCompletionBlock = self.modifyRecordsCompletionBlock(_:_:_:)
         deletionOperation.configuration.qualityOfService = .utility
+        deletionOperation.queuePriority = .veryHigh
         deletionOperation.configuration.isLongLived = true
 
         self.addOperationToDB(deletionOperation, database: self.privateDB)
@@ -72,6 +74,7 @@ final class CloudKitManager {
             }
         }
         fetchOperation.configuration.qualityOfService = .utility
+        fetchOperation.queuePriority = .veryHigh
         fetchOperation.configuration.isLongLived = true
         self.addOperationToDB(fetchOperation, database: database)
     }
@@ -130,6 +133,7 @@ final class CloudKitManager {
         let saveSubscriptionOperation = CKModifySubscriptionsOperation(subscriptionsToSave: subscriptionsArray, subscriptionIDsToDelete: nil)
         // Operation properties
         saveSubscriptionOperation.configuration.qualityOfService = .utility
+        saveSubscriptionOperation.queuePriority = .veryHigh
         saveSubscriptionOperation.configuration.isLongLived = true
         // Saving operation stored as closure
         let save: () -> Void = {
@@ -214,6 +218,7 @@ final class CloudKitManager {
 
         // Operation properties
         fetchOperation.configuration.qualityOfService = .utility
+        fetchOperation.queuePriority = .veryHigh
         fetchOperation.configuration.isLongLived = true
         
         self.addOperationToDB(fetchOperation, database: privateDB)
@@ -267,6 +272,7 @@ final class CloudKitManager {
 
         // End of method, adding the fetching operation to the DB.
         fetchChangesOperation.qualityOfService = .utility
+        fetchChangesOperation.queuePriority = .veryHigh
         fetchChangesOperation.configuration.isLongLived = true
         self.addOperationToDB(fetchChangesOperation, database: privateDB)
     }
