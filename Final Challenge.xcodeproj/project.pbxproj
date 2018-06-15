@@ -14,7 +14,7 @@
 		652742B620B701AD0027D862 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9D020B3068B008AE848 /* Step.swift */; };
 		652742B720B701BA0027D862 /* SubscribedRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9D920B30A48008AE848 /* SubscribedRoadmap.swift */; };
 		652742B820B701BA0027D862 /* WritableRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9DB20B30BD8008AE848 /* WritableRoadmap.swift */; };
-		652742B920B701BA0027D862 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */; };
+		652742B920B701BA0027D862 /* CloudKitManager+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BCB5E20B57E5900B66CEE /* CloudKitManager+Helper.swift */; };
 		652742BA20B701BA0027D862 /* DatabaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91051520B6B955001005AA /* DatabaseInterface.swift */; };
 		652742BC20B702440027D862 /* Sharable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9CA20B2FAF2008AE848 /* Sharable.swift */; };
 		652742BD20B702440027D862 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9D220B30845008AE848 /* Updatable.swift */; };
@@ -52,7 +52,7 @@
 		65EA50FA20B6D1F6008BCBFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B177C48220A9768B00CD9CBE /* AppDelegate.swift */; };
 		65EA50FB20B6D26E008BCBFB /* CoreDataController+Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50F720B6CFEC008BCBFB /* CoreDataController+Stack.swift */; };
 		7156BDFC0EC03B97022E43BF /* Pods_Final_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC17DF1CCDA48C886103641 /* Pods_Final_Challenge.framework */; };
-		7B5BCB5F20B57E5900B66CEE /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */; };
+		7B5BCB5F20B57E5900B66CEE /* CloudKitManager+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BCB5E20B57E5900B66CEE /* CloudKitManager+Helper.swift */; };
 		7B91051620B6B955001005AA /* DatabaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91051520B6B955001005AA /* DatabaseInterface.swift */; };
 		7BEA03C720B361310048F108 /* Taggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA03C620B361310048F108 /* Taggable.swift */; };
 		7BEA03C920B3624B0048F108 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA03C820B3624B0048F108 /* Tag.swift */; };
@@ -185,7 +185,7 @@
 		65EA50E120B5795D008BCBFB /* Persistence.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Persistence.xcdatamodel; sourceTree = "<group>"; };
 		65EA50F720B6CFEC008BCBFB /* CoreDataController+Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataController+Stack.swift"; sourceTree = "<group>"; };
 		6F30463B7CF8DFFA6943A5EC /* Pods-Final Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final Challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-Final Challenge/Pods-Final Challenge.release.xcconfig"; sourceTree = "<group>"; };
-		7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		7B5BCB5E20B57E5900B66CEE /* CloudKitManager+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitManager+Helper.swift"; sourceTree = "<group>"; };
 		7B91051520B6B955001005AA /* DatabaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseInterface.swift; sourceTree = "<group>"; };
 		7BEA03C620B361310048F108 /* Taggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taggable.swift; sourceTree = "<group>"; };
 		7BEA03C820B3624B0048F108 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
@@ -469,7 +469,7 @@
 				A0BBA9D020B3068B008AE848 /* Step.swift */,
 				A0BBA9D920B30A48008AE848 /* SubscribedRoadmap.swift */,
 				A0BBA9DB20B30BD8008AE848 /* WritableRoadmap.swift */,
-				7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */,
+				7B5BCB5E20B57E5900B66CEE /* CloudKitManager+Helper.swift */,
 				7B91051520B6B955001005AA /* DatabaseInterface.swift */,
 				655B0B0D20BC0F2E00CD73B0 /* Constants.swift */,
 				B18BF51420BD4DBB00D9BCF9 /* CurrentDataSingleton.swift */,
@@ -917,7 +917,7 @@
 				652742B820B701BA0027D862 /* WritableRoadmap.swift in Sources */,
 				65A0BC7D20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift in Sources */,
 				B105530220AD7DEB0077983A /* RoadmapSE.swift in Sources */,
-				652742B920B701BA0027D862 /* CloudKitManager.swift in Sources */,
+				652742B920B701BA0027D862 /* CloudKitManager+Helper.swift in Sources */,
 				652A615A20BBFD1C00A101B3 /* CDStep+CoreDataClass.swift in Sources */,
 				652742B520B701AD0027D862 /* Tag.swift in Sources */,
 				65EA50E320B5795D008BCBFB /* Persistence.xcdatamodeld in Sources */,
@@ -971,7 +971,7 @@
 				A080ED6E20C69C2F00689618 /* NotificationTableViewCell.swift in Sources */,
 				B17CFC8F20C71FF10027C670 /* AddStepTableViewCell.swift in Sources */,
 				A0BBA9CF20B30419008AE848 /* Node.swift in Sources */,
-				7B5BCB5F20B57E5900B66CEE /* CloudKitManager.swift in Sources */,
+				7B5BCB5F20B57E5900B66CEE /* CloudKitManager+Helper.swift in Sources */,
 				65B108C220BD5994007026FC /* ArrayExtension.swift in Sources */,
 				B127492D20BB33BA00C4420C /* AddResourceTableViewCell.swift in Sources */,
 				B18B9A8520BC12B8004FA469 /* UITextFieldExtension.swift in Sources */,
@@ -1216,13 +1216,13 @@
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EU98U8KRA2;
+				DEVELOPMENT_TEAM = S8Z9T4225J;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.gere.bel-e-buono.final-challenge";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bel-e-buono.final-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -1238,13 +1238,13 @@
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EU98U8KRA2;
+				DEVELOPMENT_TEAM = S8Z9T4225J;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.gere.bel-e-buono.final-challenge";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bel-e-buono.final-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
