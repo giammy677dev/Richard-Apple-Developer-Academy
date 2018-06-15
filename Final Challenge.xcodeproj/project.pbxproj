@@ -100,6 +100,24 @@
 		B127492E20BB33BA00C4420C /* AddResourceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B127492C20BB33BA00C4420C /* AddResourceTableViewCell.xib */; };
 		B127493120BB417F00C4420C /* AddTagsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127492F20BB417F00C4420C /* AddTagsTableViewCell.swift */; };
 		B127493220BB417F00C4420C /* AddTagsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B127493020BB417F00C4420C /* AddTagsTableViewCell.xib */; };
+		B145C0FB20D3A9E700E7A08E /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F820D282A500E7A08E /* Lato-Black.ttf */; };
+		B145C0FC20D3A9EA00E7A08E /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F120D282A400E7A08E /* Lato-BlackItalic.ttf */; };
+		B145C0FD20D3A9ED00E7A08E /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F520D282A500E7A08E /* Lato-Bold.ttf */; };
+		B145C0FE20D3A9F000E7A08E /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F920D282A500E7A08E /* Lato-BoldItalic.ttf */; };
+		B145C0FF20D3A9F300E7A08E /* Lato-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0EF20D282A400E7A08E /* Lato-Hairline.ttf */; };
+		B145C10020D3A9F500E7A08E /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0EE20D282A400E7A08E /* Lato-HairlineItalic.ttf */; };
+		B145C10120D3A9F800E7A08E /* Lato-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F320D282A400E7A08E /* Lato-Heavy.ttf */; };
+		B145C10220D3A9FB00E7A08E /* Lato-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F020D282A400E7A08E /* Lato-HeavyItalic.ttf */; };
+		B145C10320D3A9FF00E7A08E /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0EC20D282A300E7A08E /* Lato-Italic.ttf */; };
+		B145C10420D3AA0100E7A08E /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0E920D282A300E7A08E /* Lato-Light.ttf */; };
+		B145C10520D3AA0800E7A08E /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F620D282A500E7A08E /* Lato-LightItalic.ttf */; };
+		B145C10620D3AA0B00E7A08E /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F220D282A400E7A08E /* Lato-Medium.ttf */; };
+		B145C10720D3AA0D00E7A08E /* Lato-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0EA20D282A300E7A08E /* Lato-MediumItalic.ttf */; };
+		B145C10820D3AA1000E7A08E /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F420D282A400E7A08E /* Lato-Regular.ttf */; };
+		B145C10920D3AA1400E7A08E /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0EB20D282A300E7A08E /* Lato-Semibold.ttf */; };
+		B145C10A20D3AA1600E7A08E /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0ED20D282A400E7A08E /* Lato-SemiboldItalic.ttf */; };
+		B145C10B20D3AA1900E7A08E /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F720D282A500E7A08E /* Lato-Thin.ttf */; };
+		B145C10C20D3AA1C00E7A08E /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0FA20D282A500E7A08E /* Lato-ThinItalic.ttf */; };
 		B1608B4F20B6B69C00701508 /* Links.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1608B4E20B6B69C00701508 /* Links.storyboard */; };
 		B1608B5320B6B8A300701508 /* LinksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1608B5220B6B8A300701508 /* LinksTableViewController.swift */; };
 		B1608B5620B6C58A00701508 /* CustomLinksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1608B5420B6C58A00701508 /* CustomLinksTableViewCell.swift */; };
@@ -718,26 +736,44 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B145C10120D3A9F800E7A08E /* Lato-Heavy.ttf in Resources */,
+				B145C10220D3A9FB00E7A08E /* Lato-HeavyItalic.ttf in Resources */,
+				B145C0FF20D3A9F300E7A08E /* Lato-Hairline.ttf in Resources */,
+				B145C10B20D3AA1900E7A08E /* Lato-Thin.ttf in Resources */,
 				A080ED6F20C69C2F00689618 /* NotificationTableViewCell.xib in Resources */,
 				9002AAFE20B40C4400854015 /* CustomCollectionViewCell.xib in Resources */,
 				B18BF50F20BD450700D9BCF9 /* StepTableViewCell.xib in Resources */,
 				B186E95F20C53E5E004C66A2 /* AddSteps.storyboard in Resources */,
+				B145C10020D3A9F500E7A08E /* Lato-HairlineItalic.ttf in Resources */,
+				B145C0FE20D3A9F000E7A08E /* Lato-BoldItalic.ttf in Resources */,
+				B145C10A20D3AA1600E7A08E /* Lato-SemiboldItalic.ttf in Resources */,
 				B1608B5720B6C58A00701508 /* CustomLinksTableViewCell.xib in Resources */,
+				B145C10320D3A9FF00E7A08E /* Lato-Italic.ttf in Resources */,
 				A06C023A20C5391100C078D5 /* CategoryTableViewCell.xib in Resources */,
+				B145C0FB20D3A9E700E7A08E /* Lato-Black.ttf in Resources */,
+				B145C0FD20D3A9ED00E7A08E /* Lato-Bold.ttf in Resources */,
 				904C8FDD20B5818A00D0E27D /* ResourcesCustomCollectionViewCell.xib in Resources */,
 				B127492E20BB33BA00C4420C /* AddResourceTableViewCell.xib in Resources */,
 				B177C48D20A9768B00CD9CBE /* LaunchScreen.storyboard in Resources */,
+				B145C0FC20D3A9EA00E7A08E /* Lato-BlackItalic.ttf in Resources */,
 				90525FA220B6A7D1006D3093 /* Explore.storyboard in Resources */,
 				90525FA120B6A7D1006D3093 /* Main.storyboard in Resources */,
 				B127492820BB332100C4420C /* AddResource.storyboard in Resources */,
 				B18BF51D20BD61C900D9BCF9 /* CreateRoadmap.storyboard in Resources */,
 				B177C48A20A9768B00CD9CBE /* Assets.xcassets in Resources */,
+				B145C10720D3AA0D00E7A08E /* Lato-MediumItalic.ttf in Resources */,
+				B145C10420D3AA0100E7A08E /* Lato-Light.ttf in Resources */,
 				90525FA020B6A7D1006D3093 /* Researches.storyboard in Resources */,
+				B145C10620D3AA0B00E7A08E /* Lato-Medium.ttf in Resources */,
 				B127493220BB417F00C4420C /* AddTagsTableViewCell.xib in Resources */,
 				B17CFC9020C71FF10027C670 /* AddStepTableViewCell.xib in Resources */,
+				B145C10920D3AA1400E7A08E /* Lato-Semibold.ttf in Resources */,
+				B145C10520D3AA0800E7A08E /* Lato-LightItalic.ttf in Resources */,
 				B18BF51920BD5F9100D9BCF9 /* TitleTableViewCell.xib in Resources */,
 				90525F9F20B6A7D1006D3093 /* Roadmaps.storyboard in Resources */,
+				B145C10820D3AA1000E7A08E /* Lato-Regular.ttf in Resources */,
 				9002AAF320B2BFC000854015 /* HeaderTableViewCell.xib in Resources */,
+				B145C10C20D3AA1C00E7A08E /* Lato-ThinItalic.ttf in Resources */,
 				B1608B4F20B6B69C00701508 /* Links.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1180,13 +1216,13 @@
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8Z9T4225J;
+				DEVELOPMENT_TEAM = EU98U8KRA2;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bel-e-buono.final-challenge";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gere.bel-e-buono.final-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -1202,13 +1238,13 @@
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8Z9T4225J;
+				DEVELOPMENT_TEAM = EU98U8KRA2;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bel-e-buono.final-challenge";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gere.bel-e-buono.final-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;

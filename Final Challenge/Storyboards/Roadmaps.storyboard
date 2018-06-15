@@ -73,11 +73,11 @@
                             <outlet property="delegate" destination="A5t-vQ-6Ev" id="BeO-tx-8Ci"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="road" image="roadmaps_reduced" id="wV7-fr-N5m">
-                        <inset key="imageInsets" minX="-70" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <tabBarItem key="tabBarItem" title="Topics" image="Topics unselected" selectedImage="topics selected" id="wV7-fr-N5m">
+                        <inset key="imageInsets" minX="-85" minY="5" maxX="10" maxY="-5"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="size" keyPath="titlePositionAdjustment">
-                                <size key="value" width="50" height="-15"/>
+                                <size key="value" width="10" height="-15"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
@@ -229,6 +229,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="roadmaps_reduced" width="44" height="44"/>
+        <image name="Topics unselected" width="34" height="34"/>
+        <image name="topics selected" width="34" height="34"/>
     </resources>
 </document>
