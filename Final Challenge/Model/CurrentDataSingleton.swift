@@ -48,15 +48,22 @@ class CurrentData {
         }
         self.roadmaps = roadmapsLoaded
         for elem in self.roadmaps! {
-            print("Categry: \(elem.category) TItle\(elem.title)")
+            print("Categry: \(elem.category) Title: \(elem.title)")
         }
         loadRoadmapsForCategories()
-
     }
 
-    func loadRoadmapsForCategories() {
+    private func loadRoadmapsForCategories() {
+        //Reset the number of roadmaps for categories before count them
+        self.resetNumberRoadmaps()
         for elem in roadmaps! {
             roadmapsInCategories[elem.category] = roadmapsInCategories[elem.category]! + 1
+        }
+    }
+    
+    private func resetNumberRoadmaps() { //Set to zero all the values for each key in the Dictionary
+        for elem in roadmapsInCategories {
+            roadmapsInCategories[elem.key] = 0
         }
     }
 

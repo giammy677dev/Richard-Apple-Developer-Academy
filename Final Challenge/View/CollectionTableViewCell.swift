@@ -98,8 +98,9 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as? CustomCollectionViewCell
 
         print("\n\n[CustomCollectionViewCell]\n\n")
+        print(indexPath.section)
 //        cell?.linkLabel.text =  CurrentData.shared.roadmaps[section].url.absoluteString
-        cell?.titleLabel.text = CurrentData.shared.roadmapsForCategory(category: Category(rawValue: Int16(self.category))!)[indexPath.section].title
+        cell?.titleLabel.text = CurrentData.shared.roadmapsForCategory(category: Category(rawValue: Int16(self.category))!).safeCall(indexPath.section)?.title
 //        cell?.minutesLeftLabel.text = "\(content[indexPath.section].extractedText.words.count / 270)"
 
 //        if indexPath.section == content.count - 1 {
@@ -117,6 +118,10 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
         }
 
         return cell!
+    }
+    
+    override func prepareForReuse() {
+        collectionView.reloadData()
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
