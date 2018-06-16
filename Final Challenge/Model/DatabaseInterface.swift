@@ -23,8 +23,11 @@ class DatabaseInterface {
     func firstSetup() {
         let readingRoadmap = WritableRoadmap.init(title: "Reading List", category: .other, visibility: .isPrivate, privileges: .isOwner, lastRead: Date(), id: K.readingListRoadmapID)
         let readingStep = Step(title: "Reading List Step", parent: readingRoadmap.getRoadmapUUID(), id: K.readingListStepID, index: 0)
+        let zeroNode = Node(url: URL(string: "www.apple.com")!, title: "", id: K.zeroNode, parent: readingStep.getStepUUID(), tags: nil, text: "", propExtracted: false)
+
         self.save(readingRoadmap)
         self.save(readingStep)
+        self.save(zeroNode)
     }
 
     // MARK: Interfaces to save elements simultaneously on CloudKit and on CoreData
@@ -34,8 +37,17 @@ class DatabaseInterface {
         let recordID = CKRecordID(recordName: node.getNodeUUID().uuidString)
         let completion: (([CKRecordID: CKRecord]?, Error?) -> Void) = { (recordsDict, error) in
             guard let recordsDictionary = recordsDict else { debugPrint("No records dictionary found."); return }
-            if error != nil {
-                // TODO: - Handle saving errors and retry
+            if let ckError = error as? CKError {
+                // Handle saving errors and retry
+                switch ckError.code {
+                case .partialFailure:
+                    if let errorDict = ckError.partialErrorsByItemID, let recordError = errorDict[recordID] as? CKError {
+                        if recordError.code == CKError.unknownItem {
+                            self.ckManager.saveRecord(self.nodeToRecord(record: nil, node: node))
+                        }
+                    }
+                default: return
+                }
             } else {
                 let record = recordsDictionary[recordID]
                 let savedRecord = self.nodeToRecord(record: record, node: node)
@@ -55,8 +67,17 @@ class DatabaseInterface {
         let recordID = CKRecordID(recordName: roadmap.getRoadmapUUID().uuidString)
         let completion: (([CKRecordID: CKRecord]?, Error?) -> Void) = { (recordsDict, error) in
             guard let recordsDictionary = recordsDict else { debugPrint("No records dictionary found."); return }
-            if error != nil {
-                // TODO: - Handle saving errors and retry
+            if let ckError = error as? CKError {
+                // Handle saving errors and retry
+                switch ckError.code {
+                case .partialFailure:
+                    if let errorDict = ckError.partialErrorsByItemID, let recordError = errorDict[recordID] as? CKError {
+                        if recordError.code == CKError.unknownItem {
+                            self.ckManager.saveRecord(self.roadmapToRecord(record: nil, roadmap: roadmap))
+                        }
+                    }
+                default: return
+                }
             } else {
                 let record = recordsDictionary[recordID]
                 let savedRecord = self.roadmapToRecord(record: record, roadmap: roadmap)
@@ -76,8 +97,17 @@ class DatabaseInterface {
         let recordID = CKRecordID(recordName: step.getStepUUID().uuidString)
         let completion: (([CKRecordID: CKRecord]?, Error?) -> Void) = { (recordsDict, error) in
             guard let recordsDictionary = recordsDict else { debugPrint("No records dictionary found."); return }
-            if error != nil {
-                // TODO: - Handle saving errors and retry
+            if let ckError = error as? CKError {
+                // Handle saving errors and retry
+                switch ckError.code {
+                case .partialFailure:
+                    if let errorDict = ckError.partialErrorsByItemID, let recordError = errorDict[recordID] as? CKError {
+                        if recordError.code == CKError.unknownItem {
+                            self.ckManager.saveRecord(self.stepToRecord(record: nil, step: step))
+                        }
+                    }
+                default: return
+                }
             } else {
                 let record = recordsDictionary[recordID]
                 let savedRecord = self.stepToRecord(record: record, step: step)

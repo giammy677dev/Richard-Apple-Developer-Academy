@@ -105,7 +105,7 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
             CurrentData.shared.load()
             destViewController.tableView.reloadData()
             self.navigationController?.popToRootViewController(animated: true)
-            
+
         }))
         self.present(alert, animated: true, completion: nil)
     }

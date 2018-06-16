@@ -24,7 +24,6 @@ class CurrentData {
             var setCategories: Set<Category> = []
             for elem in self.roadmaps! {
                 setCategories.insert(elem.category)
-                print(elem.category)
             }
 
             for elem in setCategories {
@@ -42,14 +41,11 @@ class CurrentData {
     func load() { //Load roadmaps and nodes into the arrays
 
         var roadmapsLoaded = DatabaseInterface.shared.loadRoadmaps() ?? [WritableRoadmap]()
-        print("CARICO")
         roadmapsLoaded = roadmapsLoaded.sorted { (roadmapOne, roadmapTwo) -> Bool in
             return roadmapOne.category.rawValue < roadmapTwo.category.rawValue
         }
         self.roadmaps = roadmapsLoaded
-        for elem in self.roadmaps! {
-            print("Categry: \(elem.category) Title: \(elem.title)")
-        }
+
         loadRoadmapsForCategories()
     }
 
@@ -60,7 +56,7 @@ class CurrentData {
             roadmapsInCategories[elem.category] = roadmapsInCategories[elem.category]! + 1
         }
     }
-    
+
     private func resetNumberRoadmaps() { //Set to zero all the values for each key in the Dictionary
         for elem in roadmapsInCategories {
             roadmapsInCategories[elem.key] = 0

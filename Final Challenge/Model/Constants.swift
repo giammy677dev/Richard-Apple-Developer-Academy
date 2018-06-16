@@ -11,6 +11,7 @@ import Foundation
 enum K { // swiftlint:disable:this type_name
     static let readingListStepID = UUID(uuidString: "00000000-0000-0000-0000-000000000000")!
     static let readingListRoadmapID = UUID(uuidString: "00000000-0000-0000-0000-000000000001")!
+    static let zeroNode = UUID(uuidString: "00000000-0000-0000-0000-000000000002")!
 
     enum CKRecordTypes {
         static let node = "Node"

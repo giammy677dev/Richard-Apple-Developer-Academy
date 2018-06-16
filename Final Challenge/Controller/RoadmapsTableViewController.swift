@@ -30,7 +30,6 @@ class RoadmapsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        print("number of section: \(CurrentData.shared.currentCategories.count)")
         return CurrentData.shared.currentCategories.count
     }
 
@@ -44,7 +43,6 @@ class RoadmapsTableViewController: UITableViewController {
 
         collectionCell.category = Int(CurrentData.shared.currentCategories[indexPath.section].rawValue)
 
-        print("CIAOOOO GEREEE")
 //        collectionCell.delegate = self
 
         collectionCell.backgroundView = UIImageView(image: UIImage(named: "Background celle.png")!) //It sets the background of the table view rows
@@ -106,7 +104,6 @@ class RoadmapsTableViewController: UITableViewController {
 
 extension RoadmapsTableViewController: MyCustomCellDelegator {
     func callSegueFromCell(identifier: String) {
-        print("Ciao")
         self.performSegue(withIdentifier: identifier, sender: self)
     }
 }

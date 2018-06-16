@@ -60,23 +60,33 @@ final class CloudKitManager {
     }
 
     /// Fetches records from a CKDatabase with a recordID specified in the array passed as argument, then a completion handler processes the results.
-    func fetchRecordsWithCompletion(recordIDs: [CKRecordID], database: CKDatabase, completionBlock: (([CKRecordID: CKRecord]?, Error?) -> Void)?) {
+    func fetchRecordsWithCompletion(recordIDs: [CKRecordID], database: CKDatabase, completionBlock: @escaping (([CKRecordID: CKRecord]?, Error?) -> Void)) {
         let fetchOperation = CKFetchRecordsOperation(recordIDs: recordIDs)
-        fetchOperation.fetchRecordsCompletionBlock = {
-            (recordsDict, error) in
-            if let fetchingError = error {
-                guard let waitingSeconds = CloudKitHelper.shared.determineRetry(error: fetchingError) else { return }
-                CloudKitHelper.shared.retryOperation(seconds: waitingSeconds, closure: {
-                    self.addOperationToDB(fetchOperation, database: database)
-                })
-            } else {
-                guard recordsDict != nil, let completion = completionBlock else { return }
-                completion(recordsDict, nil)
-            }
-        }
         fetchOperation.configuration.qualityOfService = .utility
         fetchOperation.queuePriority = .veryHigh
         fetchOperation.configuration.isLongLived = true
+
+        fetchOperation.fetchRecordsCompletionBlock = {
+            (recordsDict, error) in
+            if let fetchingError = error {
+                if let waitingSeconds = CloudKitHelper.shared.determineRetry(error: fetchingError) {
+                    CloudKitHelper.shared.retryOperation(seconds: waitingSeconds, closure: {
+                        self.addOperationToDB(fetchOperation, database: database)
+                    })
+                }
+                if let ckError = fetchingError as? CKError {
+                    switch ckError.code {
+                    case .partialFailure:
+                        completionBlock(recordsDict, fetchingError)
+                    default: return
+                    }
+                }
+            } else {
+                guard recordsDict != nil else { debugPrint("recordsDict is nil."); return }
+                completionBlock(recordsDict, nil)
+            }
+        }
+
         self.addOperationToDB(fetchOperation, database: database)
     }
 
@@ -103,7 +113,7 @@ final class CloudKitManager {
 
         guard !hasLaunchedBefore else { return }
 
-        debugPrint("first launch setup of cloudkit manager")
+        debugPrint("First launch setup of cloudkit manager")
 
         // Init the subscriptions
         let truePredicate = NSPredicate(value: true)
@@ -136,26 +146,25 @@ final class CloudKitManager {
         saveSubscriptionOperation.configuration.qualityOfService = .utility
         saveSubscriptionOperation.queuePriority = .veryHigh
         saveSubscriptionOperation.configuration.isLongLived = true
-        // Saving operation stored as closure
-        let save: () -> Void = {
-            // Saving the subscription
-            self.addOperationToDB(saveSubscriptionOperation, database: self.privateDB)
-        }
+
         // Subscription completion handler
         saveSubscriptionOperation.modifySubscriptionsCompletionBlock = { (_, _, error) in
             if let error = error {
-                guard let waitingTime = CloudKitHelper.shared.determineRetry(error: error) else { return }
+                guard let waitingTime = CloudKitHelper.shared.determineRetry(error: error) else { debugPrint("Couldn't determine the error when saving the subscription"); return }
                 CloudKitHelper.shared.retryOperation(seconds: waitingTime, closure: {
-                    save()
+                    // Retry
+                    self.addOperationToDB(saveSubscriptionOperation, database: self.privateDB)
                 })
             } else {
                 // Subscription done. Sets the defaults key to true and starts fetching
                 defaults.set(true, forKey: K.DefaultsKey.ckSubscriptionSetupDone)
 
-                // FIXME: - Could crash here
                 self.handleNotification(applicationCompletionBlock: { _ in })
             }
         }
+
+        // Subscribing
+        self.addOperationToDB(saveSubscriptionOperation, database: privateDB)
     }
 
     func didReceiveRemotePush(notification: [AnyHashable: Any], completion: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -341,7 +350,7 @@ final class CloudKitHelper {
             for operationID in identifiers {
                 ckContainer.fetchLongLivedOperation(withID: operationID, completionHandler: { (operation, error) in
                     if let error = error {
-                        debugPrint("Error fetching operation \(operationID)\n\(error)")
+                        debugPrint("Error fetching operation \(operationID): \(error.localizedDescription)")
                         return
                     }
                     guard let operation = operation else { return }
