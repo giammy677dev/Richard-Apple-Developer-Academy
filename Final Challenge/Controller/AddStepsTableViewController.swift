@@ -95,19 +95,21 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
         return true
     }
 
+    //Action on save button:
     @objc func saveRoadmap(_ sender: UIBarButtonItem) {
         //Save roadmap:
         DataSupportRoadmap.shared.saveRoadmap()
+        //Update data in CurrentData singleton:
+        CurrentData.shared.load()
+        //Update elements in the table view of first view controller:
+        let destViewController = self.navigationController?.viewControllers.first as! RoadmapsTableViewController
+        destViewController.tableView.reloadData()
         //Show an alert with informations about saving:
         let alert = UIAlertController(title: "Saved", message: "Your roadmap has been successfully saved", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {_ in
-            let destViewController = self.navigationController?.viewControllers.first as! RoadmapsTableViewController
-            CurrentData.shared.load()
-            destViewController.tableView.reloadData()
+            //Go to the first view:
             self.navigationController?.popToRootViewController(animated: true)
-            
         }))
         self.present(alert, animated: true, completion: nil)
     }
-
 }
