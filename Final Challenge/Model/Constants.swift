@@ -13,6 +13,10 @@ enum K { // swiftlint:disable:this type_name
     static let readingListRoadmapID = UUID(uuidString: "00000000-0000-0000-0000-000000000001")!
     static let zeroNode = UUID(uuidString: "00000000-0000-0000-0000-000000000002")!
 
+    enum CKRecordZoneIDs {
+        static let privateRecordZoneName = "myPrivateZone"
+    }
+
     enum CKRecordTypes {
         static let node = "Node"
         static let step = "Step"
