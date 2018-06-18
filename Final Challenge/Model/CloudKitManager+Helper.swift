@@ -170,8 +170,6 @@ final class CloudKitManager {
     func didReceiveRemotePush(notification: [AnyHashable: Any], completion: @escaping (UIBackgroundFetchResult) -> Void) {
         // This ckNotification could be useful in future.
         let ckNotification = CKNotification(fromRemoteNotificationDictionary: notification)
-        debugPrint(ckNotification)
-        debugPrint("didReceiveRemotePush")
         self.handleNotification(applicationCompletionBlock: completion)
 
     }
@@ -186,7 +184,6 @@ final class CloudKitManager {
         }
         // Init the fetching operation
         let fetchOperation = CKFetchDatabaseChangesOperation(previousServerChangeToken: changeToken)
-        debugPrint(fetchOperation.fetchAllChanges)
         fetchOperation.fetchAllChanges = false
 
         // Setting the blocks to process the operation results
@@ -196,7 +193,6 @@ final class CloudKitManager {
             UserDefaults().set(changeTokenData, forKey: K.DefaultsKey.ckServerPrivateDatabaseChangeToken)
             // It makes sense that if the server token has changed the app needs to fetch new data.
             applicationCompletionBlock(.newData)
-            debugPrint("Change token updated.")
         }
 
         fetchOperation.recordZoneWithIDChangedBlock = { (recordZoneID) in
@@ -233,7 +229,6 @@ final class CloudKitManager {
         fetchOperation.configuration.qualityOfService = .utility
         fetchOperation.queuePriority = .veryHigh
         fetchOperation.configuration.isLongLived = true
-        debugPrint("Fetch operation added.")
         self.addOperationToDB(fetchOperation, database: privateDB)
     }
 

@@ -54,6 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // MARK: - A remote push notification arrives
         // CloudKitManager will handle the notification and fetch all changes. It is also responsible for notifying the application that the fetching is starting and it needs to resume from background.
         CloudKitManager.shared.didReceiveRemotePush(notification: userInfo, completion: completionHandler)
+        completionHandler(.newData)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
