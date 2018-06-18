@@ -14,6 +14,7 @@ class ShareViewController: SLComposeServiceViewController {
 
     private var url: NSURL?
     private var text: String?
+    private var pageTitle: String?
     private var wordCount: Int? {
         return (text?.words.count)
     }
@@ -68,13 +69,30 @@ class ShareViewController: SLComposeServiceViewController {
 
                             self.url = url
                             self.text = pageText
+
+                        do {
+                            var content = try String(contentsOf: url as URL)
+                            self.title = content.slice(from: "<title>", to: "</title>")
+                        } catch let error {
+                            //Error in title fetching
+                            self.pageTitle = ""
+                            print(error)
+                        }
+
+                        var nodeToSave: Node = Node(url: self.url as! URL, title: "Placeholder", id: DatabaseInterface.shared.createUniqueUUID(), parent: K.readingListStepID, tags: "#placeholder", text: pageText, propExtracted: false, creationTime: Date(), propRead: false, propFlagged: false)
+
                             manager.httpRequest(url: URL(string: (self.boilerPipeAPIURLString)+(self.url?.absoluteString!)!)!, dataHandlerOnCompletion: {
                                 (data) in
                                 self.boilerPipeAnswer.extractFromData(data)
+
                                 if(self.boilerPipeAnswer.status == "success") {
                                     self.fetchedFromBoilerPipe = true
                                     self.text = self.boilerPipeAnswer.response.content
+                                    nodeToSave.extractedText = self.text!
+                                    nodeToSave.isTextProperlyExtracted = true
+
                                 }
+
                             })
 
                             print("[RawCount]" + "\(pageText.words.count)")
