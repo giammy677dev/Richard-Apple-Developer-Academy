@@ -37,5 +37,7 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.share-services</string>
 	</dict>
+	<key>NSMainStoryboardFile</key>
+	<string>MainInterface.storyboard</string>
 </dict>
 </plist>
