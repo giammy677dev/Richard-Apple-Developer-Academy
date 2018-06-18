@@ -30,6 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         CloudKitManager.shared.subscriptionSetup()
         application.registerForRemoteNotifications()
+        CloudKitHelper.shared.retryLongLivedOperations()
+
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.strokeColor: UIColor(red: 65, green: 75, blue: 107, alpha: 100), NSAttributedStringKey.font: UIFont(name: "Lato-Bold", size: 16) as Any], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor(hex: 0x414B6B), NSAttributedStringKey.font : UIFont(name: "Lato-Bold", size: 16) as Any], for: .selected)
 
         return true
     }

@@ -9,22 +9,17 @@ import UIKit
 
 class RoadmapsTableViewController: UITableViewController {
 
-    var roadmaps: [WritableRoadmap] = DatabaseInterface.shared.loadRoadmaps() ?? [WritableRoadmap]()
+//    var roadmaps: [WritableRoadmap] = DatabaseInterface.shared.loadRoadmaps() ?? [WritableRoadmap]()
     var intCategories: [Int] = [Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        CurrentData.shared.load()
         //General settings
         self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
 
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
-
-        if !roadmaps.isEmpty {
-            roadmaps = roadmaps.sorted { (roadmapOne, roadmapTwo) -> Bool in
-                return roadmapOne.category.rawValue < roadmapTwo.category.rawValue
-            }
-        }
 
 //        let customCell = UINib(nibName: "collectionViewCell", bundle: nil)
 //        self.tableView.register(customCell, forCellReuseIdentifier: "collectionViewCell")
@@ -35,7 +30,7 @@ class RoadmapsTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return countCategories()
+        return CurrentData.shared.currentCategories.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,7 +41,9 @@ class RoadmapsTableViewController: UITableViewController {
 
         let collectionCell = tableView.dequeueReusableCell(withIdentifier: "collectionViewCell", for: indexPath) as! CollectionTableViewCell
 
-        collectionCell.delegate = self
+        collectionCell.category = Int(CurrentData.shared.currentCategories[indexPath.section].rawValue)
+
+//        collectionCell.delegate = self
 
         collectionCell.backgroundView = UIImageView(image: UIImage(named: "Background celle.png")!) //It sets the background of the table view rows
 
@@ -56,7 +53,7 @@ class RoadmapsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = Bundle.main.loadNibNamed("HeaderTableViewCell", owner: self, options: nil)?.first as! HeaderTableViewCell
 
-        header.headerLabel.text = stringFromCategory(intCategories[section])
+        header.headerLabel.text = self.stringFromCategory(Int(CurrentData.shared.currentCategories[section].rawValue))
         return header
     }
 
@@ -70,19 +67,6 @@ class RoadmapsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
-    }
-
-    private func countCategories() -> Int {
-        var number: Int = 0
-        var precedent: Int = -1
-        for elem in roadmaps {
-            if elem.category.rawValue != precedent {
-                number = number + 1
-                precedent = Int(elem.category.rawValue)
-                intCategories.append(precedent)
-            }
-        }
-        return number
     }
 
     private func stringFromCategory(_ rawValue: Int) -> String {
@@ -120,7 +104,6 @@ class RoadmapsTableViewController: UITableViewController {
 
 extension RoadmapsTableViewController: MyCustomCellDelegator {
     func callSegueFromCell(identifier: String) {
-        print("Ciao")
         self.performSegue(withIdentifier: identifier, sender: self)
     }
 }

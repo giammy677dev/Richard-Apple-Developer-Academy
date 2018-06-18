@@ -50,7 +50,6 @@ class DataSupportRoadmap {
 
     public func setTitleStep(_ title: String) {
         self.stepTitle = title
-        print(self.getTitleStep())
     }
 
     public func getNotification() -> Bool {

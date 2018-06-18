@@ -14,7 +14,7 @@
 		652742B620B701AD0027D862 /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9D020B3068B008AE848 /* Step.swift */; };
 		652742B720B701BA0027D862 /* SubscribedRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9D920B30A48008AE848 /* SubscribedRoadmap.swift */; };
 		652742B820B701BA0027D862 /* WritableRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9DB20B30BD8008AE848 /* WritableRoadmap.swift */; };
-		652742B920B701BA0027D862 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */; };
+		652742B920B701BA0027D862 /* CloudKitManager+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BCB5E20B57E5900B66CEE /* CloudKitManager+Helper.swift */; };
 		652742BA20B701BA0027D862 /* DatabaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91051520B6B955001005AA /* DatabaseInterface.swift */; };
 		652742BC20B702440027D862 /* Sharable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9CA20B2FAF2008AE848 /* Sharable.swift */; };
 		652742BD20B702440027D862 /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9D220B30845008AE848 /* Updatable.swift */; };
@@ -53,7 +53,7 @@
 		65EA50FA20B6D1F6008BCBFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B177C48220A9768B00CD9CBE /* AppDelegate.swift */; };
 		65EA50FB20B6D26E008BCBFB /* CoreDataController+Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50F720B6CFEC008BCBFB /* CoreDataController+Stack.swift */; };
 		7156BDFC0EC03B97022E43BF /* Pods_Final_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC17DF1CCDA48C886103641 /* Pods_Final_Challenge.framework */; };
-		7B5BCB5F20B57E5900B66CEE /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */; };
+		7B5BCB5F20B57E5900B66CEE /* CloudKitManager+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BCB5E20B57E5900B66CEE /* CloudKitManager+Helper.swift */; };
 		7B91051620B6B955001005AA /* DatabaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91051520B6B955001005AA /* DatabaseInterface.swift */; };
 		7BEA03C720B361310048F108 /* Taggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA03C620B361310048F108 /* Taggable.swift */; };
 		7BEA03C920B3624B0048F108 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA03C820B3624B0048F108 /* Tag.swift */; };
@@ -101,6 +101,24 @@
 		B127492E20BB33BA00C4420C /* AddResourceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B127492C20BB33BA00C4420C /* AddResourceTableViewCell.xib */; };
 		B127493120BB417F00C4420C /* AddTagsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B127492F20BB417F00C4420C /* AddTagsTableViewCell.swift */; };
 		B127493220BB417F00C4420C /* AddTagsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B127493020BB417F00C4420C /* AddTagsTableViewCell.xib */; };
+		B145C0FB20D3A9E700E7A08E /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F820D282A500E7A08E /* Lato-Black.ttf */; };
+		B145C0FC20D3A9EA00E7A08E /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F120D282A400E7A08E /* Lato-BlackItalic.ttf */; };
+		B145C0FD20D3A9ED00E7A08E /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F520D282A500E7A08E /* Lato-Bold.ttf */; };
+		B145C0FE20D3A9F000E7A08E /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F920D282A500E7A08E /* Lato-BoldItalic.ttf */; };
+		B145C0FF20D3A9F300E7A08E /* Lato-Hairline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0EF20D282A400E7A08E /* Lato-Hairline.ttf */; };
+		B145C10020D3A9F500E7A08E /* Lato-HairlineItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0EE20D282A400E7A08E /* Lato-HairlineItalic.ttf */; };
+		B145C10120D3A9F800E7A08E /* Lato-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F320D282A400E7A08E /* Lato-Heavy.ttf */; };
+		B145C10220D3A9FB00E7A08E /* Lato-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F020D282A400E7A08E /* Lato-HeavyItalic.ttf */; };
+		B145C10320D3A9FF00E7A08E /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0EC20D282A300E7A08E /* Lato-Italic.ttf */; };
+		B145C10420D3AA0100E7A08E /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0E920D282A300E7A08E /* Lato-Light.ttf */; };
+		B145C10520D3AA0800E7A08E /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F620D282A500E7A08E /* Lato-LightItalic.ttf */; };
+		B145C10620D3AA0B00E7A08E /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F220D282A400E7A08E /* Lato-Medium.ttf */; };
+		B145C10720D3AA0D00E7A08E /* Lato-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0EA20D282A300E7A08E /* Lato-MediumItalic.ttf */; };
+		B145C10820D3AA1000E7A08E /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F420D282A400E7A08E /* Lato-Regular.ttf */; };
+		B145C10920D3AA1400E7A08E /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0EB20D282A300E7A08E /* Lato-Semibold.ttf */; };
+		B145C10A20D3AA1600E7A08E /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0ED20D282A400E7A08E /* Lato-SemiboldItalic.ttf */; };
+		B145C10B20D3AA1900E7A08E /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F720D282A500E7A08E /* Lato-Thin.ttf */; };
+		B145C10C20D3AA1C00E7A08E /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0FA20D282A500E7A08E /* Lato-ThinItalic.ttf */; };
 		B1608B4F20B6B69C00701508 /* Links.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1608B4E20B6B69C00701508 /* Links.storyboard */; };
 		B1608B5320B6B8A300701508 /* LinksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1608B5220B6B8A300701508 /* LinksTableViewController.swift */; };
 		B1608B5620B6C58A00701508 /* CustomLinksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1608B5420B6C58A00701508 /* CustomLinksTableViewCell.swift */; };
@@ -168,7 +186,7 @@
 		65EA50E120B5795D008BCBFB /* Persistence.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Persistence.xcdatamodel; sourceTree = "<group>"; };
 		65EA50F720B6CFEC008BCBFB /* CoreDataController+Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataController+Stack.swift"; sourceTree = "<group>"; };
 		6F30463B7CF8DFFA6943A5EC /* Pods-Final Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final Challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-Final Challenge/Pods-Final Challenge.release.xcconfig"; sourceTree = "<group>"; };
-		7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		7B5BCB5E20B57E5900B66CEE /* CloudKitManager+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitManager+Helper.swift"; sourceTree = "<group>"; };
 		7B91051520B6B955001005AA /* DatabaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseInterface.swift; sourceTree = "<group>"; };
 		7BEA03C620B361310048F108 /* Taggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taggable.swift; sourceTree = "<group>"; };
 		7BEA03C820B3624B0048F108 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
@@ -452,7 +470,7 @@
 				A0BBA9D020B3068B008AE848 /* Step.swift */,
 				A0BBA9D920B30A48008AE848 /* SubscribedRoadmap.swift */,
 				A0BBA9DB20B30BD8008AE848 /* WritableRoadmap.swift */,
-				7B5BCB5E20B57E5900B66CEE /* CloudKitManager.swift */,
+				7B5BCB5E20B57E5900B66CEE /* CloudKitManager+Helper.swift */,
 				7B91051520B6B955001005AA /* DatabaseInterface.swift */,
 				655B0B0D20BC0F2E00CD73B0 /* Constants.swift */,
 				B18BF51420BD4DBB00D9BCF9 /* CurrentDataSingleton.swift */,
@@ -720,26 +738,44 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B145C10120D3A9F800E7A08E /* Lato-Heavy.ttf in Resources */,
+				B145C10220D3A9FB00E7A08E /* Lato-HeavyItalic.ttf in Resources */,
+				B145C0FF20D3A9F300E7A08E /* Lato-Hairline.ttf in Resources */,
+				B145C10B20D3AA1900E7A08E /* Lato-Thin.ttf in Resources */,
 				A080ED6F20C69C2F00689618 /* NotificationTableViewCell.xib in Resources */,
 				9002AAFE20B40C4400854015 /* CustomCollectionViewCell.xib in Resources */,
 				B18BF50F20BD450700D9BCF9 /* StepTableViewCell.xib in Resources */,
 				B186E95F20C53E5E004C66A2 /* AddSteps.storyboard in Resources */,
+				B145C10020D3A9F500E7A08E /* Lato-HairlineItalic.ttf in Resources */,
+				B145C0FE20D3A9F000E7A08E /* Lato-BoldItalic.ttf in Resources */,
+				B145C10A20D3AA1600E7A08E /* Lato-SemiboldItalic.ttf in Resources */,
 				B1608B5720B6C58A00701508 /* CustomLinksTableViewCell.xib in Resources */,
+				B145C10320D3A9FF00E7A08E /* Lato-Italic.ttf in Resources */,
 				A06C023A20C5391100C078D5 /* CategoryTableViewCell.xib in Resources */,
+				B145C0FB20D3A9E700E7A08E /* Lato-Black.ttf in Resources */,
+				B145C0FD20D3A9ED00E7A08E /* Lato-Bold.ttf in Resources */,
 				904C8FDD20B5818A00D0E27D /* ResourcesCustomCollectionViewCell.xib in Resources */,
 				B127492E20BB33BA00C4420C /* AddResourceTableViewCell.xib in Resources */,
 				B177C48D20A9768B00CD9CBE /* LaunchScreen.storyboard in Resources */,
+				B145C0FC20D3A9EA00E7A08E /* Lato-BlackItalic.ttf in Resources */,
 				90525FA220B6A7D1006D3093 /* Explore.storyboard in Resources */,
 				90525FA120B6A7D1006D3093 /* Main.storyboard in Resources */,
 				B127492820BB332100C4420C /* AddResource.storyboard in Resources */,
 				B18BF51D20BD61C900D9BCF9 /* CreateRoadmap.storyboard in Resources */,
 				B177C48A20A9768B00CD9CBE /* Assets.xcassets in Resources */,
+				B145C10720D3AA0D00E7A08E /* Lato-MediumItalic.ttf in Resources */,
+				B145C10420D3AA0100E7A08E /* Lato-Light.ttf in Resources */,
 				90525FA020B6A7D1006D3093 /* Researches.storyboard in Resources */,
+				B145C10620D3AA0B00E7A08E /* Lato-Medium.ttf in Resources */,
 				B127493220BB417F00C4420C /* AddTagsTableViewCell.xib in Resources */,
 				B17CFC9020C71FF10027C670 /* AddStepTableViewCell.xib in Resources */,
+				B145C10920D3AA1400E7A08E /* Lato-Semibold.ttf in Resources */,
+				B145C10520D3AA0800E7A08E /* Lato-LightItalic.ttf in Resources */,
 				B18BF51920BD5F9100D9BCF9 /* TitleTableViewCell.xib in Resources */,
 				90525F9F20B6A7D1006D3093 /* Roadmaps.storyboard in Resources */,
+				B145C10820D3AA1000E7A08E /* Lato-Regular.ttf in Resources */,
 				9002AAF320B2BFC000854015 /* HeaderTableViewCell.xib in Resources */,
+				B145C10C20D3AA1C00E7A08E /* Lato-ThinItalic.ttf in Resources */,
 				B1608B4F20B6B69C00701508 /* Links.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -883,7 +919,7 @@
 				652742B820B701BA0027D862 /* WritableRoadmap.swift in Sources */,
 				65A0BC7D20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift in Sources */,
 				B105530220AD7DEB0077983A /* RoadmapSE.swift in Sources */,
-				652742B920B701BA0027D862 /* CloudKitManager.swift in Sources */,
+				652742B920B701BA0027D862 /* CloudKitManager+Helper.swift in Sources */,
 				652A615A20BBFD1C00A101B3 /* CDStep+CoreDataClass.swift in Sources */,
 				652742B520B701AD0027D862 /* Tag.swift in Sources */,
 				65EA50E320B5795D008BCBFB /* Persistence.xcdatamodeld in Sources */,
@@ -937,7 +973,7 @@
 				A080ED6E20C69C2F00689618 /* NotificationTableViewCell.swift in Sources */,
 				B17CFC8F20C71FF10027C670 /* AddStepTableViewCell.swift in Sources */,
 				A0BBA9CF20B30419008AE848 /* Node.swift in Sources */,
-				7B5BCB5F20B57E5900B66CEE /* CloudKitManager.swift in Sources */,
+				7B5BCB5F20B57E5900B66CEE /* CloudKitManager+Helper.swift in Sources */,
 				65B108C220BD5994007026FC /* ArrayExtension.swift in Sources */,
 				B127492D20BB33BA00C4420C /* AddResourceTableViewCell.swift in Sources */,
 				B18B9A8520BC12B8004FA469 /* UITextFieldExtension.swift in Sources */,
