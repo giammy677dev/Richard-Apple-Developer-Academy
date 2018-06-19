@@ -34,7 +34,7 @@
                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aai-Dr-Fvy">
                         <rect key="frame" x="303" y="22" width="56" height="49"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" title="Button" image="AddResource"/>
+                        <state key="normal" title="Button" image="selected"/>
                     </button>
                 </subviews>
             </tableViewCellContentView>
@@ -48,6 +48,6 @@
     </objects>
     <resources>
         <image name="Add Resource Background" width="358" height="174"/>
-        <image name="AddResource" width="56" height="49"/>
+        <image name="selected" width="34" height="34"/>
     </resources>
 </document>
