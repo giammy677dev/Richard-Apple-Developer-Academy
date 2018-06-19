@@ -14,18 +14,10 @@ class RoadmapsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         CurrentData.shared.load()
         //General settings
         self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
-
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
-
-//        let customCell = UINib(nibName: "collectionViewCell", bundle: nil)
-//        self.tableView.register(customCell, forCellReuseIdentifier: "collectionViewCell")
-
-//        let headerCustomCell = UINib(nibName: "headerCell", bundle: nil)
-//        self.tableView.register(headerCustomCell, forCellReuseIdentifier: "headerCell")
     }
 
     // MARK: - Table view data source
@@ -42,8 +34,7 @@ class RoadmapsTableViewController: UITableViewController {
         let collectionCell = tableView.dequeueReusableCell(withIdentifier: "collectionViewCell", for: indexPath) as! CollectionTableViewCell
 
         collectionCell.category = Int(CurrentData.shared.currentCategories[indexPath.section].rawValue)
-
-//        collectionCell.delegate = self
+        collectionCell.delegate = self      //delegate to use self.delegate.callSegueFromCell(identifier: "SeeAllSegue")
 
         collectionCell.backgroundView = UIImageView(image: UIImage(named: "Background celle.png")!) //It sets the background of the table view rows
 

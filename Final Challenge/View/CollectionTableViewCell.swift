@@ -17,15 +17,18 @@ class CollectionTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
 
     var delegate: MyCustomCellDelegator!
+    var category: Int = 0
     var newTargetOffset: Float = 0
     var cellWidth: Float = 240
     var footerWidth: Float = 35
     var pageOffset: [Float] = []
     var currentPage = 0
     var lastOffset: Float = 0
-    var firstTime = true
-    var category: Int = 0
-//    var content: [Node] = [Node]()
+    var numberMaxOfRoadmapsInPreview = 4
+    var numberOfRoadmapsInPreview = 0
+    var firstTime: Bool = true
+    var seeAllFirstTime: Bool = true
+    var doNothing: Bool = false
 
 //    class var customCell: CustomCollectionViewCell {
 //        let cell = Bundle.main.loadNibNamed("CustomCollectionViewCell", owner: self, options: nil)?.last
@@ -35,11 +38,17 @@ class CollectionTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        self.pageOffset = [0, cellWidth, 2*cellWidth + footerWidth, 3*cellWidth + 2*footerWidth, 4*cellWidth + 3*footerWidth]
+        for i in 0...numberMaxOfRoadmapsInPreview {
+            if i == 0 {
+                self.pageOffset.append(Float(i)*cellWidth)
+            } else {
+                self.pageOffset.append(Float(i)*cellWidth + Float(i-1)*footerWidth)
+            }
+        }
 
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.isPagingEnabled = false
+        collectionView.isPagingEnabled = true
 
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -47,45 +56,24 @@ class CollectionTableViewCell: UITableViewCell {
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0  //between row
 
-        collectionView.setCollectionViewLayout(layout, animated: false)
+        collectionView.setCollectionViewLayout(layout, animated: true)
 
-//        var longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongGesture(gesture:)))
-//        collectionView.addGestureRecognizer(longPressGesture)
-//
         //register the xib for collection view cell
         let cellNib = UINib(nibName: "CustomCollectionViewCell", bundle: nil)
         self.collectionView.register(cellNib, forCellWithReuseIdentifier: "CustomCollectionViewCell")
-
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
 
-//    @objc func handleLongGesture(gesture: UILongPressGestureRecognizer) {
-//        switch(gesture.state) {
-//
-//        case .began:
-//            guard let selectedIndexPath = collectionView.indexPathForItem(at: gesture.location(in: collectionView)) else {
-//                break
-//            }
-//            collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
-//        case .changed:
-//            collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
-//        case .ended:
-//            collectionView.endInteractiveMovement()
-//        default:
-//            collectionView.cancelInteractiveMovement()
-//        }
-//    }
-
 }
 
 extension CollectionTableViewCell: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        let returnValue = CurrentData.shared.roadmapsInCategories[Category(rawValue: Int16(self.category))!]
-        return returnValue! //numbers of roadmpas in Category????
+        numberOfRoadmapsInPreview = CurrentData.shared.roadmapsInCategories[Category(rawValue: Int16(self.category))!]!
+        return numberOfRoadmapsInPreview //numbers of roadmpas in Category
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -95,23 +83,30 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as? CustomCollectionViewCell
 
-//        cell?.linkLabel.text =  CurrentData.shared.roadmaps[section].url.absoluteString
         cell?.titleLabel.text = CurrentData.shared.roadmapsForCategory(category: Category(rawValue: Int16(self.category))!).safeCall(indexPath.section)?.title
-//        cell?.minutesLeftLabel.text = "\(content[indexPath.section].extractedText.words.count / 270)"
 
-//        if indexPath.section == content.count - 1 {
-//            cell?.linkLabel.isHidden = true
-//            cell?.titleLabel.isHidden = true
-//            cell?.minutesLeftLabel.isHidden = true
-//            cell?.seeAllLbl.isHidden = false
-//        }
-
+        //zoom first cell at first start
         if firstTime {
             if indexPath.section == 0 {
+                print("First cell zoomed")
                 cell?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
             }
             firstTime = false
         }
+
+        //custom SEEALL as last cell in collection
+        if indexPath.section == numberMaxOfRoadmapsInPreview {
+            if seeAllFirstTime {
+                print("seeAllFirst Time!!")
+                seeAllFirstTime = false
+                cell?.linkLabel.isHidden = true
+                cell?.titleLabel.isHidden = true
+                cell?.minutesLeftLabel.isHidden = true
+                cell?.seeAllLbl.isHidden = false
+            }
+        }
+
+        print("Section = \(indexPath.section)\n\n")
 
         return cell!
     }
@@ -121,7 +116,7 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == 4 {  //See All Cell
+        if indexPath.section == numberMaxOfRoadmapsInPreview {  //See All Cell
             self.delegate.callSegueFromCell(identifier: "SeeAllSegue")
         }
     }
@@ -132,48 +127,83 @@ extension CollectionTableViewCell: UICollectionViewDelegate {
 }
 
 extension CollectionTableViewCell: UIScrollViewDelegate {
+
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 
-        let pageWidth: Float =  20
+        let pageWidth: Float =  5
 
         let widthSwipe: Float = Float(scrollView.contentOffset.x)
         let targetOffset: Float = Float(targetContentOffset.pointee.x)
 
-        print("widthSwipe = \(widthSwipe)\ntargetOffset = \(targetOffset)")
+        print("\n\nwidthSwipe = \(widthSwipe)\ntargetOffset = \(targetOffset)")
+        print("Current Page: \(currentPage)")
 
-        if widthSwipe > self.pageOffset[currentPage] + pageWidth {
-            if currentPage < 4 {
+        if widthSwipe > self.pageOffset[currentPage] + pageWidth {  //right swipe
+            if currentPage < numberMaxOfRoadmapsInPreview {
                 currentPage = currentPage + 1
                 newTargetOffset = self.pageOffset[currentPage]
             }
-        } else if widthSwipe < self.pageOffset[currentPage] - pageWidth {
+        } else if widthSwipe < self.pageOffset[currentPage] - pageWidth {   //left swipe
             if currentPage > 0 {
+                print("DoNothing = false perchè swipe left")
+                doNothing = false
                 currentPage = currentPage - 1
                 newTargetOffset = self.pageOffset[currentPage]
             }
         }
-        targetContentOffset.pointee.x = CGFloat(widthSwipe)
-        lastOffset = widthSwipe
-
-        scrollView.setContentOffset(CGPoint(x: CGFloat(newTargetOffset), y: scrollView.contentOffset.y), animated: true)
-
-        print("velocity: \(velocity)")
-
-        for i in 0...4 {
-            if i == Int(self.currentPage) {
-                UIView.animate(withDuration: 0.4, animations: {
-                    let cell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: i))
-                    cell?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-                }, completion: nil)
-            } else {
-                UIView.animate(withDuration: 0.4, animations: {
-                    let cell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: i))
-                    cell?.transform = CGAffineTransform(scaleX: 1, y: 1)
-                }, completion: nil)
-            }
+        print("Current Page Updated: \(currentPage)")
+        if currentPage == numberOfRoadmapsInPreview - 1 {
+            print("+++++LastPage Showed++++++")
         }
 
+        targetContentOffset.pointee.x = CGFloat(widthSwipe)
+
+        if !doNothing {
+//            lastOffset = widthSwipe
+
+//            if currentPage == numberMaxOfRoadmapsInPreview {
+//
+//            } else {
+//                scrollView.setContentOffset(CGPoint(x: CGFloat(newTargetOffset), y: scrollView.contentOffset.y), animated: true)
+//            }
+            
+            scrollView.setContentOffset(CGPoint(x: CGFloat(newTargetOffset), y: scrollView.contentOffset.y), animated: true)
+            print("velocity: \(velocity)\n\n")
+
+            for i in 0...numberMaxOfRoadmapsInPreview {
+                if i == Int(self.currentPage) {
+
+                    UIView.animate(withDuration: 0.4, animations: {
+                        let cell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: i))
+                        cell?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+                    }, completion: nil)
+
+                } else {
+                    UIView.animate(withDuration: 0.4, animations: {
+                        let cell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: i))
+                        cell?.transform = CGAffineTransform(scaleX: 1, y: 1)
+                    }, completion: nil)
+                }
+            }
+
+        } else {
+            UIView.animate(withDuration: 0.4, animations: {
+                let cell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: self.numberMaxOfRoadmapsInPreview))
+                cell?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+            }, completion: nil)
+            UIView.animate(withDuration: 0.4, animations: {
+                let cell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: self.numberMaxOfRoadmapsInPreview - 1))
+                cell?.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }, completion: nil)
+            doNothing = false
+        }
+        if currentPage == numberMaxOfRoadmapsInPreview {
+            print("DO NOTHING")
+            doNothing = true
+        }
+        print("contentOffset: \(scrollView.contentOffset)")
     }
+
 }
 
 extension CollectionTableViewCell: UICollectionViewDelegateFlowLayout {
