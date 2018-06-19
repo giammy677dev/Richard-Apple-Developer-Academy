@@ -41,9 +41,9 @@ class CollectionTableViewCell: UITableViewCell {
                 self.pageOffset.append(Float(i)*cellWidth + Float(i-1)*footerWidth)
             }
         }
-        for elem in self.pageOffset {
-            print("\(elem)")
-        }
+//        for elem in self.pageOffset {
+//            print("\(elem)")
+//        }
 
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -87,7 +87,7 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
 
         //zoom first cell at first start
         if indexPath.section == 0 && currentPage == 0 {
-            print("First cell zoomed")
+//            print("First cell zoomed")
             cell?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         }
 
@@ -130,11 +130,11 @@ extension CollectionTableViewCell: UIScrollViewDelegate {
 
         let widthSwipe: Float = Float(scrollView.contentOffset.x)
 
-        print("\n\nwidthSwipe = \(widthSwipe) è > di = \(self.pageOffset[currentPage])")
-        print("a quale pagina ero prima? : \(currentPage)")
+//        print("\n\nwidthSwipe = \(widthSwipe) è > di = \(self.pageOffset[currentPage])")
+//        print("a quale pagina ero prima? : \(currentPage)")
 
         if widthSwipe > self.pageOffset[currentPage] {  //right swipe
-            print("RIGHT SWIPE")
+//            print("RIGHT SWIPE")
             swipe = true
             if currentPage < numberMaxOfRoadmapsInPreview {
                 if currentPage == numberOfRoadmapsInPreview - 1 {
@@ -145,9 +145,9 @@ extension CollectionTableViewCell: UIScrollViewDelegate {
                 }
             }
         } else if currentPage == numberOfRoadmapsInPreview - 1 {   //left swipe
-            print("Tentativo di Left SWIPE")
+//            print("Tentativo di Left SWIPE")
             if (widthSwipe + 40) < self.pageOffset[currentPage] {
-                print("Tentativo di Left SWIPE RIUSCITO!")
+//                print("Tentativo di Left SWIPE RIUSCITO!")
                 swipe = true
                 doNothing = false
                 currentPage = currentPage - 1
@@ -155,7 +155,7 @@ extension CollectionTableViewCell: UIScrollViewDelegate {
             }
 
         } else if widthSwipe < self.pageOffset[currentPage] {   //left swipe
-            print("LEFT SWIPE")
+//            print("LEFT SWIPE")
             swipe = true
             if currentPage > 0 {
                 doNothing = false
@@ -166,8 +166,8 @@ extension CollectionTableViewCell: UIScrollViewDelegate {
 
         if swipe {
             swipe = false
-            print("Ora sono alla pagina: \(currentPage)")
-            print("NewOffset: \(newTargetOffset)")
+//            print("Ora sono alla pagina: \(currentPage)")
+//            print("NewOffset: \(newTargetOffset)")
             if currentPage == numberOfRoadmapsInPreview - 1 {
                 newTargetOffset = newTargetOffset - footerWidth
             }
@@ -176,7 +176,7 @@ extension CollectionTableViewCell: UIScrollViewDelegate {
             scrollView.setContentOffset(CGPoint(x: CGFloat(newTargetOffset), y: scrollView.contentOffset.y), animated: true)
 
             if !doNothing {
-                print("velocity: \(velocity)\n\n")
+//                print("velocity: \(velocity)\n\n")
 
                 for i in 0...numberMaxOfRoadmapsInPreview {
                     if i == Int(self.currentPage) {
@@ -205,7 +205,7 @@ extension CollectionTableViewCell: UIScrollViewDelegate {
                 doNothing = false
             }
             if currentPage == numberOfRoadmapsInPreview - 1 {
-                print("DO NOTHING")
+//                print("DO NOTHING")
                 doNothing = true
             }
         }
