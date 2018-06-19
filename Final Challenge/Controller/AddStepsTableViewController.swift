@@ -54,6 +54,9 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
                 stepCell.titleTextField.frame.size.width = 246 //It reduces the dimension of the width of the titleTextField with an animation
             }, completion: {_ in stepCell.addResourceButton.isHidden = false}) //At the end of the previous animation, the addResourceButton appears
         }
+
+        stepCell.addResourceButton.addTarget(self, action: #selector(addResourceToStep), for: UIControlEvents.touchUpInside) //It enables the action to present the Resource view to the button of each button of the tableView
+
         return stepCell
     }
 
@@ -111,5 +114,13 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
             self.navigationController?.popToRootViewController(animated: true)
         }))
         self.present(alert, animated: true, completion: nil)
+    }
+
+    @objc func addResourceToStep() {
+        let storyboard = UIStoryboard(name: "Researches", bundle: nil)
+        let resourcesViewController = storyboard.instantiateViewController(withIdentifier: "Resources") as! ResourcesTableViewController
+
+        self.present(resourcesViewController, animated: true, completion: nil)
+        print("table view istanziata")
     }
 }
