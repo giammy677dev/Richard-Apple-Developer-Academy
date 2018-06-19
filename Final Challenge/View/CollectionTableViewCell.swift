@@ -29,11 +29,7 @@ class CollectionTableViewCell: UITableViewCell {
     var firstTime: Bool = true
     var seeAllFirstTime: Bool = true
     var doNothing: Bool = false
-
-//    class var customCell: CustomCollectionViewCell {
-//        let cell = Bundle.main.loadNibNamed("CustomCollectionViewCell", owner: self, options: nil)?.last
-//        return cell as! CustomCollectionViewCell
-//    }
+    var swipe: Bool = false
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,10 +41,13 @@ class CollectionTableViewCell: UITableViewCell {
                 self.pageOffset.append(Float(i)*cellWidth + Float(i-1)*footerWidth)
             }
         }
+        for elem in self.pageOffset {
+            print("\(elem)")
+        }
 
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.isPagingEnabled = true
+        collectionView.isPagingEnabled = false
 
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -56,11 +55,12 @@ class CollectionTableViewCell: UITableViewCell {
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0  //between row
 
-        collectionView.setCollectionViewLayout(layout, animated: true)
+        collectionView.setCollectionViewLayout(layout, animated: false)
 
         //register the xib for collection view cell
         let cellNib = UINib(nibName: "CustomCollectionViewCell", bundle: nil)
         self.collectionView.register(cellNib, forCellWithReuseIdentifier: "CustomCollectionViewCell")
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -86,27 +86,25 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
         cell?.titleLabel.text = CurrentData.shared.roadmapsForCategory(category: Category(rawValue: Int16(self.category))!).safeCall(indexPath.section)?.title
 
         //zoom first cell at first start
-        if firstTime {
-            if indexPath.section == 0 {
-                print("First cell zoomed")
-                cell?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-            }
-            firstTime = false
+        if indexPath.section == 0 && currentPage == 0 {
+            print("First cell zoomed")
+            cell?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         }
 
         //custom SEEALL as last cell in collection
-        if indexPath.section == numberMaxOfRoadmapsInPreview {
-            if seeAllFirstTime {
-                print("seeAllFirst Time!!")
-                seeAllFirstTime = false
-                cell?.linkLabel.isHidden = true
-                cell?.titleLabel.isHidden = true
-                cell?.minutesLeftLabel.isHidden = true
-                cell?.seeAllLbl.isHidden = false
-            }
+        if indexPath.section == 4 {
+            cell?.linkLabel.isHidden = true
+            cell?.titleLabel.isHidden = true
+            cell?.minutesLeftLabel.isHidden = true
+            cell?.seeAllLbl.isHidden = false
+        } else {
+            cell?.linkLabel.isHidden = false
+            cell?.titleLabel.isHidden = false
+            cell?.minutesLeftLabel.isHidden = false
+            cell?.seeAllLbl.isHidden = true
         }
 
-        print("Section = \(indexPath.section)\n\n")
+//        print("Section = \(indexPath.section)")
 
         return cell!
     }
@@ -130,78 +128,87 @@ extension CollectionTableViewCell: UIScrollViewDelegate {
 
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 
-        let pageWidth: Float =  5
-
         let widthSwipe: Float = Float(scrollView.contentOffset.x)
-        let targetOffset: Float = Float(targetContentOffset.pointee.x)
 
-        print("\n\nwidthSwipe = \(widthSwipe)\ntargetOffset = \(targetOffset)")
-        print("Current Page: \(currentPage)")
+        print("\n\nwidthSwipe = \(widthSwipe) è > di = \(self.pageOffset[currentPage])")
+        print("a quale pagina ero prima? : \(currentPage)")
 
-        if widthSwipe > self.pageOffset[currentPage] + pageWidth {  //right swipe
+        if widthSwipe > self.pageOffset[currentPage] {  //right swipe
+            print("RIGHT SWIPE")
+            swipe = true
             if currentPage < numberMaxOfRoadmapsInPreview {
-                currentPage = currentPage + 1
+                if currentPage == numberOfRoadmapsInPreview - 1 {
+
+                } else {
+                    currentPage = currentPage + 1
+                    newTargetOffset = self.pageOffset[currentPage]
+                }
+            }
+        } else if currentPage == numberOfRoadmapsInPreview - 1 {   //left swipe
+            print("Tentativo di Left SWIPE")
+            if (widthSwipe + 40) < self.pageOffset[currentPage] {
+                print("Tentativo di Left SWIPE RIUSCITO!")
+                swipe = true
+                doNothing = false
+                currentPage = currentPage - 1
                 newTargetOffset = self.pageOffset[currentPage]
             }
-        } else if widthSwipe < self.pageOffset[currentPage] - pageWidth {   //left swipe
+
+        } else if widthSwipe < self.pageOffset[currentPage] {   //left swipe
+            print("LEFT SWIPE")
+            swipe = true
             if currentPage > 0 {
-                print("DoNothing = false perchè swipe left")
                 doNothing = false
                 currentPage = currentPage - 1
                 newTargetOffset = self.pageOffset[currentPage]
             }
         }
-        print("Current Page Updated: \(currentPage)")
-        if currentPage == numberOfRoadmapsInPreview - 1 {
-            print("+++++LastPage Showed++++++")
-        }
 
-        targetContentOffset.pointee.x = CGFloat(widthSwipe)
-
-        if !doNothing {
-//            lastOffset = widthSwipe
-
-//            if currentPage == numberMaxOfRoadmapsInPreview {
-//
-//            } else {
-//                scrollView.setContentOffset(CGPoint(x: CGFloat(newTargetOffset), y: scrollView.contentOffset.y), animated: true)
-//            }
-            
-            scrollView.setContentOffset(CGPoint(x: CGFloat(newTargetOffset), y: scrollView.contentOffset.y), animated: true)
-            print("velocity: \(velocity)\n\n")
-
-            for i in 0...numberMaxOfRoadmapsInPreview {
-                if i == Int(self.currentPage) {
-
-                    UIView.animate(withDuration: 0.4, animations: {
-                        let cell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: i))
-                        cell?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-                    }, completion: nil)
-
-                } else {
-                    UIView.animate(withDuration: 0.4, animations: {
-                        let cell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: i))
-                        cell?.transform = CGAffineTransform(scaleX: 1, y: 1)
-                    }, completion: nil)
-                }
+        if swipe {
+            swipe = false
+            print("Ora sono alla pagina: \(currentPage)")
+            print("NewOffset: \(newTargetOffset)")
+            if currentPage == numberOfRoadmapsInPreview - 1 {
+                newTargetOffset = newTargetOffset - footerWidth
             }
 
-        } else {
-            UIView.animate(withDuration: 0.4, animations: {
-                let cell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: self.numberMaxOfRoadmapsInPreview))
-                cell?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-            }, completion: nil)
-            UIView.animate(withDuration: 0.4, animations: {
-                let cell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: self.numberMaxOfRoadmapsInPreview - 1))
-                cell?.transform = CGAffineTransform(scaleX: 1, y: 1)
-            }, completion: nil)
-            doNothing = false
+            targetContentOffset.pointee.x = CGFloat(widthSwipe)
+            scrollView.setContentOffset(CGPoint(x: CGFloat(newTargetOffset), y: scrollView.contentOffset.y), animated: true)
+
+            if !doNothing {
+                print("velocity: \(velocity)\n\n")
+
+                for i in 0...numberMaxOfRoadmapsInPreview {
+                    if i == Int(self.currentPage) {
+                        UIView.animate(withDuration: 0.4, animations: {
+                            let cell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: i))
+                            cell?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+                        }, completion: nil)
+
+                    } else {
+                        UIView.animate(withDuration: 0.4, animations: {
+                            let cell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: i))
+                            cell?.transform = CGAffineTransform(scaleX: 1, y: 1)
+                        }, completion: nil)
+                    }
+                }
+
+            } else {
+                UIView.animate(withDuration: 0.4, animations: {
+                    let cell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: self.numberMaxOfRoadmapsInPreview))
+                    cell?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+                }, completion: nil)
+                UIView.animate(withDuration: 0.4, animations: {
+                    let cell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: self.numberMaxOfRoadmapsInPreview - 1))
+                    cell?.transform = CGAffineTransform(scaleX: 1, y: 1)
+                }, completion: nil)
+                doNothing = false
+            }
+            if currentPage == numberOfRoadmapsInPreview - 1 {
+                print("DO NOTHING")
+                doNothing = true
+            }
         }
-        if currentPage == numberMaxOfRoadmapsInPreview {
-            print("DO NOTHING")
-            doNothing = true
-        }
-        print("contentOffset: \(scrollView.contentOffset)")
     }
 
 }
