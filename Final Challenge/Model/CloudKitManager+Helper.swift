@@ -169,8 +169,7 @@ final class CloudKitManager {
 
     func didReceiveRemotePush(notification: [AnyHashable: Any], completion: @escaping (UIBackgroundFetchResult) -> Void) {
         // This ckNotification could be useful in future.
-        _ = CKNotification(fromRemoteNotificationDictionary: notification)
-
+        let ckNotification = CKNotification(fromRemoteNotificationDictionary: notification)
         self.handleNotification(applicationCompletionBlock: completion)
 
     }
@@ -185,7 +184,7 @@ final class CloudKitManager {
         }
         // Init the fetching operation
         let fetchOperation = CKFetchDatabaseChangesOperation(previousServerChangeToken: changeToken)
-        fetchOperation.fetchAllChanges = true
+        fetchOperation.fetchAllChanges = false
 
         // Setting the blocks to process the operation results
         fetchOperation.changeTokenUpdatedBlock = { (serverToken) in
@@ -230,7 +229,6 @@ final class CloudKitManager {
         fetchOperation.configuration.qualityOfService = .utility
         fetchOperation.queuePriority = .veryHigh
         fetchOperation.configuration.isLongLived = true
-
         self.addOperationToDB(fetchOperation, database: privateDB)
     }
 

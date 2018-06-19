@@ -9,12 +9,10 @@
 import UIKit
 
 class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelegate {
-
-    var titleOk: Bool = false
+    var textFieldDelegate: UITextField? //We will use it to handle the keyboard
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
 
         //General settings
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(goToAddStep))
@@ -31,6 +29,8 @@ class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelega
         let categoryCell = UINib(nibName: "CategoryTableViewCell", bundle: nil)
         self.tableView.register(categoryCell, forCellReuseIdentifier: "CategoryTableViewCell")
 
+        hideKeyboardWhenTappedAround() //It enables the tap gesture in this view
+        tableView.keyboardDismissMode = .onDrag //It enables the keyboard dismissing on scrolling the tableView
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -42,10 +42,10 @@ class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelega
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TitleTableViewCell", for: indexPath) as! TitleTableViewCell
             cell.titleTextField.delegate = self
+            self.textFieldDelegate = cell.titleTextField
             return cell
         } else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
@@ -64,29 +64,43 @@ class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelega
         }
     }
 
+    //When user tap the return button on the keyboard, the keyboard is closed and the roadmap title is saved
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
-        if let title = textField.text {
-            DataSupportRoadmap.shared.setTitleRoadmap(title)
-            titleOk = true
-        } else {
-            titleOk = false
-        }
         return true
     }
 
+    //When user scroll the textField, the keyboard is closed and the roadmap title is saved
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.view.endEditing(true)
+    }
+
+    //The following function defines the tap gesture
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
+        self.view.addGestureRecognizer(tap)
     }
 
+    //This function save the roadmap title and dismiss the keyboard
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
 
+    //The following function, save the roadmap title
+    private func saveRoadmapTitle() {
+        if textFieldDelegate?.text?.isEmpty == false { //If the roadmap title is NOT empty, the title is saved
+            let title = textFieldDelegate?.text
+            DataSupportRoadmap.shared.setTitleRoadmap(title!)
+        }
+    }
+
+    //The following function checks if the roadmap title is empty: in that case it throws an alert, else goes to the AddStepsTableViewController()
     @objc func goToAddStep() {
-        if !titleOk {
+        if !(self.textFieldDelegate?.text?.isEmpty)! { //It enables the saving of the roadmap title also when the "Next" button is tapped
+            DataSupportRoadmap.shared.setTitleStep((self.textFieldDelegate?.text)!)
+            saveRoadmapTitle()
+        } else {
             let alert = UIAlertController(title: "No Title", message: "Please type a title.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
