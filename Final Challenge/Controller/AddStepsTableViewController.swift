@@ -48,6 +48,7 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
         let stepCell = tableView.dequeueReusableCell(withIdentifier: "AddStepTableViewCell", for: indexPath) as! AddStepTableViewCell
 
         stepCell.titleTextField.delegate = self
+        stepCell.addResourceButton.tag = indexPath.item //Assign an integer to the button basing on the indexPath
 
         if stepCell.titleTextField.frame.width == 318 {
             UIView.animate(withDuration: 1, delay: 0, animations: {
@@ -55,7 +56,7 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
             }, completion: {_ in stepCell.addResourceButton.isHidden = false}) //At the end of the previous animation, the addResourceButton appears
         }
 
-        stepCell.addResourceButton.addTarget(self, action: #selector(addResourceToStep), for: UIControlEvents.touchUpInside) //It enables the action to present the Resource view to the button of each button of the tableView
+        stepCell.addResourceButton.addTarget(self, action: #selector(addResourceToStep(_: )), for: UIControlEvents.touchUpInside) //It enables the action to present the Resource view to the button of each button of the tableView
 
         return stepCell
     }
@@ -116,9 +117,10 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
         self.present(alert, animated: true, completion: nil)
     }
 
-    @objc func addResourceToStep() {
+    @objc func addResourceToStep(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "AttachResources", bundle: nil)
         let resourcesViewController = storyboard.instantiateViewController(withIdentifier: "AttachResources") as! AttachResourcesTableViewController
+        resourcesViewController.indexOfStep = sender.tag //It assigns the tag number to the index of the viewController to present
         self.navigationController?.pushViewController(resourcesViewController, animated: true)
     }
 }
