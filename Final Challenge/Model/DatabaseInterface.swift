@@ -200,7 +200,7 @@ class DatabaseInterface {
             record.setValue(roadmap.lastReadTimestamp, forKey: K.CKRecordTypes.CKRoadmapRecordField.lastReadTimestamp)
             record.setValue(roadmap.privileges.rawValue, forKey: K.CKRecordTypes.CKRoadmapRecordField.privileges)
             record.setValue(roadmap.title, forKey: K.CKRecordTypes.CKRoadmapRecordField.title)
-//            record.setValue(roadmap.uuid.uuidString, forKey: K.CKRecordTypes.CKRoadmapRecordField.uuid)
+            //            record.setValue(roadmap.uuid.uuidString, forKey: K.CKRecordTypes.CKRoadmapRecordField.uuid)
             record.setValue(roadmap.visibility.rawValue, forKey: K.CKRecordTypes.CKRoadmapRecordField.visibility)
         }
 
@@ -213,7 +213,7 @@ class DatabaseInterface {
         newRecord.setValue(roadmap.lastReadTimestamp, forKey: K.CKRecordTypes.CKRoadmapRecordField.lastReadTimestamp)
         newRecord.setValue(roadmap.privileges.rawValue, forKey: K.CKRecordTypes.CKRoadmapRecordField.privileges)
         newRecord.setValue(roadmap.title, forKey: K.CKRecordTypes.CKRoadmapRecordField.title)
-//        newRecord.setValue(roadmap.uuid.uuidString, forKey: K.CKRecordTypes.CKRoadmapRecordField.uuid)
+        //        newRecord.setValue(roadmap.uuid.uuidString, forKey: K.CKRecordTypes.CKRoadmapRecordField.uuid)
         newRecord.setValue(roadmap.visibility.rawValue, forKey: K.CKRecordTypes.CKRoadmapRecordField.visibility)
 
         return newRecord
@@ -370,6 +370,7 @@ class DatabaseInterface {
         case K.CKRecordTypes.roadmap: updateRoadmap(fromRecord: ckRecord)
         default: return
         }
+        self.reloadData()
     }
 
     private func updateNode(fromRecord ckRecord: CKRecord) {
@@ -397,6 +398,10 @@ class DatabaseInterface {
         case K.CKRecordTypes.roadmap: CoreDataController.shared.deleteRoadmap(uuid)
         default: return
         }
+        self.reloadData()
     }
 
+    private func reloadData() {
+        NotificationCenter.default.post(name: NSNotification.Name.dataFetchedFromCloud, object: nil)
+    }
 }
