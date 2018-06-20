@@ -11,12 +11,22 @@ import UIKit
 @objc (ExtensionShareViewController)
 class ExtensionShareViewController: UIViewController {
 
+    var isUserEditingContent = false
     @IBOutlet weak var savedLinkView: UIView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         savedLinkView.alpha = 0
-        UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction, .curveEaseOut], animations: {self.savedLinkView.alpha = CGFloat(1)}, completion: nil)
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction, .curveEaseOut],
+                       animations: {self.savedLinkView.alpha = CGFloat(1)},
+                       completion: {(_) in DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+                        if (!self.isUserEditingContent) {
+                            self.dismissButtonTap()
+                        }
+
+                       })
+
+        })
         savedLinkView.layer.cornerRadius = 8
         savedLinkView.clipsToBounds = true
         savedLinkView.layer.shadowPath = UIBezierPath(roundedRect: savedLinkView.bounds, cornerRadius: savedLinkView.layer.cornerRadius).cgPath
@@ -30,6 +40,7 @@ class ExtensionShareViewController: UIViewController {
     }
     func dismissButtonTap() {
         //extensionContext!.cancelRequest(withError: NSError())
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.allowUserInteraction, .curveEaseOut], animations: {self.savedLinkView.alpha = CGFloat(0)}, completion: nil)
         extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
     }
 

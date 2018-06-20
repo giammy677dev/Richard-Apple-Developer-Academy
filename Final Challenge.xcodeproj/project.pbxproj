@@ -76,6 +76,8 @@
 		6585ED8420D90B3800C42A63 /* SafariExt.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6585ED7A20D90B3800C42A63 /* SafariExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		65A0BC7D20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */; };
 		65A0BC7F20B4103600BFC766 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7E20B4103600BFC766 /* NetworkManager.swift */; };
+		65AEA5A320DA674800FD8B1E /* NSNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9B962620DA456F004CA3DB /* NSNotification.swift */; };
+		65AEA5A420DA674900FD8B1E /* NSNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9B962620DA456F004CA3DB /* NSNotification.swift */; };
 		65B108C220BD5994007026FC /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B108C120BD5994007026FC /* ArrayExtension.swift */; };
 		65B108C320BD5994007026FC /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B108C120BD5994007026FC /* ArrayExtension.swift */; };
 		65BBE77320D7A50D00FD321E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B10552F720AD7C230077983A /* Info.plist */; };
@@ -1040,6 +1042,7 @@
 				65682ED220DA471D002D988C /* CDNode+CoreDataProperties.swift in Sources */,
 				65682ED420DA4729002D988C /* CoreDataController+Stack.swift in Sources */,
 				65682ED020DA4717002D988C /* CDRoadmap+CoreDataProperties.swift in Sources */,
+				65AEA5A320DA674800FD8B1E /* NSNotification.swift in Sources */,
 				65682ECB20DA470B002D988C /* CDUsedUUID+CoreDataClass.swift in Sources */,
 				65682ECA20DA4668002D988C /* ExtensionShareViewController.swift in Sources */,
 				6585ED7D20D90B3800C42A63 /* ShareViewController.swift in Sources */,
@@ -1063,6 +1066,7 @@
 				652A616020BBFD1C00A101B3 /* CDRoadmap+CoreDataProperties.swift in Sources */,
 				652A615C20BBFD1C00A101B3 /* CDStep+CoreDataProperties.swift in Sources */,
 				652742C020B702440027D862 /* Taggable.swift in Sources */,
+				65AEA5A420DA674900FD8B1E /* NSNotification.swift in Sources */,
 				652742BD20B702440027D862 /* Updatable.swift in Sources */,
 				652A616220BBFD1C00A101B3 /* CDNode+CoreDataClass.swift in Sources */,
 				65EA50FB20B6D26E008BCBFB /* CoreDataController+Stack.swift in Sources */,
@@ -1438,13 +1442,13 @@
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J89Q5R7GF3;
+				DEVELOPMENT_TEAM = S8Z9T4225J;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.stefa.bel-e-buono.final-challenge";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bel-e-buono.final-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -1461,13 +1465,13 @@
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J89Q5R7GF3;
+				DEVELOPMENT_TEAM = S8Z9T4225J;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.stefa.bel-e-buono.final-challenge";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bel-e-buono.final-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
