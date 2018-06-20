@@ -119,6 +119,8 @@
 		B145C10A20D3AA1600E7A08E /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0ED20D282A400E7A08E /* Lato-SemiboldItalic.ttf */; };
 		B145C10B20D3AA1900E7A08E /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F720D282A500E7A08E /* Lato-Thin.ttf */; };
 		B145C10C20D3AA1C00E7A08E /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0FA20D282A500E7A08E /* Lato-ThinItalic.ttf */; };
+		B151667520DA476D00FEC9FD /* AttachResourcesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B151667420DA476D00FEC9FD /* AttachResourcesTableViewController.swift */; };
+		B151667720DA47AD00FEC9FD /* AttachResources.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B151667620DA47AD00FEC9FD /* AttachResources.storyboard */; };
 		B1608B4F20B6B69C00701508 /* Links.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1608B4E20B6B69C00701508 /* Links.storyboard */; };
 		B1608B5320B6B8A300701508 /* LinksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1608B5220B6B8A300701508 /* LinksTableViewController.swift */; };
 		B1608B5620B6C58A00701508 /* CustomLinksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1608B5420B6C58A00701508 /* CustomLinksTableViewCell.swift */; };
@@ -258,6 +260,8 @@
 		B145C0F820D282A500E7A08E /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		B145C0F920D282A500E7A08E /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
 		B145C0FA20D282A500E7A08E /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
+		B151667420DA476D00FEC9FD /* AttachResourcesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachResourcesTableViewController.swift; sourceTree = "<group>"; };
+		B151667620DA47AD00FEC9FD /* AttachResources.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AttachResources.storyboard; sourceTree = "<group>"; };
 		B1608B4E20B6B69C00701508 /* Links.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Links.storyboard; sourceTree = "<group>"; };
 		B1608B5220B6B8A300701508 /* LinksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksTableViewController.swift; sourceTree = "<group>"; };
 		B1608B5420B6C58A00701508 /* CustomLinksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLinksTableViewCell.swift; sourceTree = "<group>"; };
@@ -430,6 +434,7 @@
 				B1608B4E20B6B69C00701508 /* Links.storyboard */,
 				B127492720BB332100C4420C /* AddResource.storyboard */,
 				B18BF51C20BD61C900D9BCF9 /* CreateRoadmap.storyboard */,
+				B151667620DA47AD00FEC9FD /* AttachResources.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -491,6 +496,7 @@
 				B18BF51220BD492300D9BCF9 /* StepTableViewController.swift */,
 				B18BF51A20BD61AE00D9BCF9 /* CreateRoadmapTableViewController.swift */,
 				B186E96020C53E89004C66A2 /* AddStepsTableViewController.swift */,
+				B151667420DA476D00FEC9FD /* AttachResourcesTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -747,6 +753,7 @@
 				B18BF50F20BD450700D9BCF9 /* StepTableViewCell.xib in Resources */,
 				B186E95F20C53E5E004C66A2 /* AddSteps.storyboard in Resources */,
 				B145C10020D3A9F500E7A08E /* Lato-HairlineItalic.ttf in Resources */,
+				B151667720DA47AD00FEC9FD /* AttachResources.storyboard in Resources */,
 				B145C0FE20D3A9F000E7A08E /* Lato-BoldItalic.ttf in Resources */,
 				B145C10A20D3AA1600E7A08E /* Lato-SemiboldItalic.ttf in Resources */,
 				B1608B5720B6C58A00701508 /* CustomLinksTableViewCell.xib in Resources */,
@@ -977,6 +984,7 @@
 				65B108C220BD5994007026FC /* ArrayExtension.swift in Sources */,
 				B127492D20BB33BA00C4420C /* AddResourceTableViewCell.swift in Sources */,
 				B18B9A8520BC12B8004FA469 /* UITextFieldExtension.swift in Sources */,
+				B151667520DA476D00FEC9FD /* AttachResourcesTableViewController.swift in Sources */,
 				A0BBA9D120B3068B008AE848 /* Step.swift in Sources */,
 				A0BBA9D620B30967008AE848 /* Writable.swift in Sources */,
 				652A615F20BBFD1C00A101B3 /* CDRoadmap+CoreDataProperties.swift in Sources */,
