@@ -16,13 +16,13 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Set right bar button save:
+        // Set right bar button save
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveRoadmap(_:)))
 
         // Set title of navigationBar
         self.title = DataSupportRoadmap.shared.getTitleRoadmap()
 
-        //Prepare Roadmap:
+        //Prepare Roadmap
         DataSupportRoadmap.shared.createRoadmap()
 
         //Invoke xib
@@ -33,6 +33,8 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none //delete the separator line between each rows of the tableView
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
         self.tableView.backgroundColor = UIColor.white //set the background color of the tableView
+
+        hideKeyboardWhenTappedAround() //It enables the tap gestures
     }
 
     // MARK: - Table view data source
@@ -133,5 +135,22 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
         let resourcesViewController = storyboard.instantiateViewController(withIdentifier: "AttachResources") as! AttachResourcesTableViewController
         resourcesViewController.indexOfStep = sender.tag //It assigns the tag number to the index of the viewController to present
         self.navigationController?.pushViewController(resourcesViewController, animated: true)
+    }
+
+    //The following function defines the tap gesture
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+    }
+
+    //The following function function save the roadmap title and dismiss the keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+
+    //The following function calls the textFieldShouldReturn function when the user end the editing of the textField when the user tap around in the screen
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        _ = textFieldShouldReturn(textField)
     }
 }
