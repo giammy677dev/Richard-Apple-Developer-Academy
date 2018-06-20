@@ -17,6 +17,15 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
         self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
 
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
+
+        let screenSize: CGRect = UIScreen.main.bounds
+        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 44))
+        let navItem = UINavigationItem(title: "Title")
+        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(done))
+        navItem.rightBarButtonItem = doneItem
+        navBar.setItems([navItem], animated: false)
+        self.view.addSubview(navBar)
+        print("nav bar istanziata")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -115,7 +124,10 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
         }
 
 //        print(controller.fetchCDNodes()![0].parentsStep)
+    }
 
+    @objc func done() {
+        print("done")
     }
 
 }
