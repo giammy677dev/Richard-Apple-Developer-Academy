@@ -76,8 +76,6 @@
 		6585ED8420D90B3800C42A63 /* SafariExt.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6585ED7A20D90B3800C42A63 /* SafariExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		65A0BC7D20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */; };
 		65A0BC7F20B4103600BFC766 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7E20B4103600BFC766 /* NetworkManager.swift */; };
-		65AEA5A320DA674800FD8B1E /* NSNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9B962620DA456F004CA3DB /* NSNotification.swift */; };
-		65AEA5A420DA674900FD8B1E /* NSNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9B962620DA456F004CA3DB /* NSNotification.swift */; };
 		65B108C220BD5994007026FC /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B108C120BD5994007026FC /* ArrayExtension.swift */; };
 		65B108C320BD5994007026FC /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B108C120BD5994007026FC /* ArrayExtension.swift */; };
 		65BBE77320D7A50D00FD321E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B10552F720AD7C230077983A /* Info.plist */; };
@@ -180,6 +178,7 @@
 		B18BF51920BD5F9100D9BCF9 /* TitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B18BF51720BD5F9100D9BCF9 /* TitleTableViewCell.xib */; };
 		B18BF51B20BD61AE00D9BCF9 /* CreateRoadmapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18BF51A20BD61AE00D9BCF9 /* CreateRoadmapTableViewController.swift */; };
 		B18BF51D20BD61C900D9BCF9 /* CreateRoadmap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18BF51C20BD61C900D9BCF9 /* CreateRoadmap.storyboard */; };
+		B6F8866420DA68B100E21CF0 /* NSNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9B962620DA456F004CA3DB /* NSNotification.swift */; };
 		BC683D107E46E0CD67D75C5F /* Pods_Final_ChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA1F377EB73366DA0BFFADF /* Pods_Final_ChallengeTests.framework */; };
 		F2FB85E5134762AFC3FD7EF3 /* Pods_Final_ChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93875BA625B3C5279467CF8E /* Pods_Final_ChallengeUITests.framework */; };
 /* End PBXBuildFile section */
@@ -1042,7 +1041,7 @@
 				65682ED220DA471D002D988C /* CDNode+CoreDataProperties.swift in Sources */,
 				65682ED420DA4729002D988C /* CoreDataController+Stack.swift in Sources */,
 				65682ED020DA4717002D988C /* CDRoadmap+CoreDataProperties.swift in Sources */,
-				65AEA5A320DA674800FD8B1E /* NSNotification.swift in Sources */,
+				B6F8866420DA68B100E21CF0 /* NSNotification.swift in Sources */,
 				65682ECB20DA470B002D988C /* CDUsedUUID+CoreDataClass.swift in Sources */,
 				65682ECA20DA4668002D988C /* ExtensionShareViewController.swift in Sources */,
 				6585ED7D20D90B3800C42A63 /* ShareViewController.swift in Sources */,
@@ -1066,7 +1065,6 @@
 				652A616020BBFD1C00A101B3 /* CDRoadmap+CoreDataProperties.swift in Sources */,
 				652A615C20BBFD1C00A101B3 /* CDStep+CoreDataProperties.swift in Sources */,
 				652742C020B702440027D862 /* Taggable.swift in Sources */,
-				65AEA5A420DA674900FD8B1E /* NSNotification.swift in Sources */,
 				652742BD20B702440027D862 /* Updatable.swift in Sources */,
 				652A616220BBFD1C00A101B3 /* CDNode+CoreDataClass.swift in Sources */,
 				65EA50FB20B6D26E008BCBFB /* CoreDataController+Stack.swift in Sources */,
@@ -1242,7 +1240,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8Z9T4225J;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SafariExt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1263,7 +1261,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8Z9T4225J;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SafariExt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1442,7 +1440,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8Z9T4225J;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1465,7 +1463,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8Z9T4225J;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
