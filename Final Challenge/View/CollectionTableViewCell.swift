@@ -197,7 +197,7 @@ extension CollectionTableViewCell: UIScrollViewDelegate {
                 }
 
             }
-        } else if currentPage == numberOfRoadmapsInPreview || currentPage == numberOfResourcesInPreview {   //left swipe Roadmaps
+        } else if currentPage == numberOfRoadmapsInPreview - 1 || currentPage == numberOfResourcesInPreview - 1 {   //left swipe Roadmaps
             print("Tentativo di Left SWIPE")
             if (widthSwipe + 40) < self.pageOffset[currentPage] {
                 print("Tentativo di Left SWIPE RIUSCITO!")
