@@ -42,6 +42,35 @@
 		65593DC420B306C7001D6F46 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65593DC320B306C7001D6F46 /* StringExtension.swift */; };
 		655B0B0E20BC0F2E00CD73B0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B0B0D20BC0F2E00CD73B0 /* Constants.swift */; };
 		655B0B0F20BC0F2E00CD73B0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B0B0D20BC0F2E00CD73B0 /* Constants.swift */; };
+		65682EB520DA43F3002D988C /* Sharable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9CA20B2FAF2008AE848 /* Sharable.swift */; };
+		65682EB620DA43F6002D988C /* Updatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9D220B30845008AE848 /* Updatable.swift */; };
+		65682EB720DA43F8002D988C /* NodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9D720B309C0008AE848 /* NodeManager.swift */; };
+		65682EB820DA43FA002D988C /* Writable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9D520B30967008AE848 /* Writable.swift */; };
+		65682EB920DA43FD002D988C /* Taggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA03C620B361310048F108 /* Taggable.swift */; };
+		65682EBA20DA4400002D988C /* Roadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9C820B2F932008AE848 /* Roadmap.swift */; };
+		65682EBB20DA4402002D988C /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9CC20B2FD4C008AE848 /* Enumerations.swift */; };
+		65682EBC20DA4404002D988C /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9CE20B30419008AE848 /* Node.swift */; };
+		65682EBD20DA4407002D988C /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA03C820B3624B0048F108 /* Tag.swift */; };
+		65682EBE20DA4409002D988C /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9D020B3068B008AE848 /* Step.swift */; };
+		65682EBF20DA440D002D988C /* SubscribedRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9D920B30A48008AE848 /* SubscribedRoadmap.swift */; };
+		65682EC020DA4411002D988C /* WritableRoadmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BBA9DB20B30BD8008AE848 /* WritableRoadmap.swift */; };
+		65682EC120DA4413002D988C /* CloudKitManager+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BCB5E20B57E5900B66CEE /* CloudKitManager+Helper.swift */; };
+		65682EC220DA4415002D988C /* DatabaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91051520B6B955001005AA /* DatabaseInterface.swift */; };
+		65682EC320DA4418002D988C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B0B0D20BC0F2E00CD73B0 /* Constants.swift */; };
+		65682EC520DA442E002D988C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B177C48920A9768B00CD9CBE /* Assets.xcassets */; };
+		65682EC620DA442E002D988C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B177C48920A9768B00CD9CBE /* Assets.xcassets */; };
+		65682ECA20DA4668002D988C /* ExtensionShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65682EC920DA4668002D988C /* ExtensionShareViewController.swift */; };
+		65682ECB20DA470B002D988C /* CDUsedUUID+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A614D20BBFD1C00A101B3 /* CDUsedUUID+CoreDataClass.swift */; };
+		65682ECC20DA470D002D988C /* CDUsedUUID+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A614E20BBFD1C00A101B3 /* CDUsedUUID+CoreDataProperties.swift */; };
+		65682ECD20DA4710002D988C /* CDStep+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A614F20BBFD1C00A101B3 /* CDStep+CoreDataClass.swift */; };
+		65682ECE20DA4712002D988C /* CDStep+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A615020BBFD1C00A101B3 /* CDStep+CoreDataProperties.swift */; };
+		65682ECF20DA4714002D988C /* CDRoadmap+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A615120BBFD1C00A101B3 /* CDRoadmap+CoreDataClass.swift */; };
+		65682ED020DA4717002D988C /* CDRoadmap+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A615220BBFD1C00A101B3 /* CDRoadmap+CoreDataProperties.swift */; };
+		65682ED120DA4719002D988C /* CDNode+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A615320BBFD1C00A101B3 /* CDNode+CoreDataClass.swift */; };
+		65682ED220DA471D002D988C /* CDNode+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A615420BBFD1C00A101B3 /* CDNode+CoreDataProperties.swift */; };
+		65682ED320DA4726002D988C /* Persistence.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E020B5795D008BCBFB /* Persistence.xcdatamodeld */; };
+		65682ED420DA4729002D988C /* CoreDataController+Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50F720B6CFEC008BCBFB /* CoreDataController+Stack.swift */; };
+		65682ED520DA4780002D988C /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B108C120BD5994007026FC /* ArrayExtension.swift */; };
 		6585ED7D20D90B3800C42A63 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6585ED7C20D90B3800C42A63 /* ShareViewController.swift */; };
 		6585ED8020D90B3800C42A63 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6585ED7E20D90B3800C42A63 /* MainInterface.storyboard */; };
 		6585ED8420D90B3800C42A63 /* SafariExt.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6585ED7A20D90B3800C42A63 /* SafariExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -58,6 +87,8 @@
 		7156BDFC0EC03B97022E43BF /* Pods_Final_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC17DF1CCDA48C886103641 /* Pods_Final_Challenge.framework */; };
 		7B5BCB5F20B57E5900B66CEE /* CloudKitManager+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BCB5E20B57E5900B66CEE /* CloudKitManager+Helper.swift */; };
 		7B91051620B6B955001005AA /* DatabaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91051520B6B955001005AA /* DatabaseInterface.swift */; };
+		7B9B962720DA456F004CA3DB /* NSNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9B962620DA456F004CA3DB /* NSNotification.swift */; };
+		7B9B962920DA49CF004CA3DB /* UITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9B962820DA49CF004CA3DB /* UITableViewController.swift */; };
 		7BEA03C720B361310048F108 /* Taggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA03C620B361310048F108 /* Taggable.swift */; };
 		7BEA03C920B3624B0048F108 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEA03C820B3624B0048F108 /* Tag.swift */; };
 		9002AAE720B2BDAA00854015 /* RoadmapsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9002AAE620B2BDAA00854015 /* RoadmapsTableViewController.swift */; };
@@ -122,6 +153,8 @@
 		B145C10A20D3AA1600E7A08E /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0ED20D282A400E7A08E /* Lato-SemiboldItalic.ttf */; };
 		B145C10B20D3AA1900E7A08E /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F720D282A500E7A08E /* Lato-Thin.ttf */; };
 		B145C10C20D3AA1C00E7A08E /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0FA20D282A500E7A08E /* Lato-ThinItalic.ttf */; };
+		B151667520DA476D00FEC9FD /* AttachResourcesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B151667420DA476D00FEC9FD /* AttachResourcesTableViewController.swift */; };
+		B151667720DA47AD00FEC9FD /* AttachResources.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B151667620DA47AD00FEC9FD /* AttachResources.storyboard */; };
 		B1608B4F20B6B69C00701508 /* Links.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1608B4E20B6B69C00701508 /* Links.storyboard */; };
 		B1608B5320B6B8A300701508 /* LinksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1608B5220B6B8A300701508 /* LinksTableViewController.swift */; };
 		B1608B5620B6C58A00701508 /* CustomLinksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1608B5420B6C58A00701508 /* CustomLinksTableViewCell.swift */; };
@@ -145,6 +178,7 @@
 		B18BF51920BD5F9100D9BCF9 /* TitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B18BF51720BD5F9100D9BCF9 /* TitleTableViewCell.xib */; };
 		B18BF51B20BD61AE00D9BCF9 /* CreateRoadmapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18BF51A20BD61AE00D9BCF9 /* CreateRoadmapTableViewController.swift */; };
 		B18BF51D20BD61C900D9BCF9 /* CreateRoadmap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18BF51C20BD61C900D9BCF9 /* CreateRoadmap.storyboard */; };
+		B6F8866420DA68B100E21CF0 /* NSNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9B962620DA456F004CA3DB /* NSNotification.swift */; };
 		BC683D107E46E0CD67D75C5F /* Pods_Final_ChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA1F377EB73366DA0BFFADF /* Pods_Final_ChallengeTests.framework */; };
 		F2FB85E5134762AFC3FD7EF3 /* Pods_Final_ChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93875BA625B3C5279467CF8E /* Pods_Final_ChallengeUITests.framework */; };
 /* End PBXBuildFile section */
@@ -204,6 +238,7 @@
 		65355ECD20B54F3C00031B6C /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		65593DC320B306C7001D6F46 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		655B0B0D20BC0F2E00CD73B0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		65682EC920DA4668002D988C /* ExtensionShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionShareViewController.swift; sourceTree = "<group>"; };
 		6585ED7A20D90B3800C42A63 /* SafariExt.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SafariExt.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6585ED7C20D90B3800C42A63 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		6585ED7F20D90B3800C42A63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -216,6 +251,8 @@
 		6F30463B7CF8DFFA6943A5EC /* Pods-Final Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final Challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-Final Challenge/Pods-Final Challenge.release.xcconfig"; sourceTree = "<group>"; };
 		7B5BCB5E20B57E5900B66CEE /* CloudKitManager+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitManager+Helper.swift"; sourceTree = "<group>"; };
 		7B91051520B6B955001005AA /* DatabaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseInterface.swift; sourceTree = "<group>"; };
+		7B9B962620DA456F004CA3DB /* NSNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotification.swift; sourceTree = "<group>"; };
+		7B9B962820DA49CF004CA3DB /* UITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewController.swift; sourceTree = "<group>"; };
 		7BEA03C620B361310048F108 /* Taggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Taggable.swift; sourceTree = "<group>"; };
 		7BEA03C820B3624B0048F108 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		8AA1F377EB73366DA0BFFADF /* Pods_Final_ChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Final_ChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -286,6 +323,8 @@
 		B145C0F820D282A500E7A08E /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		B145C0F920D282A500E7A08E /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
 		B145C0FA20D282A500E7A08E /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
+		B151667420DA476D00FEC9FD /* AttachResourcesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachResourcesTableViewController.swift; sourceTree = "<group>"; };
+		B151667620DA47AD00FEC9FD /* AttachResources.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AttachResources.storyboard; sourceTree = "<group>"; };
 		B1608B4E20B6B69C00701508 /* Links.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Links.storyboard; sourceTree = "<group>"; };
 		B1608B5220B6B8A300701508 /* LinksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksTableViewController.swift; sourceTree = "<group>"; };
 		B1608B5420B6C58A00701508 /* CustomLinksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLinksTableViewCell.swift; sourceTree = "<group>"; };
@@ -395,6 +434,8 @@
 				B18B9A8420BC12B8004FA469 /* UITextFieldExtension.swift */,
 				65B108C120BD5994007026FC /* ArrayExtension.swift */,
 				B177C48420A9768B00CD9CBE /* UIViewControllerExtension.swift */,
+				7B9B962620DA456F004CA3DB /* NSNotification.swift */,
+				7B9B962820DA49CF004CA3DB /* UITableViewController.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -403,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				6585ED7C20D90B3800C42A63 /* ShareViewController.swift */,
+				65682EC920DA4668002D988C /* ExtensionShareViewController.swift */,
 				6585ED7E20D90B3800C42A63 /* MainInterface.storyboard */,
 				6585ED8120D90B3800C42A63 /* Info.plist */,
 			);
@@ -475,6 +517,7 @@
 				B1608B4E20B6B69C00701508 /* Links.storyboard */,
 				B127492720BB332100C4420C /* AddResource.storyboard */,
 				B18BF51C20BD61C900D9BCF9 /* CreateRoadmap.storyboard */,
+				B151667620DA47AD00FEC9FD /* AttachResources.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -536,6 +579,7 @@
 				B18BF51220BD492300D9BCF9 /* StepTableViewController.swift */,
 				B18BF51A20BD61AE00D9BCF9 /* CreateRoadmapTableViewController.swift */,
 				B186E96020C53E89004C66A2 /* AddStepsTableViewController.swift */,
+				B151667420DA476D00FEC9FD /* AttachResourcesTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -798,6 +842,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65682EC520DA442E002D988C /* Assets.xcassets in Resources */,
 				6585ED8020D90B3800C42A63 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -808,6 +853,7 @@
 			files = (
 				B10552F620AD7C230077983A /* MainInterface.storyboard in Resources */,
 				B105530020AD7C430077983A /* GetURL.js in Resources */,
+				65682EC620DA442E002D988C /* Assets.xcassets in Resources */,
 				65BBE77320D7A50D00FD321E /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -825,6 +871,7 @@
 				B18BF50F20BD450700D9BCF9 /* StepTableViewCell.xib in Resources */,
 				B186E95F20C53E5E004C66A2 /* AddSteps.storyboard in Resources */,
 				B145C10020D3A9F500E7A08E /* Lato-HairlineItalic.ttf in Resources */,
+				B151667720DA47AD00FEC9FD /* AttachResources.storyboard in Resources */,
 				B145C0FE20D3A9F000E7A08E /* Lato-BoldItalic.ttf in Resources */,
 				B145C10A20D3AA1600E7A08E /* Lato-SemiboldItalic.ttf in Resources */,
 				B1608B5720B6C58A00701508 /* CustomLinksTableViewCell.xib in Resources */,
@@ -978,7 +1025,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65682ECD20DA4710002D988C /* CDStep+CoreDataClass.swift in Sources */,
+				65682EBE20DA4409002D988C /* Step.swift in Sources */,
+				65682EB620DA43F6002D988C /* Updatable.swift in Sources */,
+				65682ECF20DA4714002D988C /* CDRoadmap+CoreDataClass.swift in Sources */,
+				65682EBA20DA4400002D988C /* Roadmap.swift in Sources */,
+				65682ED320DA4726002D988C /* Persistence.xcdatamodeld in Sources */,
+				65682ECE20DA4712002D988C /* CDStep+CoreDataProperties.swift in Sources */,
+				65682EBD20DA4407002D988C /* Tag.swift in Sources */,
+				65682EB720DA43F8002D988C /* NodeManager.swift in Sources */,
+				65682EBC20DA4404002D988C /* Node.swift in Sources */,
+				65682EB920DA43FD002D988C /* Taggable.swift in Sources */,
+				65682ED520DA4780002D988C /* ArrayExtension.swift in Sources */,
+				65682EC320DA4418002D988C /* Constants.swift in Sources */,
+				65682ED220DA471D002D988C /* CDNode+CoreDataProperties.swift in Sources */,
+				65682ED420DA4729002D988C /* CoreDataController+Stack.swift in Sources */,
+				65682ED020DA4717002D988C /* CDRoadmap+CoreDataProperties.swift in Sources */,
+				B6F8866420DA68B100E21CF0 /* NSNotification.swift in Sources */,
+				65682ECB20DA470B002D988C /* CDUsedUUID+CoreDataClass.swift in Sources */,
+				65682ECA20DA4668002D988C /* ExtensionShareViewController.swift in Sources */,
 				6585ED7D20D90B3800C42A63 /* ShareViewController.swift in Sources */,
+				65682EBF20DA440D002D988C /* SubscribedRoadmap.swift in Sources */,
+				65682EC220DA4415002D988C /* DatabaseInterface.swift in Sources */,
+				65682EB820DA43FA002D988C /* Writable.swift in Sources */,
+				65682EB520DA43F3002D988C /* Sharable.swift in Sources */,
+				65682EBB20DA4402002D988C /* Enumerations.swift in Sources */,
+				65682ECC20DA470D002D988C /* CDUsedUUID+CoreDataProperties.swift in Sources */,
+				65682EC120DA4413002D988C /* CloudKitManager+Helper.swift in Sources */,
+				65682ED120DA4719002D988C /* CDNode+CoreDataClass.swift in Sources */,
+				65682EC020DA4411002D988C /* WritableRoadmap.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1044,6 +1119,7 @@
 				655B0B0E20BC0F2E00CD73B0 /* Constants.swift in Sources */,
 				652A615520BBFD1C00A101B3 /* CDUsedUUID+CoreDataClass.swift in Sources */,
 				B1608B5920B7114900701508 /* UIColorExtension.swift in Sources */,
+				7B9B962920DA49CF004CA3DB /* UITableViewController.swift in Sources */,
 				652A616120BBFD1C00A101B3 /* CDNode+CoreDataClass.swift in Sources */,
 				A0BBA9CB20B2FAF2008AE848 /* Sharable.swift in Sources */,
 				B127493120BB417F00C4420C /* AddTagsTableViewCell.swift in Sources */,
@@ -1063,6 +1139,7 @@
 				65B108C220BD5994007026FC /* ArrayExtension.swift in Sources */,
 				B127492D20BB33BA00C4420C /* AddResourceTableViewCell.swift in Sources */,
 				B18B9A8520BC12B8004FA469 /* UITextFieldExtension.swift in Sources */,
+				B151667520DA476D00FEC9FD /* AttachResourcesTableViewController.swift in Sources */,
 				A0BBA9D120B3068B008AE848 /* Step.swift in Sources */,
 				A0BBA9D620B30967008AE848 /* Writable.swift in Sources */,
 				652A615F20BBFD1C00A101B3 /* CDRoadmap+CoreDataProperties.swift in Sources */,
@@ -1072,6 +1149,7 @@
 				B177C48320A9768B00CD9CBE /* AppDelegate.swift in Sources */,
 				9002AAF220B2BFC000854015 /* HeaderTableViewCell.swift in Sources */,
 				B18BF51B20BD61AE00D9BCF9 /* CreateRoadmapTableViewController.swift in Sources */,
+				7B9B962720DA456F004CA3DB /* NSNotification.swift in Sources */,
 				652A615720BBFD1C00A101B3 /* CDUsedUUID+CoreDataProperties.swift in Sources */,
 				9002AAE720B2BDAA00854015 /* RoadmapsTableViewController.swift in Sources */,
 				A0BBA9CD20B2FD4C008AE848 /* Enumerations.swift in Sources */,
@@ -1162,7 +1240,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8Z9T4225J;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SafariExt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1183,7 +1261,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8Z9T4225J;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SafariExt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1362,7 +1440,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8Z9T4225J;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1385,7 +1463,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8Z9T4225J;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

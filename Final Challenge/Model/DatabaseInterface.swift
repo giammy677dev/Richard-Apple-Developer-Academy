@@ -34,7 +34,7 @@ class DatabaseInterface {
     /// Saves a node in local and cloud DB. If the node doesn't exist it creates a new one and saves it.
     public func save(_ node: Node) {
         // CloudKit
-        let recordID = CKRecordID(recordName: node.getNodeUUID().uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName))
+        let recordID = CKRecordID(recordName: node.getNodeUUID().uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName, ownerName: CKCurrentUserDefaultName))
         let completion: (([CKRecordID: CKRecord]?, Error?) -> Void) = { (recordsDict, error) in
             guard let recordsDictionary = recordsDict else { debugPrint("No records dictionary found."); return }
             if let ckError = error as? CKError {
@@ -64,7 +64,7 @@ class DatabaseInterface {
     public func save(_ roadmap: WritableRoadmap) {
         /// Saves a roadmap in local and cloud DB. If the roadmap doesn't exist it creates a new one and saves it.
         // CloudKit
-        let recordID = CKRecordID(recordName: roadmap.getRoadmapUUID().uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName))
+        let recordID = CKRecordID(recordName: roadmap.getRoadmapUUID().uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName, ownerName: CKCurrentUserDefaultName))
         let completion: (([CKRecordID: CKRecord]?, Error?) -> Void) = { (recordsDict, error) in
             guard let recordsDictionary = recordsDict else { debugPrint("No records dictionary found."); return }
             if let ckError = error as? CKError {
@@ -94,7 +94,7 @@ class DatabaseInterface {
     /// Saves a step in local and cloud DB. If the step doesn't exist it creates a new one and saves it.
     public func save(_ step: Step) {
         // CloudKit
-        let recordID = CKRecordID(recordName: step.getStepUUID().uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName))
+        let recordID = CKRecordID(recordName: step.getStepUUID().uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName, ownerName: CKCurrentUserDefaultName))
         let completion: (([CKRecordID: CKRecord]?, Error?) -> Void) = { (recordsDict, error) in
             guard let recordsDictionary = recordsDict else { debugPrint("No records dictionary found."); return }
             if let ckError = error as? CKError {
@@ -164,19 +164,19 @@ class DatabaseInterface {
 
     // MARK: - Interface to deleting operations
     public func deleteRoadmap(_ roadmap: WritableRoadmap) {
-        let recordID = CKRecordID(recordName: roadmap.getRoadmapUUID().uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName))
+        let recordID = CKRecordID(recordName: roadmap.getRoadmapUUID().uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName, ownerName: CKCurrentUserDefaultName))
         cdController.deleteRoadmap(roadmap) //Delete roadmap from CoreData DB
         ckManager.deleteRecord(withRecordID: recordID) //Delete roadmap from CloudKit DB
     }
 
     public func deleteStep(_ step: Step) {
-        let recordID = CKRecordID(recordName: step.getStepUUID().uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName))
+        let recordID = CKRecordID(recordName: step.getStepUUID().uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName, ownerName: CKCurrentUserDefaultName))
         cdController.deleteStep(step) //Delete step from CoreData DB
         ckManager.deleteRecord(withRecordID: recordID) //Delete step from CloudKit DB
     }
 
     public func deleteNode(_ node: Node) {
-        let recordID = CKRecordID(recordName: node.getNodeUUID().uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName))
+        let recordID = CKRecordID(recordName: node.getNodeUUID().uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName, ownerName: CKCurrentUserDefaultName))
         cdController.deleteNode(node) //Delete node from CoreData DB
         ckManager.deleteRecord(withRecordID: recordID) //Delete roadmap from CloudKit DB
     }
@@ -200,11 +200,11 @@ class DatabaseInterface {
             record.setValue(roadmap.lastReadTimestamp, forKey: K.CKRecordTypes.CKRoadmapRecordField.lastReadTimestamp)
             record.setValue(roadmap.privileges.rawValue, forKey: K.CKRecordTypes.CKRoadmapRecordField.privileges)
             record.setValue(roadmap.title, forKey: K.CKRecordTypes.CKRoadmapRecordField.title)
-//            record.setValue(roadmap.uuid.uuidString, forKey: K.CKRecordTypes.CKRoadmapRecordField.uuid)
+            //            record.setValue(roadmap.uuid.uuidString, forKey: K.CKRecordTypes.CKRoadmapRecordField.uuid)
             record.setValue(roadmap.visibility.rawValue, forKey: K.CKRecordTypes.CKRoadmapRecordField.visibility)
         }
 
-        let recordID = CKRecordID(recordName: roadmap.getRoadmapUUID().uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName))
+        let recordID = CKRecordID(recordName: roadmap.getRoadmapUUID().uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName, ownerName: CKCurrentUserDefaultName))
         let newRecord = CKRecord(recordType: K.CKRecordTypes.roadmap, recordID: recordID)
 
         newRecord.setValue(roadmap.category.rawValue, forKey: K.CKRecordTypes.CKRoadmapRecordField.category)
@@ -213,7 +213,7 @@ class DatabaseInterface {
         newRecord.setValue(roadmap.lastReadTimestamp, forKey: K.CKRecordTypes.CKRoadmapRecordField.lastReadTimestamp)
         newRecord.setValue(roadmap.privileges.rawValue, forKey: K.CKRecordTypes.CKRoadmapRecordField.privileges)
         newRecord.setValue(roadmap.title, forKey: K.CKRecordTypes.CKRoadmapRecordField.title)
-//        newRecord.setValue(roadmap.uuid.uuidString, forKey: K.CKRecordTypes.CKRoadmapRecordField.uuid)
+        //        newRecord.setValue(roadmap.uuid.uuidString, forKey: K.CKRecordTypes.CKRoadmapRecordField.uuid)
         newRecord.setValue(roadmap.visibility.rawValue, forKey: K.CKRecordTypes.CKRoadmapRecordField.visibility)
 
         return newRecord
@@ -227,21 +227,21 @@ class DatabaseInterface {
             record.setValue(step.indexInParent, forKeyPath: K.CKRecordTypes.CKStepRecordField.indexInParent)
 
             // Set the reference to the parent and the delete cascade update policy
-            let parentID = CKRecordID(recordName: step.parent.uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName))
+            let parentID = CKRecordID(recordName: step.parent.uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName, ownerName: CKCurrentUserDefaultName))
             let parentReference = CKReference(recordID: parentID, action: .none)
             record.parent = parentReference
 
             return record
         }
 
-        let recordID = CKRecordID(recordName: step.getStepUUID().uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName))
+        let recordID = CKRecordID(recordName: step.getStepUUID().uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName, ownerName: CKCurrentUserDefaultName))
         let newRecord = CKRecord(recordType: K.CKRecordTypes.step, recordID: recordID)
 
         newRecord.setValue(step.title, forKey: K.CKRecordTypes.CKStepRecordField.title)
         newRecord.setValue(step.indexInParent, forKeyPath: K.CKRecordTypes.CKStepRecordField.indexInParent)
 
         // Set the reference to the parent
-        let parentID = CKRecordID(recordName: step.parent.uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName))
+        let parentID = CKRecordID(recordName: step.parent.uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName, ownerName: CKCurrentUserDefaultName))
         let parentReference = CKReference(recordID: parentID, action: CKReferenceAction.none)
         newRecord.parent = parentReference
 
@@ -255,7 +255,7 @@ class DatabaseInterface {
         let tagsData = try? encoder.encode(node.tags)
 
         // Set the reference to the parent
-        let parentID = CKRecordID(recordName: node.parent.uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName))
+        let parentID = CKRecordID(recordName: node.parent.uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName, ownerName: CKCurrentUserDefaultName))
         let parentReference = CKReference(recordID: parentID, action: CKReferenceAction.none)
 
         // If the record already exists (and it has been fetched)
@@ -276,7 +276,7 @@ class DatabaseInterface {
         }
 
         // Else
-        let recordID = CKRecordID(recordName: node.getNodeUUID().uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName))
+        let recordID = CKRecordID(recordName: node.getNodeUUID().uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName, ownerName: CKCurrentUserDefaultName))
         let newRecord = CKRecord(recordType: K.CKRecordTypes.node, recordID: recordID)
 
         newRecord.setValue(node.creationTimestamp, forKey: K.CKRecordTypes.CKNodeRecordField.creationTime)
@@ -370,6 +370,7 @@ class DatabaseInterface {
         case K.CKRecordTypes.roadmap: updateRoadmap(fromRecord: ckRecord)
         default: return
         }
+        self.reloadData()
     }
 
     private func updateNode(fromRecord ckRecord: CKRecord) {
@@ -397,6 +398,10 @@ class DatabaseInterface {
         case K.CKRecordTypes.roadmap: CoreDataController.shared.deleteRoadmap(uuid)
         default: return
         }
+        self.reloadData()
     }
 
+    private func reloadData() {
+        NotificationCenter.default.post(name: NSNotification.Name.dataFetchedFromCloud, object: nil)
+    }
 }

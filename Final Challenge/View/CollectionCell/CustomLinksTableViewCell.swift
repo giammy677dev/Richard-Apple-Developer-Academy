@@ -31,7 +31,7 @@ class CustomLinksTableViewCell: UITableViewCell {
 
         //Modify the image of the checkButton basing on its state
         if checkButton.isSelected == false {
-            sender.setImage(UIImage(named: "Checkmark"), for: .selected)
+            sender.setImage(UIImage(named: "CheckOn"), for: .selected)
         }
 
         //Animate the checkButton
