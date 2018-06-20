@@ -117,10 +117,8 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
     }
 
     @objc func addResourceToStep() {
-        let storyboard = UIStoryboard(name: "Researches", bundle: nil)
-        let resourcesViewController = storyboard.instantiateViewController(withIdentifier: "Resources") as! ResourcesTableViewController
-
-        self.present(resourcesViewController, animated: true, completion: nil)
-        print("table view istanziata")
+        let storyboard = UIStoryboard(name: "AttachResources", bundle: nil)
+        let resourcesViewController = storyboard.instantiateViewController(withIdentifier: "AttachResources") as! AttachResourcesTableViewController
+        self.navigationController?.pushViewController(resourcesViewController, animated: true)
     }
 }
