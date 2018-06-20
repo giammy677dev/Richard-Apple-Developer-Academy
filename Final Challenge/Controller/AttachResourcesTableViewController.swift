@@ -16,6 +16,10 @@ class AttachResourcesTableViewController: UITableViewController {
     //Current step:
     var currentStep: Step?
 
+    var readingListNodes: [Node] {
+        return CurrentData.shared.loadResourcesFromDatabase()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,6 +35,10 @@ class AttachResourcesTableViewController: UITableViewController {
         let searchBar = UISearchController(searchResultsController: nil)
         searchBar.searchResultsUpdater = self as? UISearchResultsUpdating
         self.navigationItem.searchController = searchBar
+
+        //Invoke xib
+        let cell = UINib(nibName: "CustomLinksTableViewCell", bundle: nil)
+        self.tableView.register(cell, forCellReuseIdentifier: "CustomLinksTableViewCell")
     }
 
     override func viewWillAppear(_ animated: Bool) { //It allows to present the searchBar directly without scrolling when the view is presented
@@ -50,11 +58,23 @@ class AttachResourcesTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return CurrentData.shared.readingListByTags.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomLinksTableViewCell", for: indexPath) as! CustomLinksTableViewCell
+
+        //Set parameters of the cell:
+        cell.titleLabel.text = readingListNodes.safeCall(indexPath.item)?.title
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
     }
 
     @objc func done() {

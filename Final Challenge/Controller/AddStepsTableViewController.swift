@@ -11,6 +11,7 @@ import UIKit
 class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
 
     var numberOfRows = 1 //Initial number of the rows
+    var rowEntrance: [Bool] = [false] //It will be useful to detect if we have to add new rows to the tableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,7 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
         let stepCell = tableView.dequeueReusableCell(withIdentifier: "AddStepTableViewCell", for: indexPath) as! AddStepTableViewCell
 
         stepCell.titleTextField.delegate = self
+        stepCell.titleTextField.tag = indexPath.item //Assign an integer to the textField basing on the indexPath
         stepCell.addResourceButton.tag = indexPath.item //Assign an integer to the button basing on the indexPath
 
         if stepCell.titleTextField.frame.width == 318 {
@@ -86,15 +88,24 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
             self.present(alert, animated: true, completion: nil)
         } else {
             //The following lines of code add a new row and modify the tableView when the user close the keyboard and there is some text in the textField
-            tableView.beginUpdates() //It starts the modification of the tableView
-            tableView.insertRows(at: [IndexPath(row: numberOfRows, section: 0)], with: .automatic) //It adds the new row at the end of the tableView
-            DataSupportRoadmap.shared.setTitleStep(titleTextField.text!) //It temporaly save title of the step in Data Support Roadmap
-            DataSupportRoadmap.shared.createStep(numberOfRows - 1) //It create a Step in the syngleton Data Support Roadmap
-            numberOfRows += 1 //It increases the number of rows
-            tableView.endUpdates() //It ends the modification of the tableView
-            tableView.reloadData() //It loads new datas for the tableView
+            if rowEntrance[titleTextField.tag] == false { //If it is the first time that we add text to the textField, new row is added at the end of the tableView
+                tableView.beginUpdates() //It starts the modification of the tableView
+                tableView.insertRows(at: [IndexPath(row: numberOfRows, section: 0)], with: .automatic) //It adds the new row at the end of the tableView
+                rowEntrance[titleTextField.tag] = true //It sets the boolean array to true for the modified cell to indicate that it has been already modified. So, if we will modify the text again, it will not add a new row at the end of the tableView
 
-            titleTextField.frame.size.width = 318 //It reduces of one the width of the titleTextField to enable the animation in the cellForRowAt func
+                numberOfRows += 1 //It increases the number of rows
+                rowEntrance.append(false) //It appends a new value in the boolean array rowEntrance and sets it to false
+                tableView.endUpdates() //It ends the modification of the tableView
+                tableView.reloadData() //It loads new datas for the tableView
+
+                titleTextField.frame.size.width = 318 //It reduces of one the width of the titleTextField to enable the animation in the cellForRowAt func
+
+                DataSupportRoadmap.shared.setTitleStep(titleTextField.text!) //It temporaly save title of the step in Data Support Roadmap
+                DataSupportRoadmap.shared.createStep(numberOfRows - 1) //It create a Step in the syngleton Data Support Roadmap
+            }
+
+            DataSupportRoadmap.shared.setTitleStep(titleTextField.text!) //It temporaly save title of the step in Data Support Roadmap
+            DataSupportRoadmap.shared.roadmap?.steps[titleTextField.tag].title = titleTextField.text! //Simple update of step title
         }
         return true
     }

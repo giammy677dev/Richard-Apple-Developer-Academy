@@ -54,7 +54,7 @@ class CurrentData {
         self.resources = resourcesLoaded
     }
 
-    private func loadResourcesFromDatabase() -> [Node] {
+    func loadResourcesFromDatabase() -> [Node] {
         let controller = CoreDataController.shared
         guard let coreDataReadingListRoadmap = controller.fetchCDRoadmap(uuid: K.readingListRoadmapID) else {
             debugPrint("[CDERROR] No reading list found")
