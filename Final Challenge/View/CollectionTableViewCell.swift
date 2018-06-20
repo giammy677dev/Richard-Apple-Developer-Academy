@@ -16,25 +16,33 @@ class CollectionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
+    //setup properties:
     var delegate: MyCustomCellDelegator!
-    var category: Int = 0
     var newTargetOffset: Float = 0
     var cellWidth: Float = 240
     var footerWidth: Float = 35
     var pageOffset: [Float] = []
     var currentPage = 0
     var lastOffset: Float = 0
-    var numberMaxOfRoadmapsInPreview = 4
-    var numberOfRoadmapsInPreview = 0
-    var firstTime: Bool = true
-    var seeAllFirstTime: Bool = true
     var doNothing: Bool = false
     var swipe: Bool = false
+    var numberMaxOfElemInPreview = 4
+
+    //roadmaps properties:
+    var category: Int = 0
+    var numberOfRoadmapsInPreview = 0
+
+    //resources properties:
+    var currentTag: String = ""
+    var numberOfResourcesInPreview = 0
+
+    //switch
+    var currentTabItem: String = ""
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        for i in 0...numberMaxOfRoadmapsInPreview {
+        for i in 0...numberMaxOfElemInPreview {
             if i == 0 {
                 self.pageOffset.append(Float(i)*cellWidth)
             } else {
@@ -61,6 +69,16 @@ class CollectionTableViewCell: UITableViewCell {
         let cellNib = UINib(nibName: "CustomCollectionViewCell", bundle: nil)
         self.collectionView.register(cellNib, forCellWithReuseIdentifier: "CustomCollectionViewCell")
 
+        numberOfRoadmapsInPreview = CurrentData.shared.roadmapsInCategories[Category(rawValue: Int16(self.category))!]!
+
+        numberOfResourcesInPreview = CurrentData.shared.resourcesForTag(tag: self.currentTag).count
+
+        if numberOfRoadmapsInPreview != 0 {
+            currentTabItem = "Roadmaps"
+        } else {
+            currentTabItem = "Resources"
+        }
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -73,7 +91,29 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         numberOfRoadmapsInPreview = CurrentData.shared.roadmapsInCategories[Category(rawValue: Int16(self.category))!]!
-        return numberOfRoadmapsInPreview //numbers of roadmpas in Category
+
+        numberOfResourcesInPreview = CurrentData.shared.resourcesForTag(tag: self.currentTag).count
+
+        if numberOfRoadmapsInPreview != 0 {
+            print("numero di roadmaps: \(numberOfRoadmapsInPreview)")
+            if numberOfRoadmapsInPreview > 5 {
+                numberOfRoadmapsInPreview = 5
+            }
+            if numberOfRoadmapsInPreview > numberMaxOfElemInPreview {
+                return numberMaxOfElemInPreview + 1
+            }
+            return numberOfRoadmapsInPreview //numbers of roadmpas in Category
+        } else {
+            print("numero di resources: \(numberOfResourcesInPreview)")
+            if numberOfResourcesInPreview > 5 {
+                numberOfResourcesInPreview = 5
+            }
+            if numberOfResourcesInPreview > numberMaxOfElemInPreview {
+                return numberMaxOfElemInPreview + 1
+            }
+            return numberOfResourcesInPreview //numbers of roadmpas in Category
+        }
+
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -92,7 +132,7 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
         }
 
         //custom SEEALL as last cell in collection
-        if indexPath.section == 4 {
+        if indexPath.section == 4 && currentTag != "Recent"{
             cell?.linkLabel.isHidden = true
             cell?.titleLabel.isHidden = true
             cell?.minutesLeftLabel.isHidden = true
@@ -114,7 +154,7 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == numberMaxOfRoadmapsInPreview {  //See All Cell
+        if indexPath.section == numberMaxOfElemInPreview {  //See All Cell
             self.delegate.callSegueFromCell(identifier: "SeeAllSegue")
         }
     }
@@ -130,24 +170,37 @@ extension CollectionTableViewCell: UIScrollViewDelegate {
 
         let widthSwipe: Float = Float(scrollView.contentOffset.x)
 
-//        print("\n\nwidthSwipe = \(widthSwipe) è > di = \(self.pageOffset[currentPage])")
-//        print("a quale pagina ero prima? : \(currentPage)")
+        print("\n\nwidthSwipe = \(widthSwipe) è > di = \(self.pageOffset[currentPage])")
+        print("a quale pagina ero prima? : \(currentPage)")
 
         if widthSwipe > self.pageOffset[currentPage] {  //right swipe
-//            print("RIGHT SWIPE")
+            print("RIGHT SWIPE")
             swipe = true
-            if currentPage < numberMaxOfRoadmapsInPreview {
-                if currentPage == numberOfRoadmapsInPreview - 1 {
+            if currentPage < numberMaxOfElemInPreview {
+                switch currentTabItem {
+                case "Roadmaps":
+                    if currentPage == numberOfRoadmapsInPreview  - 1 {
 
-                } else {
-                    currentPage = currentPage + 1
-                    newTargetOffset = self.pageOffset[currentPage]
+                    } else {
+                        currentPage = currentPage + 1
+                        newTargetOffset = self.pageOffset[currentPage]
+                    }
+                case "Resources":
+                    if currentPage == numberOfResourcesInPreview  - 1 {
+
+                    } else {
+                        currentPage = currentPage + 1
+                        newTargetOffset = self.pageOffset[currentPage]
+                    }
+                default:
+                    print("[ERROR]: NO TABITEM")
                 }
+
             }
-        } else if currentPage == numberOfRoadmapsInPreview - 1 {   //left swipe
-//            print("Tentativo di Left SWIPE")
+        } else if currentPage == numberOfRoadmapsInPreview - 1 || currentPage == numberOfResourcesInPreview - 1 {   //left swipe Roadmaps
+            print("Tentativo di Left SWIPE")
             if (widthSwipe + 40) < self.pageOffset[currentPage] {
-//                print("Tentativo di Left SWIPE RIUSCITO!")
+                print("Tentativo di Left SWIPE RIUSCITO!")
                 swipe = true
                 doNothing = false
                 currentPage = currentPage - 1
@@ -155,7 +208,7 @@ extension CollectionTableViewCell: UIScrollViewDelegate {
             }
 
         } else if widthSwipe < self.pageOffset[currentPage] {   //left swipe
-//            print("LEFT SWIPE")
+            print("LEFT SWIPE")
             swipe = true
             if currentPage > 0 {
                 doNothing = false
@@ -166,19 +219,20 @@ extension CollectionTableViewCell: UIScrollViewDelegate {
 
         if swipe {
             swipe = false
-//            print("Ora sono alla pagina: \(currentPage)")
-//            print("NewOffset: \(newTargetOffset)")
-            if currentPage == numberOfRoadmapsInPreview - 1 {
+            print("Ora sono alla pagina: \(currentPage)")
+            print("NewOffset: \(newTargetOffset)")
+            if currentPage == numberOfRoadmapsInPreview  - 1 || currentPage == numberOfResourcesInPreview  - 1 {
                 newTargetOffset = newTargetOffset - footerWidth
+                print("ULTIMA PAG")
             }
 
             targetContentOffset.pointee.x = CGFloat(widthSwipe)
             scrollView.setContentOffset(CGPoint(x: CGFloat(newTargetOffset), y: scrollView.contentOffset.y), animated: true)
 
             if !doNothing {
-//                print("velocity: \(velocity)\n\n")
+                print("velocity: \(velocity)\n\n")
 
-                for i in 0...numberMaxOfRoadmapsInPreview {
+                for i in 0...numberMaxOfElemInPreview {
                     if i == Int(self.currentPage) {
                         UIView.animate(withDuration: 0.4, animations: {
                             let cell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: i))
@@ -195,17 +249,17 @@ extension CollectionTableViewCell: UIScrollViewDelegate {
 
             } else {
                 UIView.animate(withDuration: 0.4, animations: {
-                    let cell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: self.numberMaxOfRoadmapsInPreview))
+                    let cell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: self.numberMaxOfElemInPreview))
                     cell?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
                 }, completion: nil)
                 UIView.animate(withDuration: 0.4, animations: {
-                    let cell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: self.numberMaxOfRoadmapsInPreview - 1))
+                    let cell = self.collectionView.cellForItem(at: IndexPath(row: 0, section: self.numberMaxOfElemInPreview - 1))
                     cell?.transform = CGAffineTransform(scaleX: 1, y: 1)
                 }, completion: nil)
                 doNothing = false
             }
-            if currentPage == numberOfRoadmapsInPreview - 1 {
-//                print("DO NOTHING")
+            if currentPage == numberOfRoadmapsInPreview  - 1 || currentPage == numberOfResourcesInPreview  - 1 {
+                print("DO NOTHING")
                 doNothing = true
             }
         }
