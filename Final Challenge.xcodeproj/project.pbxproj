@@ -42,6 +42,9 @@
 		65593DC420B306C7001D6F46 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65593DC320B306C7001D6F46 /* StringExtension.swift */; };
 		655B0B0E20BC0F2E00CD73B0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B0B0D20BC0F2E00CD73B0 /* Constants.swift */; };
 		655B0B0F20BC0F2E00CD73B0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655B0B0D20BC0F2E00CD73B0 /* Constants.swift */; };
+		6585ED7D20D90B3800C42A63 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6585ED7C20D90B3800C42A63 /* ShareViewController.swift */; };
+		6585ED8020D90B3800C42A63 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6585ED7E20D90B3800C42A63 /* MainInterface.storyboard */; };
+		6585ED8420D90B3800C42A63 /* SafariExt.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6585ED7A20D90B3800C42A63 /* SafariExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		65A0BC7D20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */; };
 		65A0BC7F20B4103600BFC766 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7E20B4103600BFC766 /* NetworkManager.swift */; };
 		65B108C220BD5994007026FC /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B108C120BD5994007026FC /* ArrayExtension.swift */; };
@@ -149,6 +152,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		6585ED8220D90B3800C42A63 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B177C47720A9768B00CD9CBE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6585ED7920D90B3800C42A63;
+			remoteInfo = SafariExt;
+		};
 		B177C49420A9768B00CD9CBE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B177C47720A9768B00CD9CBE /* Project object */;
@@ -164,6 +174,20 @@
 			remoteInfo = "Final Challenge";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6585ED8820D90B3800C42A63 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6585ED8420D90B3800C42A63 /* SafariExt.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		01C37C8A4E93D59FDEE64EB7 /* Pods-Final Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final Challenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Final Challenge/Pods-Final Challenge.debug.xcconfig"; sourceTree = "<group>"; };
@@ -182,6 +206,10 @@
 		65355ECD20B54F3C00031B6C /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		65593DC320B306C7001D6F46 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		655B0B0D20BC0F2E00CD73B0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6585ED7A20D90B3800C42A63 /* SafariExt.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SafariExt.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6585ED7C20D90B3800C42A63 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		6585ED7F20D90B3800C42A63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		6585ED8120D90B3800C42A63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoilerpipeAnswerStructure.swift; sourceTree = "<group>"; };
 		65A0BC7E20B4103600BFC766 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		65B108C120BD5994007026FC /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
@@ -292,6 +320,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6585ED7720D90B3800C42A63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B10552ED20AD7C230077983A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -366,6 +401,16 @@
 				B177C48420A9768B00CD9CBE /* UIViewControllerExtension.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		6585ED7B20D90B3800C42A63 /* SafariExt */ = {
+			isa = PBXGroup;
+			children = (
+				6585ED7C20D90B3800C42A63 /* ShareViewController.swift */,
+				6585ED7E20D90B3800C42A63 /* MainInterface.storyboard */,
+				6585ED8120D90B3800C42A63 /* Info.plist */,
+			);
+			path = SafariExt;
 			sourceTree = "<group>";
 		};
 		65A0BC7B20B40D3500BFC766 /* Model */ = {
@@ -558,6 +603,7 @@
 				B145C0E820D2827200E7A08E /* fonts */,
 				B177C48120A9768B00CD9CBE /* Final Challenge */,
 				B10552F120AD7C230077983A /* Safari Extension */,
+				6585ED7B20D90B3800C42A63 /* SafariExt */,
 				B177C48020A9768B00CD9CBE /* Products */,
 				B111196C20B571DF007FDFB5 /* Frameworks */,
 				2E337C44B4C768A0AE1B5774 /* Pods */,
@@ -571,6 +617,7 @@
 				B177C49320A9768B00CD9CBE /* Final ChallengeTests.xctest */,
 				B177C49E20A9768B00CD9CBE /* Final ChallengeUITests.xctest */,
 				B10552F020AD7C230077983A /* Safari Extension.appex */,
+				6585ED7A20D90B3800C42A63 /* SafariExt.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -595,6 +642,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6585ED7920D90B3800C42A63 /* SafariExt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6585ED8720D90B3800C42A63 /* Build configuration list for PBXNativeTarget "SafariExt" */;
+			buildPhases = (
+				6585ED7620D90B3800C42A63 /* Sources */,
+				6585ED7720D90B3800C42A63 /* Frameworks */,
+				6585ED7820D90B3800C42A63 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SafariExt;
+			productName = SafariExt;
+			productReference = 6585ED7A20D90B3800C42A63 /* SafariExt.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		B10552EF20AD7C230077983A /* Safari Extension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B10552FB20AD7C230077983A /* Build configuration list for PBXNativeTarget "Safari Extension" */;
@@ -623,10 +687,12 @@
 				B177C47D20A9768B00CD9CBE /* Resources */,
 				7B92019520BD8E15001C9F61 /* Warning and Error at compile time */,
 				7B208AA420C5289C0060A7DC /* SwiftLint */,
+				6585ED8820D90B3800C42A63 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6585ED8320D90B3800C42A63 /* PBXTargetDependency */,
 			);
 			name = "Final Challenge";
 			productName = "Final Challenge";
@@ -677,10 +743,13 @@
 		B177C47720A9768B00CD9CBE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Gian Marco Orlando";
 				TargetAttributes = {
+					6585ED7920D90B3800C42A63 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
 					B10552EF20AD7C230077983A = {
 						CreatedOnToolsVersion = 9.3.1;
 					};
@@ -725,11 +794,20 @@
 				B177C49220A9768B00CD9CBE /* Final ChallengeTests */,
 				B177C49D20A9768B00CD9CBE /* Final ChallengeUITests */,
 				B10552EF20AD7C230077983A /* Safari Extension */,
+				6585ED7920D90B3800C42A63 /* SafariExt */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6585ED7820D90B3800C42A63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6585ED8020D90B3800C42A63 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B10552EE20AD7C230077983A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -903,6 +981,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6585ED7620D90B3800C42A63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6585ED7D20D90B3800C42A63 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B10552EC20AD7C230077983A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1026,6 +1112,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		6585ED8320D90B3800C42A63 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6585ED7920D90B3800C42A63 /* SafariExt */;
+			targetProxy = 6585ED8220D90B3800C42A63 /* PBXContainerItemProxy */;
+		};
 		B177C49520A9768B00CD9CBE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B177C47E20A9768B00CD9CBE /* Final Challenge */;
@@ -1039,6 +1130,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		6585ED7E20D90B3800C42A63 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6585ED7F20D90B3800C42A63 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		90525F9C20B6A7D1006D3093 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1066,6 +1165,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6585ED8520D90B3800C42A63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S8Z9T4225J;
+				INFOPLIST_FILE = SafariExt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bel-e-buono.final-challenge.SafariExt";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6585ED8620D90B3800C42A63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S8Z9T4225J;
+				INFOPLIST_FILE = SafariExt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bel-e-buono.final-challenge.SafariExt";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B10552FC20AD7C230077983A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 01C37C8A4E93D59FDEE64EB7 /* Pods-Final Challenge.debug.xcconfig */;
@@ -1224,6 +1365,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 01C37C8A4E93D59FDEE64EB7 /* Pods-Final Challenge.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1246,6 +1388,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6F30463B7CF8DFFA6943A5EC /* Pods-Final Challenge.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1353,6 +1496,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6585ED8720D90B3800C42A63 /* Build configuration list for PBXNativeTarget "SafariExt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6585ED8520D90B3800C42A63 /* Debug */,
+				6585ED8620D90B3800C42A63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		B10552FB20AD7C230077983A /* Build configuration list for PBXNativeTarget "Safari Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

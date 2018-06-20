@@ -13,6 +13,7 @@ protocol ShareSelectViewControllerDelegate: class {
 }
 
 class ShareSelectViewController: UIViewController {
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: self.view.frame)
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
