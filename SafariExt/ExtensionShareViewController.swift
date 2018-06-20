@@ -8,19 +8,35 @@
 
 import UIKit
 
-class ExtensionViewController: UIViewController {
+@objc (ExtensionShareViewController)
+class ExtensionShareViewController: UIViewController {
 
+    @IBOutlet weak var savedLinkView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        savedLinkView.alpha = 0
+        UIView.animate(withDuration: 0.3, delay: 0, options: [.allowUserInteraction, .curveEaseOut], animations: {self.savedLinkView.alpha = CGFloat(1)}, completion: nil)
+        savedLinkView.layer.cornerRadius = 8
+        savedLinkView.clipsToBounds = true
+        savedLinkView.layer.shadowPath = UIBezierPath(roundedRect: savedLinkView.bounds, cornerRadius: savedLinkView.layer.cornerRadius).cgPath
+        savedLinkView.layer.shadowColor = UIColor.black.cgColor
+        savedLinkView.layer.shadowOpacity = 0.5
+        savedLinkView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        savedLinkView.layer.shadowRadius = 10
+        savedLinkView.layer.masksToBounds = false
 
         // Do any additional setup after loading the view.
+    }
+    func dismissButtonTap() {
+        //extensionContext!.cancelRequest(withError: NSError())
+        extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation
