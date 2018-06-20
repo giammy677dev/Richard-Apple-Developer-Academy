@@ -461,7 +461,7 @@ class CoreDataController {
 
             return nodeToUpdate
         } else {
-
+            print("Adding node with title:\(node.title)")
             return addNode(node)
         }
 

@@ -17,25 +17,24 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
         self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
 
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
-
-        let screenSize: CGRect = UIScreen.main.bounds
-        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 44))
-        let navItem = UINavigationItem(title: "Title")
-        let doneItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(done))
-        navItem.rightBarButtonItem = doneItem
-        navBar.setItems([navItem], animated: false)
-        self.view.addSubview(navBar)
-        print("nav bar istanziata")
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        CurrentData.shared.readingListByTags = [(String, [Node])]()
-        loadResourcesFromDatabase()
+        CurrentData.shared.load()
+        print("\n\nLista di tag -> value")
+        for (tag, value) in CurrentData.shared.readingListByTags {
+            print(tag)
+            for elem in value {
+                print(elem.title)
+            }
+            print("\n")
+        }
         tableView.reloadData()
     }
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
+        print(CurrentData.shared.readingListByTags.count)
         return CurrentData.shared.readingListByTags.count
     }
 
@@ -47,13 +46,10 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
 
         let collectionCell = tableView.dequeueReusableCell(withIdentifier: "collectionViewCell", for: indexPath) as! CollectionTableViewCell
 
-        collectionCell.delegate = self
-//        collectionCell.dataSource = (self as! MyCustomCellDataSource)
+        collectionCell.currentTag = CurrentData.shared.readingListByTags[indexPath.section].tag
+        collectionCell.delegate = self      //delegate to use self.delegate.callSegueFromCell(identifier: "...")
 
         collectionCell.backgroundView = UIImageView(image: UIImage(named: "Background celle.png")!) //It sets the background of the table view rows
-
-        let content = CurrentData.shared.readingListByTags[indexPath.section].nodes
-//        collectionCell.content = content
 
         return collectionCell
     }
@@ -63,7 +59,7 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
         if section == 0 {
             header.headerLabel.text = CurrentData.shared.readingListByTags[section].tag
         } else {
-        header.headerLabel.text = "#" + CurrentData.shared.readingListByTags[section].tag
+            header.headerLabel.text = "#" + CurrentData.shared.readingListByTags[section].tag
         }
 
         return header
@@ -83,51 +79,6 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
 
     func callSegueFromCell(identifier: String) {
         self.performSegue(withIdentifier: identifier, sender: self)
-    }
-
-    func loadResourcesFromDatabase() {
-        let controller = CoreDataController.shared
-        guard let coreDataReadingListRoadmap = controller.fetchCDRoadmap(uuid: K.readingListRoadmapID) else {
-            debugPrint("[CDERROR] No reading list found")
-            return
-        }
-        let readingListRoadmap = controller.getEntireRoadmapFromRecord(coreDataReadingListRoadmap)
-        print(readingListRoadmap.steps)
-        let readingListStep = readingListRoadmap.steps[0]
-        print(readingListStep.nodes)
-        let readingListNodes = readingListStep.nodes
-//        print(readingListNodes![0].title)
-
-        let recentNodes = readingListNodes?.sorted(by: {(node1, node2) in
-            return node1.creationTimestamp < node2.creationTimestamp
-        })
-
-        var tags = Set<String>()
-        for node in recentNodes! {
-            tags = tags.union(node.tags)
-        }
-
-        let tagArray = tags.sorted()
-
-        CurrentData.shared.readingListByTags.append(("Recent", recentNodes!))
-
-        for tag in tagArray {
-            var group = [String: [Node]]()
-            group[tag] = [Node]()
-            for node in recentNodes! {
-                if node.tags.contains(tag) {
-                    group[tag]?.append(node)
-                }
-            }
-            CurrentData.shared.readingListByTags.append((tag, group[tag]!))
-
-        }
-
-//        print(controller.fetchCDNodes()![0].parentsStep)
-    }
-
-    @objc func done() {
-        print("done")
     }
 
 }
