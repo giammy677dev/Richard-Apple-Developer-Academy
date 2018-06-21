@@ -249,6 +249,7 @@
 		65EA50E120B5795D008BCBFB /* Persistence.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Persistence.xcdatamodel; sourceTree = "<group>"; };
 		65EA50F720B6CFEC008BCBFB /* CoreDataController+Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataController+Stack.swift"; sourceTree = "<group>"; };
 		6F30463B7CF8DFFA6943A5EC /* Pods-Final Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final Challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-Final Challenge/Pods-Final Challenge.release.xcconfig"; sourceTree = "<group>"; };
+		7B347EF220DB9DFB00D3DDD4 /* SafariExt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SafariExt.entitlements; sourceTree = "<group>"; };
 		7B5BCB5E20B57E5900B66CEE /* CloudKitManager+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitManager+Helper.swift"; sourceTree = "<group>"; };
 		7B91051520B6B955001005AA /* DatabaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseInterface.swift; sourceTree = "<group>"; };
 		7B9B962620DA456F004CA3DB /* NSNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotification.swift; sourceTree = "<group>"; };
@@ -443,6 +444,7 @@
 		6585ED7B20D90B3800C42A63 /* SafariExt */ = {
 			isa = PBXGroup;
 			children = (
+				7B347EF220DB9DFB00D3DDD4 /* SafariExt.entitlements */,
 				6585ED7C20D90B3800C42A63 /* ShareViewController.swift */,
 				65682EC920DA4668002D988C /* ExtensionShareViewController.swift */,
 				6585ED7E20D90B3800C42A63 /* MainInterface.storyboard */,
@@ -787,6 +789,11 @@
 				TargetAttributes = {
 					6585ED7920D90B3800C42A63 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					B10552EF20AD7C230077983A = {
 						CreatedOnToolsVersion = 9.3.1;
@@ -1238,6 +1245,7 @@
 		6585ED8520D90B3800C42A63 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SafariExt/SafariExt.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S8Z9T4225J;
@@ -1259,6 +1267,7 @@
 		6585ED8620D90B3800C42A63 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SafariExt/SafariExt.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S8Z9T4225J;
