@@ -17,7 +17,17 @@ class RoadmapsTableViewController: UITableViewController {
         CurrentData.shared.load()
         //General settings
         self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
+//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
+
+//        self.view.backgroundColor = UIColor.white
+//        setTableViewBackgroundGradient(sender: self, UIColor(hex: 0xFFF744), UIColor(hex: 0xFF9944), UIColor(hex: 0xFD6BB3), UIColor(hex: 0xFC6076))
+
+//        setTableViewBackgroundGradient(sender: self, UIColor(red: 1, green: 153/255, blue: 68/255, alpha: 0.7), UIColor(red: 1, green: 247/255, blue: 68/255, alpha: 0.8), UIColor(red: 252/255, green: 96/255, blue: 118/255, alpha: 1), UIColor(red: 253/255, green: 107/255, blue: 179/255, alpha: 1))
+
+        setTableViewBackgroundGradient(sender: self, UIColor(red: 1, green: 247/255, blue: 68/255, alpha: 0.8 * 0.59), UIColor(red: 1, green: 153/255, blue: 68/255, alpha: 0.7 * 0.59), UIColor(red: 252/255, green: 96/255, blue: 118/255, alpha: 1 * 0.41), UIColor(red: 253/255, green: 107/255, blue: 179/255, alpha: 1 * 0.41))
+
+//        setTableViewBackgroundGradient(sender: self, UIColor(hex: 0xFF9944), UIColor(hex: 0xFD6BB3))
+//        self.tableView.backgroundView?.alpha = 0.5
     }
 
     // MARK: - Table view data source
@@ -35,8 +45,9 @@ class RoadmapsTableViewController: UITableViewController {
 
         collectionCell.category = Int(CurrentData.shared.currentCategories[indexPath.section].rawValue)
         collectionCell.delegate = self      //delegate to use self.delegate.callSegueFromCell(identifier: "SeeAllSegue")
+        collectionCell.backgroundColor = UIColor.clear
 
-        collectionCell.backgroundView = UIImageView(image: UIImage(named: "Background celle.png")!) //It sets the background of the table view rows
+//        collectionCell.backgroundView = UIImageView(image: UIImage(named: "Background celle.png")!) //It sets the background of the table view rows
 
         return collectionCell
     }
@@ -91,6 +102,22 @@ class RoadmapsTableViewController: UITableViewController {
         }
     }
 
+    func setTableViewBackgroundGradient(sender: UITableViewController, _ firstColor: UIColor, _ secondColor: UIColor, _ thirdColor: UIColor, _ fourthColor: UIColor) {
+
+        let gradientBackgroundColors = [firstColor.cgColor, secondColor.cgColor, thirdColor.cgColor, fourthColor.cgColor]
+        let gradientLocations = [0.0, 0.25]
+
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = gradientBackgroundColors
+        gradientLayer.locations = gradientLocations as [NSNumber]
+
+//        gradientLayer.transform = CATransform3DMakeRotation(CGFloat.pi / 4, 0, 0, 0)
+
+        gradientLayer.frame = sender.tableView.bounds
+        let backgroundView = UIView(frame: sender.tableView.bounds)
+        backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+        sender.tableView.backgroundView = backgroundView
+    }
 }
 
 extension RoadmapsTableViewController: MyCustomCellDelegator {
