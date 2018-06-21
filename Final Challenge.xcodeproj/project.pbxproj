@@ -184,6 +184,7 @@
 		B18BF51920BD5F9100D9BCF9 /* TitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B18BF51720BD5F9100D9BCF9 /* TitleTableViewCell.xib */; };
 		B18BF51B20BD61AE00D9BCF9 /* CreateRoadmapTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18BF51A20BD61AE00D9BCF9 /* CreateRoadmapTableViewController.swift */; };
 		B18BF51D20BD61C900D9BCF9 /* CreateRoadmap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18BF51C20BD61C900D9BCF9 /* CreateRoadmap.storyboard */; };
+		B6F8866420DA68B100E21CF0 /* NSNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9B962620DA456F004CA3DB /* NSNotification.swift */; };
 		BC683D107E46E0CD67D75C5F /* Pods_Final_ChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA1F377EB73366DA0BFFADF /* Pods_Final_ChallengeTests.framework */; };
 		F2FB85E5134762AFC3FD7EF3 /* Pods_Final_ChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93875BA625B3C5279467CF8E /* Pods_Final_ChallengeUITests.framework */; };
 /* End PBXBuildFile section */
@@ -255,6 +256,7 @@
 		65EA50E120B5795D008BCBFB /* Persistence.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Persistence.xcdatamodel; sourceTree = "<group>"; };
 		65EA50F720B6CFEC008BCBFB /* CoreDataController+Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataController+Stack.swift"; sourceTree = "<group>"; };
 		6F30463B7CF8DFFA6943A5EC /* Pods-Final Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Final Challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-Final Challenge/Pods-Final Challenge.release.xcconfig"; sourceTree = "<group>"; };
+		7B347EF220DB9DFB00D3DDD4 /* SafariExt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SafariExt.entitlements; sourceTree = "<group>"; };
 		7B5BCB5E20B57E5900B66CEE /* CloudKitManager+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitManager+Helper.swift"; sourceTree = "<group>"; };
 		7B91051520B6B955001005AA /* DatabaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseInterface.swift; sourceTree = "<group>"; };
 		7B9B962620DA456F004CA3DB /* NSNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotification.swift; sourceTree = "<group>"; };
@@ -449,7 +451,7 @@
 		6585ED7B20D90B3800C42A63 /* SafariExt */ = {
 			isa = PBXGroup;
 			children = (
-				6545600F20DB9D11000C2EB8 /* SafariExt.entitlements */,
+				7B347EF220DB9DFB00D3DDD4 /* SafariExt.entitlements */,
 				6585ED7C20D90B3800C42A63 /* ShareViewController.swift */,
 				65682EC920DA4668002D988C /* ExtensionShareViewController.swift */,
 				B10552FF20AD7C430077983A /* GetURL.js */,
@@ -1055,7 +1057,7 @@
 				65682ED220DA471D002D988C /* CDNode+CoreDataProperties.swift in Sources */,
 				65682ED420DA4729002D988C /* CoreDataController+Stack.swift in Sources */,
 				65682ED020DA4717002D988C /* CDRoadmap+CoreDataProperties.swift in Sources */,
-				65AEA5A320DA674800FD8B1E /* NSNotification.swift in Sources */,
+				B6F8866420DA68B100E21CF0 /* NSNotification.swift in Sources */,
 				65682ECB20DA470B002D988C /* CDUsedUUID+CoreDataClass.swift in Sources */,
 				65AEA5A820DB988C00FD8B1E /* BoilerpipeAnswerStructure.swift in Sources */,
 				65682ECA20DA4668002D988C /* ExtensionShareViewController.swift in Sources */,
@@ -1081,7 +1083,6 @@
 				652A616020BBFD1C00A101B3 /* CDRoadmap+CoreDataProperties.swift in Sources */,
 				652A615C20BBFD1C00A101B3 /* CDStep+CoreDataProperties.swift in Sources */,
 				652742C020B702440027D862 /* Taggable.swift in Sources */,
-				65AEA5A420DA674900FD8B1E /* NSNotification.swift in Sources */,
 				652742BD20B702440027D862 /* Updatable.swift in Sources */,
 				652A616220BBFD1C00A101B3 /* CDNode+CoreDataClass.swift in Sources */,
 				65EA50FB20B6D26E008BCBFB /* CoreDataController+Stack.swift in Sources */,
