@@ -27,7 +27,7 @@
 			<key>NSExtensionJavaScriptPreprocessingFile</key>
 			<string>GetURL</string>
 			<key>NSExtensionActivationRule</key>
-			<string>TRUEPREDICATE</string>
+			<string>1</string>
 		</dict>
 		<key>NSExtensionMainStoryboard</key>
 		<string>MainInterface</string>

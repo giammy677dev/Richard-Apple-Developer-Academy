@@ -76,10 +76,7 @@
 		6585ED8420D90B3800C42A63 /* SafariExt.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6585ED7A20D90B3800C42A63 /* SafariExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		65A0BC7D20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */; };
 		65A0BC7F20B4103600BFC766 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7E20B4103600BFC766 /* NetworkManager.swift */; };
-		65AEA5A320DA674800FD8B1E /* NSNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9B962620DA456F004CA3DB /* NSNotification.swift */; };
-		65AEA5A420DA674900FD8B1E /* NSNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9B962620DA456F004CA3DB /* NSNotification.swift */; };
 		65AEA5A520DB973F00FD8B1E /* GetURL.js in Resources */ = {isa = PBXBuildFile; fileRef = B10552FF20AD7C430077983A /* GetURL.js */; };
-		65AEA5A620DB976600FD8B1E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6585ED8120D90B3800C42A63 /* Info.plist */; };
 		65AEA5A720DB97C200FD8B1E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7E20B4103600BFC766 /* NetworkManager.swift */; };
 		65AEA5A820DB988C00FD8B1E /* BoilerpipeAnswerStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */; };
 		65AEA5A920DB989E00FD8B1E /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65355ECD20B54F3C00031B6C /* StringExtensions.swift */; };
@@ -242,7 +239,6 @@
 		652A615320BBFD1C00A101B3 /* CDNode+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDNode+CoreDataClass.swift"; sourceTree = "<group>"; };
 		652A615420BBFD1C00A101B3 /* CDNode+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDNode+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		65355ECD20B54F3C00031B6C /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
-		6545600F20DB9D11000C2EB8 /* SafariExt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SafariExt.entitlements; sourceTree = "<group>"; };
 		65593DC320B306C7001D6F46 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		655B0B0D20BC0F2E00CD73B0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		65682EC920DA4668002D988C /* ExtensionShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionShareViewController.swift; sourceTree = "<group>"; };
@@ -856,7 +852,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65AEA5A620DB976600FD8B1E /* Info.plist in Resources */,
 				65682EC520DA442E002D988C /* Assets.xcassets in Resources */,
 				6585ED8020D90B3800C42A63 /* MainInterface.storyboard in Resources */,
 				65AEA5A520DB973F00FD8B1E /* GetURL.js in Resources */,
@@ -1261,7 +1256,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S8Z9T4225J;
 				INFOPLIST_FILE = SafariExt/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1283,7 +1277,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S8Z9T4225J;
 				INFOPLIST_FILE = SafariExt/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
