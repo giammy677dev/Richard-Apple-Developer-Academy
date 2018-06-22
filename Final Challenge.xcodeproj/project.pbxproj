@@ -82,7 +82,6 @@
 		65AEA5A920DB989E00FD8B1E /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65355ECD20B54F3C00031B6C /* StringExtensions.swift */; };
 		65B108C220BD5994007026FC /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B108C120BD5994007026FC /* ArrayExtension.swift */; };
 		65B108C320BD5994007026FC /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B108C120BD5994007026FC /* ArrayExtension.swift */; };
-		65BBE77320D7A50D00FD321E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B10552F720AD7C230077983A /* Info.plist */; };
 		65EA50E220B5795D008BCBFB /* Persistence.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E020B5795D008BCBFB /* Persistence.xcdatamodeld */; };
 		65EA50E320B5795D008BCBFB /* Persistence.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50E020B5795D008BCBFB /* Persistence.xcdatamodeld */; };
 		65EA50F820B6CFEC008BCBFB /* CoreDataController+Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EA50F720B6CFEC008BCBFB /* CoreDataController+Stack.swift */; };
@@ -787,7 +786,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "Gian Marco Orlando";
 				TargetAttributes = {
 					6585ED7920D90B3800C42A63 = {
@@ -864,7 +863,6 @@
 			files = (
 				B10552F620AD7C230077983A /* MainInterface.storyboard in Resources */,
 				65682EC620DA442E002D988C /* Assets.xcassets in Resources */,
-				65BBE77320D7A50D00FD321E /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
