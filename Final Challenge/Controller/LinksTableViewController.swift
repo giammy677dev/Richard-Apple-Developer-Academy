@@ -42,7 +42,7 @@ class LinksTableViewController: UITableViewController {
         cell.selectionStyle = .none //It is needed to prevent that the cells are highlighted and not only selected
 
         //Get the last cells in the tableView
-        let totalRow = tableView.numberOfRows(inSection: indexPath.section)
+        _ = tableView.numberOfRows(inSection: indexPath.section)
         //first get total rows in that section by current indexPath.
 //        if indexPath.row == totalRow - 1 {
 //            cell.footerImageView.alpha = 0

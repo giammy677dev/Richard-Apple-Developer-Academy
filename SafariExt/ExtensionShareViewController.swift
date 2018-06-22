@@ -15,7 +15,7 @@ class ExtensionShareViewController: UIViewController {
     var isUserEditingContent = false
     var didUserEditContent = false
     let DBInterface = DatabaseInterface.shared
-    weak var resourceToSave: Node?
+    var resourceToSave: Node?
 
     //Variables for data gathering
     private var url: URL?
