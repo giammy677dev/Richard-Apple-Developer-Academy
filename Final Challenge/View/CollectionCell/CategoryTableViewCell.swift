@@ -10,8 +10,6 @@ import UIKit
 
 class CategoryTableViewCell: UITableViewCell {
 
-    // TODO: - Manage category not selcted situation
-
     // Properties:
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet var categoriesButtonArray: [UIButton]!
