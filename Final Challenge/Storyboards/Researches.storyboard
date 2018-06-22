@@ -16,6 +16,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NN7-iE-FYG">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.79607843140000001" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="oUW-1q-saV" kind="relationship" relationship="rootViewController" id="FRp-tJ-cBQ"/>
@@ -74,7 +75,7 @@
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Resources" id="yFa-2f-ExB">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="cQJ-hx-51V">
+                        <barButtonItem key="rightBarButtonItem" image="add" style="plain" id="cQJ-hx-51V">
                             <connections>
                                 <segue destination="M14-Nz-ygc" kind="show" id="ACh-D6-9MP"/>
                             </connections>
@@ -107,6 +108,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="26" height="27"/>
         <image name="selected" width="34" height="34"/>
         <image name="unselected" width="34" height="34"/>
     </resources>

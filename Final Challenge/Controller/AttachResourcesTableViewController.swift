@@ -13,6 +13,12 @@ class AttachResourcesTableViewController: UITableViewController {
     //Index of current step in array of step:
     var indexOfStep: Int = 0 //This value is setted from calling view
 
+    //The following four lines of code defines the four color that will create the gradient for the background color
+    let firstBackgroundColor = UIColor(red: 1, green: 247/255, blue: 68/255, alpha: 0.8 * 0.59)
+    let secondBackgroundColor = UIColor(red: 1, green: 153/255, blue: 68/255, alpha: 0.7 * 0.59)
+    let thirdBackgroundColor = UIColor(red: 252/255, green: 96/255, blue: 118/255, alpha: 1 * 0.41)
+    let fourthBackgroundColor = UIColor(red: 253/255, green: 107/255, blue: 179/255, alpha: 1 * 0.41)
+
     //Current step:
     var currentStep: Step?
 
@@ -38,6 +44,8 @@ class AttachResourcesTableViewController: UITableViewController {
         //Invoke xib
         let cell = UINib(nibName: "CustomLinksTableViewCell", bundle: nil)
         self.tableView.register(cell, forCellReuseIdentifier: "CustomLinksTableViewCell")
+
+        setTableViewBackgroundGradient(sender: self, firstBackgroundColor, secondBackgroundColor, thirdBackgroundColor, fourthBackgroundColor) //It sets the background color
     }
 
     override func viewWillAppear(_ animated: Bool) { //It allows to present the searchBar directly without scrolling when the view is presented
