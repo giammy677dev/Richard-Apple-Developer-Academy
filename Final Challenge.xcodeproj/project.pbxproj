@@ -120,6 +120,7 @@
 		B145C10A20D3AA1600E7A08E /* Lato-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0ED20D282A400E7A08E /* Lato-SemiboldItalic.ttf */; };
 		B145C10B20D3AA1900E7A08E /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0F720D282A500E7A08E /* Lato-Thin.ttf */; };
 		B145C10C20D3AA1C00E7A08E /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B145C0FA20D282A500E7A08E /* Lato-ThinItalic.ttf */; };
+		B149E63420DCF4E500001E4D /* SetBackgounrGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B149E63320DCF4E500001E4D /* SetBackgounrGradient.swift */; };
 		B151667520DA476D00FEC9FD /* AttachResourcesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B151667420DA476D00FEC9FD /* AttachResourcesTableViewController.swift */; };
 		B151667720DA47AD00FEC9FD /* AttachResources.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B151667620DA47AD00FEC9FD /* AttachResources.storyboard */; };
 		B1608B4F20B6B69C00701508 /* Links.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1608B4E20B6B69C00701508 /* Links.storyboard */; };
@@ -273,6 +274,7 @@
 		B145C0F820D282A500E7A08E /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		B145C0F920D282A500E7A08E /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
 		B145C0FA20D282A500E7A08E /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
+		B149E63320DCF4E500001E4D /* SetBackgounrGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetBackgounrGradient.swift; sourceTree = "<group>"; };
 		B151667420DA476D00FEC9FD /* AttachResourcesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachResourcesTableViewController.swift; sourceTree = "<group>"; };
 		B151667620DA47AD00FEC9FD /* AttachResources.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AttachResources.storyboard; sourceTree = "<group>"; };
 		B1608B4E20B6B69C00701508 /* Links.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Links.storyboard; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				B177C48420A9768B00CD9CBE /* UIViewControllerExtension.swift */,
 				7B9B962620DA456F004CA3DB /* NSNotification.swift */,
 				7B9B962820DA49CF004CA3DB /* UITableViewController.swift */,
+				B149E63320DCF4E500001E4D /* SetBackgounrGradient.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -889,6 +892,7 @@
 				B177C48520A9768B00CD9CBE /* UIViewControllerExtension.swift in Sources */,
 				9002AAFD20B40C4400854015 /* CustomCollectionViewCell.swift in Sources */,
 				652A615B20BBFD1C00A101B3 /* CDStep+CoreDataProperties.swift in Sources */,
+				B149E63420DCF4E500001E4D /* SetBackgounrGradient.swift in Sources */,
 				652A615920BBFD1C00A101B3 /* CDStep+CoreDataClass.swift in Sources */,
 				652A616320BBFD1C00A101B3 /* CDNode+CoreDataProperties.swift in Sources */,
 				9002AAF920B401EB00854015 /* CollectionTableViewCell.swift in Sources */,
