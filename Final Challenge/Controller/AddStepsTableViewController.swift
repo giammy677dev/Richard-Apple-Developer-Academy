@@ -123,11 +123,13 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
         destViewController.tableView.reloadData()
         //Show an alert with informations about saving:
         let alert = UIAlertController(title: "Saved", message: "Your roadmap has been successfully saved", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {_ in
-            //Go to the first view:
-            self.navigationController?.popToRootViewController(animated: true)
-        }))
         self.present(alert, animated: true, completion: nil)
+        let when = DispatchTime.now() + 0.5
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            // your code with delay
+            alert.dismiss(animated: true, completion: nil)
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
 
     @objc func addResourceToStep(_ sender: UIButton) {
