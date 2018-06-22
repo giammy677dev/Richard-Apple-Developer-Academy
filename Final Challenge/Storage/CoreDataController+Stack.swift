@@ -173,13 +173,11 @@ class CoreDataController {
 
     ///Links an existing node to a step.
     func linkNode(_ node: Node, to step: Step) {
-
-        let entityNode = NSEntityDescription.entity(forEntityName: "CDNode", in: self.context)
-        let newNode = CDNode(entity: entityNode!, insertInto: context)
+        let nodeToSave = updateNode(node)
 
         let parentStep = fetchCDStep(uuid: step.getStepUUID())
 
-        parentStep!.addToNodesList(newNode)
+        parentStep!.addToNodesList(nodeToSave!)
 
         self.saveContext()
 
@@ -539,7 +537,7 @@ class CoreDataController {
     // MARK: Recursive update/save
 
     ///Saves a Roadmap recursively. Nodes must already exist in memory.
-    func saveRecursively(_ roadmap: WritableRoadmap) {
+    func saveRecursively(_ roadmap: WritableRoadmap) -> CDRoadmap {
         let savedRoadmap = updateRoadmap(roadmap)//Add or update the roadmap that is being saved
         if let savedSteps = savedRoadmap?.stepsList?.array as! [CDStep]? {
             for savedStep in savedSteps {
@@ -548,7 +546,8 @@ class CoreDataController {
         }
         if let steps = roadmap.steps {//Steps! Check which ones must be updated/added or deleted
             for step in steps {
-                _ = updateStep(step, of: roadmap)
+                let stepValue = updateStep(step, of: roadmap)
+                debugPrint(stepValue!.debugDescription)
                 if let nodes = step.nodes {
                     for node in nodes {
                         linkNode(node, to: step)
@@ -557,6 +556,7 @@ class CoreDataController {
             }
         }
         self.saveContext()
+        return savedRoadmap!
     }
 
     ///Saves a Roadmap array recursively. Nodes must already exist in memory.
