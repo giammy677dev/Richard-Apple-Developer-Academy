@@ -54,6 +54,8 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
         stepCell.titleTextField.tag = indexPath.item //Assign an integer to the textField basing on the indexPath
         stepCell.addResourceButton.tag = indexPath.item //Assign an integer to the button basing on the indexPath
 
+        stepCell.titleTextField.placeholder = "What is the step \(indexPath.row + 1)?"
+
         if stepCell.titleTextField.frame.width == 318 {
             UIView.animate(withDuration: 1, delay: 0, animations: {
                 stepCell.titleTextField.frame.size.width = 246 //It reduces the dimension of the width of the titleTextField with an animation

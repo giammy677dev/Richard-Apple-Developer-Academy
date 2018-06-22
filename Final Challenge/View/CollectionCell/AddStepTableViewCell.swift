@@ -16,7 +16,7 @@ class AddStepTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
 
-        titleTextField.placeholder = "Add title"
+        titleTextField.placeholder = "What is the first step?"
         titleTextField.borderStyle = .roundedRect
         titleTextField.setLeftPaddingPoints(10)
     }

@@ -28,7 +28,6 @@ class AttachResourcesTableViewController: UITableViewController {
 
         //Retrieve title of this step from the roadmap:
         self.title = currentStep?.title
-
         self.navigationController?.topViewController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(AttachResourcesTableViewController.done)) //Present the button "Done" in the top right corner
 
         //The following 3 lines of code declare and present the searchBar
