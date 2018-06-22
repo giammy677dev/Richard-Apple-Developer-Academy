@@ -28,7 +28,6 @@ class AttachResourcesTableViewController: UITableViewController {
 
         //Retrieve title of this step from the roadmap:
         self.title = currentStep?.title
-
         self.navigationController?.topViewController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(AttachResourcesTableViewController.done)) //Present the button "Done" in the top right corner
 
         //The following 3 lines of code declare and present the searchBar
@@ -70,24 +69,24 @@ class AttachResourcesTableViewController: UITableViewController {
 
         //Set parameters of the cell:
         cell.titleLabel.text = readingListNodes.safeCall(indexPath.item)?.title
-        
+
         //Set check button of the cell:
         cell.checkButton.tag = indexPath.item
         cell.checkButton.addTarget(self, action: #selector(attachNode(_:)), for: UIControlEvents.touchUpInside)
-        
+
         //If the current step already contains the node:
         if currentStep?.nodes?.contains(readingListNodes[indexPath.item]) ?? false {
             cell.checkButton.isSelected = true //Put the button in selected state
             cell.checkButton.setImage(UIImage(named: "CheckOn"), for: .selected) //Set the image for selected state
         }
-        
+
         return cell
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
-    
+
     //Function to attach the node to the current step
     @objc func attachNode(_ sender: UIButton) {
         if sender.isSelected == false { //If the button has not been selected yet
@@ -98,7 +97,7 @@ class AttachResourcesTableViewController: UITableViewController {
             //Remouve Node:
             currentStep?.removeNode(readingListNodes[sender.tag])
         }
-        
+
     }
 
     @objc func done() {

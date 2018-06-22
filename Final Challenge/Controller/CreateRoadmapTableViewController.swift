@@ -15,7 +15,7 @@ class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelega
         super.viewDidLoad()
 
         //General settings
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(goToAddStep))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Steps", style: .plain, target: self, action: #selector(goToAddStep))
 
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
 
@@ -110,4 +110,5 @@ class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelega
         let newViewController = AddStepsTableViewController()
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
+
 }

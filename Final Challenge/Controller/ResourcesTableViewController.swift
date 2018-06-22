@@ -10,13 +10,20 @@ import UIKit
 
 class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator {
 
+    //The following four lines of code defines the four color that will create the gradient for the background color
+    let firstBackgroundColor = UIColor(red: 1, green: 247/255, blue: 68/255, alpha: 0.8 * 0.59)
+    let secondBackgroundColor = UIColor(red: 1, green: 153/255, blue: 68/255, alpha: 0.7 * 0.59)
+    let thirdBackgroundColor = UIColor(red: 252/255, green: 96/255, blue: 118/255, alpha: 1 * 0.41)
+    let fourthBackgroundColor = UIColor(red: 253/255, green: 107/255, blue: 179/255, alpha: 1 * 0.41)
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         //General settings
         self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
 
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
+        setTableViewBackgroundGradient(sender: self, firstBackgroundColor, secondBackgroundColor, thirdBackgroundColor, fourthBackgroundColor) //It sets the background color
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +56,7 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
         collectionCell.currentTag = CurrentData.shared.readingListByTags[indexPath.section].tag
         collectionCell.delegate = self      //delegate to use self.delegate.callSegueFromCell(identifier: "...")
 
-        collectionCell.backgroundView = UIImageView(image: UIImage(named: "Background celle.png")!) //It sets the background of the table view rows
+        collectionCell.backgroundColor = UIColor.clear
 
         return collectionCell
     }

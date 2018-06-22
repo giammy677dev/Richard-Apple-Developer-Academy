@@ -54,6 +54,8 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
         stepCell.titleTextField.tag = indexPath.item //Assign an integer to the textField basing on the indexPath
         stepCell.addResourceButton.tag = indexPath.item //Assign an integer to the button basing on the indexPath
 
+        stepCell.titleTextField.placeholder = "What is the step \(indexPath.row + 1)?"
+
         if stepCell.titleTextField.frame.width == 318 {
             UIView.animate(withDuration: 1, delay: 0, animations: {
                 stepCell.titleTextField.frame.size.width = 246 //It reduces the dimension of the width of the titleTextField with an animation
@@ -123,11 +125,13 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
         destViewController.tableView.reloadData()
         //Show an alert with informations about saving:
         let alert = UIAlertController(title: "Saved", message: "Your roadmap has been successfully saved", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {_ in
-            //Go to the first view:
-            self.navigationController?.popToRootViewController(animated: true)
-        }))
         self.present(alert, animated: true, completion: nil)
+        let when = DispatchTime.now() + 0.5
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            // your code with delay
+            alert.dismiss(animated: true, completion: nil)
+            self.navigationController?.popToRootViewController(animated: true)
+        }
     }
 
     @objc func addResourceToStep(_ sender: UIButton) {
