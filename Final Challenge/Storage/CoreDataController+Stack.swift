@@ -548,7 +548,7 @@ class CoreDataController {
         }
         if let steps = roadmap.steps {//Steps! Check which ones must be updated/added or deleted
             for step in steps {
-                updateStep(step, of: roadmap)
+                _ = updateStep(step, of: roadmap)
                 if let nodes = step.nodes {
                     for node in nodes {
                         linkNode(node, to: step)

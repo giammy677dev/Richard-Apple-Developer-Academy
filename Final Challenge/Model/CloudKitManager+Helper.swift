@@ -169,7 +169,7 @@ final class CloudKitManager {
 
     func didReceiveRemotePush(notification: [AnyHashable: Any], completion: @escaping (UIBackgroundFetchResult) -> Void) {
         // This ckNotification could be useful in future.
-        let ckNotification = CKNotification(fromRemoteNotificationDictionary: notification)
+        _ = CKNotification(fromRemoteNotificationDictionary: notification)
         self.handleNotification(applicationCompletionBlock: completion)
 
     }
