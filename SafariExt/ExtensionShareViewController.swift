@@ -18,7 +18,7 @@ class ExtensionShareViewController: UIViewController {
     weak var resourceToSave: Node?
 
     //Variables for data gathering
-    private var url: NSURL?
+    private var url: URL?
     private var text: String?
     private var pageTitle: String?
     private let boilerPipeAPIURLString = "https://boilerpipe-web.appspot.com/extract?extractor=ArticleExtractor&output=json&extractImages=&token=&url="
@@ -103,13 +103,13 @@ extension ExtensionShareViewController {
                     if let results = dictionary[NSExtensionJavaScriptPreprocessingResultsKey] as? NSDictionary,
                         let urlString = results["URL"] as? String,
                         let pageText = results["Text"] as? String,
-                        let url = NSURL(string: urlString) {
+                        let url = URL(string: urlString) {
 
                         self.url = url
                         self.text = pageText
 
                         do {
-                            var content = try String(contentsOf: url as URL)
+                            let content = try String(contentsOf: url as URL)
                             self.title = content.slice(from: "<title>", to: "</title>")
                         } catch let error {
                             //Error in title fetching
@@ -117,9 +117,9 @@ extension ExtensionShareViewController {
                             print(error)
                         }
 
-                        self.resourceToSave = Node(url: self.url as! URL, title: self.title!, id: DatabaseInterface.shared.createUniqueUUID(), parent: K.readingListStepID, tags: "#untagged", text: pageText, propExtracted: false, creationTime: Date(), propRead: false, propFlagged: false)
+                        self.resourceToSave = Node(url: url, title: self.title!, id: DatabaseInterface.shared.createUniqueUUID(), parent: K.readingListStepID, tags: "#untagged", text: pageText, propExtracted: false, creationTime: Date(), propRead: false, propFlagged: false)
 
-                        manager.httpRequest(url: URL(string: (self.boilerPipeAPIURLString)+(self.url?.absoluteString!)!)!, dataHandlerOnCompletion: {
+                        manager.httpRequest(url: URL(string: (self.boilerPipeAPIURLString)+(self.url?.absoluteString)!)!, dataHandlerOnCompletion: {
                             (data) in
                             self.boilerPipeAnswer.extractFromData(data)
 
