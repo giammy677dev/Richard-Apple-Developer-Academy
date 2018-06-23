@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="377" height="299.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add Tags Background" translatesAutoresizingMaskIntoConstraints="NO" id="X6B-gL-qY0">
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add Tags Background" translatesAutoresizingMaskIntoConstraints="NO" id="X6B-gL-qY0">
                         <rect key="frame" x="10" y="0.0" width="357" height="299.5"/>
                     </imageView>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IxI-oN-ELq">

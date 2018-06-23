@@ -82,7 +82,7 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
-        headerView.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the color of the header
+//        headerView.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the color of the header
         return headerView
     }
 

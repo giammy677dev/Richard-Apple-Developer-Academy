@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="377" height="107.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cell" translatesAutoresizingMaskIntoConstraints="NO" id="z57-LA-14T">
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cell" translatesAutoresizingMaskIntoConstraints="NO" id="z57-LA-14T">
                         <rect key="frame" x="0.0" y="0.0" width="377" height="108"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
