@@ -11,6 +11,7 @@ import UIKit
 class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
 
     var numberOfRows = 1 //Initial number of the rows
+    var stepNumber = 0
     var rowEntrance: [Bool] = [false] //It will be useful to detect if we have to add new rows to the tableView
 
     override func viewDidLoad() {
@@ -51,10 +52,10 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
         let stepCell = tableView.dequeueReusableCell(withIdentifier: "AddStepTableViewCell", for: indexPath) as! AddStepTableViewCell
 
         stepCell.titleTextField.delegate = self
-        stepCell.titleTextField.tag = indexPath.item //Assign an integer to the textField basing on the indexPath
-        stepCell.addResourceButton.tag = indexPath.item //Assign an integer to the button basing on the indexPath
+        stepCell.titleTextField.tag = stepNumber //Assign an integer to the textField basing on the indexPath
+        stepCell.addResourceButton.tag = stepNumber //Assign an integer to the button basing on the indexPath
 
-        stepCell.titleTextField.placeholder = "What is the step \(indexPath.row + 1)?"
+        stepCell.titleTextField.placeholder = "What is the step \(stepNumber + 1)?"
 
         if stepCell.titleTextField.frame.width == 318 {
             UIView.animate(withDuration: 1, delay: 0, animations: {
@@ -93,13 +94,12 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
         } else {
             //The following lines of code add a new row and modify the tableView when the user close the keyboard and there is some text in the textField
             if rowEntrance[titleTextField.tag] == false { //If it is the first time that we add text to the textField, new row is added at the end of the tableView
-                tableView.beginUpdates() //It starts the modification of the tableView
-                tableView.insertRows(at: [IndexPath(row: numberOfRows, section: 0)], with: .automatic) //It adds the new row at the end of the tableView
+
                 rowEntrance[titleTextField.tag] = true //It sets the boolean array to true for the modified cell to indicate that it has been already modified. So, if we will modify the text again, it will not add a new row at the end of the tableView
 
                 numberOfRows += 1 //It increases the number of rows
+                stepNumber = stepNumber + 1
                 rowEntrance.append(false) //It appends a new value in the boolean array rowEntrance and sets it to false
-                tableView.endUpdates() //It ends the modification of the tableView
                 tableView.reloadData() //It loads new datas for the tableView
 
                 titleTextField.frame.size.width = 318 //It reduces of one the width of the titleTextField to enable the animation in the cellForRowAt func

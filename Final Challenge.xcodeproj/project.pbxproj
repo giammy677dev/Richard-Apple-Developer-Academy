@@ -48,7 +48,6 @@
 		65682ED520DA4780002D988C /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B108C120BD5994007026FC /* ArrayExtension.swift */; };
 		6585ED7D20D90B3800C42A63 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6585ED7C20D90B3800C42A63 /* ShareViewController.swift */; };
 		6585ED8020D90B3800C42A63 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6585ED7E20D90B3800C42A63 /* MainInterface.storyboard */; };
-		6585ED8420D90B3800C42A63 /* SafariExt.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6585ED7A20D90B3800C42A63 /* SafariExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		65AEA5A520DB973F00FD8B1E /* GetURL.js in Resources */ = {isa = PBXBuildFile; fileRef = B10552FF20AD7C430077983A /* GetURL.js */; };
 		65AEA5A720DB97C200FD8B1E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7E20B4103600BFC766 /* NetworkManager.swift */; };
 		65AEA5A820DB988C00FD8B1E /* BoilerpipeAnswerStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A0BC7C20B40D5B00BFC766 /* BoilerpipeAnswerStructure.swift */; };
@@ -69,6 +68,8 @@
 		9002AAF920B401EB00854015 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9002AAF820B401EB00854015 /* CollectionTableViewCell.swift */; };
 		9002AAFD20B40C4400854015 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9002AAFB20B40C4400854015 /* CustomCollectionViewCell.swift */; };
 		9002AAFE20B40C4400854015 /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9002AAFC20B40C4400854015 /* CustomCollectionViewCell.xib */; };
+		9024350920DD119000CE0B38 /* SingleRoadmap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9024350820DD119000CE0B38 /* SingleRoadmap.storyboard */; };
+		9043D66120DE6E6B006437BB /* SafariExt.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6585ED7A20D90B3800C42A63 /* SafariExt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		904C8FD520B57D2D00D0E27D /* ResourcesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904C8FD420B57D2D00D0E27D /* ResourcesTableViewController.swift */; };
 		904C8FD720B57ED200D0E27D /* ResourcesCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904C8FD620B57ED200D0E27D /* ResourcesCollectionTableViewCell.swift */; };
 		904C8FDC20B5818A00D0E27D /* ResourcesCustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 904C8FDA20B5818A00D0E27D /* ResourcesCustomCollectionViewCell.swift */; };
@@ -149,7 +150,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6585ED8220D90B3800C42A63 /* PBXContainerItemProxy */ = {
+		9043D66220DE6E6B006437BB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B177C47720A9768B00CD9CBE /* Project object */;
 			proxyType = 1;
@@ -159,13 +160,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		6585ED8820D90B3800C42A63 /* Embed App Extensions */ = {
+		9043D66420DE6E6B006437BB /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				6585ED8420D90B3800C42A63 /* SafariExt.appex in Embed App Extensions */,
+				9043D66120DE6E6B006437BB /* SafariExt.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,6 +215,7 @@
 		9002AAF820B401EB00854015 /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
 		9002AAFB20B40C4400854015 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		9002AAFC20B40C4400854015 /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
+		9024350820DD119000CE0B38 /* SingleRoadmap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SingleRoadmap.storyboard; sourceTree = "<group>"; };
 		904C8FD420B57D2D00D0E27D /* ResourcesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesTableViewController.swift; sourceTree = "<group>"; };
 		904C8FD620B57ED200D0E27D /* ResourcesCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		904C8FDA20B5818A00D0E27D /* ResourcesCustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesCustomCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 				B127492720BB332100C4420C /* AddResource.storyboard */,
 				B18BF51C20BD61C900D9BCF9 /* CreateRoadmap.storyboard */,
 				B151667620DA47AD00FEC9FD /* AttachResources.storyboard */,
+				9024350820DD119000CE0B38 /* SingleRoadmap.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -634,12 +637,12 @@
 				B177C47D20A9768B00CD9CBE /* Resources */,
 				7B92019520BD8E15001C9F61 /* Warning and Error at compile time */,
 				7B208AA420C5289C0060A7DC /* SwiftLint */,
-				6585ED8820D90B3800C42A63 /* Embed App Extensions */,
+				9043D66420DE6E6B006437BB /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6585ED8320D90B3800C42A63 /* PBXTargetDependency */,
+				9043D66320DE6E6B006437BB /* PBXTargetDependency */,
 			);
 			name = "Final Challenge";
 			productName = "Final Challenge";
@@ -722,6 +725,7 @@
 				9002AAFE20B40C4400854015 /* CustomCollectionViewCell.xib in Resources */,
 				B18BF50F20BD450700D9BCF9 /* StepTableViewCell.xib in Resources */,
 				B186E95F20C53E5E004C66A2 /* AddSteps.storyboard in Resources */,
+				9024350920DD119000CE0B38 /* SingleRoadmap.storyboard in Resources */,
 				B145C10020D3A9F500E7A08E /* Lato-HairlineItalic.ttf in Resources */,
 				B151667720DA47AD00FEC9FD /* AttachResources.storyboard in Resources */,
 				B145C0FE20D3A9F000E7A08E /* Lato-BoldItalic.ttf in Resources */,
@@ -933,10 +937,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6585ED8320D90B3800C42A63 /* PBXTargetDependency */ = {
+		9043D66320DE6E6B006437BB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6585ED7920D90B3800C42A63 /* SafariExt */;
-			targetProxy = 6585ED8220D90B3800C42A63 /* PBXContainerItemProxy */;
+			targetProxy = 9043D66220DE6E6B006437BB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -982,7 +986,7 @@
 				CODE_SIGN_ENTITLEMENTS = SafariExt/SafariExt.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8Z9T4225J;
+				DEVELOPMENT_TEAM = EU98U8KRA2;
 				INFOPLIST_FILE = SafariExt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1004,7 +1008,7 @@
 				CODE_SIGN_ENTITLEMENTS = SafariExt/SafariExt.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8Z9T4225J;
+				DEVELOPMENT_TEAM = EU98U8KRA2;
 				INFOPLIST_FILE = SafariExt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1143,14 +1147,14 @@
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8Z9T4225J;
+				DEVELOPMENT_TEAM = EU98U8KRA2;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bel-e-buono.final-challenge";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gere.bel-e-buono.final-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -1167,14 +1171,14 @@
 				CODE_SIGN_ENTITLEMENTS = "Final Challenge/Final Challenge.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8Z9T4225J;
+				DEVELOPMENT_TEAM = EU98U8KRA2;
 				INFOPLIST_FILE = "Final Challenge/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bel-e-buono.final-challenge";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gere.bel-e-buono.final-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
