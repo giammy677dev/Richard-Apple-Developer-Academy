@@ -23,7 +23,6 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
         self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
 
         setTableViewBackgroundGradient(sender: self, firstBackgroundColor, secondBackgroundColor, thirdBackgroundColor, fourthBackgroundColor) //It sets the background color
-
     }
 
     override func viewWillAppear(_ animated: Bool) {

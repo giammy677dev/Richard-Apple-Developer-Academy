@@ -42,9 +42,10 @@ class Step: NodeManager, Equatable {
     }
 
     func addNode(_ node: Node) {
-        node.parent = self.uuid
-        node.indexInParent = self.nodes.count
-        self.nodes.append(node)
+        var nodeToAttach: Node = Node(node)
+        nodeToAttach.parent = self.uuid
+        nodeToAttach.indexInParent = self.nodes.count
+        self.nodes.append(nodeToAttach)
     }
 
     func removeNode(_ node: Node) {

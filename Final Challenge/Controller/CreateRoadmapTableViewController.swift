@@ -11,6 +11,12 @@ import UIKit
 class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelegate {
     var textFieldDelegate: UITextField? //We will use it to handle the keyboard
 
+    //The following four lines of code defines the four color that will create the gradient for the background color
+    let firstBackgroundColor = UIColor(red: 1, green: 247/255, blue: 68/255, alpha: 0.8 * 0.59)
+    let secondBackgroundColor = UIColor(red: 1, green: 153/255, blue: 68/255, alpha: 0.7 * 0.59)
+    let thirdBackgroundColor = UIColor(red: 252/255, green: 96/255, blue: 118/255, alpha: 1 * 0.41)
+    let fourthBackgroundColor = UIColor(red: 253/255, green: 107/255, blue: 179/255, alpha: 1 * 0.41)
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +34,8 @@ class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelega
 
         let categoryCell = UINib(nibName: "CategoryTableViewCell", bundle: nil)
         self.tableView.register(categoryCell, forCellReuseIdentifier: "CategoryTableViewCell")
+
+        setTableViewBackgroundGradient(sender: self, firstBackgroundColor, secondBackgroundColor, thirdBackgroundColor, fourthBackgroundColor) //It sets the background color
 
         hideKeyboardWhenTappedAround() //It enables the tap gesture in this view
         tableView.keyboardDismissMode = .onDrag //It enables the keyboard dismissing on scrolling the tableView
