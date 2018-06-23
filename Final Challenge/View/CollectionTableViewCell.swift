@@ -154,8 +154,14 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == numberMaxOfElemInPreview {  //See All Cell
-            self.delegate.callSegueFromCell(identifier: "SeeAllSegue")
+        if numberOfRoadmapsInPreview > 0 {
+            if indexPath.section == numberMaxOfElemInPreview {  //See All Cell
+                self.delegate.callSegueFromCell(identifier: "SeeAllSegue")
+            } else {
+                CurrentData.shared.currentSingleRoadmap = CurrentData.shared.roadmapsForCategory(category: Category(rawValue: Int16(self.category))!)[indexPath.section]
+                self.delegate.callSegueFromCell(identifier: "SingleRoadmapSegue")
+
+            }
         }
     }
 

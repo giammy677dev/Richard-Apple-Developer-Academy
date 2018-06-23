@@ -12,6 +12,8 @@ class CurrentData {
 
     static let shared = CurrentData()
 
+    var currentSingleRoadmap: WritableRoadmap?
+
     var readingListByTags: [(tag: String, nodes: [Node])] = [(String, [Node])]()
 
     var roadmapsInCategories: [Category: Int] = [Category.business:0, Category.education:0, Category.entertainment:0, Category.food:0, Category.health:0, Category.hobby:0, Category.lifestyle:0, Category.news:0, Category.other:0, Category.sport:0, Category.technology:0, Category.travel:0 ]
