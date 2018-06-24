@@ -13,6 +13,7 @@ class CurrentData {
     static let shared = CurrentData()
 
     var currentSingleRoadmap: WritableRoadmap?
+    var currentSingleStep: Step?
 
     var readingListByTags: [(tag: String, nodes: [Node])] = [(String, [Node])]()
 

@@ -1,18 +1,16 @@
 //
-//  SingleRoadmapTableViewController.swift
+//  SingleStepTableViewController.swift
 //  Final Challenge
 //
-//  Created by Geremia De Micco on 23/06/2018.
+//  Created by Geremia De Micco on 24/06/2018.
 //  Copyright © 2018 Gian Marco Orlando. All rights reserved.
 //
 
 import UIKit
 
-class SingleRoadmapTableViewController: UITableViewController {
+class SingleStepTableViewController: UITableViewController {
 
-    var intCategories: [Int] = [Int]()
-    var currentRoadmap: WritableRoadmap?
-
+    var currentStep: Step?
     //The following four lines of code defines the four color that will create the gradient for the background color
     let firstBackgroundColor = UIColor(red: 1, green: 247/255, blue: 68/255, alpha: 0.8 * 0.59)
     let secondBackgroundColor = UIColor(red: 1, green: 153/255, blue: 68/255, alpha: 0.7 * 0.59)
@@ -21,8 +19,8 @@ class SingleRoadmapTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.currentRoadmap = CurrentData.shared.currentSingleRoadmap
 
+        currentStep = CurrentData.shared.currentSingleStep
         //General settings
         self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
 
@@ -33,7 +31,7 @@ class SingleRoadmapTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return currentRoadmap!.steps.count
+        return (currentStep?.nodes.count)!
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,11 +40,11 @@ class SingleRoadmapTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "stepCellInSingleRoadmapID", for: indexPath) as! SingleRoadmapTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "singleNodeInSingleStepID", for: indexPath) as! SingleNodeTableViewCell
 
-        cell.title.text = currentRoadmap?.steps[indexPath.section].title
-        cell.numberOfArticleLeft.text = "\((currentRoadmap?.steps.count)!) Article Left"
-        cell.numberOfMinutesLeft.text = "\((currentRoadmap?.steps.count)!*20) Min Left"
+        cell.title.text = currentStep?.nodes[indexPath.section].title
+        cell.numberOfArticleLeft.text = "\((currentStep?.nodes.count)!) Article Left"
+        cell.numberOfMinutesLeft.text = "\((currentStep?.nodes.count)!*20) Min Left"
         return cell
     }
 
@@ -55,16 +53,11 @@ class SingleRoadmapTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10   //global Constant
+        return 5   //global Constant
     }
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 10
-    }
-
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        CurrentData.shared.currentSingleStep = currentRoadmap?.steps[indexPath.section]
-        performSegue(withIdentifier: "fromSingleRoadmapToSingleStepSegue", sender: self)
+        return 5
     }
 
 }
