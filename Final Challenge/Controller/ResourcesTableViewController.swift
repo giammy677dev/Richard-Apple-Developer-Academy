@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SafariServices
 
-class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator {
+class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator, SFSafariViewControllerDelegate {
 
     //The following four lines of code defines the four color that will create the gradient for the background color
     let firstBackgroundColor = UIColor(red: 1, green: 247/255, blue: 68/255, alpha: 0.8 * 0.59)
@@ -83,8 +84,13 @@ class ResourcesTableViewController: UITableViewController, MyCustomCellDelegator
         return 0
     }
 
+    //CUSTOM PROTOCOL
     func callSegueFromCell(identifier: String) {
         self.performSegue(withIdentifier: identifier, sender: self)
+    }
+
+    func callSVC(svc: SFSafariViewController) {
+        self.present(svc, animated: true, completion: nil)
     }
 
 }

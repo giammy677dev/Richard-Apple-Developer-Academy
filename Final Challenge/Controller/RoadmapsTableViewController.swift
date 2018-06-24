@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class RoadmapsTableViewController: UITableViewController {
 
@@ -99,6 +100,10 @@ class RoadmapsTableViewController: UITableViewController {
 }
 
 extension RoadmapsTableViewController: MyCustomCellDelegator {
+    func callSVC(svc: SFSafariViewController) {
+        self.present(svc, animated: true, completion: nil)
+    }
+
     func callSegueFromCell(identifier: String) {
         self.performSegue(withIdentifier: identifier, sender: self)
     }

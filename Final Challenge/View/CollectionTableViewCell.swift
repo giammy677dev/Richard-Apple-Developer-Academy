@@ -11,8 +11,9 @@
  */
 
 import UIKit
+import SafariServices
 
-class CollectionTableViewCell: UITableViewCell {
+class CollectionTableViewCell: UITableViewCell, SFSafariViewControllerDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -123,7 +124,11 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as? CustomCollectionViewCell
 
-        cell?.titleLabel.text = CurrentData.shared.roadmapsForCategory(category: Category(rawValue: Int16(self.category))!).safeCall(indexPath.section)?.title
+        if numberOfRoadmapsInPreview > 0 {
+            cell?.titleLabel.text = CurrentData.shared.roadmapsForCategory(category: Category(rawValue: Int16(self.category))!).safeCall(indexPath.section)?.title
+        } else {
+            cell?.titleLabel.text = CurrentData.shared.resourcesForTag(tag: self.currentTag)[indexPath.section].title
+        }
 
         //zoom first cell at first start
         if indexPath.section == 0 && currentPage == 0 {
@@ -154,6 +159,12 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        UIView.animate(withDuration: 0.4, animations: {
+            let cell = self.collectionView.cellForItem(at: indexPath)
+            cell?.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        }, completion: nil)
+
         if numberOfRoadmapsInPreview > 0 {
             if indexPath.section == numberMaxOfElemInPreview {  //See All Cell
                 self.delegate.callSegueFromCell(identifier: "SeeAllSegue")
@@ -162,7 +173,24 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
                 self.delegate.callSegueFromCell(identifier: "SingleRoadmapSegue")
 
             }
+        } else {
+            let currentURL = CurrentData.shared.resourcesForTag(tag: self.currentTag)[indexPath.section].url
+            let urlModified = URL(string: "http://\(currentURL)")
+            openSafariViewController(url: urlModified!)
         }
+    }
+
+    func openSafariViewController(url: URL) {
+        let configuration = SFSafariViewController.Configuration()
+        configuration.barCollapsingEnabled = false //when you scrolling down, the status bar collapse or not!
+
+        let webSafariVC = SFSafariViewController(url: url, configuration: configuration)
+        webSafariVC.preferredBarTintColor = UIColor.red
+        webSafariVC.preferredControlTintColor = UIColor.blue
+        webSafariVC.dismissButtonStyle = .close //customize back button
+
+        webSafariVC.delegate = self //ViewController become the Delegate, and from this moment the Delegator webSafariVC will can use the protocol implemented by the delegate ViewController
+        self.delegate.callSVC(svc: webSafariVC)
     }
 
 }
