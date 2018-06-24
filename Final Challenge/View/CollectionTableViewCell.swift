@@ -11,10 +11,13 @@
  */
 
 import UIKit
+import SafariServices
 
-class CollectionTableViewCell: UITableViewCell {
+class CollectionTableViewCell: UITableViewCell, SFSafariViewControllerDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
+
+    let myURL = URL(string: "https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller")!
 
     //setup properties:
     var delegate: MyCustomCellDelegator!
@@ -162,7 +165,22 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
                 self.delegate.callSegueFromCell(identifier: "SingleRoadmapSegue")
 
             }
+        } else {
+            openSafariViewController()
         }
+    }
+
+    func openSafariViewController() {
+        let configuration = SFSafariViewController.Configuration()
+        configuration.barCollapsingEnabled = false //when you scrolling down, the status bar collapse or not!
+
+        let webSafariVC = SFSafariViewController(url: myURL, configuration: configuration)
+        webSafariVC.preferredBarTintColor = UIColor.red
+        webSafariVC.preferredControlTintColor = UIColor.blue
+        webSafariVC.dismissButtonStyle = .close //customize back button
+
+        webSafariVC.delegate = self //ViewController become the Delegate, and from this moment the Delegator webSafariVC will can use the protocol implemented by the delegate ViewController
+        self.delegate.callSVC(svc: webSafariVC)
     }
 
 }

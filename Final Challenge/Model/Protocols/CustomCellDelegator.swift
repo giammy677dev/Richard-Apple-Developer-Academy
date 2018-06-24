@@ -7,7 +7,9 @@
 //
 
 import Foundation
+import SafariServices
 
 protocol MyCustomCellDelegator {
     func callSegueFromCell(identifier: String)
+    func callSVC(svc: SFSafariViewController)
 }
