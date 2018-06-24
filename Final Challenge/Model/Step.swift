@@ -42,7 +42,7 @@ class Step: NodeManager, Equatable {
     }
 
     func addNode(_ node: Node) {
-        var nodeToAttach: Node = Node(node)
+        let nodeToAttach: Node = Node(node)
         nodeToAttach.parent = self.uuid
         nodeToAttach.indexInParent = self.nodes.count
         self.nodes.append(nodeToAttach)
