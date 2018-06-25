@@ -186,7 +186,7 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
         configuration.barCollapsingEnabled = false //when you scrolling down, the status bar collapse or not!
 
         let webSafariVC = SFSafariViewController(url: url, configuration: configuration)
-        webSafariVC.preferredBarTintColor = UIColor.red
+        webSafariVC.preferredBarTintColor = UIColor(hex: 0xFFCB98)
         webSafariVC.preferredControlTintColor = UIColor.blue
         webSafariVC.dismissButtonStyle = .close //customize back button
 

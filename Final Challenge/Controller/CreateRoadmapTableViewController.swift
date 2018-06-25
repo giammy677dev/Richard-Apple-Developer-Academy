@@ -107,7 +107,7 @@ class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelega
             DataSupportRoadmap.shared.setTitleStep((self.textFieldDelegate?.text)!)
             saveRoadmapTitle()
         } else {
-            let alert = UIAlertController(title: "No Title", message: "Please type a title.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "No Title", message: "Please add a title before going on.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
             return
