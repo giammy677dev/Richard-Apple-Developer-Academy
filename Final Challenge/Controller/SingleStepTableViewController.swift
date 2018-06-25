@@ -23,6 +23,7 @@ class SingleStepTableViewController: UITableViewController {
         currentStep = CurrentData.shared.currentSingleStep
         //General settings
         self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
+        self.title = currentStep?.title
 
         setTableViewBackgroundGradient(sender: self, firstBackgroundColor, secondBackgroundColor, thirdBackgroundColor, fourthBackgroundColor) //It sets the background color
     }
