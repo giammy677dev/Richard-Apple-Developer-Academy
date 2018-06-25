@@ -126,7 +126,8 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
 
         if numberOfRoadmapsInPreview > 0 {  //roadmap mode
             cell?.titleLabel.text = CurrentData.shared.roadmapsForCategory(category: Category(rawValue: Int16(self.category))!).safeCall(indexPath.section)?.title
-            cell?.linkLabel.text =  "\(String(describing: CurrentData.shared.roadmapsForCategory(category: Category(rawValue: Int16(self.category))!).safeCall(indexPath.section)?.steps.count))"
+            let numberOfSteps = CurrentData.shared.roadmapsForCategory(category: Category(rawValue: Int16(self.category))!).safeCall(indexPath.section)?.steps
+            cell?.linkLabel.text =  "\((numberOfSteps?.count)!) article left"
             cell?.minutesLeftLabel.text = "\((CurrentData.shared.roadmapsForCategory(category: Category(rawValue: Int16(self.category))!).safeCall(indexPath.section)?.steps.count)! * 20) minutes left"
         } else {        //resources mode
             cell?.titleLabel.text = CurrentData.shared.resourcesForTag(tag: self.currentTag)[indexPath.section].title
