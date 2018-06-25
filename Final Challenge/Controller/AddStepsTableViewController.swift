@@ -70,9 +70,9 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
         
         //Global settings for cells in table view
         stepCell.titleTextField.delegate = self
-        stepCell.titleTextField.frame.size.width = 319
         
         if indexPath.section == 0 { //If is the section for the input cell:
+            stepCell.titleTextField.frame.size.width = 319
             stepCell.addResourceButton.isHidden = true
             stepCell.titleTextField.tag = -1
             stepCell.titleTextField.placeholder = "What is the step \(steps.count + 1) ?"
