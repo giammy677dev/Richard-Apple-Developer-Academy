@@ -23,8 +23,6 @@ class CreateRoadmapTableViewController: UITableViewController, UITextFieldDelega
         //General settings
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add Steps", style: .plain, target: self, action: #selector(goToAddStep))
 
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
-
         //Invoke xib
         let titleCell = UINib(nibName: "TitleTableViewCell", bundle: nil)
         self.tableView.register(titleCell, forCellReuseIdentifier: "TitleTableViewCell")

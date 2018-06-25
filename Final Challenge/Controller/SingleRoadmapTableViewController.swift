@@ -22,6 +22,7 @@ class SingleRoadmapTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.currentRoadmap = CurrentData.shared.currentSingleRoadmap
+        self.title = currentRoadmap?.title
 
         //General settings
         self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
