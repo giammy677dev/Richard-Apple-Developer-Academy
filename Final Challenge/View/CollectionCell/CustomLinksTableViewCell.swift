@@ -12,9 +12,6 @@ class CustomLinksTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var readingTimeLabel: UILabel!
     @IBOutlet weak var checkButton: UIButton!
-    @IBOutlet weak var firstTagLabel: UILabel!
-    @IBOutlet weak var secondTagLabel: UILabel!
-    @IBOutlet weak var thirdTagLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
