@@ -92,7 +92,7 @@ class AttachResourcesTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 135.5
     }
 
     //Function to attach the node to the current step
@@ -112,4 +112,13 @@ class AttachResourcesTableViewController: UITableViewController {
         //Return to previous view:
         self.navigationController?.popViewController(animated: true)
     }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10   //global Constant
+    }
+
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 10
+    }
+
 }
