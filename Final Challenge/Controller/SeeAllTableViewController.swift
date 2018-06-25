@@ -10,19 +10,31 @@ import UIKit
 
 class SeeAllTableViewController: UITableViewController {
 
+    var catergory: Int?
+    var roadmaps: [Roadmap]?
+
+    //The following four lines of code defines the four color that will create the gradient for the background color
+    let firstBackgroundColor = UIColor(red: 1, green: 247/255, blue: 68/255, alpha: 0.8 * 0.59)
+    let secondBackgroundColor = UIColor(red: 1, green: 153/255, blue: 68/255, alpha: 0.7 * 0.59)
+    let thirdBackgroundColor = UIColor(red: 252/255, green: 96/255, blue: 118/255, alpha: 1 * 0.41)
+    let fourthBackgroundColor = UIColor(red: 253/255, green: 107/255, blue: 179/255, alpha: 1 * 0.41)
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.catergory = CurrentData.shared.currentSeeAllCategory
+        self.roadmaps = CurrentData.shared.roadmapsForCategory(category: Category(rawValue: Int16(self.catergory!))!)
         //General settings
         self.tableView.separatorColor = UIColor.clear
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
+//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
+        setTableViewBackgroundGradient(sender: self, firstBackgroundColor, secondBackgroundColor, thirdBackgroundColor, fourthBackgroundColor) //It sets the background color
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 3
+        return (self.roadmaps?.count)!
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,8 +43,11 @@ class SeeAllTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "singleRoadmap", for: indexPath)
-        cell.contentView.backgroundColor = UIColor(hex: 0xFAFAFB)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "singleRoadmap", for: indexPath) as! SeeAllTableViewCell
+
+        cell.title.text = self.roadmaps![indexPath.section].title
+        cell.articleLeft.text = "\(self.roadmaps![indexPath.section].steps.count) article left"
+        cell.minLeft.text = "\(self.roadmaps![indexPath.section].steps.count * 20) minutes left"
 
         return cell
     }
@@ -44,48 +59,5 @@ class SeeAllTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 175  //global Constant
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
