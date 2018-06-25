@@ -13,10 +13,14 @@ class SingleNodeTableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var numberOfArticleLeft: UILabel!
     @IBOutlet weak var numberOfMinutesLeft: UILabel!
+    @IBOutlet weak var view: UIView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.view.tintColor = UIColor.clear
+        self.view.backgroundColor = UIColor.clear
+        self.view.layer.cornerRadius = 9
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

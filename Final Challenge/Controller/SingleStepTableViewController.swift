@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import SafariServices
 
-class SingleStepTableViewController: UITableViewController {
+class SingleStepTableViewController: UITableViewController, SFSafariViewControllerDelegate {
 
     var currentStep: Step?
+    var delegate: MyCustomCellDelegator!
+
     //The following four lines of code defines the four color that will create the gradient for the background color
     let firstBackgroundColor = UIColor(red: 1, green: 247/255, blue: 68/255, alpha: 0.8 * 0.59)
     let secondBackgroundColor = UIColor(red: 1, green: 153/255, blue: 68/255, alpha: 0.7 * 0.59)
@@ -59,6 +62,25 @@ class SingleStepTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 5
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentURL = currentStep?.nodes[indexPath.section].url
+        let urlModified = URL(string: "http://\(currentURL)")
+        openSafariViewController(url: urlModified!)
+    }
+
+    func openSafariViewController(url: URL) {
+        let configuration = SFSafariViewController.Configuration()
+        configuration.barCollapsingEnabled = false //when you scrolling down, the status bar collapse or not!
+
+        let webSafariVC = SFSafariViewController(url: url, configuration: configuration)
+        webSafariVC.preferredBarTintColor = UIColor(hex: 0xFFCB98)
+        webSafariVC.preferredControlTintColor = UIColor.blue
+        webSafariVC.dismissButtonStyle = .close //customize back button
+
+        webSafariVC.delegate = self //ViewController become the Delegate, and from this moment the Delegator webSafariVC will can use the protocol implemented by the delegate ViewController
+        self.delegate.callSVC(svc: webSafariVC)
     }
 
 }

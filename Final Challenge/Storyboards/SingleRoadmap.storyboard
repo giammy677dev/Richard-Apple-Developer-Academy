@@ -118,11 +118,13 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="numberOfArticleLeft" destination="5uN-ir-UTj" id="sxN-Oz-RMs"/>
                                     <outlet property="numberOfMinutesLeft" destination="Aoa-jQ-JbV" id="8VT-95-Zt3"/>
                                     <outlet property="title" destination="Sxg-96-PYA" id="IQ7-8a-hTm"/>
+                                    <outlet property="view" destination="2tX-U7-iog" id="qi8-Rj-Thu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

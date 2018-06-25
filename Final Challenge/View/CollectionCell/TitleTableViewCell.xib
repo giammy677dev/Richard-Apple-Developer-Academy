@@ -24,7 +24,7 @@
                     </imageView>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZaK-Np-aW4">
                         <rect key="frame" x="29" y="23" width="317" height="48.5"/>
-                        <color key="backgroundColor" red="0.95294117649999999" green="0.92549019610000005" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="ZaK-Np-aW4" secondAttribute="height" multiplier="319:49" id="ZOK-Mc-SH4"/>
                         </constraints>
