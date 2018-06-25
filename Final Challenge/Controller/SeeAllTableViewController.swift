@@ -60,4 +60,9 @@ class SeeAllTableViewController: UITableViewController {
         return 175  //global Constant
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        CurrentData.shared.currentSingleRoadmap = CurrentData.shared.roadmapsForCategory(category: Category(rawValue: Int16(self.catergory!))!)[indexPath.section]
+        self.performSegue(withIdentifier: "fromSeeAllToSingleRoadmap", sender: self)
+    }
+
 }

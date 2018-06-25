@@ -163,6 +163,9 @@
                             <outlet property="delegate" destination="Z3s-4f-xqI" id="iIt-zl-qW7"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="bVM-U6-IGn" kind="show" identifier="fromSeeAllToSingleRoadmap" id="s5Z-Aw-RM2"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s7L-6G-S1J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -210,4 +213,7 @@
         <image name="add" width="26" height="27"/>
         <image name="topics selected" width="34" height="34"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="s5Z-Aw-RM2"/>
+    </inferredMetricsTieBreakers>
 </document>
