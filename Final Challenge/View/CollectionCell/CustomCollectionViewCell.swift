@@ -27,6 +27,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
 
         self.layer.insertSublayer(gradient, at: 0)
         self.alpha = 0.8
+        self.layer.cornerRadius = 9
 
     }
 
