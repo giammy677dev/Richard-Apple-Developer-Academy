@@ -9,8 +9,9 @@ import UIKit
 
 //Extension of UIViewController to test CoreData init
 extension UIViewController {
+    
     func CoreDataTest() {
-        let a = WritableRoadmap(title: "Come fare il pene", category: .travel, visibility: .isPrivate, privileges: .isOwner, lastRead: Date(), id: UUID())
+        let a = WritableRoadmap(title: "Come fare il pane", category: .travel, visibility: .isPrivate, privileges: .isOwner, lastRead: Date(), id: UUID())
 
         let controller = CoreDataController.shared
         controller.wipeTheEntireCoreDataContainer(areYouSure: true)

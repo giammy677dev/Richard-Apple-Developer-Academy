@@ -23,11 +23,11 @@ class DatabaseInterface {
     func firstSetup() {
         let readingRoadmap = WritableRoadmap.init(title: "Reading List", category: .other, visibility: .isPrivate, privileges: .isOwner, lastRead: Date(), id: K.readingListRoadmapID)
         let readingStep = Step(title: "Reading List Step", parent: readingRoadmap.getRoadmapUUID(), id: K.readingListStepID, index: 0)
-        let zeroNode = Node(url: URL(string: "www.apple.com")!, title: "", id: K.zeroNode, parent: readingStep.getStepUUID(), tags: nil, text: "", propExtracted: false)
+//        let zeroNode = Node(url: URL(string: "www.apple.com")!, title: "", id: K.zeroNode, parent: readingStep.getStepUUID(), tags: nil, text: "", propExtracted: false)
 
         self.save(readingRoadmap)
         self.save(readingStep)
-        self.save(zeroNode)
+//        self.save(zeroNode)
     }
 
     // MARK: Interfaces to save elements simultaneously on CloudKit and on CoreData
