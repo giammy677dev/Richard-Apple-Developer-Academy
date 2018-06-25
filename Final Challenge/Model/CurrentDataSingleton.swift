@@ -14,6 +14,7 @@ class CurrentData {
 
     var currentSingleRoadmap: WritableRoadmap?
     var currentSingleStep: Step?
+    var currentSeeAllCategory: Int?
 
     var readingListByTags: [(tag: String, nodes: [Node])] = [(String, [Node])]()
 

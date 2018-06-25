@@ -167,6 +167,7 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
 
         if numberOfRoadmapsInPreview > 0 {
             if indexPath.section == numberMaxOfElemInPreview {  //See All Cell
+                CurrentData.shared.currentSeeAllCategory = self.category
                 self.delegate.callSegueFromCell(identifier: "SeeAllSegue")
             } else {
                 CurrentData.shared.currentSingleRoadmap = CurrentData.shared.roadmapsForCategory(category: Category(rawValue: Int16(self.category))!)[indexPath.section]

@@ -10,16 +10,14 @@ import UIKit
 
 class SeeAllTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var leftView: UIView!
-    @IBOutlet weak var numberOfTotalStep: UILabel!
-    @IBOutlet weak var numberOfStepCompleted: UILabel!
-    @IBOutlet weak var titleRoadmap: UILabel!
-    @IBOutlet weak var articlesLeft: UILabel!
-    @IBOutlet weak var minutesLeft: UILabel!
-
+    @IBOutlet weak var view: UIView!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var articleLeft: UILabel!
+    @IBOutlet weak var minLeft: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.view.layer.cornerRadius = 9
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
