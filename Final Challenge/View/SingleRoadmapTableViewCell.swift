@@ -12,7 +12,6 @@ class SingleRoadmapTableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var numberOfArticleLeft: UILabel!
     @IBOutlet weak var numberOfMinutesLeft: UILabel!
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
