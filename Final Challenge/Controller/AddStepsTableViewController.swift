@@ -11,10 +11,9 @@ import UIKit
 class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
     
     //    var numberOfRows = 1 //Initial number of the rows
-    var steps: [Step] = []
-    var stepNumber = 0
+    var steps: [Step] = [] //Array of steps in current roadmap
     var rowEntrance: [Bool] = [false] //It will be useful to detect if we have to add new rows to the tableView
-    var inputCellPath: IndexPath?
+    var inputCellPath: IndexPath? //It will be useful to retrieve the table view cell for input
     
     //The following four lines of code defines the four color that will create the gradient for the background color
     let firstBackgroundColor = UIColor(red: 1, green: 247/255, blue: 68/255, alpha: 0.8 * 0.59)
@@ -36,8 +35,8 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
         self.title = DataSupportRoadmap.shared.getTitleRoadmap()
         
         //Prepare Roadmap
-        DataSupportRoadmap.shared.createRoadmap()
-        if let stepTemp = DataSupportRoadmap.shared.roadmap?.steps {
+        DataSupportRoadmap.shared.createRoadmap() //Create a roadmap
+        if let stepTemp = DataSupportRoadmap.shared.roadmap?.steps { //It retrieves the list of steps from current roadmap
             steps = stepTemp
         }
         
@@ -54,7 +53,7 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 2 //There are two section, one for input cell and one for shows the steps added
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,26 +68,27 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
         
         let stepCell = tableView.dequeueReusableCell(withIdentifier: "AddStepTableViewCell") as! AddStepTableViewCell
         
+        //Global settings for cells in table view
         stepCell.titleTextField.delegate = self
         stepCell.titleTextField.frame.size.width = 319
         
-        if indexPath.section == 0 {
+        if indexPath.section == 0 { //If is the section for the input cell:
             stepCell.addResourceButton.isHidden = true
             stepCell.titleTextField.tag = -1
             stepCell.titleTextField.placeholder = "What is the step \(steps.count + 1) ?"
             inputCellPath = indexPath
-        } else {
+        } else { //If is the section for created steps:
             stepCell.titleTextField.text = steps[indexPath.row].title
             stepCell.titleTextField.tag = indexPath.row
             stepCell.addResourceButton.tag = indexPath.row
             stepCell.addResourceButton.addTarget(self, action: #selector(addResourceToStep(_: )), for: UIControlEvents.touchUpInside) //It enables the action to present the Resource view to the button of each button of the tableView
-            /*
+            //
             UIView.animate(withDuration: 1, delay: 0, animations: {
                 if stepCell.titleTextField.frame.size.width == 319 {
                     stepCell.titleTextField.frame.size.width = 246 //It reduces the dimension of the width of the titleTextField with an animation
                 }
             }, completion: {_ in stepCell.addResourceButton.isHidden = false}) //At the end of the previous animation, the addResourceButton appears
-            */
+ 
         }
         
         return stepCell
@@ -100,7 +100,6 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
-        //        headerView.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the color of the header
         return headerView
     }
     
@@ -123,8 +122,7 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
             } else {
                 DataSupportRoadmap.shared.roadmap?.steps[titleTextField.tag].title = titleTextField.text! //Simple update of step title
             }
-            
-            steps = (DataSupportRoadmap.shared.roadmap?.steps!)!
+            steps = (DataSupportRoadmap.shared.roadmap?.steps!)! //It updates the array of steps
             self.tableView.reloadData() //It loads new datas for the tableView
         }
         return true
@@ -171,7 +169,7 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
     
     //The following function calls the textFieldShouldReturn function when the user end the editing of the textField when the user tap around in the screen
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if !textField.text!.isEmpty {
+        if !textField.text!.isEmpty { //If text field is not empty calls below function:
             _ = textFieldShouldReturn(textField)
         }
     }
