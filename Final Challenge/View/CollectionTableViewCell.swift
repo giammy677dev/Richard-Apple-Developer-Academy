@@ -124,10 +124,14 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCollectionViewCell", for: indexPath) as? CustomCollectionViewCell
 
-        if numberOfRoadmapsInPreview > 0 {
+        if numberOfRoadmapsInPreview > 0 {  //roadmap mode
             cell?.titleLabel.text = CurrentData.shared.roadmapsForCategory(category: Category(rawValue: Int16(self.category))!).safeCall(indexPath.section)?.title
-        } else {
+            cell?.linkLabel.text =  "\(String(describing: CurrentData.shared.roadmapsForCategory(category: Category(rawValue: Int16(self.category))!).safeCall(indexPath.section)?.steps.count))"
+            cell?.minutesLeftLabel.text = "\((CurrentData.shared.roadmapsForCategory(category: Category(rawValue: Int16(self.category))!).safeCall(indexPath.section)?.steps.count)! * 20) minutes left"
+        } else {        //resources mode
             cell?.titleLabel.text = CurrentData.shared.resourcesForTag(tag: self.currentTag)[indexPath.section].title
+            cell?.linkLabel.text = "http://.\(CurrentData.shared.resourcesForTag(tag: self.currentTag)[indexPath.section].url.absoluteString)"
+            cell?.minutesLeftLabel.text = "\(20) minutes left"
         }
 
         //zoom first cell at first start
