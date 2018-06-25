@@ -221,15 +221,15 @@ class DatabaseInterface {
 
     /// When a new record has to be saved it creates a new one otherwise it re-saves all the key-values
     private func stepToRecord(record: CKRecord?, step: Step) -> CKRecord {
+        // Set the reference to the parent and the delete cascade update policy
+        let parentID = CKRecordID(recordName: step.parent.uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName, ownerName: CKCurrentUserDefaultName))
+        let parentReference = CKReference(recordID: parentID, action: .deleteSelf)
+        
         if let record = record {
 
             record.setValue(step.title, forKey: K.CKRecordTypes.CKStepRecordField.title)
             record.setValue(step.indexInParent, forKeyPath: K.CKRecordTypes.CKStepRecordField.indexInParent)
-
-            // Set the reference to the parent and the delete cascade update policy
-            let parentID = CKRecordID(recordName: step.parent.uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName, ownerName: CKCurrentUserDefaultName))
-            let parentReference = CKReference(recordID: parentID, action: .none)
-            record.parent = parentReference
+            record.setValue(parentReference, forKey: K.CKRecordTypes.CKStepRecordField.parent)
 
             return record
         }
@@ -239,24 +239,20 @@ class DatabaseInterface {
 
         newRecord.setValue(step.title, forKey: K.CKRecordTypes.CKStepRecordField.title)
         newRecord.setValue(step.indexInParent, forKeyPath: K.CKRecordTypes.CKStepRecordField.indexInParent)
-
-        // Set the reference to the parent
-        let parentID = CKRecordID(recordName: step.parent.uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName, ownerName: CKCurrentUserDefaultName))
-        let parentReference = CKReference(recordID: parentID, action: CKReferenceAction.none)
-        newRecord.parent = parentReference
+        newRecord.setValue(parentReference, forKey: K.CKRecordTypes.CKStepRecordField.parent)
 
         return newRecord
     }
 
     /// When a new record has to be saved it creates a new one otherwise it re-saves all the key-values
     private func nodeToRecord(record: CKRecord?, node: Node) -> CKRecord {
+        // Set the reference to the parent and the delete cascade update policy
+        let parentID = CKRecordID(recordName: node.parent.uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName, ownerName: CKCurrentUserDefaultName))
+        let parentReference = CKReference(recordID: parentID, action: CKReferenceAction.deleteSelf)
+        
         // Encoding not supported data types
         let encoder = PropertyListEncoder()
         let tagsData = try? encoder.encode(node.tags)
-
-        // Set the reference to the parent
-        let parentID = CKRecordID(recordName: node.parent.uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName, ownerName: CKCurrentUserDefaultName))
-        let parentReference = CKReference(recordID: parentID, action: CKReferenceAction.none)
 
         // If the record already exists (and it has been fetched)
         if let record = record {
@@ -268,9 +264,9 @@ class DatabaseInterface {
             record.setValue(node.title, forKey: K.CKRecordTypes.CKNodeRecordField.title)
             record.setValue(node.url.absoluteString, forKey: K.CKRecordTypes.CKNodeRecordField.urlString)
             record.setValue(node.indexInParent, forKeyPath: K.CKRecordTypes.CKNodeRecordField.indexInParent)
-
+            record.setValue(parentReference, forKey: K.CKRecordTypes.CKNodeRecordField.parent)
+            
             record.setValue(tagsData, forKey: K.CKRecordTypes.CKNodeRecordField.tagsData)
-            record.parent = parentReference
 
             return record
         }
@@ -287,9 +283,9 @@ class DatabaseInterface {
         newRecord.setValue(node.title, forKey: K.CKRecordTypes.CKNodeRecordField.title)
         newRecord.setValue(node.url.absoluteString, forKey: K.CKRecordTypes.CKNodeRecordField.urlString)
         newRecord.setValue(node.indexInParent, forKeyPath: K.CKRecordTypes.CKNodeRecordField.indexInParent)
+        newRecord.setValue(parentReference, forKey: K.CKRecordTypes.CKNodeRecordField.parent)
 
         newRecord.setValue(tagsData, forKey: K.CKRecordTypes.CKNodeRecordField.tagsData)
-        newRecord.parent = parentReference
 
         return newRecord
     }
@@ -297,8 +293,8 @@ class DatabaseInterface {
     // MARK: - From CKRecord methods
     private func recordToStep(_ ckRecord: CKRecord) -> Step? {
         guard let stepTitle = ckRecord[K.CKRecordTypes.CKStepRecordField.title] as? String,
-            let stepParentID = ckRecord[K.CKRecordTypes.CKStepRecordField.parentUUID] as? String,
-            let stepParentUUID = UUID(uuidString: stepParentID),
+            let parentReference = ckRecord[K.CKRecordTypes.CKStepRecordField.parent] as? CKReference,
+            let stepParentUUID = UUID(uuidString: parentReference.recordID.recordName),
             let stepUUID = UUID(uuidString: ckRecord.recordID.recordName),
             let indexInParent = ckRecord[K.CKRecordTypes.CKStepRecordField.indexInParent] as? Int
             else { return nil }
@@ -334,8 +330,8 @@ class DatabaseInterface {
             let creationTime = ckRecord[K.CKRecordTypes.CKNodeRecordField.creationTime] as? Date,
             let propRead = ckRecord[K.CKRecordTypes.CKNodeRecordField.propRead] as? Bool,
             let propFlagged = ckRecord[K.CKRecordTypes.CKNodeRecordField.propFlagged] as? Bool,
-            let parentUUIDString = ckRecord[K.CKRecordTypes.CKNodeRecordField.parentUUID] as? String,
-            let parentUUID = UUID(uuidString: parentUUIDString),
+            let parentReference = ckRecord[K.CKRecordTypes.CKNodeRecordField.parent] as? CKReference,
+            let parentUUID = UUID(uuidString: parentReference.recordID.recordName),
             let urlString = ckRecord[K.CKRecordTypes.CKNodeRecordField.urlString] as? String,
             let url = URL(string: urlString),
             let indexInParent = ckRecord[K.CKRecordTypes.CKNodeRecordField.indexInParent] as? Int
