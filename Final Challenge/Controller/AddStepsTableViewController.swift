@@ -74,7 +74,7 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
             stepCell.titleTextField.frame.size.width = 319
             stepCell.addResourceButton.isHidden = true
             stepCell.titleTextField.tag = -1
-            stepCell.titleTextField.placeholder = "What is the step \(steps.count + 1) ?"
+            stepCell.titleTextField.placeholder = "What is step n.\(steps.count + 1)?"
             inputCellPath = indexPath
         } else { //If is the section for created steps:
             stepCell.titleTextField.text = steps[indexPath.row].title

@@ -131,7 +131,7 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
             cell?.minutesLeftLabel.text = "\((CurrentData.shared.roadmapsForCategory(category: Category(rawValue: Int16(self.category))!).safeCall(indexPath.section)?.steps.count)! * 20) minutes left"
         } else {        //resources mode
             cell?.titleLabel.text = CurrentData.shared.resourcesForTag(tag: self.currentTag)[indexPath.section].title
-            cell?.linkLabel.text = "http://.\(CurrentData.shared.resourcesForTag(tag: self.currentTag)[indexPath.section].url.absoluteString)"
+            cell?.linkLabel.text = "\(CurrentData.shared.resourcesForTag(tag: self.currentTag)[indexPath.section].url.absoluteString)"
             cell?.minutesLeftLabel.text = "\(20) minutes left"
         }
 

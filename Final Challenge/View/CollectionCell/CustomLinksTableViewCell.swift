@@ -16,6 +16,7 @@ class CustomLinksTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.layer.cornerRadius = 9
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

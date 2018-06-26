@@ -109,7 +109,7 @@ class AddResourceTableViewController: UITableViewController {
 
         DatabaseInterface.shared.save(node)
 
-        let alert = UIAlertController(title: "Saved", message: "Your roadmap has been successfully saved", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Saved", message: "Your rescource has been successfully saved", preferredStyle: .alert)
         self.present(alert, animated: true, completion: nil)
         let when = DispatchTime.now() + 0.5
         DispatchQueue.main.asyncAfter(deadline: when) {

@@ -40,6 +40,8 @@ class AttachResourcesTableViewController: UITableViewController {
         let searchBar = UISearchController(searchResultsController: nil)
         searchBar.searchResultsUpdater = self as? UISearchResultsUpdating
         self.navigationItem.searchController = searchBar
+//        searchBar.searchBar.tintColor = UIColor(red: 253/256, green: 253/256, blue: 253/256, alpha: 52)
+//        searchBar.searchBar.tintColor = UIColor(red: 253/256, green: 253/256, blue: 253/256, alpha: 52)
 
         //Invoke xib
         let cell = UINib(nibName: "CustomLinksTableViewCell", bundle: nil)
