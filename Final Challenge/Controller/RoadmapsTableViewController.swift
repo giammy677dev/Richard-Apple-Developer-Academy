@@ -8,10 +8,16 @@
 import UIKit
 import SafariServices
 
-class RoadmapsTableViewController: UITableViewController {
+class RoadmapsTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
 
 //    var roadmaps: [WritableRoadmap] = DatabaseInterface.shared.loadRoadmaps() ?? [WritableRoadmap]()
     var intCategories: [Int] = [Int]()
+    
+    //SearchBar
+    var searchBarController: UISearchController?
+    
+    //Variables for search
+    var shouldShowSearchResults: Bool = false
 
     //The following four lines of code defines the four color that will create the gradient for the background color
     let firstBackgroundColor = UIColor(red: 1, green: 247/255, blue: 68/255, alpha: 0.8 * 0.59)
@@ -27,10 +33,65 @@ class RoadmapsTableViewController: UITableViewController {
 
         setTableViewBackgroundGradient(sender: self, firstBackgroundColor, secondBackgroundColor, thirdBackgroundColor, fourthBackgroundColor) //It sets the background color
 
-        //The following 3 lines of code declare and present the searchBar
-        let searchBar = UISearchController(searchResultsController: nil)
-        searchBar.searchResultsUpdater = self as? UISearchResultsUpdating
-        self.navigationItem.searchController = searchBar
+        //Configure searchBar and searchBarController:
+        self.configureSearchController()
+    }
+    
+    // MARK: - Functions for searchBar
+    
+    private func configureSearchController() {
+        // Initialize and perform a minimum configuration to the search controller.
+        searchBarController = UISearchController(searchResultsController: nil)
+        let searchBar = searchBarController!.searchBar
+        
+        //Set searcBarController:
+        searchBarController!.searchResultsUpdater = self
+        searchBarController!.dimsBackgroundDuringPresentation = true
+        self.navigationItem.searchController = searchBarController
+        searchBarController!.hidesNavigationBarDuringPresentation = false
+        
+        //Set searchBar:
+        searchBar.delegate = self
+        searchBar.sizeToFit()
+        searchBar.tintColor = UIColor(hex: 0x414B6B)
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        /* Do Nothing for now
+        guard let searchString = searchController.searchBar.text else { return }
+        
+        // Filter the data array and get only those nodes that match the search text.
+        filteredReadingList = self.readingListNodes.filter({ (node) -> Bool in
+            let nodeTitle: NSString = node.title as NSString
+            
+            return (nodeTitle.range(of: searchString, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
+        })
+         */
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if let search = searchBar.text {
+            if search != "" {
+                shouldShowSearchResults = true
+            } else {
+                shouldShowSearchResults = false
+            }
+        }
+        tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        shouldShowSearchResults = false
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if !shouldShowSearchResults {
+            shouldShowSearchResults = true
+            tableView.reloadData()
+        }
+        
+        searchBarController!.searchBar.resignFirstResponder()
     }
 
     // MARK: - Table view data source

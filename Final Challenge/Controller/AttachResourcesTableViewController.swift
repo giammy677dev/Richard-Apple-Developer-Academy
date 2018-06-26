@@ -167,7 +167,6 @@ class AttachResourcesTableViewController: UITableViewController, UISearchResults
         
         //Set searchBar:
         searchBar.delegate = self
-        searchBar.placeholder = "Search here..."
         searchBar.sizeToFit()
         searchBar.tintColor = UIColor(hex: 0x414B6B)
     }
