@@ -12,7 +12,6 @@ import SafariServices
 class SingleStepTableViewController: UITableViewController, SFSafariViewControllerDelegate {
 
     var currentStep: Step?
-    var delegate: MyCustomCellDelegator!
 
     //The following four lines of code defines the four color that will create the gradient for the background color
     let firstBackgroundColor = UIColor(red: 1, green: 247/255, blue: 68/255, alpha: 0.8 * 0.59)
@@ -80,7 +79,7 @@ class SingleStepTableViewController: UITableViewController, SFSafariViewControll
         webSafariVC.dismissButtonStyle = .close //customize back button
 
         webSafariVC.delegate = self //ViewController become the Delegate, and from this moment the Delegator webSafariVC will can use the protocol implemented by the delegate ViewController
-        self.delegate.callSVC(svc: webSafariVC)
+        self.present(webSafariVC, animated: true, completion: nil)
     }
 
 }

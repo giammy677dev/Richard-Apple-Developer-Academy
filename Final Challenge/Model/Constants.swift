@@ -26,7 +26,7 @@ enum K { // swiftlint:disable:this type_name
             static let urlString = "url"
             static let title = "title"
             static let uuid = "uuid"
-            static let parentUUID = "parentUUID"
+            static let parent = "parent"
             static let tagsData = "tagsData"
             static let text = "text"
             static let propExtracted = "propExtracted"
@@ -38,7 +38,7 @@ enum K { // swiftlint:disable:this type_name
 
         enum CKStepRecordField {
             static let title = "title"
-            static let parentUUID = "parentUUID"
+            static let parent = "parent"
             static let uuid = "uuid"
             static let indexInParent = "indexInParent"
         }
