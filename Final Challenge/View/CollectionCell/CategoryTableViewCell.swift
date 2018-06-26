@@ -22,15 +22,18 @@ class CategoryTableViewCell: UITableViewCell {
         // Set background properties:
         backgroundImage.layer.zPosition = 0
         // Set category text field properties:
-        categoryTextField.placeholder = "Choose a Category"
+        categoryTextField.text = "Tap on a Category"
         categoryTextField.borderStyle = .roundedRect
+        categoryTextField.font = UIFont(name: "Lato-Regular", size: 16)
+        categoryTextField.textColor = UIColor(hex: 0x414B6B)
         categoryTextField.setLeftPaddingPoints(10)
         categoryTextField.isUserInteractionEnabled = false
-        // Set buttons properties:
+        // Set buttons properties
         for button in categoriesButtonArray {
             button.layer.cornerRadius = 8
             button.backgroundColor = UIColor.white
-            button.setTitleColor(UIColor.black, for: .normal)
+            button.titleLabel?.font = UIFont(name: "Lato-Regular", size: 15)
+            button.setTitleColor(UIColor(hex: 0x414B6B), for: .normal)
             button.contentEdgeInsets = UIEdgeInsets(top: 8, left: 15, bottom: 8, right: 15)
             button.sizeToFit()
             button.addTarget(self, action: #selector(choseCategory(_:)), for: .touchUpInside)

@@ -68,6 +68,10 @@
                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             </collectionViewFlowLayout>
+                                            <imageView key="backgroundView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sfondo cella" id="r8j-rD-oz6">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </imageView>
                                             <cells/>
                                         </collectionView>
                                     </subviews>
@@ -105,7 +109,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MD6-PM-nRN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="182" y="197"/>
+            <point key="canvasLocation" x="181.59999999999999" y="196.55172413793105"/>
         </scene>
         <!--See All Table View Controller-->
         <scene sceneID="waR-co-pb9">
@@ -216,6 +220,7 @@
     <resources>
         <image name="Topics unselected" width="34" height="34"/>
         <image name="add" width="26" height="27"/>
+        <image name="sfondo cella" width="375" height="212"/>
         <image name="topics selected" width="34" height="34"/>
     </resources>
     <inferredMetricsTieBreakers>

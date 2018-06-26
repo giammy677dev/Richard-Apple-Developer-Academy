@@ -19,10 +19,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="377" height="299.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add Tags Background" translatesAutoresizingMaskIntoConstraints="NO" id="X6B-gL-qY0">
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X6B-gL-qY0">
                         <rect key="frame" x="10" y="0.0" width="357" height="299.5"/>
                     </imageView>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IxI-oN-ELq">
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Tap on a Category" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IxI-oN-ELq">
                         <rect key="frame" x="29" y="15" width="319" height="49"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="IxI-oN-ELq" secondAttribute="height" multiplier="319:49" id="zIC-3g-P3a"/>
@@ -136,7 +136,4 @@
             <point key="canvasLocation" x="-97.5" y="-59"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="Add Tags Background" width="358" height="302"/>
-    </resources>
 </document>

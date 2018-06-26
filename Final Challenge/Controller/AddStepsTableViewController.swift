@@ -42,7 +42,6 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
 
         //General settings
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none //delete the separator line between each rows of the tableView
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background.png")!) //set the background color
         self.tableView.backgroundColor = UIColor.white //set the background color of the tableView
 
         setTableViewBackgroundGradient(sender: self, firstBackgroundColor, secondBackgroundColor, thirdBackgroundColor, fourthBackgroundColor) //It sets the background color
@@ -84,7 +83,7 @@ class AddStepsTableViewController: UITableViewController, UITextFieldDelegate {
             //
             UIView.animate(withDuration: 1, delay: 0, animations: {
                 if stepCell.titleTextField.frame.size.width == 319 {
-                    stepCell.titleTextField.frame.size.width = 246 //It reduces the dimension of the width of the titleTextField with an animation
+                    stepCell.titleTextField.frame.size.width = 255 //It reduces the dimension of the width of the titleTextField with an animation
                 }
             }, completion: {_ in stepCell.addResourceButton.isHidden = false}) //At the end of the previous animation, the addResourceButton appears
 

@@ -57,6 +57,9 @@ class RoadmapsTableViewController: UITableViewController {
         let header = Bundle.main.loadNibNamed("HeaderTableViewCell", owner: self, options: nil)?.first as! HeaderTableViewCell
 
         header.headerLabel.text = self.stringFromCategory(Int(CurrentData.shared.currentCategories[section].rawValue))
+
+        header.backgroundColor = UIColor(red: 253/255, green: 253/255, blue: 253/255, alpha: 0.35)
+
         return header
     }
 

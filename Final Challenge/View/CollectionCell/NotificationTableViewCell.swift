@@ -10,29 +10,31 @@ import UIKit
 
 class NotificationTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var switchController: UISwitch!
     @IBOutlet weak var whiteView: UIView!
+    @IBOutlet weak var switchButton: UIButton!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Set style:
         whiteView.layer.cornerRadius = 4
         // TODO: - Manage switch
-        switchController.setOn(true, animated: false)
-        switchController.addTarget(self, action: #selector(changeStatus(_:)), for: .touchUpInside)
+        switchButton.isSelected = true
+        switchButton.setImage(UIImage(named: "switchOn"), for: .selected)
+        switchButton.setImage(UIImage(named: "switchOff"), for: .normal)
     }
 
-    @objc func changeStatus(_ sender: UISwitch) {
-        if sender.isOn {
+    @IBAction func changeButtonStatus(_ sender: UIButton) {
+        if switchButton.isSelected == true {
+            switchButton.isSelected = !switchButton.isSelected
             DataSupportRoadmap.shared.setNotification(true)
         } else {
+            switchButton.isSelected = !switchButton.isSelected
             DataSupportRoadmap.shared.setNotification(false)
         }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-
 }
