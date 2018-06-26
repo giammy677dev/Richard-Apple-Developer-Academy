@@ -26,6 +26,11 @@ class RoadmapsTableViewController: UITableViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
 
         setTableViewBackgroundGradient(sender: self, firstBackgroundColor, secondBackgroundColor, thirdBackgroundColor, fourthBackgroundColor) //It sets the background color
+
+        //The following 3 lines of code declare and present the searchBar
+        let searchBar = UISearchController(searchResultsController: nil)
+        searchBar.searchResultsUpdater = self as? UISearchResultsUpdating
+        self.navigationItem.searchController = searchBar
     }
 
     // MARK: - Table view data source
