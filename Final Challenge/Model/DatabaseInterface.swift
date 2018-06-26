@@ -224,7 +224,7 @@ class DatabaseInterface {
         // Set the reference to the parent and the delete cascade update policy
         let parentID = CKRecordID(recordName: step.parent.uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName, ownerName: CKCurrentUserDefaultName))
         let parentReference = CKReference(recordID: parentID, action: .deleteSelf)
-        
+
         if let record = record {
 
             record.setValue(step.title, forKey: K.CKRecordTypes.CKStepRecordField.title)
@@ -249,7 +249,7 @@ class DatabaseInterface {
         // Set the reference to the parent and the delete cascade update policy
         let parentID = CKRecordID(recordName: node.parent.uuidString, zoneID: CKRecordZoneID(zoneName: K.CKRecordZoneIDs.privateRecordZoneName, ownerName: CKCurrentUserDefaultName))
         let parentReference = CKReference(recordID: parentID, action: CKReferenceAction.deleteSelf)
-        
+
         // Encoding not supported data types
         let encoder = PropertyListEncoder()
         let tagsData = try? encoder.encode(node.tags)
@@ -265,7 +265,7 @@ class DatabaseInterface {
             record.setValue(node.url.absoluteString, forKey: K.CKRecordTypes.CKNodeRecordField.urlString)
             record.setValue(node.indexInParent, forKeyPath: K.CKRecordTypes.CKNodeRecordField.indexInParent)
             record.setValue(parentReference, forKey: K.CKRecordTypes.CKNodeRecordField.parent)
-            
+
             record.setValue(tagsData, forKey: K.CKRecordTypes.CKNodeRecordField.tagsData)
 
             return record

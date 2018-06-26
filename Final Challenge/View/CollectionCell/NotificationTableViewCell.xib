@@ -31,19 +31,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ic0-fR-YUB">
-                                <rect key="frame" x="252" y="9" width="51" height="31"/>
-                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="iHU-gX-Trb" firstAttribute="leading" secondItem="FiT-qU-dNV" secondAttribute="leading" constant="16" id="D7y-yu-FKD"/>
-                            <constraint firstItem="Ic0-fR-YUB" firstAttribute="centerY" secondItem="FiT-qU-dNV" secondAttribute="centerY" id="Hg1-P6-IJN"/>
                             <constraint firstItem="iHU-gX-Trb" firstAttribute="centerY" secondItem="FiT-qU-dNV" secondAttribute="centerY" id="PXN-FH-ygc"/>
-                            <constraint firstAttribute="trailing" secondItem="Ic0-fR-YUB" secondAttribute="trailing" constant="16" id="pmU-lf-gVd"/>
                             <constraint firstAttribute="width" secondItem="FiT-qU-dNV" secondAttribute="height" multiplier="319:49" id="qcC-w8-dHg"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1a0-PP-ghG">
+                        <rect key="frame" x="272" y="33" width="62" height="28"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" image="switchOn"/>
+                        <connections>
+                            <action selector="changeButtonStatus:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="aU7-9M-xoJ"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="FiT-qU-dNV" firstAttribute="centerY" secondItem="BIF-Vt-xKQ" secondAttribute="centerY" id="Mv5-9D-sWK"/>
@@ -58,12 +61,13 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="switchController" destination="Ic0-fR-YUB" id="YiC-r8-TlS"/>
+                <outlet property="switchButton" destination="1a0-PP-ghG" id="yTg-xB-B5c"/>
                 <outlet property="whiteView" destination="FiT-qU-dNV" id="lzm-aM-ct8"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
         <image name="Add Resource Background" width="358" height="174"/>
+        <image name="switchOn" width="184" height="84"/>
     </resources>
 </document>

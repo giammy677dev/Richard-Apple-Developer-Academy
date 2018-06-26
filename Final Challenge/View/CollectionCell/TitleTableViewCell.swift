@@ -16,6 +16,7 @@ class TitleTableViewCell: UITableViewCell {
         // Initialization code
 
         titleTextField.placeholder = "Add title"
+        titleTextField.tintColor = UIColor(hex: 0x414B6B)
         titleTextField.borderStyle = .roundedRect
         titleTextField.setLeftPaddingPoints(10)
     }

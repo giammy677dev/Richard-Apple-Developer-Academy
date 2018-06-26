@@ -26,6 +26,11 @@ class RoadmapsTableViewController: UITableViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true //display large title
 
         setTableViewBackgroundGradient(sender: self, firstBackgroundColor, secondBackgroundColor, thirdBackgroundColor, fourthBackgroundColor) //It sets the background color
+
+        //The following 3 lines of code declare and present the searchBar
+        let searchBar = UISearchController(searchResultsController: nil)
+        searchBar.searchResultsUpdater = self as? UISearchResultsUpdating
+        self.navigationItem.searchController = searchBar
     }
 
     // MARK: - Table view data source
@@ -52,6 +57,9 @@ class RoadmapsTableViewController: UITableViewController {
         let header = Bundle.main.loadNibNamed("HeaderTableViewCell", owner: self, options: nil)?.first as! HeaderTableViewCell
 
         header.headerLabel.text = self.stringFromCategory(Int(CurrentData.shared.currentCategories[section].rawValue))
+
+        header.backgroundColor = UIColor(red: 253/255, green: 253/255, blue: 253/255, alpha: 0.35)
+
         return header
     }
 
