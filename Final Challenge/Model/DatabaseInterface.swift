@@ -370,7 +370,6 @@ class DatabaseInterface {
     }
 
     private func updateNode(fromRecord ckRecord: CKRecord) {
-        // TODO: - Update Node
         guard let node = self.recordToNode(ckRecord) else { return }
         _ = cdController.updateNode(node)
     }
