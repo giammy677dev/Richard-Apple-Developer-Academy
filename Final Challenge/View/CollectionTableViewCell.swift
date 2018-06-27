@@ -96,7 +96,6 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
         numberOfResourcesInPreview = CurrentData.shared.resourcesForTag(tag: self.currentTag).count
 
         if numberOfRoadmapsInPreview != 0 {
-            print("numero di roadmaps: \(numberOfRoadmapsInPreview)")
             if numberOfRoadmapsInPreview > 5 {
                 numberOfRoadmapsInPreview = 5
             }
@@ -105,7 +104,6 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
             }
             return numberOfRoadmapsInPreview //numbers of roadmpas in Category
         } else {
-            print("numero di resources: \(numberOfResourcesInPreview)")
             if numberOfResourcesInPreview > 5 {
                 numberOfResourcesInPreview = 5
             }
@@ -181,7 +179,7 @@ extension CollectionTableViewCell: UICollectionViewDataSource {
             }
         } else {
             let currentURL = CurrentData.shared.resourcesForTag(tag: self.currentTag)[indexPath.section].url
-            let urlModified = URL(string: "http://\(currentURL)")
+            let urlModified = URL(string: "\(currentURL)")
             openSafariViewController(url: urlModified!)
         }
     }

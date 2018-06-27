@@ -298,7 +298,7 @@ class DatabaseInterface {
             let stepUUID = UUID(uuidString: ckRecord.recordID.recordName),
             let indexInParent = ckRecord[K.CKRecordTypes.CKStepRecordField.indexInParent] as? Int
             else { return nil }
-
+        print(stepTitle)
         let step = Step(title: stepTitle, parent: stepParentUUID, id: stepUUID, index: indexInParent)
         return step
     }
@@ -316,7 +316,7 @@ class DatabaseInterface {
             let privileges = UserPrivilege(rawValue: privilegesID)
 
             else { return nil }
-
+        print(title)
         let roadmap = WritableRoadmap(title: title, category: category, visibility: visibility, privileges: privileges, lastRead: lastRead, id: uuid)
         return roadmap
     }
@@ -342,7 +342,7 @@ class DatabaseInterface {
             let decoder = PropertyListDecoder()
             tagsSet = try? decoder.decode(Set<String>.self, from: tagsData)
         }
-
+        print(title)
         let node = Node(url: url, title: title, id: uuid, parent: parentUUID, tags: tagsSet, text: text, propExtracted: propExtracted, creationTime: creationTime, propRead: propRead, propFlagged: propFlagged, index: indexInParent)
 
         return node

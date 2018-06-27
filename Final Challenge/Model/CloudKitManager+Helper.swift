@@ -354,6 +354,7 @@ final class CloudKitHelper {
                     guard let operation = operation else { return }
                     // Callback handlers
                     operation.completionBlock = {}
+                    operation
                     ckContainer.add(operation)
                 })
             }

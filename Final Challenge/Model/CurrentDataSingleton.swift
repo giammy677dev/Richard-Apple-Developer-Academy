@@ -75,7 +75,6 @@ class CurrentData {
             return node1.creationTimestamp < node2.creationTimestamp
         })
 
-        print("\nResources loaded:")
         for node in recentNodes! {
             print("title:")
             print(node.title)

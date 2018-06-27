@@ -12,10 +12,10 @@ class RoadmapsTableViewController: UITableViewController, UISearchResultsUpdatin
 
 //    var roadmaps: [WritableRoadmap] = DatabaseInterface.shared.loadRoadmaps() ?? [WritableRoadmap]()
     var intCategories: [Int] = [Int]()
-    
+
     //SearchBar
     var searchBarController: UISearchController?
-    
+
     //Variables for search
     var shouldShowSearchResults: Bool = false
 
@@ -36,26 +36,26 @@ class RoadmapsTableViewController: UITableViewController, UISearchResultsUpdatin
         //Configure searchBar and searchBarController:
         self.configureSearchController()
     }
-    
+
     // MARK: - Functions for searchBar
-    
+
     private func configureSearchController() {
         // Initialize and perform a minimum configuration to the search controller.
         searchBarController = UISearchController(searchResultsController: nil)
         let searchBar = searchBarController!.searchBar
-        
+
         //Set searcBarController:
         searchBarController!.searchResultsUpdater = self
         searchBarController!.dimsBackgroundDuringPresentation = true
         self.navigationItem.searchController = searchBarController
         searchBarController!.hidesNavigationBarDuringPresentation = false
-        
+
         //Set searchBar:
         searchBar.delegate = self
         searchBar.sizeToFit()
         searchBar.tintColor = UIColor(hex: 0x414B6B)
     }
-    
+
     func updateSearchResults(for searchController: UISearchController) {
         /* Do Nothing for now
         guard let searchString = searchController.searchBar.text else { return }
@@ -68,7 +68,7 @@ class RoadmapsTableViewController: UITableViewController, UISearchResultsUpdatin
         })
          */
     }
-    
+
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         if let search = searchBar.text {
             if search != "" {
@@ -79,18 +79,18 @@ class RoadmapsTableViewController: UITableViewController, UISearchResultsUpdatin
         }
         tableView.reloadData()
     }
-    
+
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         shouldShowSearchResults = false
         tableView.reloadData()
     }
-    
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if !shouldShowSearchResults {
             shouldShowSearchResults = true
             tableView.reloadData()
         }
-        
+
         searchBarController!.searchBar.resignFirstResponder()
     }
 

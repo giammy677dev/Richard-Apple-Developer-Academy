@@ -65,7 +65,7 @@ class SingleStepTableViewController: UITableViewController, SFSafariViewControll
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentURL = currentStep?.nodes[indexPath.section].url
-        let urlModified = URL(string: "http://\(currentURL)")
+        let urlModified = URL(string: "\(currentURL!)")
         openSafariViewController(url: urlModified!)
     }
 
