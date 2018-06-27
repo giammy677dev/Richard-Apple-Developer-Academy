@@ -481,7 +481,7 @@ class CoreDataController {
             return addStep(step, to: roadmap)
         }
     }
-    
+
     ///Updates/adds Roadmap information in CoreData. Not recursive.
     func updateRoadmap(_ roadmap: WritableRoadmap) -> CDRoadmap? {
         if let roadmapToUpdate = fetchCDRoadmap(uuid: roadmap.getRoadmapUUID()) {
